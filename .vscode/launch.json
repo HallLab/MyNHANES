@@ -1,0 +1,62 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Django",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py",
+            "args": [
+                "runserver",
+            ],
+            "django": true
+        },
+        {
+            "name": "Loader Command",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py",
+            "args": [
+                "loader"  // Este deve ser o nome do seu comando
+            ],
+            "django": true,
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Consult Command",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py",
+            "args": [
+                "consult",
+                "--filters", "[{\"field\":\"cycle__cycle\", \"operator\": \"exact\", \"value\": \"2017-2018\"}]",
+                "--filename", "output.csv"
+            ],
+            "django": true
+        },
+        {
+            "name": "Consult Command by DEMO",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py",
+            "args": [
+                "consult",
+                "--filters", "[{\"field\":\"dataset__dataset\", \"operator\": \"exact\", \"value\": \"DEMO\"}]",
+                "--filename", "output.csv"
+            ],
+            "django": true
+        },
+        {
+            "name": "Consult Command ALL DATA",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py",
+            "args": [
+                "consult",
+                "--filters", "[{\"field\":\"cycle__cycle\", \"operator\": \"gte\", \"value\": \"1999-2001\"}]",
+                "--filename", "output.csv"
+            ],
+            "django": true
+        }
+    ]
+}
