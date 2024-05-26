@@ -1,0 +1,11 @@
+id,cycle,base_dir,year_code,base_url,dataset_url_pattern
+2,1999-2000,downloads,,https://wwwn.cdc.gov/Nchs/Nhanes,%s/%s/%s
+3,2001-2002,downloads,B,https://wwwn.cdc.gov/Nchs/Nhanes,%s/%s/%s
+4,2003-2004,downloads,C,https://wwwn.cdc.gov/Nchs/Nhanes,%s/%s/%s
+5,2005-2006,downloads,D,https://wwwn.cdc.gov/Nchs/Nhanes,%s/%s/%s
+6,2007-2008,downloads,E,https://wwwn.cdc.gov/Nchs/Nhanes,%s/%s/%s
+7,2009-2010,downloads,F,https://wwwn.cdc.gov/Nchs/Nhanes,%s/%s/%s
+8,2011-2012,downloads,G,https://wwwn.cdc.gov/Nchs/Nhanes,%s/%s/%s
+9,2013-2014,downloads,H,https://wwwn.cdc.gov/Nchs/Nhanes,%s/%s/%s
+10,2015-2016,downloads,I,https://wwwn.cdc.gov/Nchs/Nhanes,%s/%s/%s
+1,2017-2018,downloads,J,https://wwwn.cdc.gov/Nchs/Nhanes,%s/%s/%s

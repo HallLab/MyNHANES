@@ -1,0 +1,7 @@
+id,group,description
+1,Demographics,
+2,Laboratory,Laboratory Data
+3,Dietary,Dietary Data
+4,Examination,Examination Data
+5,Questionnaire,Questionnaire Data
+6,Limited Access,Limited Access Data

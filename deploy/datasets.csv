@@ -1,0 +1,155 @@
+dataset_id,name,description,group_id
+3,DEMO,Demographic Variables and Sample Weights,1
+4,HDL,Cholesterol - HDL,2
+5,TRIGLY,"Cholesterol - LDL, Triglyceride & Apoliprotein (ApoB)",2
+6,TCHOL,Cholesterol - Total,2
+7,LAB13AM,Cholesterol - LDL & Triglycerides,2
+8,DR1IFF,"Dietary Interview - Individual Foods, First Day",3
+9,DR2IFF,"Dietary Interview - Individual Foods, Second Day",3
+10,DR1TOT,"Dietary Interview - Total Nutrient Intakes, First Day",3
+11,DR2TOT,"Dietary Interview - Total Nutrient Intakes, Second Day",3
+12,DRXFCD,Dietary Interview Technical Support File - Food Codes,3
+13,DSBI,Dietary Supplement Database - Blend Information,3
+14,DSII,Dietary Supplement Database - Ingredient Information,3
+15,DSPI,Dietary Supplement Database - Product Information,3
+16,DS1IDS,"Dietary Supplement Use 24-Hour - Individual Dietary Supplements, First Day",3
+17,DS2IDS,"Dietary Supplement Use 24-Hour - Individual Dietary Supplements, Second Day",3
+18,DS1TOT,"Dietary Supplement Use 24-Hour - Total Dietary Supplements, First Day",3
+19,DS2TOT,"Dietary Supplement Use 24-Hour - Total Dietary Supplements, Second Day",3
+20,DSQIDS,Dietary Supplement Use 30-Day - Individual Dietary Supplements,3
+21,DSQTOT,Dietary Supplement Use 30-Day - Total Dietary Supplements,3
+22,AUX,Audiometry,4
+23,AUXAR,Audiometry - Acoustic Reflex,4
+24,AUXTYM,Audiometry - Tympanometry,4
+25,AUXWBR,Audiometry - Wideband Reflectance,4
+26,BPX,Blood Pressure,4
+27,BPXO,Blood Pressure - Oscillometric Measurements,4
+28,BMX,Body Measures,4
+29,DXXAG,Dual-Energy X-ray Absorptiometry - Android/Gynoid Measurements,4
+30,DXXFEM,Dual-Energy X-ray Absorptiometry - Femur,4
+31,DXXSPN,Dual-Energy X-ray Absorptiometry - Spine,4
+32,DXX,Dual-Energy X-ray Absorptiometry - Whole Body,4
+33,LUX,Liver Ultrasound Transient Elastography,4
+34,OHXDEN,Oral Health - Dentition,4
+35,OHXREF,Oral Health - Recommendation of Care,4
+36,ALB_CR,Albumin & Creatinine - Urine,2
+37,SSAGP,Alpha-1-Acid Glycoprotein - Serum (Surplus),2
+38,UTAS,Arsenic - Total - Urine,2
+39,UAS,Arsenics - Speciated - Urine,2
+40,UCM,Chromium - Urine,2
+41,CRCO,Chromium & Cobalt,2
+42,CBC,Complete Blood Count with 5-Part Differential,2
+43,COT,Cotinine and Hydroxycotinine - Serum,2
+44,UCOT,"Cotinine, Hydroxycotinine, & Other Nicotine Metabolites and Analogs - Urine",2
+45,CMV,Cytomegalovirus IgG & IgM Antibodies - Serum,2
+46,ETHOX,Ethylene Oxide,2
+47,FASTQX,Fasting Questionnaire,2
+48,FERTIN,Ferritin,2
+49,FR,Flame Retardants - Urine,2
+50,SSFR,Flame Retardants - Urine (Surplus),2
+51,FOLATE,Folate - RBC,2
+52,FOLFMS,Folate Forms - Total & Individual - Serum,2
+53,GHB,Glycohemoglobin,2
+54,SSGLYP,Glyphosate (GLYP) - Urine (Surplus),2
+55,HEPA,Hepatitis A,2
+56,HEPBD,"Hepatitis B: Core antibody, Surface antigen, and Hepatitis D antibody",2
+57,HEPB_S,Hepatitis B: Surface Antibody,2
+58,HEPC,"Hepatitis C: RNA (HCV-RNA), Confirmed Antibody (INNO-LIA), & Genotype",2
+59,HEPE,Hepatitis E: IgG & IgM Antibodies,2
+60,HSCRP,High-Sensitivity C-Reactive Protein,2
+61,HIV,HIV Antibody Test,2
+62,INS,Insulin,2
+63,UIO,Iodine - Urine,2
+64,FETIB,Iron Status - Serum,2
+65,PBCD,"Lead, Cadmium, Total Mercury, Selenium, & Manganese - Blood",2
+66,UHG,Mercury: Inorganic - Urine,2
+67,IHGEM,"Mercury: Inorganic, Ethyl and Methyl - Blood",2
+68,UM,Metals - Urine,2
+69,UNI,Nickel - Urine,2
+70,OPD,Organophosphate Insecticides - Dialkyl Phosphate Metabolites - Urine,2
+71,PERNT,"Perchlorate, Nitrate & Thiocyanate - Urine",2
+72,PFAS,Perfluoroalkyl and Polyfluoroalkyl Substances,2
+73,SSPFAS,Perfluoroalkyl and Polyfluoroalkyl Substances (Surplus),2
+74,PHTHTE,Phthalates and Plasticizers Metabolites - Urine,2
+75,GLU,Plasma Fasting Glucose,2
+76,BIOPRO,Standard Biochemistry Profile,2
+77,TFR,Transferrin Receptor,2
+78,UCFLOW,Urine Flow Rate,2
+79,UCPREG,Urine Pregnancy Test,2
+80,VITAEC,"Vitamin A, Vitamin E & Carotenoids",2
+81,VIC,Vitamin C,2
+82,VID,Vitamin D,2
+83,UVOC,Volatile Organic Compound (VOC) Metabolites - Urine,2
+84,SSUVOC,Volatile Organic Compound (VOC) Metabolites II - Urine (Surplus),2
+85,VOCWB,Volatile Organic Compounds and Trihalomethanes/MTBE - Blood,2
+86,ACQ,Acculturation,5
+87,ALQ,Alcohol Use,5
+88,AUQ,Audiometry,5
+89,BPQ,Blood Pressure & Cholesterol,5
+90,CDQ,Cardiovascular Health,5
+91,CBQ,Consumer Behavior,5
+92,CBQPFA,Consumer Behavior Phone Follow-up Module - Adult,5
+93,CBQPFC,Consumer Behavior Phone Follow-up Module - Child,5
+94,HSQ,Current Health Status,5
+95,DEQ,Dermatology,5
+96,DIQ,Diabetes,5
+97,DBQ,Diet Behavior & Nutrition,5
+98,DLQ,Disability,5
+99,DUQ,Drug Use,5
+100,ECQ,Early Childhood,5
+101,FSQ,Food Security,5
+102,HIQ,Health Insurance,5
+103,HEQ,Hepatitis,5
+104,HUQ,Hospital Utilization & Access to Care,5
+105,HOQ,Housing Characteristics,5
+106,IMQ,Immunization,5
+107,INQ,Income,5
+108,KIQ_U,Kidney Conditions - Urology,5
+109,MCQ,Medical Conditions,5
+110,DPQ,Mental Health - Depression Screener,5
+111,OCQ,Occupation,5
+112,OHQ,Oral Health,5
+113,OSQ,Osteoporosis,5
+114,PUQMEC,Pesticide Use,5
+115,PAQ,Physical Activity,5
+116,PAQY,Physical Activity - Youth,5
+117,PFQ,Physical Functioning,5
+118,RXQ_RX,Prescription Medications,5
+119,RXQ_DRUG,Prescription Medications - Drug Information,5
+120,RXQASA,Preventive Aspirin Use,5
+121,RHQ,Reproductive Health,5
+122,SLQ,Sleep Disorders,5
+123,SMQ,Smoking - Cigarette Use,5
+124,SMQFAM,Smoking - Household Smokers,5
+125,SMQRTU,Smoking - Recent Tobacco Use,5
+126,SMQSHS,Smoking - Secondhand Smoke Exposure,5
+127,VTQ,Volatile Toxicant,5
+128,WHQ,Weight History,5
+129,WHQMEC,Weight History - Youth,5
+130,ALQY,Alcohol Use - Youth,6
+131,CHLA,Chlamydia - Urine - Adult,6
+132,CHLM,Chlamydia - Urine - Youth,6
+133,DUQY,Drug Use - Youth,6
+134,GEO_2010,"Geocoded Data, NHANES 1999-2018, Census 2010",6
+135,HSVA,Herpes Simplex Virus Type-1 and Type-2,6
+136,HSV,Herpes Simplex Virus Type-2 - Youth,6
+137,HPWC,Human Papillomavirus (HPV) DNA - Vaginal Swab: Roche Cobas High-Risk - Adults,6
+138,HPVC,Human Papillomavirus (HPV) DNA - Vaginal Swab: Roche Cobas High-Risk - Youth,6
+139,HPVW,Human Papillomavirus (HPV) DNA - Vaginal Swab: Roche Linear Array - Adults,6
+140,HPVS,Human Papillomavirus (HPV) DNA - Vaginal Swab: Roche Linear Array - Youth,6
+141,PBY,Lead - Blood - Youth,6
+142,DPQY,Mental Health - Depression Screener - Youth,6
+143,MGEA,Mycoplasma genitalium - Urine - Adult,6
+144,MGEN,Mycoplasma genitalium - Urine - Youth,6
+145,SXQ,Sexual Behavior - Adult,6
+146,SXQY,Sexual Behavior - Youth,6
+147,TRIA,Trichomonas - Urine - Adult,6
+148,TRIC,Trichomonas - Urine - Youth,6
+149,RHQ,Reproductive Health - Women 12 Years and Older,6
+150,UM,"Lead (Youth), Strontium, and Uranium",6
+151,FSQ,Food Security - Pregnant Women,6
+152,LAB13,Cholesterol - Total & HDL,2
+153,L13,Cholesterol - Total & HDL,2
+155,L13AM,Cholesterol - LDL & Triglycerides,2
+156,LAB18,Standard Biochemistry Profile & Hormones,2
+157,L40,Standard Biochemistry Profile,2
