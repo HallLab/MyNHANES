@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "mynhanes"
 version = "0.1.0"
-description = ""
+description = "A tool for managing and analyzing NHANES dataset."
 authors = ["Andre <ricoandre@hotmail.com>"]
 readme = "README.md"
 
@@ -21,6 +21,7 @@ pytest-django = "^4.8.0"
 pytest-cov = "^5.0.0"
 requests-mock = "^1.12.1"
 pytest-mock = "^3.14.0"
+
 
 [build-system]
 requires = ["poetry-core"]
