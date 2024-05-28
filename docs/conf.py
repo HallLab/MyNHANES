@@ -7,16 +7,16 @@ import sys
 # django.setup()
 
 
-# Path to the directory containing the Django project directory (mynhanes)
-django_project_dir = os.path.abspath('../mynhanes')
-sys.path.insert(0, django_project_dir)
+# # Path to the directory containing the Django project directory (mynhanes)
+# django_project_dir = os.path.abspath('../mynhanes')
+# sys.path.insert(0, django_project_dir)
 
-# Django Settings
-# Making sure we are pointing to the correct settings module
-# within the 'project' folder
-os.environ['DJANGO_SETTINGS_MODULE'] = 'project.settings'
-import django  # noqa
-django.setup()
+# # Django Settings
+# # Making sure we are pointing to the correct settings module
+# # within the 'project' folder
+# os.environ['DJANGO_SETTINGS_MODULE'] = 'project.settings'
+# import django  # noqa
+# django.setup()
 
 
 # Configuration file for the Sphinx documentation builder.

@@ -4,6 +4,7 @@ db.sqlite3
 db_full.sqlite3
 db_backup.sqlite3
 *.sqlite3
+*.sqlite3*
 mynhanes/db.sqlite3
 .venv
 .DS_Store
