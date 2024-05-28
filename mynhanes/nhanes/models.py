@@ -44,6 +44,8 @@ class Cycle(models.Model):
 
     class Meta:
         ordering = ['cycle']
+        verbose_name = "01-Cycle"
+        verbose_name_plural = "01-Cycles"
 
 # https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DEMO_J.htm
 
@@ -55,6 +57,10 @@ class Group(models.Model):
 
     def __str__(self):
         return self.group
+
+    class Meta:   
+        verbose_name = "02-Group"
+        verbose_name_plural = "02-Group"
 
 
 # Dataset model represents a dataset in the NHANES study.
@@ -75,7 +81,9 @@ class Dataset(models.Model):
     class Meta:
         # Define a constraint that ensures that each dataset
         # is unique within a specific group
-        unique_together = ('dataset', 'group')
+        unique_together = ('dataset', 'group') 
+        verbose_name = "03-Dataset"
+        verbose_name_plural = "03-Dataset"
 
 
 # DatasetControl model represents metadata for a dataset.
@@ -110,7 +118,9 @@ class DatasetControl(models.Model):
         )
 
     class Meta:
-        unique_together = ('dataset', 'cycle')
+        unique_together = ('dataset', 'cycle')  
+        verbose_name = "06-Donwload Control"
+        verbose_name_plural = "06-Donwload Control"
 
     def __str__(self):
         return f"{self.dataset.dataset} - {self.cycle.cycle}"
@@ -127,6 +137,10 @@ class Field(models.Model):
 
     def __str__(self):
         return f"{self.field} - ({self.description})"
+    
+    class Meta: 
+        verbose_name = "04-Field"
+        verbose_name_plural = "04-Field"
 
 
 # FieldCycle model represents metadata for a field.
@@ -150,6 +164,8 @@ class FieldCycle(models.Model):
 
     class Meta:
         unique_together = ('field', 'cycle')
+        verbose_name = "05-Field by Cycle"
+        verbose_name_plural = "05-Field by Cycle"
 
     def __str__(self):
         return f"{self.variable_name} ({self.cycle.cycle})"
@@ -178,6 +194,10 @@ class Data(models.Model):
     def __str__(self):
         return f"{self.cycle.cycle} | {self.dataset.dataset} | {self.field.field}"  # noqa: E501
 
+    class Meta:
+        verbose_name = "07-Data"
+        verbose_name_plural = "07-Data"
+
 
 # Querys Domains
 class QueryColumns(models.Model):
@@ -200,6 +220,10 @@ class QueryStructure(models.Model):
 
     def __str__(self):
         return self.structure_name
+
+    class Meta:
+        verbose_name = "08-Query Structure"
+        verbose_name_plural = "08-Query Structure"
 
 
 class QueryFilter(models.Model):

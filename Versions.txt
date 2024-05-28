@@ -5,8 +5,26 @@ pip install mynhanes
 ➜ python .venv/lib/python3.12/site-packages/mynhanes/manage.py deploy --deploy local
 
 
+doc
+- About the MyNHANES
+- Install
+- Use
+
+
+
 Next to do:
 - create process to run local
 - create tests 
 - create README.md
 - Create docs with sphinx
+
+
+
+
+Para gerar a documentação em HTML, execute:
+sphinx-build -b html docs/ docs/_build/html
+
+
+Durante o desenvolvimento, você pode querer ver as mudanças na documentação em tempo real:
+sphinx-autobuild docs/ docs/_build/html
+
