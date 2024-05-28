@@ -33,7 +33,6 @@ sphinx:
 #    - requirements: docs/requirements.txt
 
 python:
-  version: 3.12
   install:
     - method: poetry
       path: .
