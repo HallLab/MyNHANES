@@ -39,7 +39,6 @@ sphinx:
 #     path: .
 
 python:
-  version: 3.12
   install:
   - method: pip
     path: docs/
