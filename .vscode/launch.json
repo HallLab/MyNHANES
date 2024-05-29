@@ -12,12 +12,51 @@
             "django": true
         },
         {
-            "name": "Loader Command",
+            "name": "Report - Fields",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/mynhanes/manage.py",
+            "args": [
+                "query",
+                "--fields_report",
+                "--path", "/users/andrerico/works/fields_report.csv"
+            ],
+            "django": true,
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Report - DS Control ",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/mynhanes/manage.py",
+            "args": [
+                "query",
+                "--control_report",
+                "--path", "/users/andrerico/works/control_report.csv"
+            ],
+            "django": true,
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Loader Command DB",
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/mynhanes/manage.py",
             "args": [
-                "loader"  // Este deve ser o nome do seu comando
+                "loader",
+                "--type", "db"
+            ],
+            "django": true,
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Loader Command CSV",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/mynhanes/manage.py",
+            "args": [
+                "loader",
+                "--type", "csv"
             ],
             "django": true,
             "console": "integratedTerminal"

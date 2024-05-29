@@ -30,7 +30,7 @@ django.setup()
 project = 'MyNHANES'
 copyright = '2024, Andre Rico'
 author = 'Andre Rico'
-release = '0.1.0'
+release = '0.2.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

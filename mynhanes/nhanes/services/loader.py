@@ -13,6 +13,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import transaction, IntegrityError
 from nhanes.models import Field, FieldCycle, Dataset, Cycle, Data, DatasetControl, SystemConfig # noqa E501
 
+# TODO: Create option to only download the files and save in csv
+
 
 class EmptySectionError(Exception):
     pass
@@ -36,8 +38,21 @@ def _get_data_from_xpt(datafile):
     except Exception as e:
         print(f"Error reading XPT file: {e}")
 
-    df = df.astype({'SEQN': int})
-    df = df.set_index('SEQN')
+    # df = df.astype({'SEQN': int})
+    # df = df.set_index('SEQN')
+
+    # START (0.2.0): Add Sequence column to the DataFrame
+    # Ensure SEQN is treated as an integer
+    df['SEQN'] = df['SEQN'].astype(int)
+
+    # Reset index if 'SEQN' was initially set as index
+    if 'SEQN' in df.index.names:
+        df = df.reset_index()
+
+    # Add a sequence number for each SEQN
+    df['sequence'] = df.groupby('SEQN').cumcount()
+    # df = df.set_index('SEQN')
+    # END: Add Sequence column to the DataFrame
 
     # List to store metadata of all variables
     all_metadata = []
@@ -351,23 +366,68 @@ def save_nhanes_data(df, cycle_id, dataset_id):
         }
 
     # Check if all fields are present in the database
-    missing_fields = [name for name in field_names if name not in fields]
+    # missing_fields = [name for name in field_names if name not in fields]
+    missing_fields = [name for name in field_names if name not in fields and name != 'sequence']  # [0.2.0]  # noqa E501
     if missing_fields:
         print(f"Missing fields: {missing_fields}")
         return False
 
-    # Prepare the data to be inserted
+    # Pré-extrair os dados de SEQN e sequence para um acesso mais rápido
+    seqn_values = df['SEQN']
+    sequence_values = df['sequence']
+
+    # Preparar a lista de criação usando list comprehension
     to_create = [
         Data(
             cycle=cycle,
             dataset=dataset,
             field=fields[col_name],
-            sample=index,
+            sample=seqn_values[index],
+            sequence=sequence_values[index],
             value=str(value)
         )
-        for col_name in df.columns if col_name in fields
+        for col_name in (set(df.columns) - {'SEQN', 'sequence'})
+        if col_name in fields
         for index, value in df[col_name].items()
     ]
+
+    # Prepare the data to be inserted
+    # to_create = [
+    #     Data(
+    #         cycle=cycle,
+    #         dataset=dataset,
+    #         field=fields[col_name],
+    #         sample=df.at[index, 'SEQN'],
+    #         sequence=df.at[index, 'sequence'],  # [0.2.0]
+    #         value=str(value)
+    #     )
+    #     # for col_name in df.columns if col_name in fields
+    #     for col_name in df.columns if col_name in fields and col_name not in ['SEQN', 'sequence']  # [0.2.0]  # noqa E501
+    #     for index, value in df[col_name].items()
+    # ]
+
+    # # Filtrar as colunas que não são de dados
+    # data_columns = [
+    #     col for col in df.columns if col not in {'SEQN', 'sequence'}
+    #     ]
+
+    # # Prepare the data to be inserted
+    # # Cria uma lista para armazenar os objetos de maneira mais eficiente
+    # to_create = []
+    # for index, row in df.iterrows():
+    #     for col_name in data_columns:
+    #         if col_name in fields:
+    #             # Cria o objeto Data e adiciona na lista
+    #             to_create.append(
+    #                 Data(
+    #                     cycle=cycle,
+    #                     dataset=dataset,
+    #                     field=fields[col_name],
+    #                     sample=row['SEQN'],
+    #                     sequence=row['sequence'],
+    #                     value=str(row[col_name])
+    #                 )
+    #             )
 
     # Using a transaction to avoid partial inserts
     # Using bulk_create to speed up the process
@@ -442,7 +502,7 @@ def _download_file(url, path):
         return False, error
 
 
-def download_nhanes_files():
+def download_nhanes_files(load_type=str('db')):
     """
     Downloads NHANES files from the specified URLs and processes the
     downloaded data.
@@ -451,6 +511,10 @@ def download_nhanes_files():
         bool: True if the download and processing are successful, False
         otherwise.
     """
+    if load_type not in ['db', 'csv', 'both']:
+        print("Invalid load type. Please choose 'db', 'csv', or 'both'.")
+        return False
+
     qs_load_metadata = SystemConfig.objects.filter(
         config_key='load_metadata'
     ).first()
@@ -558,20 +622,38 @@ def download_nhanes_files():
         # Create a column in 'combined_df' for the code table
         df_metadata['CodeTables'] = df_metadata['VariableName'].map(json_tables)  # noqa E501
 
-        # Salve the metadata in the database
-        process_and_save_metadata(
-            df_metadata,
-            dataset_id=qs_dataset.dataset.id,
-            cycle_id=qs_dataset.cycle.id,
-            load_metadata=qs_load_metadata.config_value
-            )
+        # Save the metadata in CSV or DB
+        if load_type in ['csv', 'both']:
+            csv_file_path = str(data_file).replace('.XPT', '_data.csv')
+            df.to_csv(csv_file_path)
+            doc_file_path = str(doc_file).replace('.htm', '_meta.csv')
+            df_metadata.to_csv(doc_file_path)
 
-        # Write Fields and FieldCycle tables
-        check_data = save_nhanes_data(
-            df,
-            cycle_id=qs_dataset.cycle.id,
-            dataset_id=qs_dataset.dataset.id,
-            )
+        elif load_type in ['db', 'both']:
+            # Salve the metadata in the database
+            process_and_save_metadata(
+                df_metadata,
+                dataset_id=qs_dataset.dataset.id,
+                cycle_id=qs_dataset.cycle.id,
+                load_metadata=qs_load_metadata.config_value
+                )
+
+            # Write Fields and FieldCycle tables
+            check_data = save_nhanes_data(
+                df,
+                cycle_id=qs_dataset.cycle.id,
+                dataset_id=qs_dataset.dataset.id,
+                )
+    
+            # Update the DatasetCycle table
+            if check_data:
+                # TODO: Add Description
+                # qs_dataset.dataset.description = ''
+                qs_dataset.metadata_url = doc_url
+                qs_dataset.status = 'complete'
+                # TODO: Extract JSON from HTML (_parse_nhanes_html_docfile)
+                # metadata.description = "JSON"
+                qs_dataset.save()
 
         # Clean up downloaded files
         try:
@@ -580,17 +662,7 @@ def download_nhanes_files():
         except OSError as e:
             print(f"Error deleting file: {e}")
 
-        # Update the DatasetCycle table
-        if check_data:
-            # TODO: Add Description
-            # qs_dataset.dataset.description = ''
-            qs_dataset.metadata_url = doc_url
-            qs_dataset.status = 'complete'
-            # TODO: Extract JSON from HTML (_parse_nhanes_html_docfile)
-            # metadata.description = "JSON"
-            qs_dataset.save()
-
-        print("Termino do processamento do dataset: ", dataset)
+        print("Dataset processed: ", dataset)
 
     return True
 

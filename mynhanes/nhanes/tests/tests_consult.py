@@ -3,7 +3,7 @@ import tempfile
 # from unittest.mock import patch
 from django.test import TestCase
 from nhanes.models import NHANESData, NHANESCycle, NHANESDataset, NHANESField, NHANESGroup  # noqa E501
-from nhanes.services.consult import export_to_csv, extract_data
+from mynhanes.nhanes.services.consult_TO_DELETE import export_to_csv, extract_data
 import pytest
 
 

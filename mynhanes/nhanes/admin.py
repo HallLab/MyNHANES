@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.utils.html import format_html
 # from django.contrib import messages
 from .models import DatasetControl, Cycle, Dataset, Field, FieldCycle, Data, Group, SystemConfig, QueryColumns, QueryStructure, QueryFilter  # noqa: E501
-from nhanes.services.consult import download_query_results
+# from nhanes.services.consult import download_query_results
+from nhanes.services import query
 # TODO: Add the download_nhanes_files function to the imports
 # from nhanes.services.loader import download_nhanes_files
 import json
@@ -164,7 +165,8 @@ class QueryStructureAdmin(admin.ModelAdmin):
     # Add filters to the QueryStructure page
     inlines = [QueryFilterInline]
     # Add actions to the QueryStructure page
-    actions = [download_query_results]
+    # actions = [download_query_results]
+    actions = [query.download_data_report]
 
 
 admin.site.register(Dataset, DatasetAdmin)

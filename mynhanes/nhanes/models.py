@@ -44,7 +44,7 @@ class Cycle(models.Model):
 
     class Meta:
         ordering = ['cycle']
-        verbose_name = "01-Cycle"
+        # verbose_name = "01-Cycle"
         verbose_name_plural = "01-Cycles"
 
 # https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DEMO_J.htm
@@ -58,8 +58,8 @@ class Group(models.Model):
     def __str__(self):
         return self.group
 
-    class Meta:   
-        verbose_name = "02-Group"
+    class Meta:
+        # verbose_name = "02-Group"
         verbose_name_plural = "02-Group"
 
 
@@ -82,7 +82,7 @@ class Dataset(models.Model):
         # Define a constraint that ensures that each dataset
         # is unique within a specific group
         unique_together = ('dataset', 'group') 
-        verbose_name = "03-Dataset"
+        # verbose_name = "03-Dataset"
         verbose_name_plural = "03-Dataset"
 
 
@@ -119,7 +119,7 @@ class DatasetControl(models.Model):
 
     class Meta:
         unique_together = ('dataset', 'cycle')  
-        verbose_name = "06-Donwload Control"
+        # verbose_name = "06-Donwload Control"
         verbose_name_plural = "06-Donwload Control"
 
     def __str__(self):
@@ -139,7 +139,7 @@ class Field(models.Model):
         return f"{self.field} - ({self.description})"
     
     class Meta: 
-        verbose_name = "04-Field"
+        # verbose_name = "04-Field"
         verbose_name_plural = "04-Field"
 
 
@@ -164,7 +164,10 @@ class FieldCycle(models.Model):
 
     class Meta:
         unique_together = ('field', 'cycle')
-        verbose_name = "05-Field by Cycle"
+        indexes = [
+            models.Index(fields=['field', 'cycle']),
+        ]
+        # verbose_name = "05-Field by Cycle"
         verbose_name_plural = "05-Field by Cycle"
 
     def __str__(self):
@@ -182,21 +185,35 @@ class Data(models.Model):
     dataset = models.ForeignKey(Dataset, on_delete=models.CASCADE)
     field = models.ForeignKey(Field, on_delete=models.CASCADE)
     sample = models.IntegerField()
+    sequence = models.IntegerField(default=0)  # [0.2.0]
     value = models.CharField(max_length=255)
 
-    # class Meta:
-    #     # Definindo os índices compostos e garantindo a unicidade
-    #     unique_together = (('cycle', 'dataset', 'field', 'sample'),)
-    #     indexes = [
-    #         models.Index(fields=['cycle', 'dataset', 'field', 'sample']),
-    # ]
+    class Meta:
+        # Definindo os índices compostos e garantindo a unicidade
+        # unique_together = (
+        #     ('cycle', 'dataset', 'field', 'sample', 'sequence'),
+        #     )  # [0.2.0]
+        # indexes = [
+        #     models.Index(fields=[
+        #         'cycle',
+        #         'dataset',
+        #         'field',
+        #         'sample',
+        #         'sequence'
+        #         ]),
+        #     ]  # [0.2.0]
+        # indexes = [
+        #     models.Index(fields=['cycle'], name='data_cycle_idx'),
+        #     models.Index(fields=['dataset'], name='data_dataset_idx'),
+        #     models.Index(fields=['field'], name='data_field_idx'),
+        #     models.Index(fields=['sample'], name='data_sample_idx'),
+        #     models.Index(fields=['sequence'], name='data_sequence_idx'),
+        # ] # [0.2.0]
+        # verbose_name = "07-Data"
+        verbose_name_plural = "07-Data"
 
     def __str__(self):
         return f"{self.cycle.cycle} | {self.dataset.dataset} | {self.field.field}"  # noqa: E501
-
-    class Meta:
-        verbose_name = "07-Data"
-        verbose_name_plural = "07-Data"
 
 
 # Querys Domains
@@ -222,7 +239,7 @@ class QueryStructure(models.Model):
         return self.structure_name
 
     class Meta:
-        verbose_name = "08-Query Structure"
+        # verbose_name = "08-Query Structure"
         verbose_name_plural = "08-Query Structure"
 
 
@@ -253,7 +270,7 @@ class QueryFilter(models.Model):
         ('field__description', 'Field Name'),
         ('field__internal_id', 'Field Internal Code'),
         ('cycle__cycle', 'Cycle'),
-        ('dataset__group', 'Group'),
+        ('dataset__group__group', 'Group'),
         ('dataset__dataset', 'Dataset Code'),
         ('dataset__description', 'Dataset Name'),
     )
@@ -263,7 +280,7 @@ class QueryFilter(models.Model):
         on_delete=models.CASCADE
         )
     filter_name = models.CharField(
-        max_length=20,
+        max_length=30,
         choices=DIMENSION_CHOICES,
         default='field_id'
         )

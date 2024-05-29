@@ -98,3 +98,7 @@ The `Query Structure` table allows users to define custom queries and reports. U
     :alt: CSV file from query results
 
 To generate reports, select the desired query structure and export the results to a CSV file by clicking the export button in the admin panel.
+
+
+TO DO:
+- Add the options to donwloads (csv, db or both)

@@ -1,6 +1,6 @@
-from django.db.models import Q
-from nhanes.models import Data, QueryColumns
-import datetime
+import os
+from django.db.models import Q, F
+from nhanes.models import Data, QueryColumns, FieldCycle, DatasetControl
 import pandas as pd
 from django.http import HttpResponse
 
@@ -124,7 +124,7 @@ def _parse_filter_value(operator, value):
     return value
 
 
-def download_query_results(modeladmin, request, queryset):
+def download_data_report(modeladmin, request, queryset):
     """
     Download the results of a query from the admin interface.
 
@@ -181,7 +181,7 @@ def download_query_results(modeladmin, request, queryset):
     data_query = data_query.filter(query)
 
     # Standard columns
-    column_names = ['cycle__cycle', 'sample', 'value']
+    column_names = ['cycle__cycle', 'sample', 'sequence', 'value']  # [0.2.0]
     # Personalized columns
     new_columns = [col.internal_data_key for col in qs_report_columns]
     # Remove duplicates
@@ -204,7 +204,7 @@ def download_query_results(modeladmin, request, queryset):
     df.rename(columns=rename_dict, inplace=True)
 
     # Define index and pivot columns
-    index_cols = ['Cycle', 'sample']
+    index_cols = ['Cycle', 'sample', 'sequence']  # [0.2.0]
     pivot_cols = [col.column_name for col in qs_report_columns]
     pivot_cols = [col for col in pivot_cols if col not in index_cols]
 
@@ -225,78 +225,92 @@ def download_query_results(modeladmin, request, queryset):
         )
 
 
-# TODO: Evaluate if this function is still needed
-def extract_data(filters=None, filename=None):
+# 0.2.0: Master Data Report
+def fields_report(output_path):
     """
-    Extract data from the Data model based on the provided filters and export
-    it to a CSV file.
+    Generate a master data report and save it to the specified output path.
 
-    Parameters
-    ----------
-    filters : list of dict, optional
-        A list of filters to apply to the data. Each filter is a dictionary
-        with 'field', 'operator', and 'value' keys.
-    filename : str, optional
-        The name of the file to export the data to. If not provided, a default
-        name with the current timestamp will be used.
+    Args:
+        output_path (str): The path where the report will be saved.
 
-    filters = [
-        {
-            'field': 'field__name',
-            'operator': 'icontains',
-            'value': 'cholesterol',
-        },
-    ]
-    filename = export_to_csv(filters)
-
-    Operator examples: exact, iexact, contains, icontains, in, gt, gte, lt,
-    lte, startswith, istartswith, endswith, iendswith, range, year, iso_year,
-    month, day, week, week_day, quarter, hour, minute, second, isnull,
-    search, regex, iregex
-
-    Returns
-    -------
-    str
-        The name of the file the data was exported to.
+    Returns:
+        bool: True if the report is successfully saved, False otherwise.
     """
-    data = Data.objects.all()
+    output_dir = os.path.dirname(output_path)
+    if not os.path.exists(output_dir):
+        print("the directory does not exist")
+        return False
+        # os.makedirs(output_dir)
 
-    if filters:
-        query = Q()
-        for filter in filters:
-            condition = {
-                f"{filter['field']}__{filter['operator']}": filter['value']
-                }
-            query &= Q(**condition)  # Using AND to combine filters
-        data = data.filter(query).values(
-            'cycle__cycle',
-            'dataset__group__group',
-            'dataset__dataset',
-            'sample',
-            'field__field',
-            'value'
-            )
+    # Get the basic fields and details
+    basic_fields_qs = Data.objects.values(
+        cycle_name=F('cycle__cycle'),
+        group=F('dataset__group__group'),
+        dataset_name=F('dataset__dataset'),
+        dataset_description=F('dataset__description'),
+        field_name=F('field__field'),
+        field_internal_id=F('field__internal_id'),
+        field_description=F('field__description')
+    ).distinct()
+    basic_df = pd.DataFrame(list(basic_fields_qs))
 
-    if not filename:
-        filename = f"nhanes_data_{
-            datetime.datetime.now().strftime('%Y%m%d%H%M%S')
-            }.csv"
+    # Get the field cycle details
+    cycle_details_qs = FieldCycle.objects.values(
+        field_name=F('field__field'),
+        cycle_name=F('cycle__cycle'),
+        Field_Text=F('english_text'),
+        Field_Target=F('target'),
+        Data_Type=F('type'),
+        Data_Table=F('value_table')
+    ).distinct()
+    details_df = pd.DataFrame(list(cycle_details_qs))
 
-    df = pd.DataFrame(list(data))
+    final_df = pd.merge(
+        basic_df,
+        details_df,
+        on=['field_name',
+            'cycle_name'
+            ],
+        how='left'
+        )
 
-    df.columns = ['cycle', 'group', 'dataset', 'sample', 'field', 'value']
+    final_df.to_csv(output_path, index=False)
+    print(f"Report saved to {output_path}")
 
-    pivot_df = df.pivot_table(
-        index=['cycle', 'sample'],
-        columns=['group', 'dataset', 'field'],
-        values='value',
-        aggfunc='first'
-        )  # .reset_index()
+    return True
 
-    # pivot_df.columns = [
-    #     col if isinstance(col, str) else col[1] for col in pivot_df.columns
-    #     ]
 
-    pivot_df.to_csv(filename, index=True, header=True)
+# 0.2.0: Dataset Status Report
+def control_report(output_path):
+    """
+    Generate a control report and save it to the specified output path.
 
-    return filename
+    Args:
+        output_path (str): The path where the control report will be saved.
+
+    Returns:
+        bool: True if the control report is successfully saved.
+    """
+    output_dir = os.path.dirname(output_path)
+    if not os.path.exists(output_dir):
+        print("the directory does not exist")
+        return False
+        # os.makedirs(output_dir)
+
+    # Get the basic fields and details
+    basic_qs = DatasetControl.objects.values(
+        Cycle_Name=F('cycle__cycle'),
+        Group=F('dataset__group__group'),
+        Dataset_Name=F('dataset__dataset'),
+        Dataset_Description=F('dataset__description'),
+        Nhanes_Link=F('metadata_url'),
+        Special_Code=F('has_special_year_code'),
+        Special_Code_Value=F('special_year_code'),
+        Will_Load=F('is_download'),
+        Status_Load=F('status')
+    ).distinct()
+    basic_df = pd.DataFrame(list(basic_qs))
+    basic_df.to_csv(output_path, index=False)
+    print(f"Report saved to {output_path}")
+
+    return True

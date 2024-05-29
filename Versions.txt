@@ -28,3 +28,69 @@ sphinx-build -b html docs/ docs/_build/html
 Durante o desenvolvimento, você pode querer ver as mudanças na documentação em tempo real:
 sphinx-autobuild docs/ docs/_build/html
 
+--------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
+0.2.0 - Working 
+
+NEWS:
+-----------
+1 - Muitos DS possuem mais de um registro por SEQN (Participant) com outros campos sendo utilizados
+    para composicao de uma chave composta. Isso gerou um problema na tabela Data por causa da sua 
+    chave que tinha apenas o Sample e gerava problemas para consolidar os dados entre diferentes DS.
+    Como solucao para esse problema, implementamos uma nova chave no Data chamada Serquence. Quando 
+    DS possuem apenas o SEQN como PK, a chave Sequence sera sempre 0, porem para outros que possuem 
+    multiplos registros para o mesmo SEQN, teremos na Sequence um contador, iniciando em 0.
+    Com isso alem de identificarmos facilmente os multiplos registros de um mesmo participante no DS,
+    podemos ligar o Sequence 0 em todos os DS nos relatorios e manter os demais Senquence para aqueles
+    Fields que sao abertos sem gerar transtornos nos relatorios. 
+
+2 - Adicionamos a multi-chaves para a tabela Data com o objetivo de melhorar o tempo de resposta para 
+    as consultas. Chave composta com Sample, Sequence, Cycle, Dataset e Field. Isso mantem uma 
+    regra para nao repetir registros na Data Table e evita carregarmos informacoes ja carregadas 
+    previamente. 
+
+3 - Adicionado no funcao Loader o argumento para o destino da carga, que agora pode ser para a DB, CSV 
+    ou ambos. Na opcao de CSV sao gerados dois arquivos na pasta de download, um para os dados mestres
+    e outro para os dados de movimentos.
+
+    $ python manage.py loader --type {db, csv or both}
+
+4 - Gerado um Report para dados mestres de Cycle, Group, Dataset, Fields. com o objetivo de ser usado
+    para analises de campos.
+
+    ➜ python manage.py shell
+    Python 3.12.3 (main, Apr 24 2024, 08:40:47) [Clang 15.0.0 (clang-1500.3.9.4)] on darwin
+    Type "help", "copyright", "credits" or "license" for more information.
+    (InteractiveConsole)
+    >>> from nhanes.services.query import fields_report
+    >>> x = fields_report('/users/andrerico/works/report.csv')
+    Report saved to /users/andrerico/works/report.csv
+
+    ➜ python manage.py query --fields_report --path "/users/andrerico/works/fields.csv"  
+
+5 - Gerado um Repost para dados de Dataset Control com o objetivo de mostrar o status das cargas.
+
+    ➜ python manage.py query --control_report --path "/users/andrerico/works/control.csv"
+
+6 - Ajuste na opcao do Group do modelo QueryStruture, estava dataset_group ao inves de dataset_group_group
+    Com isso tivemos que aumentar tambem o tamanho do campo de 20 para 30 caracteres. 
+
+
+
+
+To Do:
+------------
+
+
+--------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
+0.3.0 - Planning
+
+NEWS:
+-----------
+
+To Do:
+------------
+- Criar um processo de transformacao dos Fields carregando em um DataMart com seus proprios reports.
+- Criar uma interface mais amigavel para os usuarios
+- 
