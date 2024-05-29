@@ -40,6 +40,13 @@ sphinx:
 
 python:
   install:
-  - method: pip
+  - type: pip
     path: docs/
     requirements: requirements.txt
+
+# python:
+#   install:
+#   - type: pip
+#     path: .
+#     extra_requirements:
+#       - docs
