@@ -8,7 +8,7 @@
 
 import os
 import sys
-# import sphinx_rtd_theme
+import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 project = 'MyNHANES'
@@ -24,7 +24,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
     'sphinx.ext.todo',
-    # sphinx_rtd_theme
+    sphinx_rtd_theme
     # "sphinx.ext.autosectionlabel",
     # "sphinx.ext.intersphinx",
 ]
