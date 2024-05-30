@@ -8,6 +8,7 @@
 
 import os
 import sys
+# import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 project = 'MyNHANES'
@@ -23,6 +24,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
     'sphinx.ext.todo',
+    # sphinx_rtd_theme
     # "sphinx.ext.autosectionlabel",
     # "sphinx.ext.intersphinx",
 ]
@@ -49,15 +51,15 @@ print(f'O diretorio sera: {html_build_dir}')
 # www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 # # The theme to use for HTML and HTML Help pages.  See the documentation for
-html_theme = 'alabaster'
+# html_theme = 'alabaster'
 # html_theme = "cloud"
-# html_theme = 'sphinx_rtd_theme'
+html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 # html_logo = "_static/pictures/logo.jpg"
 master_doc = 'index'
 templates_path = ["_templates"]
-exclude_patterns = []
-# exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+# exclude_patterns = []
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
