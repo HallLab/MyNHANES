@@ -31,9 +31,11 @@ extensions = [
 on_rtd = os.environ.get('READTHEDOCS') == 'True'
 
 if on_rtd:
-    html_output_dir = os.environ.get('READTHEDOCS_OUTPUT', '') + '/html'
+    build_dir = os.environ.get('READTHEDOCS_OUTPUT', '')
+    html_build_dir = os.path.join(build_dir, 'html')
 else:
-    html_output_dir = '_build/html'
+    build_dir = '_build'
+    html_build_dir = '_build/html'
     django_project_dir = os.path.abspath('../mynhanes')
     sys.path.insert(0, django_project_dir)
     os.environ['DJANGO_SETTINGS_MODULE'] = 'project.settings'
