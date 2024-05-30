@@ -42,6 +42,8 @@ else:
     import django
     django.setup()
 
+print(f'O diretorio sera: {html_build_dir}')
+
 # -- Options for HTML output ------------------------------------------------
 # www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
