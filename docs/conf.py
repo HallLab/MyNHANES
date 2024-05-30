@@ -51,7 +51,8 @@ extensions = [
     'sphinx.ext.todo',
 ]
 
-html_build_dir = '_build/html'
+# html_build_dir = '_build/html'
+html_build_dir = '$READTHEDOCS_OUTPUT/html'
 master_doc = 'index'
 
 templates_path = ['_templates']
@@ -65,6 +66,3 @@ exclude_patterns = []
 html_theme = 'sphinx_rtd_theme'
 # html_theme = 'alabaster'
 html_static_path = ['_static']
-
-html_build_dir = '_build/html'
-master_doc = 'index'
