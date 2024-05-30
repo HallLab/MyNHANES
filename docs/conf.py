@@ -33,7 +33,6 @@ on_rtd = os.environ.get('READTHEDOCS') == 'True'
 if on_rtd:
     build_dir = os.environ.get('READTHEDOCS_OUTPUT', '')
     html_build_dir = os.path.join(build_dir, 'html')
-    print(f"Building on Read the Docs, output path set to: {os.environ.get('READTHEDOCS_OUTPUT', '')}/html")
 else:
     build_dir = '_build'
     html_build_dir = '_build/html'
@@ -50,9 +49,9 @@ print(f'O diretorio sera: {html_build_dir}')
 # www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 # # The theme to use for HTML and HTML Help pages.  See the documentation for
-# html_theme = 'alabaster'
+html_theme = 'alabaster'
 # html_theme = "cloud"
-html_theme = 'sphinx_rtd_theme'
+# html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 # html_logo = "_static/pictures/logo.jpg"
 master_doc = 'index'
