@@ -29,21 +29,15 @@ extensions = [
 
 # This is used by Read the Docs to customize the build directory
 on_rtd = os.environ.get('READTHEDOCS') == 'True'
+
 if on_rtd:
-    html_build_dir = os.path.join(
-        os.environ.get('READTHEDOCS_OUTPUT', ''),
-        'html'
-        )
+    html_output_dir = os.environ.get('READTHEDOCS_OUTPUT', '') + '/html'
 else:
-    html_build_dir = '_build/html'
-    # Path to the directory containing the Django project directory (mynhanes)
+    html_output_dir = '_build/html'
     django_project_dir = os.path.abspath('../mynhanes')
     sys.path.insert(0, django_project_dir)
-    # Django Settings
-    # Making sure we are pointing to the correct settings module
-    # within the 'project' folder
     os.environ['DJANGO_SETTINGS_MODULE'] = 'project.settings'
-    import django  # noqa
+    import django
     django.setup()
 
 # -- Options for HTML output ------------------------------------------------
