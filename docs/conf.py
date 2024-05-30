@@ -19,6 +19,15 @@ import django  # noqa
 django.setup()
 
 
+# This is used by Read the Docs to customize the build directory
+on_rtd = os.environ.get('READTHEDOCS') == 'True'
+
+if on_rtd:
+    html_build_dir = os.path.join(os.environ.get('READTHEDOCS_OUTPUT', ''), 'html')
+else:
+    html_build_dir = '_build/html'
+
+
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:
