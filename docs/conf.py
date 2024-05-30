@@ -33,9 +33,11 @@ on_rtd = os.environ.get('READTHEDOCS') == 'True'
 if on_rtd:
     build_dir = os.environ.get('READTHEDOCS_OUTPUT', '')
     html_build_dir = os.path.join(build_dir, 'html')
+    print(f"Building on Read the Docs, output path set to: {os.environ.get('READTHEDOCS_OUTPUT', '')}/html")
 else:
     build_dir = '_build'
     html_build_dir = '_build/html'
+    print("Building locally, output path is '_build/html'")
     django_project_dir = os.path.abspath('../mynhanes')
     sys.path.insert(0, django_project_dir)
     os.environ['DJANGO_SETTINGS_MODULE'] = 'project.settings'
