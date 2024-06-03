@@ -81,7 +81,7 @@ class Dataset(models.Model):
     class Meta:
         # Define a constraint that ensures that each dataset
         # is unique within a specific group
-        unique_together = ('dataset', 'group') 
+        unique_together = ('dataset', 'group')
         # verbose_name = "03-Dataset"
         verbose_name_plural = "03-Dataset"
 
@@ -118,7 +118,7 @@ class DatasetControl(models.Model):
         )
 
     class Meta:
-        unique_together = ('dataset', 'cycle')  
+        unique_together = ('dataset', 'cycle')
         # verbose_name = "06-Donwload Control"
         verbose_name_plural = "06-Donwload Control"
 
@@ -133,12 +133,13 @@ class Field(models.Model):
     # description: A description of the field.
     field = models.CharField(max_length=100, unique=True)
     internal_id = models.CharField(max_length=100)
+    internal_group = models.CharField(max_length=100, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.field} - ({self.description})"
-    
-    class Meta: 
+
+    class Meta:
         # verbose_name = "04-Field"
         verbose_name_plural = "04-Field"
 
@@ -269,6 +270,7 @@ class QueryFilter(models.Model):
         ('field__field', 'Field Code'),
         ('field__description', 'Field Name'),
         ('field__internal_id', 'Field Internal Code'),
+        ('field__internal_group', 'Field Internal Group'),
         ('cycle__cycle', 'Cycle'),
         ('dataset__group__group', 'Group'),
         ('dataset__dataset', 'Dataset Code'),

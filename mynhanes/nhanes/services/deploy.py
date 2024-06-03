@@ -5,7 +5,8 @@ from pathlib import Path
 from django.conf import settings
 from nhanes.models import Cycle, Dataset, Group, DatasetControl, SystemConfig
 from django.core.management import call_command
-from django.db import transaction
+from django.db import transaction, IntegrityError
+from django.core.exceptions import ObjectDoesNotExist
 
 
 def export_data_to_deploy():
@@ -355,3 +356,68 @@ def _update_database_settings(db_path):
         file.write(content)
 
     print("Database settings updated successfully.")
+
+
+def update_datasetcontrol_standby(
+        datasets=None,
+        groups=None,
+        status='pending',
+        download=True
+        ):
+    """
+    Update the status and download flag of DatasetControl entries based on
+    specified datasets or groups.
+
+    Args:
+        datasets (list of str, optional): List of dataset names to update.
+        groups (list of int, optional): List of group IDs to update.
+        status (str): New status to set for the DatasetControl entries.
+        download (bool): Flag to set the download enabled or disabled.
+    """
+    if not datasets and not groups:
+        return 'No datasets or groups provided for update.'
+
+    try:
+        # Inicia uma transação atômica
+        with transaction.atomic():
+            query = DatasetControl.objects.all().filter(status='standby')
+
+            # Filtra por datasets, se fornecido
+            if datasets:
+                datasets = datasets.split(',')
+                query = query.filter(dataset__dataset__in=datasets)
+
+            # Filtra por grupos, se fornecido
+            if groups:
+                groups = groups.split(',')
+                query = query.filter(dataset__group__group__in=groups)
+
+            # Atualiza os registros com o novo status e opção de download
+            # updated_count = query.update(status=status, download=download)
+
+            for dataset_control in query:
+                dataset_control.status = status
+                dataset_control.is_download = download
+                dataset_control.save()  # Isso dispara o signal post_save
+
+            return f'Successfully updated {len(query)} records.'
+
+    except IntegrityError as e:
+        # Trata erros de integridade, como violações de chave única
+        return f'Integrity error occurred: {e}'
+
+    except ObjectDoesNotExist:
+        # Trata o caso em que o filtro aponta para um objeto inexistente
+        return 'One or more specified objects do not exist.'
+
+    except Exception as e:
+        # Captura qualquer outra exceção que possa ocorrer
+        return f'An error occurred: {e}'
+
+# Exemplo de uso
+# update_datasetcontrol(
+#     datasets=['Demographic'],
+#     groups=[1, 2],
+#     new_status='complete',
+#     enable_download=False
+# )

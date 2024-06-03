@@ -71,7 +71,7 @@ NEWS:
 5 - Gerado um Repost para dados de Dataset Control com o objetivo de mostrar o status das cargas.
 
     ➜ python manage.py query --control_report --path "/users/andrerico/works/control.csv"
-
+    -
 6 - Ajuste na opcao do Group do modelo QueryStruture, estava dataset_group ao inves de dataset_group_group
     Com isso tivemos que aumentar tambem o tamanho do campo de 20 para 30 caracteres. 
 
@@ -80,6 +80,21 @@ NEWS:
 
 To Do:
 ------------
+- Criado o comando update com o argumento de datasetcontrol para alterar o status e download em lote
+Exemplo: $ python manage.py update --datasetcontrol --groups "Demographics" --status "Pending" --download True
+
+- Criada tambem a funcao update_datasetcontrol para execucao da atualizacao.
+# Exemplo de uso
+# update_datasetcontrol(
+#     datasets=['DEMO'],
+#     groups=['Demographic'],
+#     new_status='complete',
+#     enable_download=False
+# )
+
+Para os Reports, criar um 
+
+
 
 
 --------------------------------------------------------------------------------------------------
@@ -94,3 +109,9 @@ To Do:
 - Criar um processo de transformacao dos Fields carregando em um DataMart com seus proprios reports.
 - Criar uma interface mais amigavel para os usuarios
 - 
+
+Criar um relatorio mostrando o tamanho de cada dataset
+
+0.3.0
+Gerar um modelo para o sistema em que o usuario solicita um carga dos dados mestres como os fields
+Depois ele seleciona os fields que ele gostaria de baixar e iriamos baixar apenas o que ele solicitar

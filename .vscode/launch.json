@@ -39,7 +39,7 @@
         },
         {
             "name": "Loader Command DB",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/mynhanes/manage.py",
             "args": [
@@ -51,7 +51,7 @@
         },
         {
             "name": "Loader Command CSV",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/mynhanes/manage.py",
             "args": [
@@ -63,7 +63,7 @@
         },
         {
             "name": "Consult Command",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/mynhanes/manage.py",
             "args": [
@@ -75,7 +75,7 @@
         },
         {
             "name": "Consult Command by DEMO",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/mynhanes/manage.py",
             "args": [
@@ -87,7 +87,7 @@
         },
         {
             "name": "Consult Command ALL DATA",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/mynhanes/manage.py",
             "args": [
@@ -96,6 +96,21 @@
                 "--filename", "output.csv"
             ],
             "django": true
-        }
+        },
+        {
+            "name": "Update - DS Control ",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/mynhanes/manage.py",
+            "args": [
+                "update",
+                "--datasetcontrol",
+                "--groups", "Laboratory",
+                "--status", "pending",
+                "--download", "True"
+            ],
+            "django": true,
+            "console": "integratedTerminal"
+        },
     ]
 }

@@ -27,7 +27,6 @@ class DatasetControlAdmin(admin.ModelAdmin):
     list_display = (
         'cycle_name',
         'group_name',
-        
         'dataset_name',
         'status',
         'is_download',
@@ -64,7 +63,7 @@ class DatasetControlAdmin(admin.ModelAdmin):
             return format_html("<a href='{url}' target='_blank'>{url}</a>", url=obj.metadata_url)  # noqa: E501
         else:
             return "Nenhuma URL"
-    metadata_url_link.short_description = 'Metadata URL'  # noqa: E501
+    metadata_url_link.short_description = 'no file'  # noqa: E501
 
 
 class FieldCycleAdmin(admin.ModelAdmin):
@@ -139,11 +138,12 @@ class DataAdmin(admin.ModelAdmin):
 class FieldAdmin(admin.ModelAdmin):
     list_display = (
         'field',
+        'internal_group',
         'internal_id',
         'description',
         )
-    list_editable = ('internal_id',)
-    search_fields = ('field', 'internal_id', 'description',)
+    list_editable = ('internal_id', 'internal_group')
+    search_fields = ('field', 'internal_id', 'description', 'internal_group')
 
 
 class QueryColumnAdmin(admin.ModelAdmin):

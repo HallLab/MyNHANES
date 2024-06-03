@@ -644,7 +644,7 @@ def download_nhanes_files(load_type=str('db')):
                 cycle_id=qs_dataset.cycle.id,
                 dataset_id=qs_dataset.dataset.id,
                 )
-    
+
             # Update the DatasetCycle table
             if check_data:
                 # TODO: Add Description
