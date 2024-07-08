@@ -13,6 +13,7 @@ beautifulsoup4 = "^4.12.3"
 pandas = "^2.2.2"
 pyreadstat = "^1.2.7"
 lxml = "^5.2.2"
+dask = {extras = ["distributed"], version = "^2024.5.2"}
 
 
 [tool.poetry.group.dev.dependencies]

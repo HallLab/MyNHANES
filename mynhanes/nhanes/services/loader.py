@@ -20,6 +20,20 @@ class EmptySectionError(Exception):
     pass
 
 
+def _read_xpt_with_multiple_encodings(file_path):
+    encodings = ['utf-8', 'latin1', 'ISO-8859-1', 'utf-16']
+    for encoding in encodings:
+        try:
+            df, meta = pyreadstat.read_xport(file_path, encoding=encoding)
+            print(f"File read successfully with encoding: {encoding}")
+            return df, meta
+        except UnicodeDecodeError as e:
+            print(f"UnicodeDecodeError with encoding {encoding}: {e}")
+        except Exception as e:
+            print(f"Error reading XPT file with encoding {encoding}: {e}")
+    raise ValueError("Failed to read XPT file with all attempted encodings")
+
+
 def _get_data_from_xpt(datafile):
     """
     Reads data from an XPT file and returns a DataFrame and metadata.
@@ -34,7 +48,8 @@ def _get_data_from_xpt(datafile):
 
     """
     try:
-        df, meta = pyreadstat.read_xport(datafile)
+        # df, meta = pyreadstat.read_xport(datafile)
+        df, meta = _read_xpt_with_multiple_encodings(datafile)
     except Exception as e:
         print(f"Error reading XPT file: {e}")
 

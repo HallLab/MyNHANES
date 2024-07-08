@@ -3,6 +3,8 @@ from django.db.models import Q, F
 from nhanes.models import Data, QueryColumns, FieldCycle, DatasetControl
 import pandas as pd
 from django.http import HttpResponse
+import dask.dataframe as dd
+from dask.distributed import Client, wait
 
 
 def _create_pivot_table(
@@ -43,33 +45,213 @@ def _create_pivot_table(
     if missing_cols:
         raise ValueError(f"Missing columns in DataFrame: {missing_cols}")
 
+    # Convert columns to category type to reduce memory usage
+    # [0.2.0]
+    # for col in index_columns:
+    #     if col in df.columns:
+    #         df[col] = df[col].astype('category')
+    # for col in pivot_columns:
+    #     if col in df.columns:
+    #         df[col] = df[col].astype('category')
+
+    # Create a unique index to avoid conflicts in the pivot table
+    df['unique_index'] = df['Cycle'].astype(str) + \
+        '___' + df['sample'].astype(str) + \
+        '___' + df['sequence'].astype(str)
+    df['unique_index'] = df['unique_index'].astype('category')
+
+    if len(pivot_columns) > 1:
+        # Create a unique column to avoid conflicts in the pivot table
+        df['unique_column'] = df[pivot_columns].apply(
+            lambda row: '___'.join(row.values.astype(str)),
+            axis=1
+            )
+        df['unique_column'] = df['unique_column'].astype('category')
+    else:
+        df['unique_column'] = df[pivot_columns].astype('category')
+
+    df.drop(columns=index_columns, inplace=True)
+    df.drop(columns=pivot_columns, inplace=True)
+
     if no_conflict:
-        # Use a lambda function to check for conflicts in the values
-        # If there are conflicts, set the value to 'Conflict'
-        pivot_df = df.pivot_table(
-            index=index_columns,
-            columns=pivot_columns,
-            values=value_column,
-            # TODO: Check if this is the best way to handle conflicts
-            aggfunc=lambda x: 'Conflict' if len(x) > 1 else x.iloc[0]
-        )
+        # TODO: Repensar sobre esse ponto
+        # # Use a lambda function to check for conflicts in the values
+        # # If there are conflicts, set the value to 'Conflict'
+        # pivot_df = df.pivot_table(
+        #     index=index_columns,
+        #     columns=pivot_columns,
+        #     values=value_column,
+        #     # TODO: Check if this is the best way to handle conflicts
+        #     aggfunc=lambda x: 'Conflict' if len(x) > 1 else x.iloc[0]
+        # )
+        ...
     else:
         # Use the 'first' aggregation function to avoid conflicts
-        pivot_df = df.pivot_table(
-            index=index_columns,
-            columns=pivot_columns,
-            values=value_column,
+        # pivot_df = df.pivot_table(
+        #     index=index_columns,
+        #     columns=pivot_columns,
+        #     values=value_column,
+        #     aggfunc='first'
+        # )
+
+        # Configura um cliente Dask com um número específico de trabalhadores
+        # e memória limitada
+        client = Client(n_workers=6, threads_per_worker=1, memory_limit='5GB')
+        print(client.dashboard_link)
+        # Imprime o link do dashboard para monitoramento
+
+        partition_size = df.memory_usage(deep=True).sum() / len(df)
+        print(f"Partition size: {partition_size:.2f} bytes")
+
+        # desired_partition_size = 100e6  # 100 MB por partição
+        desired_partition_size = 20e6  # 50 MB per partitio
+        n_partitions = int(
+            df.memory_usage(deep=True).sum() / desired_partition_size
+            )
+        if n_partitions < 1:
+            n_partitions = 1
+
+        dask_df = dd.from_pandas(df, npartitions=n_partitions)
+        # dask_df = dd.from_pandas(df, npartitions=10)
+
+        pivot_dd = dask_df.pivot_table(
+            index='unique_index',
+            columns='unique_column',
+            values='value',
             aggfunc='first'
         )
 
-    # Optional: unstack to flatten multi-index columns if needed
-    if no_multi_index:
-        pivot_df.columns = [
-            '_'.join(col).strip() for col in pivot_df.columns.values
-            ]
+        pivot_df = pivot_dd.compute()
+
+        if len(pivot_columns) > 1:
+            # Transform single columns to multi-index columns
+            new_columns = [col.split('___') for col in pivot_df.columns]
+            multiindex_columns = pd.MultiIndex.from_tuples(new_columns)
+            pivot_df.columns = multiindex_columns
+        else:
+            ...
+
+        # Reset index and split unique_index to original columns
+        pivot_df[
+            ['Cycle', 'sample', 'sequence']
+            ] = pivot_df.index.to_series().str.split('___', expand=True)
+
         pivot_df.reset_index(inplace=True)
+        pivot_df.drop(columns=['unique_index',], inplace=True)
+        pivot_df.set_index(['Cycle', 'sample', 'sequence'], inplace=True)
+
+    # # Optional: unstack to flatten multi-index columns if needed
+    # if no_multi_index:
+    #     pivot_df.columns = [
+    #         '_'.join(col).strip() for col in pivot_df.columns.values
+    #         ]
+    #     pivot_df.reset_index(inplace=True)
 
     return pivot_df
+
+
+# def _create_pivot_table(
+#         df,
+#         index_columns,
+#         pivot_columns,
+#         value_column='value',
+#         no_conflict=False,
+#         no_multi_index=False
+#         ):
+#     """
+#     Creates a dynamic pivot table based on the specified columns.
+
+#     This function takes a DataFrame and a set of columns to use as the index,
+#     pivot columns, and a value column. It then creates a pivot table from the
+#     DataFrame using these columns.
+
+#     Parameters
+#     ----------
+#     df : pandas.DataFrame
+#         The original DataFrame.
+#     index_columns : list of str
+#         The list of columns to use as the index.
+#     pivot_columns : list of str
+#         The list of columns to use as pivot columns.
+#     value_column : str
+#         The name of the column whose values will be distributed across the
+#         pivot.
+
+#     Returns
+#     -------
+#     pandas.DataFrame
+#         The pivoted DataFrame.
+#     """
+
+#     # Check if all required columns are present in the DataFrame
+#     missing_cols = set(index_columns + pivot_columns + [value_column]) - set(df.columns)
+#     if missing_cols:
+#         raise ValueError(f"Missing columns in DataFrame: {missing_cols}")
+
+#     # Convert columns to category type to reduce memory usage
+#     df[index_columns] = df[index_columns].astype('category')
+#     df[pivot_columns] = df[pivot_columns].astype('category')
+
+#     # Create a unique index to avoid conflicts in the pivot table
+#     df['unique_index'] = df[index_columns].astype(str).apply('___'.join, axis=1)
+#     df['unique_index'] = df['unique_index'].astype('category')
+
+#     if len(pivot_columns) > 1:
+#         df['unique_column'] = df[pivot_columns].astype(str).apply('___'.join, axis=1)
+#         df['unique_column'] = df['unique_column'].astype('category')
+#     else:
+#         df['unique_column'] = df[pivot_columns[0]].astype('category')
+
+#     client = Client(n_workers=6, threads_per_worker=1, memory_limit='10GB')
+#     print(client.dashboard_link)
+
+#     # Calculate partition size
+#     partition_size = df.memory_usage(deep=True).sum() / len(df)
+#     desired_partition_size = 50e6  # 50 MB per partition
+#     n_partitions = int(df.memory_usage(deep=True).sum() / desired_partition_size)
+#     if n_partitions < 1:
+#         n_partitions = 1
+
+#     dask_df = dd.from_pandas(df, npartitions=n_partitions)
+
+#     # Scatter the dataframe to the workers
+#     scattered_dask_df = client.scatter(dask_df)
+#     wait(scattered_dask_df)
+
+#     unique_columns = df['unique_column'].unique().compute()
+#     pivot_df_list = []
+
+#     for col in unique_columns:
+#         temp_df = dask_df[dask_df['unique_column'] == col]
+#         pivot_dd = temp_df.pivot_table(
+#             index='unique_index',
+#             columns='unique_column',
+#             values=value_column,
+#             aggfunc='first'
+#         )
+
+#         pivot_df = pivot_dd.compute()
+#         pivot_df_list.append(pivot_df)
+
+#     # Combine all pivoted dataframes
+#     final_pivot_df = pd.concat(pivot_df_list, axis=1)
+
+#     if len(pivot_columns) > 1:
+#         new_columns = [col.split('___') for col in final_pivot_df.columns]
+#         multiindex_columns = pd.MultiIndex.from_tuples(new_columns)
+#         final_pivot_df.columns = multiindex_columns
+
+#     # Reset index and split unique_index to original columns
+#     original_index = final_pivot_df.index.to_series().str.split('___', expand=True)
+#     original_index.columns = index_columns
+#     final_pivot_df = final_pivot_df.reset_index(drop=True).join(original_index)
+#     final_pivot_df.set_index(index_columns, inplace=True)
+
+#     if no_multi_index:
+#         final_pivot_df.columns = ['_'.join(col).strip() for col in final_pivot_df.columns.values]
+#         final_pivot_df.reset_index(inplace=True)
+
+#     return final_pivot_df
 
 
 def _download_query_results_as_csv(
@@ -124,6 +306,31 @@ def _parse_filter_value(operator, value):
     return value
 
 
+def _parse_file_filter(file_path, filter_field):
+    """
+    Parses a file to extract values from the first column and prepares a Q
+    object for filtering.
+
+    Args:
+        file_path (str): Path to the file containing filter values.
+        filter_field (str): Name of the field on which to apply the filter.
+
+    Returns:
+        dict: Dictionary with filter conditions.
+    """
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"The file {file_path} does not exist.")
+
+    with open(file_path, 'r') as file:
+        values = [line.strip().split(',')[0] for line in file if line.strip()]
+
+    # Make sure there are values to filter on to avoid empty 'in' queries
+    if not values:
+        raise ValueError("No values found in the file to apply filter.")
+
+    return {f'{filter_field}__in': values}
+
+
 def download_data_report(modeladmin, request, queryset):
     """
     Download the results of a query from the admin interface.
@@ -171,7 +378,13 @@ def download_data_report(modeladmin, request, queryset):
         # Parse the filter value based on the operator
         value = _parse_filter_value(filter_obj.operator, filter_obj.value)
         # if operator == '_eq' no use in the variable (default is eq)
-        if filter_obj.operator == 'eq':
+        if filter_obj.operator == 'file':
+            kwargs = _parse_file_filter(
+                filter_obj.value,
+                filter_obj.filter_name
+                )
+
+        elif filter_obj.operator == 'eq':
             kwargs = {f'{filter_obj.filter_name}': value}
         else:
             kwargs = {f'{filter_obj.filter_name}__{filter_obj.operator}': value}  # noqa: E501
@@ -189,6 +402,14 @@ def download_data_report(modeladmin, request, queryset):
     column_names.extend(new_columns)
 
     data_query = data_query.values_list(*column_names)
+
+    if not data_query:
+        modeladmin.message_user(
+            request,
+            "No data found in the query structure. ",
+            level='error'
+            )
+        return
 
     df = pd.DataFrame(list(data_query), columns=column_names)
 

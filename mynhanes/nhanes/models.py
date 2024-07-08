@@ -265,6 +265,7 @@ class QueryFilter(models.Model):
         ('search', 'Search'),
         ('regex', 'Use Regular Expression'),
         ('iregex', 'Use Regular Expression (Case-Insensitive)'),
+        ('file', 'Path to csv file with each value in a line'),
     )
     DIMENSION_CHOICES = (
         ('field__field', 'Field Code'),
