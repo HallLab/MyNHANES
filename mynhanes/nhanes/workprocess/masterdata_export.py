@@ -14,7 +14,8 @@ from nhanes.models import (
     VariableCycle,
     DatasetCycle,
     Field,
-    NormalizationRule
+    NormalizationRule,
+    QueryColumns,
 )
 from nhanes.utils.logs import logger, start_logger
 
@@ -68,6 +69,7 @@ def masterdata_export(folder='masterdata', models_to_export=None):
                 'normalization_rules.csv': NormalizationRule,
                 'work_processes.csv': WorkProcess,
                 'work_process_master_data.csv': WorkProcessMasterData,
+                'query_columns.csv': QueryColumns,
             }
 
         # Iterate over the dictionary and export each model's data to CSV

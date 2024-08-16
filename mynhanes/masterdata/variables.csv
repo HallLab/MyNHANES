@@ -1,47 +1,145 @@
 id,variable,description
 1,RIDAGEYR,Age in Years at Screening
 2,SEQN,Respondent sequence number
-3,SDDSRVYR,Data release cycle
-4,RIDSTATR,Interview/Examination status
-5,RIAGENDR,Gender
-6,RIDAGEMN,Age in months at screening - 0 to 24 mos
-7,RIDRETH1,Race/Hispanic origin
-8,RIDRETH3,Race/Hispanic origin w/ NH Asian
-9,RIDEXMON,Six month time period
-10,RIDEXAGM,Age in months at exam - 0 to 19 years
-11,DMQMILIZ,Served active duty in US Armed Forces
-12,DMQADFC,Served in a foreign country
-13,DMDBORN4,Country of birth
-14,DMDCITZN,Citizenship status
-15,DMDYRSUS,Length of time in US
-16,DMDEDUC3,Education level - Children/Youth 6-19
-17,DMDEDUC2,Education level - Adults 20+
-18,DMDMARTL,Marital status
-19,RIDEXPRG,Pregnancy status at exam
-20,SIALANG,Language of SP Interview
-21,SIAPROXY,Proxy used in SP Interview?
-22,SIAINTRP,Interpreter used in SP Interview?
-23,FIALANG,Language of Family Interview
-24,FIAPROXY,Proxy used in Family Interview?
-25,FIAINTRP,Interpreter used in Family Interview?
-26,MIALANG,Language of MEC Interview
-27,MIAPROXY,Proxy used in MEC Interview?
-28,MIAINTRP,Interpreter used in MEC Interview?
-29,AIALANGA,Language of ACASI Interview
-30,DMDHHSIZ,Total number of people in the Household
-31,DMDFMSIZ,Total number of people in the Family
-32,DMDHHSZA,# of children 5 years or younger in HH
-33,DMDHHSZB,# of children 6-17 years old in HH
-34,DMDHHSZE,# of adults 60 years or older in HH
-35,DMDHRGND,HH ref person's gender
-36,DMDHRAGZ,HH ref person's age in years
-37,DMDHREDZ,HH ref person's education level
-38,DMDHRMAZ,HH ref person's marital status
-39,DMDHSEDZ,HH ref person's spouse's education level
-40,WTINT2YR,Full sample 2 year interview weight
-41,WTMEC2YR,Full sample 2 year MEC exam weight
-42,SDMVPSU,Masked variance pseudo-PSU
-43,SDMVSTRA,Masked variance pseudo-stratum
-44,INDHHIN2,Annual household income
-45,INDFMIN2,Annual family income
-46,INDFMPIR,Ratio of family income to poverty
+3,SDDSRVYR,Data Release Number
+4,RIDSTATR,Interview/Examination Status
+5,RIDEXMON,Six month time period
+6,RIAGENDR,Gender
+7,RIDAGEMN,Age in Months - Recode
+8,RIDAGEEX,Exam Age in Months - Recode
+9,RIDRETH1,Race/Ethnicity - Recode
+10,RIDRETH2,Linked NH3 Race/Ethnicity - Recode
+11,DMQMILIT,Veteran/Military Status
+12,DMDBORN,Country of Birth - Recode
+13,DMDCITZN,Citizenship Status
+14,DMDYRSUS,Length of time in US
+15,DMDEDUC3,Education Level - Children/Youth 6-19
+16,DMDEDUC2,Education Level - Adults 20+
+17,DMDEDUC,Education - Recode (old version)
+18,DMDSCHOL,Now attending school?
+19,DMDMARTL,Marital Status
+20,DMDHHSIZ,Total number of people in the Household
+21,INDHHINC,Annual Household Income
+22,INDFMINC,Annual Family Income
+23,INDFMPIR,Family PIR
+24,RIDEXPRG,Pregnancy Status at Exam - Recode
+25,RIDPREG,Pregnancy Status - Recode (old version)
+26,DMDHRGND,HH Ref Person Gender
+27,DMDHRAGE,HH Ref Person Age
+28,DMDHRBRN,HH Ref Person Country of Birth
+29,DMDHREDU,HH Ref Person Education Level
+30,DMDHRMAR,HH Ref Person Marital Status
+31,DMDHSEDU,HH Ref Person's Spouse Education Level
+32,WTINT2YR,Full Sample 2 Year Interview Weight
+33,WTINT4YR,Full Sample 4 Year Interview Weight
+34,WTMEC2YR,Full Sample 2 Year MEC Exam Weight
+35,WTMEC4YR,Full Sample 4 Year MEC Exam Weight
+36,SDMVPSU,Masked Variance Pseudo-PSU
+37,SDMVSTRA,Masked Variance Pseudo-Stratum
+38,SDJ1REPN,Jack Knife Replicate Number
+39,DMAETHN,Logical Imputation Flag for Ethnicity
+40,DMARACE,Logical Imputation Flag for Race Recode
+41,WTMREP01,MEC Exam Weight Jack Knife Replicate 01
+42,WTMREP02,MEC Exam Weight Jack Knife Replicate 02
+43,WTMREP03,MEC Exam Weight Jack Knife Replicate 03
+44,WTMREP04,MEC Exam Weight Jack Knife Replicate 04
+45,WTMREP05,MEC Exam Weight Jack Knife Replicate 05
+46,WTMREP06,MEC Exam Weight Jack Knife Replicate 06
+47,WTMREP07,MEC Exam Weight Jack Knife Replicate 07
+48,WTMREP08,MEC Exam Weight Jack Knife Replicate 08
+49,WTMREP09,MEC Exam Weight Jack Knife Replicate 09
+50,WTMREP10,MEC Exam Weight Jack Knife Replicate 10
+51,WTMREP11,MEC Exam Weight Jack Knife Replicate 11
+52,WTMREP12,MEC Exam Weight Jack Knife Replicate 12
+53,WTMREP13,MEC Exam Weight Jack Knife Replicate 13
+54,WTMREP14,MEC Exam Weight Jack Knife Replicate 14
+55,WTMREP15,MEC Exam Weight Jack Knife Replicate 15
+56,WTMREP16,MEC Exam Weight Jack Knife Replicate 16
+57,WTMREP17,MEC Exam Weight Jack Knife Replicate 17
+58,WTMREP18,MEC Exam Weight Jack Knife Replicate 18
+59,WTMREP19,MEC Exam Weight Jack Knife Replicate 19
+60,WTMREP20,MEC Exam Weight Jack Knife Replicate 20
+61,WTMREP21,MEC Exam Weight Jack Knife Replicate 21
+62,WTMREP22,MEC Exam Weight Jack Knife Replicate 22
+63,WTMREP23,MEC Exam Weight Jack Knife Replicate 23
+64,WTMREP24,MEC Exam Weight Jack Knife Replicate 24
+65,WTMREP25,MEC Exam Weight Jack Knife Replicate 25
+66,WTMREP26,MEC Exam Weight Jack Knife Replicate 26
+67,WTMREP27,MEC Exam Weight Jack Knife Replicate 27
+68,WTMREP28,MEC Exam Weight Jack Knife Replicate 28
+69,WTMREP29,MEC Exam Weight Jack Knife Replicate 29
+70,WTMREP30,MEC Exam Weight Jack Knife Replicate 30
+71,WTMREP31,MEC Exam Weight Jack Knife Replicate 31
+72,WTMREP32,MEC Exam Weight Jack Knife Replicate 32
+73,WTMREP33,MEC Exam Weight Jack Knife Replicate 33
+74,WTMREP34,MEC Exam Weight Jack Knife Replicate 34
+75,WTMREP35,MEC Exam Weight Jack Knife Replicate 35
+76,WTMREP36,MEC Exam Weight Jack Knife Replicate 36
+77,WTMREP37,MEC Exam Weight Jack Knife Replicate 37
+78,WTMREP38,MEC Exam Weight Jack Knife Replicate 38
+79,WTMREP39,MEC Exam Weight Jack Knife Replicate 39
+80,WTMREP40,MEC Exam Weight Jack Knife Replicate 40
+81,WTMREP41,MEC Exam Weight Jack Knife Replicate 41
+82,WTMREP42,MEC Exam Weight Jack Knife Replicate 42
+83,WTMREP43,MEC Exam Weight Jack Knife Replicate 43
+84,WTMREP44,MEC Exam Weight Jack Knife Replicate 44
+85,WTMREP45,MEC Exam Weight Jack Knife Replicate 45
+86,WTMREP46,MEC Exam Weight Jack Knife Replicate 46
+87,WTMREP47,MEC Exam Weight Jack Knife Replicate 47
+88,WTMREP48,MEC Exam Weight Jack Knife Replicate 48
+89,WTMREP49,MEC Exam Weight Jack Knife Replicate 49
+90,WTMREP50,MEC Exam Weight Jack Knife Replicate 50
+91,WTMREP51,MEC Exam Weight Jack Knife Replicate 51
+92,WTMREP52,MEC Exam Weight Jack Knife Replicate 52
+93,WTIREP01,Interview Weight Jack Knife Replicate 01
+94,WTIREP02,Interview Weight Jack Knife Replicate 02
+95,WTIREP03,Interview Weight Jack Knife Replicate 03
+96,WTIREP04,Interview Weight Jack Knife Replicate 04
+97,WTIREP05,Interview Weight Jack Knife Replicate 05
+98,WTIREP06,Interview Weight Jack Knife Replicate 06
+99,WTIREP07,Interview Weight Jack Knife Replicate 07
+100,WTIREP08,Interview Weight Jack Knife Replicate 08
+101,WTIREP09,Interview Weight Jack Knife Replicate 09
+102,WTIREP10,Interview Weight Jack Knife Replicate 10
+103,WTIREP11,Interview Weight Jack Knife Replicate 11
+104,WTIREP12,Interview Weight Jack Knife Replicate 12
+105,WTIREP13,Interview Weight Jack Knife Replicate 13
+106,WTIREP14,Interview Weight Jack Knife Replicate 14
+107,WTIREP15,Interview Weight Jack Knife Replicate 15
+108,WTIREP16,Interview Weight Jack Knife Replicate 16
+109,WTIREP17,Interview Weight Jack Knife Replicate 17
+110,WTIREP18,Interview Weight Jack Knife Replicate 18
+111,WTIREP19,Interview Weight Jack Knife Replicate 19
+112,WTIREP20,Interview Weight Jack Knife Replicate 20
+113,WTIREP21,Interview Weight Jack Knife Replicate 21
+114,WTIREP22,Interview Weight Jack Knife Replicate 22
+115,WTIREP23,Interview Weight Jack Knife Replicate 23
+116,WTIREP24,Interview Weight Jack Knife Replicate 24
+117,WTIREP25,Interview Weight Jack Knife Replicate 25
+118,WTIREP26,Interview Weight Jack Knife Replicate 26
+119,WTIREP27,Interview Weight Jack Knife Replicate 27
+120,WTIREP28,Interview Weight Jack Knife Replicate 28
+121,WTIREP29,Interview Weight Jack Knife Replicate 29
+122,WTIREP30,Interview Weight Jack Knife Replicate 30
+123,WTIREP31,Interview Weight Jack Knife Replicate 31
+124,WTIREP32,Interview Weight Jack Knife Replicate 32
+125,WTIREP33,Interview Weight Jack Knife Replicate 33
+126,WTIREP34,Interview Weight Jack Knife Replicate 34
+127,WTIREP35,Interview Weight Jack Knife Replicate 35
+128,WTIREP36,Interview Weight Jack Knife Replicate 36
+129,WTIREP37,Interview Weight Jack Knife Replicate 37
+130,WTIREP38,Interview Weight Jack Knife Replicate 38
+131,WTIREP39,Interview Weight Jack Knife Replicate 39
+132,WTIREP40,Interview Weight Jack Knife Replicate 40
+133,WTIREP41,Interview Weight Jack Knife Replicate 41
+134,WTIREP42,Interview Weight Jack Knife Replicate 42
+135,WTIREP43,Interview Weight Jack Knife Replicate 43
+136,WTIREP44,Interview Weight Jack Knife Replicate 44
+137,WTIREP45,Interview Weight Jack Knife Replicate 45
+138,WTIREP46,Interview Weight Jack Knife Replicate 46
+139,WTIREP47,Interview Weight Jack Knife Replicate 47
+140,WTIREP48,Interview Weight Jack Knife Replicate 48
+141,WTIREP49,Interview Weight Jack Knife Replicate 49
+142,WTIREP50,Interview Weight Jack Knife Replicate 50
+143,WTIREP51,Interview Weight Jack Knife Replicate 51
+144,WTIREP52,Interview Weight Jack Knife Replicate 52

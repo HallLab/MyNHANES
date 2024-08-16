@@ -21,6 +21,7 @@ from .models import (
     WorkProcessMasterData,
     Logs,
 )
+from nhanes.services import query
 
 
 # from .services import query
@@ -96,18 +97,6 @@ class RawDataAdmin(admin.ModelAdmin):
     model = RawData
 
 
-class QueryColumnAdmin(admin.ModelAdmin):
-    model = QueryColumns
-
-
-class QueryStructureAdmin(admin.ModelAdmin):
-    model = QueryStructure
-
-
-class QueryFilterAdmin(admin.ModelAdmin):
-    model = QueryFilter
-
-
 class FieldAdmin(admin.ModelAdmin):
     model = Field
 
@@ -146,7 +135,6 @@ class WorkProcessMasterDataAdmin(admin.ModelAdmin):
     get_status_display.short_description = 'Status'
 
 
-"""----------------------------------"""
 class WorkProcessAdmin(admin.ModelAdmin):
     list_display = (
         'cycle_name',
@@ -188,10 +176,34 @@ class WorkProcessAdmin(admin.ModelAdmin):
     # metadata_url_link.short_description = 'no file'  # noqa: E501
 
 
-
-
 class LogsAdmin(admin.ModelAdmin):
     model = Logs
+
+
+class QueryColumnAdmin(admin.ModelAdmin):
+    list_display = ("column_name", "internal_data_key", "column_description")
+    search_fields = ("column_name", "column_description")
+
+
+class QueryFilterInline(admin.TabularInline):
+    model = QueryFilter
+    extra = 0  # Define number of extra forms to display
+
+
+class QueryStructureAdmin(admin.ModelAdmin):
+    list_display = ("structure_name", "no_conflict", "no_multi_index")
+    list_editable = (
+        "no_conflict",
+        "no_multi_index",
+    )
+    search_fields = ("structure_name",)
+    # Easy access to the filters
+    filter_horizontal = ("columns",)
+    # Add filters to the QueryStructure page
+    inlines = [QueryFilterInline]
+    # Add actions to the QueryStructure page
+    # actions = [download_query_results]
+    actions = [query.download_data_report]
 
 
 admin.site.register(Cycle, CycleAdmin)
@@ -204,7 +216,7 @@ admin.site.register(SystemConfig, SystemConfigAdmin)
 admin.site.register(RawData, RawDataAdmin)
 admin.site.register(QueryColumns, QueryColumnAdmin)
 admin.site.register(QueryStructure, QueryStructureAdmin)
-admin.site.register(QueryFilter, QueryFilterAdmin)
+# admin.site.register(QueryFilter, QueryFilterAdmin)
 admin.site.register(Field, FieldAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(NormalizedData, NormalizedDataAdmin)
@@ -283,27 +295,4 @@ admin.site.register(Logs, LogsAdmin)
 #         return queryset.select_related("dataset", "cycle", "dataset__group")
 
 
-# class QueryColumnAdmin(admin.ModelAdmin):
-#     list_display = ("column_name", "internal_data_key", "column_description")
-#     search_fields = ("column_name", "column_description")
 
-
-# class QueryFilterInline(admin.TabularInline):
-#     model = QueryFilter
-#     extra = 0  # Define number of extra forms to display
-
-
-# class QueryStructureAdmin(admin.ModelAdmin):
-#     list_display = ("structure_name", "no_conflict", "no_multi_index")
-#     list_editable = (
-#         "no_conflict",
-#         "no_multi_index",
-#     )
-#     search_fields = ("structure_name",)
-#     # Easy access to the filters
-#     filter_horizontal = ("columns",)
-#     # Add filters to the QueryStructure page
-#     inlines = [QueryFilterInline]
-#     # Add actions to the QueryStructure page
-#     # actions = [download_query_results]
-#     actions = [query.download_data_report]

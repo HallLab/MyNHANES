@@ -24,6 +24,7 @@ Options:
     - NormalizationRule
     - WorkProcess
     - WorkProcessMasterData
+    - QueryColumns
     If no models are specified, all models will be exported.
 
 Example:
@@ -66,6 +67,7 @@ class Command(BaseCommand):
                 'NormalizationRule': 'normalization_rules.csv',
                 'WorkProcess': 'work_processes.csv',
                 'WorkProcessMasterData': 'work_process_master_data.csv',
+                'QueryColumns': 'query_columns.csv'
             }
 
             models_to_export = {

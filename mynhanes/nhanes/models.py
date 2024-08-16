@@ -215,10 +215,8 @@ class QueryFilter(models.Model):
         ("file", "Path to csv file with each value in a line"),
     )
     DIMENSION_CHOICES = (
-        ("field__field", "Field Code"),
-        ("field__description", "Field Name"),
-        ("field__internal_id", "Field Internal Code"),
-        ("field__internal_group", "Field Internal Group"),
+        ("variable__variable", "Variable Code"),
+        ("variable__description", "Variable Name"),
         ("cycle__cycle", "Cycle"),
         ("dataset__group__group", "Group"),
         ("dataset__dataset", "Dataset Code"),
@@ -392,6 +390,8 @@ class WorkProcessMasterData(models.Model):
         ("DatasetCycle", "Dataset Cycle"),
         ("VariableCycle", "Variable Cycle"),
         ("Field", "Field"),
+        ("SystemConfig", "System Config"),
+        ("QueryColumns", "Query Columns"),
     )
     STATUS_CHOICES = (
         ("pending", "Pending"),

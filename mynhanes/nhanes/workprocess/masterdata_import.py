@@ -15,7 +15,8 @@ from nhanes.models import (
     VariableCycle,
     DatasetCycle,
     Field,
-    NormalizationRule
+    NormalizationRule,
+    QueryColumns,
 )
 from nhanes.utils.logs import logger, start_logger
 from django.utils import timezone
@@ -158,6 +159,7 @@ def masterdata_import():
         'dataset_cycles.csv': (DatasetCycle, ['dataset', 'cycle']),
         'fields.csv': (Field, 'field'),
         'normalization_rules.csv': (NormalizationRule, ['rule', 'version']),
+        'query_columns.csv': (QueryColumns, ['column_name']),
     }
 
     # call the function that initializes the WorkProcessMasterData

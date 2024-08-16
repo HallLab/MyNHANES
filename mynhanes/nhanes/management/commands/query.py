@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from mynhanes.nhanes.services import in_dev_query  # noqa E501
+from mynhanes.nhanes.services import query  # noqa E501
 
 
 class Command(BaseCommand):
@@ -51,7 +51,7 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS('Starting Fields Report...'))
         try:
             path = options.get('path', '')
-            return_check = in_dev_query.fields_report(path)
+            return_check = query.fields_report(path)
             if return_check:
                 self.stdout.write(self.style.SUCCESS(
                     'Fields Report completed successfully.'
@@ -78,7 +78,7 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS('Starting Control Report...'))
         try:
             path = options.get('path', '')
-            return_check = in_dev_query.control_report(path)
+            return_check = query.control_report(path)
             if return_check:
                 self.stdout.write(self.style.SUCCESS(
                     'Control Report completed successfully.'

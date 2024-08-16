@@ -1,10 +1,10 @@
 import os
 from django.db.models import Q, F
-from nhanes.models import Data, QueryColumns, FieldCycle, DatasetControl
+from nhanes.models import RawData, QueryColumns, VariableCycle, DatasetCycle
 import pandas as pd
 from django.http import HttpResponse
 import dask.dataframe as dd
-from dask.distributed import Client, wait
+from dask.distributed import Client
 
 
 def _create_pivot_table(
@@ -45,15 +45,6 @@ def _create_pivot_table(
     if missing_cols:
         raise ValueError(f"Missing columns in DataFrame: {missing_cols}")
 
-    # Convert columns to category type to reduce memory usage
-    # [0.2.0]
-    # for col in index_columns:
-    #     if col in df.columns:
-    #         df[col] = df[col].astype('category')
-    # for col in pivot_columns:
-    #     if col in df.columns:
-    #         df[col] = df[col].astype('category')
-
     # Create a unique index to avoid conflicts in the pivot table
     df['unique_index'] = df['Cycle'].astype(str) + \
         '___' + df['sample'].astype(str) + \
@@ -86,14 +77,6 @@ def _create_pivot_table(
         # )
         ...
     else:
-        # Use the 'first' aggregation function to avoid conflicts
-        # pivot_df = df.pivot_table(
-        #     index=index_columns,
-        #     columns=pivot_columns,
-        #     values=value_column,
-        #     aggfunc='first'
-        # )
-
         # Configura um cliente Dask com um número específico de trabalhadores
         # e memória limitada
         client = Client(n_workers=6, threads_per_worker=1, memory_limit='5GB')
@@ -140,118 +123,7 @@ def _create_pivot_table(
         pivot_df.drop(columns=['unique_index',], inplace=True)
         pivot_df.set_index(['Cycle', 'sample', 'sequence'], inplace=True)
 
-    # # Optional: unstack to flatten multi-index columns if needed
-    # if no_multi_index:
-    #     pivot_df.columns = [
-    #         '_'.join(col).strip() for col in pivot_df.columns.values
-    #         ]
-    #     pivot_df.reset_index(inplace=True)
-
     return pivot_df
-
-
-# def _create_pivot_table(
-#         df,
-#         index_columns,
-#         pivot_columns,
-#         value_column='value',
-#         no_conflict=False,
-#         no_multi_index=False
-#         ):
-#     """
-#     Creates a dynamic pivot table based on the specified columns.
-
-#     This function takes a DataFrame and a set of columns to use as the index,
-#     pivot columns, and a value column. It then creates a pivot table from the
-#     DataFrame using these columns.
-
-#     Parameters
-#     ----------
-#     df : pandas.DataFrame
-#         The original DataFrame.
-#     index_columns : list of str
-#         The list of columns to use as the index.
-#     pivot_columns : list of str
-#         The list of columns to use as pivot columns.
-#     value_column : str
-#         The name of the column whose values will be distributed across the
-#         pivot.
-
-#     Returns
-#     -------
-#     pandas.DataFrame
-#         The pivoted DataFrame.
-#     """
-
-#     # Check if all required columns are present in the DataFrame
-#     missing_cols = set(index_columns + pivot_columns + [value_column]) - set(df.columns)
-#     if missing_cols:
-#         raise ValueError(f"Missing columns in DataFrame: {missing_cols}")
-
-#     # Convert columns to category type to reduce memory usage
-#     df[index_columns] = df[index_columns].astype('category')
-#     df[pivot_columns] = df[pivot_columns].astype('category')
-
-#     # Create a unique index to avoid conflicts in the pivot table
-#     df['unique_index'] = df[index_columns].astype(str).apply('___'.join, axis=1)
-#     df['unique_index'] = df['unique_index'].astype('category')
-
-#     if len(pivot_columns) > 1:
-#         df['unique_column'] = df[pivot_columns].astype(str).apply('___'.join, axis=1)
-#         df['unique_column'] = df['unique_column'].astype('category')
-#     else:
-#         df['unique_column'] = df[pivot_columns[0]].astype('category')
-
-#     client = Client(n_workers=6, threads_per_worker=1, memory_limit='10GB')
-#     print(client.dashboard_link)
-
-#     # Calculate partition size
-#     partition_size = df.memory_usage(deep=True).sum() / len(df)
-#     desired_partition_size = 50e6  # 50 MB per partition
-#     n_partitions = int(df.memory_usage(deep=True).sum() / desired_partition_size)
-#     if n_partitions < 1:
-#         n_partitions = 1
-
-#     dask_df = dd.from_pandas(df, npartitions=n_partitions)
-
-#     # Scatter the dataframe to the workers
-#     scattered_dask_df = client.scatter(dask_df)
-#     wait(scattered_dask_df)
-
-#     unique_columns = df['unique_column'].unique().compute()
-#     pivot_df_list = []
-
-#     for col in unique_columns:
-#         temp_df = dask_df[dask_df['unique_column'] == col]
-#         pivot_dd = temp_df.pivot_table(
-#             index='unique_index',
-#             columns='unique_column',
-#             values=value_column,
-#             aggfunc='first'
-#         )
-
-#         pivot_df = pivot_dd.compute()
-#         pivot_df_list.append(pivot_df)
-
-#     # Combine all pivoted dataframes
-#     final_pivot_df = pd.concat(pivot_df_list, axis=1)
-
-#     if len(pivot_columns) > 1:
-#         new_columns = [col.split('___') for col in final_pivot_df.columns]
-#         multiindex_columns = pd.MultiIndex.from_tuples(new_columns)
-#         final_pivot_df.columns = multiindex_columns
-
-#     # Reset index and split unique_index to original columns
-#     original_index = final_pivot_df.index.to_series().str.split('___', expand=True)
-#     original_index.columns = index_columns
-#     final_pivot_df = final_pivot_df.reset_index(drop=True).join(original_index)
-#     final_pivot_df.set_index(index_columns, inplace=True)
-
-#     if no_multi_index:
-#         final_pivot_df.columns = ['_'.join(col).strip() for col in final_pivot_df.columns.values]
-#         final_pivot_df.reset_index(inplace=True)
-
-#     return final_pivot_df
 
 
 def _download_query_results_as_csv(
@@ -358,6 +230,8 @@ def download_data_report(modeladmin, request, queryset):
             )
         return
 
+
+    # TODO FIX: check why the filters is not being used on select at line 272
     query_structure = queryset.first()
     qs_filters = query_structure.filters.all()
     qs_report_columns = query_structure.columns.all()
@@ -371,7 +245,7 @@ def download_data_report(modeladmin, request, queryset):
         return
 
     # Get all data in lazy mode
-    data_query = Data.objects.all()
+    data_query = RawData.objects.all()
 
     query = Q()
     for filter_obj in qs_filters:
@@ -394,7 +268,7 @@ def download_data_report(modeladmin, request, queryset):
     data_query = data_query.filter(query)
 
     # Standard columns
-    column_names = ['cycle__cycle', 'sample', 'sequence', 'value']  # [0.2.0]
+    column_names = ['cycle__cycle', 'sample', 'sequence', 'value']
     # Personalized columns
     new_columns = [col.internal_data_key for col in qs_report_columns]
     # Remove duplicates
@@ -464,21 +338,20 @@ def fields_report(output_path):
         # os.makedirs(output_dir)
 
     # Get the basic fields and details
-    basic_fields_qs = Data.objects.values(
+    basic_fields_qs = RawData.objects.values(
         cycle_name=F('cycle__cycle'),
         group=F('dataset__group__group'),
-        dataset_name=F('dataset__dataset'),
+        dataset_dataset=F('dataset__dataset'),
         dataset_description=F('dataset__description'),
-        field_name=F('field__field'),
-        field_internal_id=F('field__internal_id'),
-        field_description=F('field__description')
+        variable_variable=F('variable__variable'),
+        variable_description=F('variable__description')
     ).distinct()
     basic_df = pd.DataFrame(list(basic_fields_qs))
 
     # Get the field cycle details
-    cycle_details_qs = FieldCycle.objects.values(
-        field_name=F('field__field'),
-        cycle_name=F('cycle__cycle'),
+    cycle_details_qs = VariableCycle.objects.values(
+        variable_variable=F('variable__variable'),
+        cycle_cycle=F('cycle__cycle'),
         Field_Text=F('english_text'),
         Field_Target=F('target'),
         Data_Type=F('type'),
@@ -519,7 +392,7 @@ def control_report(output_path):
         # os.makedirs(output_dir)
 
     # Get the basic fields and details
-    basic_qs = DatasetControl.objects.values(
+    basic_qs = DatasetCycle.objects.values(
         Cycle_Name=F('cycle__cycle'),
         Group=F('dataset__group__group'),
         Dataset_Name=F('dataset__dataset'),
