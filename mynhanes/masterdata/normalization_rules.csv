@@ -1,0 +1,2 @@
+id,rule,version,folder_path,file_name,is_active,updated_at
+1,AgeNormalization,1.0,/path/to/rules,age_normalization.py,True,2024-08-13 21:51:48.711742+00:00

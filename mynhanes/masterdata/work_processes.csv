@@ -1,0 +1,2 @@
+id,datasetcycle_id,is_download,status,last_synced_at,source_file_version,source_file_size,chk_raw,chk_normalization,system_version,time_download,time_raw,time_normalization,records_raw,records_normalization,n_samples,n_variables,cycle,dataset
+2,1,True,pending,2024-08-15 17:44:48.812474+00:00,v.0,0,False,False,0.1.4,0,0,0,0,0,0,0,2017-2018,DEMO

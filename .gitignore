@@ -10,3 +10,23 @@ mynhanes/db.sqlite3
 .DS_Store
 downloads/
 .python-version
+
+# Python
+*.pyc
+__pycache__/
+
+# Virtual Environment
+.venv/
+.env/
+
+# VSCode
+.vscode/
+
+# Poetry
+poetry.lock
+
+# Pytest
+.cache/
+
+# MacOS
+.DS_Store

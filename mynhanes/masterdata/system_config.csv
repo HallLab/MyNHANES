@@ -1,0 +1,4 @@
+id,config_key,config_check,config_value
+1,load_metadata,True,Load NHANES Metadatas
+2,download_path,True,/users/andrerico/works/temp/
+3,auto_create_workprocess,True,

@@ -1,0 +1,47 @@
+id,variable,description
+1,RIDAGEYR,Age in Years at Screening
+2,SEQN,Respondent sequence number
+3,SDDSRVYR,Data release cycle
+4,RIDSTATR,Interview/Examination status
+5,RIAGENDR,Gender
+6,RIDAGEMN,Age in months at screening - 0 to 24 mos
+7,RIDRETH1,Race/Hispanic origin
+8,RIDRETH3,Race/Hispanic origin w/ NH Asian
+9,RIDEXMON,Six month time period
+10,RIDEXAGM,Age in months at exam - 0 to 19 years
+11,DMQMILIZ,Served active duty in US Armed Forces
+12,DMQADFC,Served in a foreign country
+13,DMDBORN4,Country of birth
+14,DMDCITZN,Citizenship status
+15,DMDYRSUS,Length of time in US
+16,DMDEDUC3,Education level - Children/Youth 6-19
+17,DMDEDUC2,Education level - Adults 20+
+18,DMDMARTL,Marital status
+19,RIDEXPRG,Pregnancy status at exam
+20,SIALANG,Language of SP Interview
+21,SIAPROXY,Proxy used in SP Interview?
+22,SIAINTRP,Interpreter used in SP Interview?
+23,FIALANG,Language of Family Interview
+24,FIAPROXY,Proxy used in Family Interview?
+25,FIAINTRP,Interpreter used in Family Interview?
+26,MIALANG,Language of MEC Interview
+27,MIAPROXY,Proxy used in MEC Interview?
+28,MIAINTRP,Interpreter used in MEC Interview?
+29,AIALANGA,Language of ACASI Interview
+30,DMDHHSIZ,Total number of people in the Household
+31,DMDFMSIZ,Total number of people in the Family
+32,DMDHHSZA,# of children 5 years or younger in HH
+33,DMDHHSZB,# of children 6-17 years old in HH
+34,DMDHHSZE,# of adults 60 years or older in HH
+35,DMDHRGND,HH ref person's gender
+36,DMDHRAGZ,HH ref person's age in years
+37,DMDHREDZ,HH ref person's education level
+38,DMDHRMAZ,HH ref person's marital status
+39,DMDHSEDZ,HH ref person's spouse's education level
+40,WTINT2YR,Full sample 2 year interview weight
+41,WTMEC2YR,Full sample 2 year MEC exam weight
+42,SDMVPSU,Masked variance pseudo-PSU
+43,SDMVSTRA,Masked variance pseudo-stratum
+44,INDHHIN2,Annual household income
+45,INDFMIN2,Annual family income
+46,INDFMPIR,Ratio of family income to poverty

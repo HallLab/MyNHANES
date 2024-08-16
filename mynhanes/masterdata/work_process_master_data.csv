@@ -1,0 +1,17 @@
+id,component_type,last_synced_at,source_file_version,status
+1,rule,2024-08-12 13:36:07.807486+00:00,v1.0.0,complete
+2,cycle,2024-08-12 13:45:06.387808+00:00,1,pending
+3,group,2024-08-12 13:45:18.938381+00:00,1,pending
+4,dataset,2024-08-12 13:45:31.344110+00:00,1,pending
+5,variable,2024-08-12 13:45:46.224336+00:00,1,pending
+6,variable_cycle,2024-08-12 13:45:53.595887+00:00,1,pending
+7,field,2024-08-12 13:46:01.641204+00:00,1,pending
+8,NormalizationRule,2024-08-13 21:51:48.717777+00:00,,complete
+9,Cycle,2024-08-13 21:51:39.779167+00:00,,complete
+10,Group,2024-08-13 21:51:42.046648+00:00,,complete
+11,Dataset,2024-08-13 21:51:42.360152+00:00,,complete
+12,Variable,2024-08-13 21:51:46.954174+00:00,,complete
+13,DatasetCycle,2024-08-13 21:51:47.904547+00:00,,complete
+14,VariableCycle,2024-08-13 21:51:47.282902+00:00,,complete
+15,Field,2024-08-13 21:51:48.149676+00:00,,complete
+16,SystemConfig,2024-08-13 21:51:19.589150+00:00,,complete

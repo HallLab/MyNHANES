@@ -1,0 +1,5 @@
+id,cycle,base_dir,year_code,base_url,dataset_url_pattern
+1,1999-2000,downloads,,https://wwwn.cdc.gov/Nchs/Nhanes,%s/%s/%s
+2,2001-2002,downloads,B,https://wwwn.cdc.gov/Nchs/Nhanes,%s/%s/%s
+3,2017-2018,downloads,J,https://wwwn.cdc.gov/Nchs/Nhanes,%s/%s/%s
+4,2019-2020,downloads,B,https://wwwn.cdc.gov/Nchs/Nhanes,%s/%s/%s
