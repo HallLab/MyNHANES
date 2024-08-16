@@ -1,4 +1,0 @@
-.. automodule:: loader
-   :members:
-   :undoc-members:
-   :show-inheritance:
