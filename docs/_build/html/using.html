@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usage &mdash; MyNHANES 0.2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=938c9ccc"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MyNHANES
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#starting-the-application">Starting the Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#navigating-the-admin-panel">Navigating the Admin Panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-management">Data Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#querying-and-reporting">Querying and Reporting</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MyNHANES</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Usage</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/using.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h1>
+<section id="starting-the-application">
+<h2>Starting the Application<a class="headerlink" href="#starting-the-application" title="Link to this heading"></a></h2>
+<p>After installing MyNHANES, you can start the application using the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>runserver
+</pre></div>
+</div>
+<p>This will initiate the Django server, making the application accessible via the specified port, typically at <cite>http://localhost:8000</cite>.</p>
+</section>
+<section id="navigating-the-admin-panel">
+<h2>Navigating the Admin Panel<a class="headerlink" href="#navigating-the-admin-panel" title="Link to this heading"></a></h2>
+<p>To access the administrative panel, navigate to:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://localhost:8000/admin
+</pre></div>
+</div>
+<p>Here you can login with the user credentials created during the deployment phase.</p>
+<img alt="Login page of the MyNHANES admin panel" src="_images/admin_login.png" />
+</section>
+<section id="data-management">
+<h2>Data Management<a class="headerlink" href="#data-management" title="Link to this heading"></a></h2>
+<p><strong>Initial Data Setup:</strong></p>
+<p>When you execute the deployment with the local setting, the application sets up a new SQLite database filled with master data necessary for NHANES operations such as Cycles, Groups, and Datasets.</p>
+<img alt="Initial data setup in MyNHANES" src="_images/first_page.png" />
+<p><strong>Loading NHANES Data:</strong></p>
+<p>The bulk of NHANES data needs to be loaded into the system to perform meaningful queries and analysis. Here’s how you manage this data:</p>
+<ol class="arabic simple">
+<li><p><strong>Cycle Management:</strong> Manage different NHANES cycles like 1999-2000, 2001-2002 etc., through the <cite>Cycle</cite> table. This is crucial for segmenting the data loads according to specific time frames.</p></li>
+</ol>
+<img alt="Cycle data" src="_images/cycle.png" />
+<ol class="arabic simple" start="2">
+<li><p><strong>Group Management:</strong> NHANES data is categorized into different groups such as Demographics, Examination, Laboratory, and Questionnaire. The <cite>Group</cite> table allows you to manage these categorizations.</p></li>
+</ol>
+<img alt="Group data" src="_images/group.png" />
+<ol class="arabic simple" start="3">
+<li><p><strong>Dataset Management:</strong> Specific datasets like Demographic Data, Examination Data etc., are managed in the <cite>Dataset</cite> table. Each dataset corresponds to a particular group.</p></li>
+</ol>
+<img alt="Dataset data" src="_images/dataset.png" />
+<ol class="arabic simple" start="4">
+<li><p><strong>Field Management:</strong> Detailed data fields within each dataset are managed through the <cite>Field</cite> table. Fields are consistent across cycles but can be grouped differently in reports.</p></li>
+</ol>
+<img alt="Field data" src="_images/field.png" />
+<img alt="Field by Cycle data" src="_images/field_cycle.png" />
+<ol class="arabic simple" start="5">
+<li><p><strong>Download Control:</strong> This functionality manages the downloading and integration of NHANES data into the database. Each dataset by cycle will have its status managed here, where you can set datasets to be downloaded and integrated.</p></li>
+</ol>
+<img alt="Dataset Control data" src="_images/dataset_control.png" />
+<ol class="arabic simple" start="6">
+<li><p><strong>System Configuration:</strong> System configurations determine how datasets are processed and loaded. For example, <cite>auto_create_dataset_control</cite> setting in <cite>SystemConfig</cite> determines whether dataset controls should be automatically created for new datasets or cycles.</p></li>
+</ol>
+<img alt="System Configs data" src="_images/system.png" />
+<ol class="arabic simple" start="7">
+<li><p><strong>Data Table:</strong> The <cite>Data</cite> table stores all the loaded NHANES data, potentially becoming a very large table depending on the volume of loaded data.</p></li>
+</ol>
+<img alt="Data" src="_images/data.png" />
+</section>
+<section id="querying-and-reporting">
+<h2>Querying and Reporting<a class="headerlink" href="#querying-and-reporting" title="Link to this heading"></a></h2>
+<p><strong>Query Structure Table:</strong></p>
+<p>The <cite>Query Structure</cite> table allows users to define custom queries and reports. Users can specify which fields (like cycle, dataset, group) to include in the output and apply various filters to refine the data.</p>
+<img alt="Query Structure created in MyNHANES" src="_images/query_01.png" />
+<img alt="Setting Query Structure" src="_images/query_02.png" />
+<img alt="Download query results" src="_images/query_03.png" />
+<img alt="CSV file from query results" src="_images/report.png" />
+<p>To generate reports, select the desired query structure and export the results to a CSV file by clicking the export button in the admin panel.</p>
+<p>TO DO:
+- Add the options to donwloads (csv, db or both)</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Andre Rico.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

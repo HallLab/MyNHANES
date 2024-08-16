@@ -1,0 +1,89 @@
+Usage
+=====
+
+Starting the application
+------------------------
+
+To start MyNHANES, run:
+
+.. code-block:: bash
+
+    python manage.py runserver
+
+Using the admin panel
+---------------------
+
+Navigate to `http://localhost:8000/admin` to access the administrative panel.
+
+Para adicionar imagems
+.. image:: /_static/pictures/install_04.png
+    :alt: Alternative text
+
+
+O que adicionar aqui:
+1. Acessar o site do MyNHANES
+    rodar python manage.py runserver e acessar o site
+    Autenticar no site com o usuario criado no deploy
+    --  adicionar imagem do site
+
+2. Carga dos Dados
+    Quando se realiza o deploy local, a nova base de dados ja possui os dados mestres do NHANES, como
+    os ciclos, grupos, datasets, Download Control e System Configs. 
+    Esses sao dados leves e utilizados para apoiar a carga dos dados do NHANES e auxiliar nas consultas e filtros.
+    Voce devera realizar a carga dos dados do NHANES, que sao os dados pesados e que serao utilizados para as consultas.
+    Voce podera escolher quais dados serao carregados, como por exemplo, os dados de Demographic, Examination, Laboratory, Questionnaire, etc. assim como o ciclos e grupos que deseja carregar.
+    Lembre-se que a carga dos dados pode demorar, dependendo da quantidade de dados que voce deseja carregar.
+
+2.0 - System configs
+    Possui opcao de como o sustema ira funcionar:
+    - load_metadata: se True, carrega os dados mestres e descricoes do NHANES, exemplo as tabelas de cada field x cycle. Essa opcao podera aumentar o tabalhamo da base de dados
+    - auto_create_dataset_control" : se True, cria automaticamente o dataset control para novos cyclos ou datasets
+
+2.1. Tabela de Cycles
+    Tabela que contem os ciclos do NHANES, como por exemplo o ciclo 1999-2000, 2001-2002, etc.
+    Essa tabela e utilizada para a carga dos dados, pois os dados do NHANES sao divididos por ciclos.
+    Voce podera escolher quais ciclos deseja carregar, como por exemplo o ciclo 1999-2000, 2001-2002, etc atraves da tabela de donwload Control
+
+2.1. Tabela de groups
+    Tabela que contem os grupos do NHANES, como por exemplo o grupo Demographic, Examination, Laboratory, Questionnaire, etc.
+    Essa tabela e utilizada para a carga dos dados, pois os dados do NHANES sao divididos por grupos.
+    Voce podera escolher quais grupos deseja carregar, como por exemplo o grupo Demographic, Examination, Laboratory, Questionnaire, etc atraves da tabela de donwload Control
+
+2.3. Tabela de Dataset
+    Tabela que contem os datasets do NHANES, como por exemplo o dataset Demographic, Examination, Laboratory, Questionnaire, etc.
+    Essa tabela e utilizada para a carga dos dados, pois os dados do NHANES sao divididos por datasets.
+    Voce podera escolher quais datasets deseja carregar, como por exemplo o dataset Demographic, Examination, Laboratory, Questionnaire, etc atraves da tabela de donwload Control
+
+2.4. Tabela de Fields
+    Tabela que contem os fields do NHANES, como por exemplo o field RIAGENDR, RIDAGEYR, etc.
+    Essa tabela e utilizada para a carga dos dados, pois os dados do NHANES sao divididos por fields.
+    Os Fields sao carragados jntos com os downloads dos datasets, pois cada dataset possui seus fields. 
+    Os Fields sao unicos para todo o sistema, ou seja, nao importa o ciclo, grupo ou dataset, os fields sao os mesmos.
+    Voce podera cadastrar um nome amigavel para o field, como por exemplo se dois fields de nomes diferentes porem se referem a mesma informacao, voce podera cadastrar um nome amigavel para ambos, e escolher esse nome amigavel como coluna no relatorio, isso ira facilitar a leitura do relatorio.
+
+2.5. Tabela de Fields by Cycles
+    Como os dados mestres do field podem cariar entre cyclos, essa tabela guardara essas informacoes.
+
+2.6. Download Control
+    Funcao para controle das cargas de dados do NHANES. Cada Dataset por cycle tera seu proprio registro de controle e voce podera optar por baixar e integrar os dados na base de dados.
+    Cada registro possui um flag para controle se o dataset sera baixado ou nao, e o status do dataset que podera ser:
+    - Stand by: dataset ficar em mode de stand-by aguardando um evento de Pending para ser processado
+    - Pending: dataset sera marcao para ser baixado, processado e integrado na base de dados
+    - Completed: dataset foi integrado na base de dados com sucesso
+    - Error: Ocorre algum erro durante o processo de integrar os dados na base de dados
+    - No File: nao existe esse dataset para esse ciclo
+    - Delete: Ao marcar e salver como status delete, os dados do dataset/ciclo selecionado serao deletados da base de dados e o status do dataset sera alterado para Pending
+
+Para rodar o processo de carga, execute o comando $ python manage.py loader
+
+
+3. Consultas dos dados
+2.7. Tabela de Dados
+    A tabela dados aguarda todos os dados do NHANES que foram carregados na base de dados. Essa poderar ser uma tabela muito grande, dependendo da quantidade de dados que voce carregou. 
+    Ela nao esta em um formato amigavel, foi foi customizada para receber qualquer tipo de dado do NHANES, porem voce podera utilizar a tabela de Query Structure para criar consultas e relatorios.
+
+2.8. Tabela de Query Strucutre
+    Nessa tabela ira guardar a estrutura de consultas e relatorios que voce deseja criar. Voce podera criar consultas e relatorios de forma facil e rapida, sem a necessidade de escrever SQL.
+    Apos customizada a consulta, voce podera exportar o resultado para um arquivo CSV, selecionando o estrutura de consulta e clicando no botao de exportar.
+
+
