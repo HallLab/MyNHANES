@@ -16,6 +16,8 @@
 - [ ] Create interface to manage de Normalizations Rules
 
 
+STOP: Query.py has problem to consider the filter as select values.
+
 
 Preciso fazeer:
 - Criar o modulo de query
