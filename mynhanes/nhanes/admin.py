@@ -22,6 +22,10 @@ from .models import (
     Logs,
 )
 from nhanes.services import query
+from django.urls import path
+from django.http import HttpResponseRedirect
+from django.core.management import call_command
+from django.contrib import messages
 
 
 # from .services import query
@@ -105,8 +109,26 @@ class TagAdmin(admin.ModelAdmin):
     model = Tag
 
 
+# class NormalizedDataAdmin(admin.ModelAdmin):
+#     model = NormalizedData
+@admin.register(NormalizedData)
 class NormalizedDataAdmin(admin.ModelAdmin):
-    model = NormalizedData
+    list_display = ('cycle', 'dataset', 'field', 'sample', 'sequence', 'value')
+
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path('reset-normalizationdata/', self.reset_normalizationdata),
+        ]
+        return custom_urls + urls
+
+    def reset_normalizationdata(self, request):
+        try:
+            call_command('reset_normalizationdata')
+            self.message_user(request, 'All data and auto-increment ID for NormalizedData have been reset.', messages.SUCCESS)
+        except Exception as e:
+            self.message_user(request, f'Error: {str(e)}', messages.ERROR)
+        return HttpResponseRedirect("../")
 
 
 class NormalizationRuleAdmin(admin.ModelAdmin):
@@ -219,7 +241,7 @@ admin.site.register(QueryStructure, QueryStructureAdmin)
 # admin.site.register(QueryFilter, QueryFilterAdmin)
 admin.site.register(Field, FieldAdmin)
 admin.site.register(Tag, TagAdmin)
-admin.site.register(NormalizedData, NormalizedDataAdmin)
+# admin.site.register(NormalizedData, NormalizedDataAdmin)
 admin.site.register(NormalizationRule, NormalizationRuleAdmin)
 admin.site.register(WorkProcess, WorkProcessAdmin)
 admin.site.register(WorkProcessMasterData, WorkProcessMasterDataAdmin)

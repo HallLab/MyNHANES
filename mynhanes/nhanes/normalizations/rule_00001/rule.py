@@ -19,7 +19,7 @@ class rule(BaseNormalization):
         self.convert_to_type()
 
         # apply the transformation
-        self.input_df['AGE'] = self.input_df['RIDAGEYR']
+        self.input_df['AGE'] = self.input_df['RIDAGEYR'] * 4
         self.input_df['AGE2X'] = self.input_df['RIDAGEYR'] * 2
 
         # return the output
