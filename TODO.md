@@ -16,6 +16,10 @@
 - [ ] Query interface
 
 
+
+use option+return para criar o todo
+use option+d para selecionar ou limpar o todo
+
 Onde eu Parei:
 - O fluxo de normalizacao esta operacional, preciso agora pensar no tratamento de erros, log e controle do proceso,
 - nessa primeira versao, a carga para o NormalizationData sera full

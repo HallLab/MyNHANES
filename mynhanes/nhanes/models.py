@@ -1,22 +1,44 @@
+import os
+from pathlib import Path
 from django.db import models
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
-v_version = "0.1.4"
+from mynhanes.core import settings
+
+v_version = "0.0.3"
+
 
 # ----------------------------------------------------------------------------
-# MODELS FOR MANAGING NHANES RAW DATA
+# MODELS FOR MANAGING SYSTEM CONFIGURATION
 # ----------------------------------------------------------------------------
+
+
+# SystemConfig model represents the system configurations.
+class SystemConfig(models.Model):
+    key = models.CharField(max_length=100, unique=True)
+    status = models.BooleanField(default=False)
+    value = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.key
+
+
+# ----------------------------------------------------------------------------
+# MODELS FOR MANAGING NHANES MASTER DATA
+# ----------------------------------------------------------------------------
+
+
+class Version(models.Model):
+    version = models.CharField(max_length=50, unique=True)
+    description = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.version
 
 
 # model represents a cycle of the NHANES.
 class Cycle(models.Model):
-    # cycle: The name of the cycle, should be unique.
-    # base_dir: The base directory where data is stored.
-    # year_code: The specific year code for NHANES, A, B, C, etc.
-    # base_url: The base URL for the NHANES data.
-    # dataset_url_pattern: The URL pattern for the datasets.
-    # Garantir que não haja ciclos duplicados Ex. 2017-2018
     cycle = models.CharField(max_length=100, unique=True)
     base_dir = models.CharField(max_length=255, default="downloads")
     year_code = models.CharField(max_length=10, blank=True, null=True)
@@ -54,9 +76,6 @@ class Group(models.Model):
 
 # model represents a file in the NHANES study.
 class Dataset(models.Model):
-    # name: The name of the dataset.
-    # description: A description of the dataset.
-    # is_download: A flag indicating if the dataset should be downloaded.
     dataset = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
@@ -72,31 +91,42 @@ class Dataset(models.Model):
         verbose_name_plural = "03-Dataset"
 
 
-# model represents a field in a dataset.
-class Variable(models.Model):
-    # variable: The Field Code of the field.
-    # description: A description of the field.
-    variable = models.CharField(max_length=100, unique=True)
-    description = models.TextField(blank=True, null=True)
+class Tag(models.Model):
+    tag = models.CharField(max_length=50, unique=True)
+    description = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
-        return f"{self.variable} - ({self.description})"
+        return self.tag
 
     class Meta:
-        # verbose_name = "04-Variable"
-        verbose_name_plural = "04-Variable"
+        verbose_name = "Tag"
+        verbose_name_plural = "Tags"
 
 
-# model represents metadata for a field.
+class Variable(models.Model):
+    TYPES = (
+        ("bin", "Binary"),
+        ("cat", "Category"),
+        ("num", "Numeric"),
+        ("tex", "Text"),
+        ("oth", "Other"),
+    )
+    variable = models.CharField(max_length=100, unique=True)
+    description = models.TextField(null=True, blank=True)
+    is_active = models.BooleanField(default=True)
+    type = models.CharField(max_length=20, choices=TYPES, default="oth")
+    tags = models.ManyToManyField(Tag, related_name="features", blank=True)
+
+    class Meta:
+        verbose_name = "Field"
+        verbose_name_plural = "Field"
+
+    def __str__(self):
+        return self.field
+
+
 class VariableCycle(models.Model):
-    # variable: The field the metadata is for.
-    # cycle: The cycle the metadata is for.
-    # variable_name: The name of the variable.
-    # sas_label: The SAS label for the field.
-    # english_text: The English text for the field.
-    # target: The target of the field.
-    # type: The type of the field.
-    # value_table: The value table for the field.
+    version = models.ForeignKey(Version, on_delete=models.CASCADE)
     variable = models.ForeignKey(Variable, on_delete=models.CASCADE)
     cycle = models.ForeignKey(Cycle, on_delete=models.CASCADE)
     variable_name = models.CharField(max_length=100)
@@ -111,21 +141,13 @@ class VariableCycle(models.Model):
         indexes = [
             models.Index(fields=["variable", "cycle"]),
         ]
-        # verbose_name = "05-Variable by Cycle"
         verbose_name_plural = "05-Variable by Cycle"
 
     def __str__(self):
         return f"{self.variable_name} ({self.cycle.cycle})"
 
 
-# model represents metadata for a dataset.
 class DatasetCycle(models.Model):
-    # dataset: The dataset the metadata is for.
-    # cycle: The cycle the metadata is for.
-    # metadata_url: The URL where the metadata can be found.
-    # description: The description of the metadata.
-    # has_special_year_code: A flag indicating if the dataset has a special year code.  # noqa E501
-    # special_year_code: The specific year code for the dataset, if applicable.
     dataset = models.ForeignKey(Dataset, on_delete=models.CASCADE)
     cycle = models.ForeignKey(Cycle, on_delete=models.CASCADE)
     metadata_url = models.URLField(blank=True, null=True)
@@ -136,38 +158,103 @@ class DatasetCycle(models.Model):
 
     class Meta:
         unique_together = ("dataset", "cycle")
-        # verbose_name = "06-Donwload Control"
         verbose_name_plural = "06-Dataset by Cycle"
 
     def __str__(self):
         return f"{self.dataset.dataset} - {self.cycle.cycle}"
 
 
-# model represents the data for a field in a dataset.
-class RawData(models.Model):
-    # cycle: The cycle the data is for.
-    # dataset: The dataset the data is part of.
-    # field: The field the data is for.
-    # sample: The sample number.
-    # value: The value of the data.
+# ----------------------------------------------------------------------------
+# MODELS FOR MANAGING THE NORMALIZATIONS PROCESS RULES
+# ----------------------------------------------------------------------------
+
+
+class Rule(models.Model):
+    rule = models.CharField(max_length=255, unique=True)
+    version = models.CharField(max_length=20)
+    description = models.TextField(null=True, blank=True)
+    is_active = models.BooleanField(default=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    file_path = models.CharField(max_length=500)
+    file_script = models.CharField(max_length=255, null=True, blank=True)
+    file_documentation = models.CharField(max_length=255, null=True, blank=True)
+    repo_url = models.URLField(blank=True, null=True)
+    source = models.ManyToManyField(
+        Variable,
+        related_name="source_variables"
+        )
+    target = models.ManyToManyField(
+        Variable,
+        related_name="destination_variables"
+        )
+
+    class Meta:
+        unique_together = ("rule", "version")
+        verbose_name_plural = "Normalization Rules"
+
+    def __str__(self):
+        return f"{self.rule} - {self.version}"
+
+    def save(self, *args, **kwargs):
+        if not self.pk:  # creating a new rule
+            self.name = self.generate_rule_name()
+            self.path = self.create_rule_directory()
+            self.create_initial_files()
+        super().save(*args, **kwargs)
+
+    def generate_rule_name(self):
+        last_rule = Rule.objects.all().order_by('id').last()
+        if not last_rule:
+            return "rule_00001"
+        rule_number = int(last_rule.name.split('_')[-1]) + 1
+        return f"rule_{rule_number:05d}"
+
+    def create_rule_directory(self):
+        base_dir = Path(settings.BASE_DIR) / 'normalizations' / self.name
+        os.makedirs(base_dir, exist_ok=True)
+        return str(base_dir)
+
+    def create_initial_files(self):
+        rule_file = Path(self.path) / 'rule.py'
+        rule_file.write_text("# Python script for normalization\n\nclass Normalization:\n    def apply(self, df):\n        pass\n")  # noqa E501
+
+
+# ----------------------------------------------------------------------------
+# MODELS FOR MANAGING THE MOVIMENT DATA
+# ----------------------------------------------------------------------------
+
+
+class Data(models.Model):
+    version = models.ForeignKey(Version, on_delete=models.CASCADE)
     cycle = models.ForeignKey(Cycle, on_delete=models.CASCADE)
     dataset = models.ForeignKey(Dataset, on_delete=models.CASCADE)
     variable = models.ForeignKey(Variable, on_delete=models.CASCADE)
     sample = models.IntegerField()
     sequence = models.IntegerField(default=0)
+    rule_id = models.ForeignKey(
+        Rule,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        default=None
+        )
     value = models.CharField(max_length=255)
 
     class Meta:
-        # verbose_name = "07-Data"
-        verbose_name_plural = "07-Data"
+        indexes = [
+            models.Index(fields=['sample', 'variable', 'cycle', 'dataset', 'version']),
+        ]
+        verbose_name_plural = "Data Records"
 
     def __str__(self):
-        return f"{self.cycle.cycle} | {self.dataset.dataset} | {self.variable.variable}"  # noqa: E501
+        return f"Sample {self.sample} | Variable {self.variable.variable} | Cycle {self.cycle.cycle} | Dataset {self.dataset.dataset} | Version {self.version}"  # noqa E501
 
 
 # ----------------------------------------------------------------------------
 # MODELS FOR MANAGING QUERY STRUCTURE
 # ----------------------------------------------------------------------------
+
+
 class QueryColumns(models.Model):
     column_name = models.CharField(max_length=100, unique=True)
     internal_data_key = models.CharField(max_length=100, blank=True, null=True)
@@ -236,102 +323,6 @@ class QueryFilter(models.Model):
 
 
 # ----------------------------------------------------------------------------
-# MODELS FOR MANAGING NORMALIZATION DATA
-# ----------------------------------------------------------------------------
-
-
-class Tag(models.Model):
-    tag = models.CharField(max_length=50, unique=True)
-    description = models.CharField(max_length=255, blank=True, null=True)
-
-    def __str__(self):
-        return self.tag
-
-    class Meta:
-        verbose_name = "Tag"
-        verbose_name_plural = "Tags"
-
-
-class Field(models.Model):
-    FIELD_TYPES = (
-        ("bin", "Binary"),
-        ("cat", "Category"),
-        ("num", "Numeric"),
-        ("tex", "Text"),
-        ("oth", "Other"),
-    )
-    field = models.CharField(max_length=255)
-    description = models.TextField(null=True, blank=True)
-    is_active = models.BooleanField(default=True)
-    field_type = models.CharField(max_length=20, choices=FIELD_TYPES, default="oth")
-    tags = models.ManyToManyField(Tag, related_name="features", blank=True)
-
-    class Meta:
-        verbose_name = "Field"
-        verbose_name_plural = "Field"
-
-    def __str__(self):
-        return self.field
-
-
-class NormalizedData(models.Model):
-    cycle = models.ForeignKey(Cycle, on_delete=models.CASCADE)
-    dataset = models.ForeignKey(Dataset, on_delete=models.CASCADE)
-    field = models.ForeignKey(Field, on_delete=models.CASCADE)
-    sample = models.IntegerField()
-    sequence = models.IntegerField(default=0)
-    value = models.CharField(max_length=255)
-
-    class Meta:
-        verbose_name_plural = "Normalized Data"
-
-    def __str__(self):
-        return f"{self.cycle.cycle} | {self.dataset.dataset} | {self.field.field}"
-
-
-# ----------------------------------------------------------------------------
-# MODELS FOR MANAGING THE NORMALIZATIONS PROCESS RULES
-# ----------------------------------------------------------------------------
-
-
-class NormalizationRule(models.Model):
-    rule = models.CharField(max_length=255, unique=True)
-    version = models.CharField(max_length=20)
-    folder_path = models.CharField(max_length=500)
-    file_name = models.CharField(max_length=255)
-    source_variables = models.ManyToManyField(Variable, related_name="source_for_rules")
-    destination_fields = models.ManyToManyField(
-        Field, related_name="destination_for_rules"
-    )
-    is_active = models.BooleanField(default=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        unique_together = ("rule", "version")
-        verbose_name_plural = "Normalization Rules"
-
-    def __str__(self):
-        return f"{self.rule} - {self.version}"
-
-
-# ----------------------------------------------------------------------------
-# MODELS FOR MANAGING SYSTEM CONFIGURATION
-# ----------------------------------------------------------------------------
-
-
-# SystemConfig model represents the system configurations.
-class SystemConfig(models.Model):
-    # config_key: The key of the configuration.
-    # config_value: The value of the configuration.
-    config_key = models.CharField(max_length=100, unique=True)
-    config_check = models.BooleanField(default=False)
-    config_value = models.CharField(max_length=255, blank=True, null=True)
-
-    def __str__(self):
-        return self.config_key
-
-
-# ----------------------------------------------------------------------------
 # MODELS FOR MANAGING WORKFLOW CONTROL AND LOGGING
 # ----------------------------------------------------------------------------
 
@@ -382,15 +373,14 @@ class WorkProcess(models.Model):
 
 class WorkProcessMasterData(models.Model):
     COMPONENT_CHOICES = (
-        ("NormalizationRule", "Normalizations Rule"),
+        ("SystemConfig", "System Config"),
         ("Cycle", "Cycle"),
         ("Group", "Group"),
         ("Dataset", "Dataset"),
         ("Variable", "Variable"),
         ("DatasetCycle", "Dataset Cycle"),
         ("VariableCycle", "Variable Cycle"),
-        ("Field", "Field"),
-        ("SystemConfig", "System Config"),
+        ("Rule", "Rule"),
         ("QueryColumns", "Query Columns"),
     )
     STATUS_CHOICES = (
@@ -424,6 +414,7 @@ class WorkProcessMasterData(models.Model):
 class Logs(models.Model):
     STATUS_CODE = (
         ("e", "Error"),
+        ("i", "Information"),
         ("w", "Warning"),
         ("s", "Success"),
     )
@@ -467,21 +458,3 @@ log = Logs.objects.create(
     description='Process completed successfully',
 
 )"""
-
-# ----------------------------------------------------------------------------
-# Instantiate the models
-__all__ = [
-    "SystemConfig",
-    "Cycle",
-    "Group",
-    "Dataset",
-    "Variable",
-    "VariableCycle",
-    "RawData",
-    "QueryStructure",
-    "QueryColumns",
-    "QueryFilter",
-    "Tag",
-    "Field",
-    "NormalizedData",
-]
