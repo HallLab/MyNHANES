@@ -4,11 +4,9 @@ from nhanes.utils.logs import logger, start_logger
 
 
 def check_and_sync_workprocess():
-    # Global Variables
+    # start Log monitor
     log_file = __name__
     v_time_start_process = time.time()
-
-    # Start Log monitor
     log = start_logger(log_file)
     logger(log, "s", "Started Check and Sync WorkProcess")
 
@@ -40,11 +38,9 @@ def check_and_sync_workprocess():
 
 
 def check_and_sync_datasetcycle():
-    # Global Variables
+    # start Log monitor
     log_file = __name__
     v_time_start_process = time.time()
-
-    # Start Log monitor
     log = start_logger(log_file)
     logger(log, "s", "Started Check and Sync DatasetCycle")
 

@@ -6,7 +6,15 @@ import pyreadstat
 from bs4 import BeautifulSoup
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import transaction, IntegrityError
-from nhanes.models import Variable, VariableCycle, Dataset, Cycle, DatasetCycle, RawData # noqa E501
+from nhanes.models import (
+    Version,
+    Variable,
+    VariableCycle,
+    Dataset,
+    Cycle,
+    DatasetCycle,
+    Data
+    )
 from nhanes.utils.logs import logger
 
 
@@ -28,7 +36,7 @@ def _read_xpt_with_multiple_encodings(log, file_path):
         except Exception as e:
             msm = f"Error reading XPT file with encoding {encoding}: {e}"
             logger(log, "e", msm)
-    # If all encodings failed, return None and an error message
+    # if all encodings failed, return None and an error message
     msm = "Failed to read XPT file with all attempted encodings"
     logger(log, "e", msm)
     # return None, msm
@@ -209,6 +217,7 @@ def process_and_save_metadata(
     try:
         qry_dataset = Dataset.objects.get(id=dataset_id)
         qry_cycle = Cycle.objects.get(id=cycle_id)
+        qry_version = Version.objects.get(version='nhanes')
     except ObjectDoesNotExist as e:
         msm = f"Dataset or Cycle not found on process_and_save_metadata function: {e}"
         logger(log, "e", msm)
@@ -221,9 +230,11 @@ def process_and_save_metadata(
                 variable, created = Variable.objects.get_or_create(
                     variable=row['VariableName'],
                     defaults={
-                        'description': row['SASLabel']
+                        'description': row['SASLabel'],
+                        'type': 'oth',
                     }
                 )
+                
                 if load_metadata:
                     DatasetCycle.objects.filter(
                         dataset=qry_dataset,
@@ -236,6 +247,7 @@ def process_and_save_metadata(
                         variable=variable,
                         cycle=qry_cycle,
                         defaults={
+                            'version': qry_version,
                             'variable_name': row['VariableName'],
                             'sas_label': row['SASLabel'],
                             'english_text': row['EnglishText'],
@@ -249,6 +261,7 @@ def process_and_save_metadata(
                         variable=variable,
                         cycle=qry_cycle,
                         defaults={
+                            'version': qry_version,
                             'variable_name': row['VariableName'],
                             'sas_label': row['SASLabel'],
                             'english_text': '',
@@ -274,7 +287,7 @@ def _chunked_bulk_create(objects, chunk_size=1000):
     """
     """
     for i in range(0, len(objects), chunk_size):
-        RawData.objects.bulk_create(objects[i:i + chunk_size])
+        Data.objects.bulk_create(objects[i:i + chunk_size])
 
 
 def save_nhanes_data(log, df, cycle_id, dataset_id):
@@ -283,13 +296,14 @@ def save_nhanes_data(log, df, cycle_id, dataset_id):
     try:
         cycle = Cycle.objects.get(id=cycle_id)
         dataset = Dataset.objects.get(id=dataset_id)
+        version = Version.objects.get(version='nhanes')
     except (Cycle.DoesNotExist, Dataset.DoesNotExist):
         msm = "Dataset or Cycle not found on save_nhanes_data function."
         logger(log, "e", msm)
         return False
 
-    # check if data already exists for this cycle and dataset
-    if RawData.objects.filter(cycle=cycle, dataset=dataset).exists():
+    # check if data already exists for this cycle and dataset for any version
+    if Data.objects.filter(cycle=cycle, dataset=dataset).exists():
         msm = "Data already exists for this cycle and dataset. No updates will \
             be performed."
         logger(log, "w", msm)
@@ -320,7 +334,8 @@ def save_nhanes_data(log, df, cycle_id, dataset_id):
 
     # list comprehension
     to_create = [
-        RawData(
+        Data(
+            version=version,
             cycle=cycle,
             dataset=dataset,
             variable=variable[col_name],

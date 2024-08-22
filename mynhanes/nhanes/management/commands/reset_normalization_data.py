@@ -2,7 +2,7 @@
 
 from django.core.management.base import BaseCommand
 from django.db import connection
-from nhanes.models import NormalizedData
+from nhanes.models import Data
 
 
 class Command(BaseCommand):
@@ -10,7 +10,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         # Deletar todos os dados do modelo NormalizedData
-        NormalizedData.objects.all().delete()
+        Data.objects.filter(version=2).delete()
         self.stdout.write(self.style.SUCCESS('All data deleted from NormalizedData.'))
 
         # Reiniciar o índice auto-increment para a tabela NormalizedData

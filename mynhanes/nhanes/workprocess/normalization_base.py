@@ -2,15 +2,15 @@
 
 from abc import ABC, abstractmethod
 import pandas as pd
-from nhanes.models import Field, NormalizedData, Cycle, Dataset
+from nhanes.models import Variable, Data, Cycle, Dataset, Version
 
 
 class BaseNormalization(ABC):
 
-    def __init__(self, input_df: pd.DataFrame, destination_fields=None):
+    def __init__(self, input_df: pd.DataFrame, target_variable=None):
         self.input_df = input_df
         self.output_df = None
-        self.destination_fields = destination_fields or {}
+        self.target_variable = target_variable or {}
 
     @abstractmethod
     def apply_normalization(self) -> pd.DataFrame:
@@ -35,13 +35,73 @@ class BaseNormalization(ABC):
         if self.output_df is None or self.output_df.empty:
             raise ValueError("O DataFrame de saída está vazio ou é inválido.")
 
-    def execute(self) -> pd.DataFrame:
+    def validate_output_variables(self):
         """
-        Executa a transformação após validar a entrada.
+        Valida se todas as variáveis de destino estão presentes e têm os tipos corretos.
         """
-        self.validate_input()
-        self.output_df = self.apply_normalization()
-        self.validate_output()
+        missing_variables = []
+        for rule_variable in self.target_variable:
+            if rule_variable.variable.variable not in self.output_df.columns:
+                missing_variables.append(rule_variable.variable.variable)
+            else:
+                # Ensure the type is correct (expand this as needed)
+                expected_type = rule_variable.variable.type
+                actual_type = self.output_df[rule_variable.variable.variable].dtype
+                if expected_type == 'num' and not pd.api.types.is_numeric_dtype(actual_type):
+                    raise ValueError(f"Variable {rule_variable.variable.variable} expected to be numeric but got {actual_type}")
+                # Add more type checks as needed
+
+        if missing_variables:
+            raise ValueError(
+                f"As seguintes variáveis de destino estão ausentes no DataFrame resultante: {', '.join(missing_variables)}"
+            )
+        else:
+            print("Todas as variáveis de destino estão presentes no DataFrame resultante com os tipos corretos.")
+
+    # def execute(self) -> pd.DataFrame:
+    #     """
+    #     Executa a transformação após validar a entrada.
+    #     """
+    #     self.validate_input()
+    #     self.output_df = self.apply_normalization()
+    #     self.validate_output()
+    #     return self.output_df
+    def execute(self) -> bool:
+        """
+        Executes the normalization process.
+
+        Returns True if successful, False otherwise.
+        """
+        try:
+            self.validate_input()
+            success = self.apply_normalization()
+            if success:
+                self.validate_output()
+                return True
+            else:
+                return False
+        except Exception as e:
+            print(f"Normalization failed: {e}")
+            return False
+
+    def filter_output_columns(self) -> pd.DataFrame:
+        """
+        Filtra as colunas do output_df para incluir apenas as variáveis de destino e as colunas-chave.
+        """
+        # Lista de colunas-chave que devem sempre estar presentes
+        key_columns = ['version', 'cycle', 'dataset', 'sample', 'sequence']
+
+        # Extrair as variáveis de destino do self.target_variable queryset
+        target_columns = [rule_variable.variable.variable for rule_variable in self.target_variable]
+
+        # Verifica se todas as colunas-chave estão presentes no DataFrame
+        missing_keys = [col for col in key_columns if col not in self.output_df.columns]
+        if missing_keys:
+            raise ValueError(f"As seguintes colunas-chave estão ausentes: {', '.join(missing_keys)}")
+
+        # Filtra o DataFrame para incluir apenas as colunas-chave e de destino
+        self.output_df = self.output_df[key_columns + target_columns]
+
         return self.output_df
 
     def ensure_correct_type(self):
@@ -107,12 +167,12 @@ class BaseNormalization(ABC):
         """
 
         # update Field types if necessary
-        for field_name, field_type in self.destination_fields.items():
-            if field_type == 'oth':
-                field = Field.objects.get(field=field_name)
-                inferred_type = self._infer_type(self.input_df[field_name])
-                field.field_type = inferred_type
-                field.save()
+        for qry in self.target_variable:
+            if qry.variable.type == 'oth':
+                variable = Variable.objects.get(variable=qry.variable)
+                inferred_type = self._infer_type(self.input_df[qry.variable.variable])
+                variable.type = inferred_type
+                variable.save()
         # return only target fields
         return True
 
@@ -140,51 +200,38 @@ class BaseNormalization(ABC):
 
         return 'oth'  # Other
 
-    # save the output data in NormalizedData
-    def save_output_data(self):
+
+    def save_output_data(self, rule):
         """
-        Salva os dados transformados no modelo NormalizedData.
+        Saves the transformed data in the Data model.
         """
-        output_df = self.input_df
+        # Assuming self.output_df is already prepared by apply_normalization()
+        if self.output_df is None or self.output_df.empty:
+            raise ValueError("Output DataFrame is empty or not defined.")
 
-        # Pré-carregar todas as instâncias de Cycle e Dataset necessárias
-        cycle_ids = output_df['cycle'].unique()
-        dataset_ids = output_df['dataset'].unique()
+        qry_version = Version.objects.get(version="normalized")
+        cycle_map = {cycle.id: cycle for cycle in Cycle.objects.filter(id__in=self.output_df['cycle'].unique())}
+        dataset_map = {dataset.id: dataset for dataset in Dataset.objects.filter(id__in=self.output_df['dataset'].unique())}
 
-        cycle_map = {
-            cycle.id: cycle for cycle in Cycle.objects.filter(
-                id__in=cycle_ids
-                )
-            }
-        dataset_map = {
-            dataset.id: dataset for dataset in Dataset.objects.filter(
-                id__in=dataset_ids
-                )
-            }
-
-        # Pré-carregar o campo de destino uma vez
-        field_map = {
-            field.field: field for field in Field.objects.filter(
-                field__in=self.destination_fields.keys())
-                }
-
-        # Lista para armazenar instâncias de NormalizedData a serem criadas em batch
         normalized_data_instances = []
 
-        for _, row in output_df.iterrows():
+        for _, row in self.output_df.iterrows():
             cycle_instance = cycle_map[row['cycle']]
             dataset_instance = dataset_map[row['dataset']]
 
-            for field_name in self.destination_fields:
+            for rule_variable in self.target_variable:
                 normalized_data_instances.append(
-                    NormalizedData(
+                    Data(
+                        version=qry_version,
                         cycle=cycle_instance,
                         dataset=dataset_instance,
-                        field=field_map[field_name],
+                        variable=rule_variable.variable,
                         sample=row['sample'],
                         sequence=row['sequence'],
-                        value=row[field_name]
+                        value=row[rule_variable.variable.variable],
+                        rule_id=rule,
                     )
                 )
 
-        NormalizedData.objects.bulk_create(normalized_data_instances)
+        Data.objects.bulk_create(normalized_data_instances)
+        return True

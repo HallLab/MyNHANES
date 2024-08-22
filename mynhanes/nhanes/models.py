@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
-from mynhanes.core import settings
+from django.conf import settings
 
 v_version = "0.0.3"
 
@@ -118,11 +118,11 @@ class Variable(models.Model):
     tags = models.ManyToManyField(Tag, related_name="features", blank=True)
 
     class Meta:
-        verbose_name = "Field"
-        verbose_name_plural = "Field"
+        verbose_name = "Variable"
+        verbose_name_plural = "Variable"
 
     def __str__(self):
-        return self.field
+        return self.variable
 
 
 class VariableCycle(models.Model):
@@ -177,28 +177,19 @@ class Rule(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     file_path = models.CharField(max_length=500)
     file_script = models.CharField(max_length=255, null=True, blank=True)
-    file_documentation = models.CharField(max_length=255, null=True, blank=True)
     repo_url = models.URLField(blank=True, null=True)
-    source = models.ManyToManyField(
-        Variable,
-        related_name="source_variables"
-        )
-    target = models.ManyToManyField(
-        Variable,
-        related_name="destination_variables"
-        )
 
     class Meta:
         unique_together = ("rule", "version")
-        verbose_name_plural = "Normalization Rules"
+        verbose_name_plural = "Rules"
 
     def __str__(self):
         return f"{self.rule} - {self.version}"
 
     def save(self, *args, **kwargs):
         if not self.pk:  # creating a new rule
-            self.name = self.generate_rule_name()
-            self.path = self.create_rule_directory()
+            self.rule = self.generate_rule_name()
+            self.file_path = self.create_rule_directory()
             self.create_initial_files()
         super().save(*args, **kwargs)
 
@@ -206,17 +197,81 @@ class Rule(models.Model):
         last_rule = Rule.objects.all().order_by('id').last()
         if not last_rule:
             return "rule_00001"
-        rule_number = int(last_rule.name.split('_')[-1]) + 1
+        rule_number = int(last_rule.rule.split('_')[-1]) + 1
         return f"rule_{rule_number:05d}"
 
     def create_rule_directory(self):
-        base_dir = Path(settings.BASE_DIR) / 'normalizations' / self.name
+        base_dir = Path(settings.BASE_DIR) / 'normalizations' / self.rule
         os.makedirs(base_dir, exist_ok=True)
         return str(base_dir)
 
     def create_initial_files(self):
-        rule_file = Path(self.path) / 'rule.py'
+        rule_file = Path(self.file_path) / 'rule.py'
         rule_file.write_text("# Python script for normalization\n\nclass Normalization:\n    def apply(self, df):\n        pass\n")  # noqa E501
+
+
+class RuleVariable(models.Model):
+    rule = models.ForeignKey(Rule, on_delete=models.CASCADE)
+    variable = models.ForeignKey('Variable', on_delete=models.CASCADE)
+    dataset = models.ForeignKey('Dataset', on_delete=models.CASCADE)
+    is_source = models.BooleanField(default=True)  # Distinguishes source from target
+
+    class Meta:
+        unique_together = ("rule", "variable", "dataset", "is_source")
+        verbose_name_plural = "Rule Variables"
+
+    def __str__(self):
+        role = "Source" if self.is_source else "Target"
+        return f"{self.rule.rule} - {role}: {self.variable.variable} in {self.dataset.dataset}"  # noqa E501
+
+
+# class Rule(models.Model):
+#     rule = models.CharField(max_length=255, unique=True)
+#     version = models.CharField(max_length=20)
+#     description = models.TextField(null=True, blank=True)
+#     is_active = models.BooleanField(default=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+#     file_path = models.CharField(max_length=500)
+#     file_script = models.CharField(max_length=255, null=True, blank=True)
+#     repo_url = models.URLField(blank=True, null=True)
+#     source = models.ManyToManyField(
+#         Variable,
+#         related_name="source_variables"
+#         )
+#     target = models.ManyToManyField(
+#         Variable,
+#         related_name="destination_variables"
+#         )
+
+#     class Meta:
+#         unique_together = ("rule", "version")
+#         verbose_name_plural = "Rules"
+
+#     def __str__(self):
+#         return f"{self.rule} - {self.version}"
+
+#     def save(self, *args, **kwargs):
+#         if not self.pk:  # creating a new rule
+#             self.name = self.generate_rule_name()
+#             self.path = self.create_rule_directory()
+#             self.create_initial_files()
+#         super().save(*args, **kwargs)
+
+#     def generate_rule_name(self):
+#         last_rule = Rule.objects.all().order_by('id').last()
+#         if not last_rule:
+#             return "rule_00001"
+#         rule_number = int(last_rule.rule.split('_')[-1]) + 1
+#         return f"rule_{rule_number:05d}"
+
+#     def create_rule_directory(self):
+#         base_dir = Path(settings.BASE_DIR) / 'normalizations' / self.rule
+#         os.makedirs(base_dir, exist_ok=True)
+#         return str(base_dir)
+
+#     def create_initial_files(self):
+#         rule_file = Path(self.path) / 'rule.py'
+#         rule_file.write_text("# Python script for normalization\n\nclass Normalization:\n    def apply(self, df):\n        pass\n")  # noqa E501
 
 
 # ----------------------------------------------------------------------------
@@ -327,6 +382,7 @@ class QueryFilter(models.Model):
 # ----------------------------------------------------------------------------
 
 
+# TODO: Ajustar os nomes de Raw
 # DatasetControl model represents metadata for a dataset.
 class WorkProcess(models.Model):
     STATUS_CHOICES = (

@@ -1,26 +1,42 @@
 # transformations/transformation_1.py
 
 from nhanes.workprocess.normalization_base import BaseNormalization
-import pandas as pd
 
 
 class rule(BaseNormalization):
+    """
+    Rule Name: {rule_name}
+    Version: {version}
+    Description: {description}
 
-    def apply_normalization(self) -> pd.DataFrame:
+    This class applies the following transformations:
+    - Input Variables: {input_variables}
+    - Output Variables: {output_variables}
+
+    The apply_normalization method should implement the logic for this rule.
+    """
+
+    def apply_normalization(self) -> bool:
         """
-        Doble the age
+        Apply normalization transformations.
 
-        Input: RIDAGEYR
-
-        Output: Age
-
+        This method modifies self.output_df and returns True if successful.
         """
-        # method to ensure the correct type
+
+        # Ensuring correct types for the input variables
         self.convert_to_type()
 
-        # apply the transformation
-        self.input_df['AGE'] = self.input_df['RIDAGEYR'] * 4
-        self.input_df['AGE2X'] = self.input_df['RIDAGEYR'] * 2
+        # Create a copy of the input DataFrame to work with
+        self.output_df = self.input_df.copy()
 
-        # return the output
-        return self.input_df[['AGE', 'AGE2X']]
+        # Example transformation: Doubling the age
+        self.output_df['IDADE'] = self.output_df['RIDAGEYR'] * 2
+
+        # Validate that all output variables are present
+        self.validate_output_variables()
+
+        # Filter the output DataFrame to include only the target columns
+        self.filter_output_columns()
+
+        # If everything went well, return True
+        return True

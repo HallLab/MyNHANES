@@ -6,16 +6,16 @@ from pathlib import Path
 from io import StringIO
 from django.db import transaction
 from nhanes.models import (
+    SystemConfig,
+    Version,
     Cycle,
     Dataset,
     Group,
-    SystemConfig,
     WorkProcessMasterData,
     Variable,
     VariableCycle,
     DatasetCycle,
-    Field,
-    NormalizationRule,
+    Rule,
     QueryColumns,
 )
 from nhanes.utils.logs import logger, start_logger
@@ -37,7 +37,7 @@ def _get_data(BASE_URL, file_name, log):
         or None if an error occurred.
     """
     try:
-        # Read data from CSV file
+        # read data from CSV file
         if "https://raw.githubusercontent.com/" in BASE_URL:
             # Read from GitHub
             response = requests.get(BASE_URL + file_name)
@@ -140,8 +140,8 @@ def masterdata_import():
 
     # check repository of masterdata
     qs_sys_repo = SystemConfig.objects.filter(
-        config_key='masterdata_repository',
-        config_check=True
+        key='masterdata_repository',
+        status=True
         )
     if qs_sys_repo.exists():
         BASE_URL = qs_sys_repo.first().config_value
@@ -150,15 +150,15 @@ def masterdata_import():
 
     # define paramets to import
     MODELS_TO_FILES = {
-        'system_config.csv': (SystemConfig, 'config_key'),
+        'system_config.csv': (SystemConfig, 'key'),
+        'versions.csv': (Version, 'version'),
         'cycles.csv': (Cycle, 'cycle'),
         'groups.csv': (Group, 'group'),
         'datasets.csv': (Dataset, 'dataset'),
         'variables.csv': (Variable, 'variable'),
         'variable_cycles.csv': (VariableCycle, ['variable', 'cycle']),
         'dataset_cycles.csv': (DatasetCycle, ['dataset', 'cycle']),
-        'fields.csv': (Field, 'field'),
-        'normalization_rules.csv': (NormalizationRule, ['rule', 'version']),
+        'rules.csv': (Rule, ['rule', 'version']),
         'query_columns.csv': (QueryColumns, ['column_name']),
     }
 
@@ -197,9 +197,9 @@ def masterdata_import():
                     if file_name == "system_config.csv":
                         if not model.objects.filter(**filter_kwargs).exists():
                             model.objects.create(
-                                config_key=row['config_key'],
-                                config_check=row['config_check'],
-                                config_value=row['config_value']
+                                key=row['key'],
+                                status=row['status'],
+                                value=row['value']
                             )
 
                     elif file_name == "datasets.csv":
@@ -230,11 +230,16 @@ def masterdata_import():
                     elif file_name == "variable_cycles.csv":
                         if not model.objects.filter(
                             variable_id__variable=filter_kwargs['variable'],
-                            cycle_id__cycle=filter_kwargs['cycle']
+                            cycle_id__cycle=filter_kwargs['cycle'],
+                            # version_id__version=filter_kwargs['version']
+                            version_id__version='nhanes'
+
                         ).exists():
                             cycle = Cycle.objects.get(cycle=row['cycle'])
                             variable = Variable.objects.get(variable=row['variable'])
+                            version = Version.objects.get(version='nhanes')
                             model.objects.create(
+                                version=version,
                                 cycle=cycle,
                                 variable=variable,
                                 variable_name=row['variable_name'],

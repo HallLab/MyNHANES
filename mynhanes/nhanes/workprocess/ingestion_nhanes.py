@@ -12,11 +12,9 @@ from nhanes.utils.logs import logger, start_logger
 
 def ingestion_nhanes(load_type=str('db')):
 
-    # Global Variables
+    # start Log monitor
     log_file = __name__
     v_time_start_process = time.time()
-
-    # Start Log monitor
     log = start_logger(log_file)
     logger(log, "s", "Started WorkProcess to Ingestion NHANES Data")
 
@@ -28,7 +26,7 @@ def ingestion_nhanes(load_type=str('db')):
 
     # get the SystemConfig object for the load_metadata key
     qry_load_metadata = SystemConfig.objects.filter(
-        config_key='load_metadata'
+        key='load_metadata'
     ).first()
     if qry_load_metadata is None:
         msm = "load_metadata key not found in SystemConfig table."
@@ -37,14 +35,14 @@ def ingestion_nhanes(load_type=str('db')):
 
     # get the SystemConfig object for the download_path key
     qry_download_path = SystemConfig.objects.filter(
-        config_key='download_path', config_check=True
+        key='download_path', status=True
     ).first()
     if qry_download_path is None:
         download_path = Path(settings.BASE_DIR)
         msm = f"Path to download files not found in SystemConfig table. Using {download_path}." # noqa E501
         logger(log, "i", msm)
     else:
-        download_path = Path(qry_download_path.config_value)
+        download_path = Path(qry_download_path.value)
         msm = f"Path to download files: {download_path}."
         logger(log, "i", msm)
 
@@ -183,7 +181,7 @@ def ingestion_nhanes(load_type=str('db')):
                 df_metadata,
                 dataset_id=qry_workprocess.dataset.id,
                 cycle_id=qry_workprocess.cycle.id,
-                load_metadata=qry_load_metadata.config_check,
+                load_metadata=qry_load_metadata.status,
                 dataset_cycle_url=url,
                 dataset_cycle_description=""  # TODO: Extract JSON from HTML (_parse_nhanes_html_docfile) # noqa E501
                 )
@@ -215,7 +213,7 @@ def ingestion_nhanes(load_type=str('db')):
             qry_workprocess.time_raw = time_dataset
             qry_workprocess.chk_raw = True
             qry_workprocess.chk_normalization = False
-            qry_workprocess.status = 'standby'
+            qry_workprocess.status = 'complete'
             qry_workprocess.records_raw = df.shape[0]
             qry_workprocess.n_samples = df.shape[0]
             qry_workprocess.save()

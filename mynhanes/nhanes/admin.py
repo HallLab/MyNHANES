@@ -2,6 +2,7 @@ import json
 from django.contrib import admin
 from django.utils.html import format_html
 from .models import (
+    Version,
     Cycle,
     Group,
     Dataset,
@@ -9,26 +10,30 @@ from .models import (
     VariableCycle,
     DatasetCycle,
     SystemConfig,
-    RawData,
-    QueryColumns,
-    QueryStructure,
-    QueryFilter,
-    Field,
+    Data,
+    # QueryColumns,
+    # QueryStructure,
+    # QueryFilter,
     Tag,
-    NormalizedData,
-    NormalizationRule,
+    Rule,
+    RuleVariable,
     WorkProcess,
     WorkProcessMasterData,
     Logs,
 )
-from nhanes.services import query
-from django.urls import path
-from django.http import HttpResponseRedirect
-from django.core.management import call_command
-from django.contrib import messages
+# from nhanes.services import query
+# from django.urls import path
+# from django.http import HttpResponseRedirect
+# from django.core.management import call_command
+# from django.contrib import messages
+
+from django import forms
+from django.urls import reverse
+from django.utils.safestring import mark_safe
 
 
-# from .services import query
+class VersionAdmin(admin.ModelAdmin):
+    model = Version
 
 
 class CycleAdmin(admin.ModelAdmin):
@@ -57,12 +62,15 @@ class VariableAdmin(admin.ModelAdmin):
     list_display = (
         "variable",
         "description",
+        "is_active",
+        "type",
     )
     search_fields = ("variable", "description")
 
 
 class VariableCycleAdmin(admin.ModelAdmin):
     list_display = (
+        "version",
         "cycle",
         "variable_name",
         "sas_label",
@@ -97,42 +105,38 @@ class SystemConfigAdmin(admin.ModelAdmin):
     model = SystemConfig
 
 
-class RawDataAdmin(admin.ModelAdmin):
-    model = RawData
-
-
-class FieldAdmin(admin.ModelAdmin):
-    model = Field
+class DataAdmin(admin.ModelAdmin):
+    model = Data
 
 
 class TagAdmin(admin.ModelAdmin):
     model = Tag
 
 
+# # class NormalizedDataAdmin(admin.ModelAdmin):
+# #     model = NormalizedData
+# @admin.register(NormalizedData)
 # class NormalizedDataAdmin(admin.ModelAdmin):
-#     model = NormalizedData
-@admin.register(NormalizedData)
-class NormalizedDataAdmin(admin.ModelAdmin):
-    list_display = ('cycle', 'dataset', 'field', 'sample', 'sequence', 'value')
+#     list_display = ('cycle', 'dataset', 'field', 'sample', 'sequence', 'value')
 
-    def get_urls(self):
-        urls = super().get_urls()
-        custom_urls = [
-            path('reset-normalizationdata/', self.reset_normalizationdata),
-        ]
-        return custom_urls + urls
+#     def get_urls(self):
+#         urls = super().get_urls()
+#         custom_urls = [
+#             path('reset-normalizationdata/', self.reset_normalizationdata),
+#         ]
+#         return custom_urls + urls
 
-    def reset_normalizationdata(self, request):
-        try:
-            call_command('reset_normalizationdata')
-            self.message_user(request, 'All data and auto-increment ID for NormalizedData have been reset.', messages.SUCCESS)
-        except Exception as e:
-            self.message_user(request, f'Error: {str(e)}', messages.ERROR)
-        return HttpResponseRedirect("../")
+#     def reset_normalizationdata(self, request):
+#         try:
+#             call_command('reset_normalizationdata')
+#             self.message_user(request, 'All data and auto-increment ID for NormalizedData have been reset.', messages.SUCCESS)  # noqa E501
+#         except Exception as e:
+#             self.message_user(request, f'Error: {str(e)}', messages.ERROR)
+#         return HttpResponseRedirect("../")
 
 
-class NormalizationRuleAdmin(admin.ModelAdmin):
-    model = NormalizationRule
+# class RuleAdmin(admin.ModelAdmin):
+#     model = Rule
 
 
 # class WorkProcessMasterDataAdmin(admin.ModelAdmin):
@@ -202,30 +206,74 @@ class LogsAdmin(admin.ModelAdmin):
     model = Logs
 
 
-class QueryColumnAdmin(admin.ModelAdmin):
-    list_display = ("column_name", "internal_data_key", "column_description")
-    search_fields = ("column_name", "column_description")
+# class QueryColumnAdmin(admin.ModelAdmin):
+#     list_display = ("column_name", "internal_data_key", "column_description")
+#     search_fields = ("column_name", "column_description")
 
 
-class QueryFilterInline(admin.TabularInline):
-    model = QueryFilter
-    extra = 0  # Define number of extra forms to display
+# class QueryFilterInline(admin.TabularInline):
+#     model = QueryFilter
+#     extra = 0  # Define number of extra forms to display
 
 
-class QueryStructureAdmin(admin.ModelAdmin):
-    list_display = ("structure_name", "no_conflict", "no_multi_index")
-    list_editable = (
-        "no_conflict",
-        "no_multi_index",
-    )
-    search_fields = ("structure_name",)
-    # Easy access to the filters
-    filter_horizontal = ("columns",)
-    # Add filters to the QueryStructure page
-    inlines = [QueryFilterInline]
-    # Add actions to the QueryStructure page
-    # actions = [download_query_results]
-    actions = [query.download_data_report]
+# class QueryStructureAdmin(admin.ModelAdmin):
+#     list_display = ("structure_name", "no_conflict", "no_multi_index")
+#     list_editable = (
+#         "no_conflict",
+#         "no_multi_index",
+#     )
+#     search_fields = ("structure_name",)
+#     # Easy access to the filters
+#     filter_horizontal = ("columns",)
+#     # Add filters to the QueryStructure page
+#     inlines = [QueryFilterInline]
+#     # Add actions to the QueryStructure page
+#     # actions = [download_query_results]
+#     actions = [query.download_data_report]
+
+
+class RuleVariableForm(forms.ModelForm):
+    class Meta:
+        model = RuleVariable
+        fields = '__all__'
+
+    class Media:
+        js = ('nhanes/js/rulevariable_dynamic.js',)
+
+
+class RuleVariableInline(admin.TabularInline):
+    model = RuleVariable
+    extra = 1
+    verbose_name = "Variable Mapping"
+    verbose_name_plural = "Variable Mappings"
+
+
+class RuleAdmin(admin.ModelAdmin):
+    list_display = ('rule', 'version', 'is_active', 'updated_at')
+    search_fields = ('rule', 'description')
+    list_filter = ('is_active', 'updated_at')
+    inlines = [RuleVariableInline]
+
+
+# class RuleVariableAdmin(admin.ModelAdmin):
+#     list_display = ('rule', 'variable', 'dataset', 'is_source')
+#     search_fields = ('rule__rule', 'variable__variable', 'dataset__dataset')
+#     list_filter = ('is_source', 'rule__is_active')
+
+
+class RuleVariableAdmin(admin.ModelAdmin):
+    form = RuleVariableForm
+    list_display = ('rule', 'variable', 'dataset', 'is_source')
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "dataset":
+            kwargs["queryset"] = Dataset.objects.none()
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        # Fazer pré-carregamento de objetos se necessário
+        return qs
 
 
 admin.site.register(Cycle, CycleAdmin)
@@ -235,17 +283,18 @@ admin.site.register(Variable, VariableAdmin)
 admin.site.register(VariableCycle, VariableCycleAdmin)
 admin.site.register(DatasetCycle, DatasetCycleAdmin)
 admin.site.register(SystemConfig, SystemConfigAdmin)
-admin.site.register(RawData, RawDataAdmin)
-admin.site.register(QueryColumns, QueryColumnAdmin)
-admin.site.register(QueryStructure, QueryStructureAdmin)
+admin.site.register(Data, DataAdmin)
+# admin.site.register(QueryColumns, QueryColumnAdmin)
+# admin.site.register(QueryStructure, QueryStructureAdmin)
 # admin.site.register(QueryFilter, QueryFilterAdmin)
-admin.site.register(Field, FieldAdmin)
 admin.site.register(Tag, TagAdmin)
 # admin.site.register(NormalizedData, NormalizedDataAdmin)
-admin.site.register(NormalizationRule, NormalizationRuleAdmin)
+admin.site.register(Rule, RuleAdmin)
+admin.site.register(RuleVariable, RuleVariableAdmin)
 admin.site.register(WorkProcess, WorkProcessAdmin)
 admin.site.register(WorkProcessMasterData, WorkProcessMasterDataAdmin)
 admin.site.register(Logs, LogsAdmin)
+admin.site.register(Version, VersionAdmin)
 
 
 # class DatasetControlAdmin(admin.ModelAdmin):
@@ -315,6 +364,3 @@ admin.site.register(Logs, LogsAdmin)
 #     def get_queryset(self, request):
 #         queryset = super().get_queryset(request)
 #         return queryset.select_related("dataset", "cycle", "dataset__group")
-
-
-

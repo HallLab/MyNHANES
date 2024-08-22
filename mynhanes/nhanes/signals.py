@@ -1,6 +1,6 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from nhanes.models import WorkProcess, RawData, SystemConfig, Dataset, Cycle
+from nhanes.models import WorkProcess, Data, SystemConfig, Dataset, Cycle
 from nhanes.utils.logs import logger, start_logger
 
 
@@ -14,8 +14,8 @@ def handle_deletion(sender, instance, **kwargs):
         logger(log, "s", "Deleting data due to status 'delete'.")
 
         try:
-            # Attempt to delete the RawData
-            deleted_count, _ = RawData.objects.filter(
+            # Attempt to delete the Data
+            deleted_count, _ = Data.objects.filter(
                 dataset=instance.dataset,
                 cycle=instance.cycle
             ).delete()
