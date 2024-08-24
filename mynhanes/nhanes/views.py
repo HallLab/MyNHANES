@@ -13,6 +13,12 @@ def get_datasets_for_variable(request):
     datasets_data = [{'id': ds.id, 'name': ds.dataset} for ds in datasets]
     return JsonResponse(datasets_data, safe=False)
 
+# def get_datasets(request):
+#     variable_id = request.GET.get('variable_id')
+#     datasets = Data.objects.filter(data__variable_id=variable_id).distinct()
+#     dataset_list = [{'id': ds.id, 'name': ds.dataset} for ds in datasets]
+#     return JsonResponse({'datasets': dataset_list})
+
 """
 Como Funciona:
 View e URL: A view get_datasets_for_variable retorna os Datasets disponíveis para a Variable selecionada.

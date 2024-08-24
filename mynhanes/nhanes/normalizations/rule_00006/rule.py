@@ -4,13 +4,13 @@ from nhanes.utils.logs import logger
 
 class rule(BaseNormalization):
     """
-    Rule Name: rule_00002
+    Rule Name: rule_00006
     Version: 0.0.0
     Description: teste
 
     This class applies the following transformations:
-    - Input Variables: RIDAGEYR
-    - Output Variables: IDADE
+    - Input Variables: RIDSTATR
+    - Output Variables: 
 
     The apply_normalization method should implement the logic for this rule.
     """
@@ -31,6 +31,5 @@ class rule(BaseNormalization):
         # ----------------------------------------
         # END YOUR TRANSFORMATIONS HERE
         # ----------------------------------------
-
 
         return True

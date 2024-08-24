@@ -22,7 +22,6 @@ class rule(BaseNormalization):
         logger(self.log, "e", msg)
 
         # example transformation: Doubling the age
-        # self.df_out['IDADE'] = self.df_out['RIDAGEYR'] * 2
-        # Teste
+        self.df_out['IDADE'] = self.df_out['RIDAGEYR'] * 2
 
         return True

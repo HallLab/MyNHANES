@@ -7,7 +7,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         manager = NormalizationManager()
-        manager.apply_all_transformations()
+        manager.apply_transformations()
         self.stdout.write(self.style.SUCCESS('Transformações aplicadas com sucesso'))
 
 

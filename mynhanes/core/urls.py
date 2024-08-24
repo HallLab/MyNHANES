@@ -18,6 +18,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include  # Certifique-se de importar 'include'
 
+admin.site.site_header = "MyNHANES admin"
+admin.site.site_title = "Custom MyNHANES admin site"
+admin.site.index_title = "Custom MyNHANES Admin"
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("nhanes/", include("nhanes.urls")),  # Inclui as URLs do app nhanes

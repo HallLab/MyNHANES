@@ -1,5 +1,8 @@
+import os
 import json
-from django.contrib import admin
+from pathlib import Path
+from django.conf import settings
+from django.contrib import admin, messages
 from django.utils.html import format_html
 from .models import (
     Version,
@@ -18,6 +21,7 @@ from .models import (
     Rule,
     RuleVariable,
     WorkProcess,
+    WorkProcessRule,
     WorkProcessMasterData,
     Logs,
 )
@@ -28,8 +32,13 @@ from .models import (
 # from django.contrib import messages
 
 from django import forms
-from django.urls import reverse
+# from django.urls import reverse
 from django.utils.safestring import mark_safe
+from nhanes.services.rule_manager import setup_rule
+from nhanes.workprocess.normalization_manager import NormalizationManager
+from nhanes.utils.start_jupyter import start_jupyter_notebook
+from django.shortcuts import redirect
+from django.urls import path
 
 
 class VersionAdmin(admin.ModelAdmin):
@@ -232,6 +241,37 @@ class LogsAdmin(admin.ModelAdmin):
 #     actions = [query.download_data_report]
 
 
+# ----------------------------------
+# Transformations Rule Admin
+# ----------------------------------
+
+@admin.action(description='Setup Rule Directories and Files')
+def setup_rules(modeladmin, request, queryset):
+    for rule in queryset:
+        try:
+            # call rule_manager
+            result = setup_rule(rule)
+            if result:
+                messages.success(
+                    request,
+                    f"Files for rule '{rule.rule}' created successfully."
+                    )
+            else:
+                messages.warning(
+                    request,
+                    f"Files for rule '{rule.rule}' already exist."
+                    )
+        except Exception as e:
+            messages.error(
+                request,
+                f"Error creating files for rule '{rule.rule}': {str(e)}"
+                )
+# setup_rules.short_description = "Generate rule files"
+
+
+# TODO: A funcionalizade de filtro dimaninco nao esta funcionando em admin
+# TODO: tirar a opcap de selecionar a pasta, deixar fixa na normalizacao
+
 class RuleVariableForm(forms.ModelForm):
     class Meta:
         model = RuleVariable
@@ -241,29 +281,12 @@ class RuleVariableForm(forms.ModelForm):
         js = ('nhanes/js/rulevariable_dynamic.js',)
 
 
-class RuleVariableInline(admin.TabularInline):
-    model = RuleVariable
-    extra = 1
-    verbose_name = "Variable Mapping"
-    verbose_name_plural = "Variable Mappings"
-
-
-class RuleAdmin(admin.ModelAdmin):
-    list_display = ('rule', 'version', 'is_active', 'updated_at')
-    search_fields = ('rule', 'description')
-    list_filter = ('is_active', 'updated_at')
-    inlines = [RuleVariableInline]
-
-
-# class RuleVariableAdmin(admin.ModelAdmin):
-#     list_display = ('rule', 'variable', 'dataset', 'is_source')
-#     search_fields = ('rule__rule', 'variable__variable', 'dataset__dataset')
-#     list_filter = ('is_source', 'rule__is_active')
-
-
 class RuleVariableAdmin(admin.ModelAdmin):
     form = RuleVariableForm
     list_display = ('rule', 'variable', 'dataset', 'is_source')
+
+    class Media:
+        js = ('nhanes/js/rulevariable_dynamic.js',)
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "dataset":
@@ -272,10 +295,126 @@ class RuleVariableAdmin(admin.ModelAdmin):
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
-        # Fazer pré-carregamento de objetos se necessário
         return qs
 
 
+class RuleVariableInline(admin.TabularInline):
+    model = RuleVariable
+    extra = 1
+    verbose_name = "Variable Mapping"
+    verbose_name_plural = "Variable Mappings"
+
+
+class RuleForm(forms.ModelForm):
+    class Meta:
+        model = Rule
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not self.instance.pk:
+            self.fields['rule'].initial = Rule().generate_rule_name()
+
+
+class RuleAdmin(admin.ModelAdmin):
+    form = RuleForm
+    list_display = ('rule', 'version', 'is_active', 'open_jupyter_link')
+    search_fields = ('rule', 'description')
+    list_filter = ('is_active', 'updated_at')
+    inlines = [RuleVariableInline]
+    actions = [setup_rules]
+
+    # controler to ensure that Jupyter starts only once
+    jupyter_started = False
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not RuleAdmin.jupyter_started:
+            start_jupyter_notebook()
+            RuleAdmin.jupyter_started = True
+
+    def open_jupyter_link(self, obj):
+        link = f"http://127.0.0.1:8888/edit/nhanes/normalizations/{obj.rule}/{obj.file_script}"
+        return mark_safe(f'<a href="{link}" target="_blank">Edit in Jupyter</a>')
+
+    open_jupyter_link.short_description = "Edit in Jupyter"
+
+
+# ----------------------------------
+# Work Process Rule Admin
+# ----------------------------------
+
+class WorkProcessRuleAdmin(admin.ModelAdmin):
+    list_display = (
+        'rule',
+        'status',
+        'last_synced_at',
+        'execution_time',
+        'attempt_count'
+        )
+    list_filter = ('status', 'last_synced_at')
+    search_fields = ('rule__rule',)
+    readonly_fields = ('last_synced_at', 'execution_time', 'attempt_count')
+    actions = [
+        'set_complete',
+        'set_standby',
+        'set_pending',
+        'run_rule_data',
+        'drop_rule_data'
+        ]
+
+    def set_complete(self, request, queryset):
+        rows_updated = queryset.update(status='complete')
+        if rows_updated == 1:
+            message_bit = "1 work process rule was"
+        else:
+            message_bit = f"{rows_updated} work process rules were"
+        self.message_user(request, f"{message_bit} successfully marked as complete.")
+
+    def set_standby(self, request, queryset):
+        rows_updated = queryset.update(status='standby')
+        if rows_updated == 1:
+            message_bit = "1 work process rule was"
+        else:
+            message_bit = f"{rows_updated} work process rules were"
+        self.message_user(request, f"{message_bit} successfully marked as standby.")
+
+    def set_pending(self, request, queryset):
+        rows_updated = queryset.update(status='pending')
+        if rows_updated == 1:
+            message_bit = "1 work process rule was"
+        else:
+            message_bit = f"{rows_updated} work process rules were"
+        self.message_user(request, f"{message_bit} successfully reset to pending.")
+
+    def run_rule_data(self, request, queryset):
+
+        selected_rules = queryset.values_list('rule', flat=True)
+        rules_to_run = Rule.objects.filter(id__in=selected_rules)
+        normalization_manager = NormalizationManager(rules=rules_to_run)
+        normalization_manager.apply_transformations()
+        msg = f"Normalization applied for {rules_to_run.count()} selected rules."
+        self.message_user(request, msg)
+
+    def drop_rule_data(modeladmin, request, queryset):
+        for work_process_rule in queryset:
+            # drop all data associated with the rule in the Data table
+            Data.objects.filter(rule_id=work_process_rule.rule).delete()
+            # update the status of the WorkProcessRule to 'pending'
+            msg = "Data deleted and status reset to pending."
+            work_process_rule.status = 'pending'
+            work_process_rule.execution_logs = msg
+            work_process_rule.save()
+        modeladmin.message_user(request, msg)
+
+    set_complete.short_description = "Set selected rules as complete"
+    set_standby.short_description = "Set selected rules as standby"
+    set_pending.short_description = "set selected rules to pending"
+    run_rule_data.short_description = "Run selected rules"
+    drop_rule_data.short_description = "Delete data and reset rule status"
+
+
+admin.site.register(WorkProcessRule, WorkProcessRuleAdmin)
 admin.site.register(Cycle, CycleAdmin)
 admin.site.register(Group, GroupAdmin)
 admin.site.register(Dataset, DatasetAdmin)

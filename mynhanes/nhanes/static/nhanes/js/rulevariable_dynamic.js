@@ -27,3 +27,30 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+// (function ($) {
+//     $(document).ready(function () {
+//         $('#id_variable').change(function () {
+//             var variableId = $(this).val();
+//             if (variableId) {
+//                 $.ajax({
+//                     url: '/nhanes/get_datasets/',  // A URL para a view que buscará os datasets
+//                     data: {
+//                         'variable_id': variableId
+//                     },
+//                     success: function (data) {
+//                         var datasetSelect = $('#id_dataset');
+//                         datasetSelect.empty();
+//                         $.each(data.datasets, function (index, dataset) {
+//                             datasetSelect.append(
+//                                 $('<option></option>').attr('value', dataset.id).text(dataset.name)
+//                             );
+//                         });
+//                     }
+//                 });
+//             } else {
+//                 $('#id_dataset').empty();
+//             }
+//         });
+//     });
+// })(django.jQuery);

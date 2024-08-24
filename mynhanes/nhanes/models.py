@@ -1,10 +1,10 @@
-import os
-from pathlib import Path
+# import os
+# from pathlib import Path
 from django.db import models
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
-from django.conf import settings
+# from django.conf import settings
 
 v_version = "0.0.3"
 
@@ -189,9 +189,10 @@ class Rule(models.Model):
     def save(self, *args, **kwargs):
         if not self.pk:  # creating a new rule
             self.rule = self.generate_rule_name()
-            self.file_path = self.create_rule_directory()
-            self.create_initial_files()
         super().save(*args, **kwargs)
+
+        # after saving the rule, check or create the corresponding WorkProcessRule
+        self.check_or_create_work_process_rule()
 
     def generate_rule_name(self):
         last_rule = Rule.objects.all().order_by('id').last()
@@ -200,14 +201,14 @@ class Rule(models.Model):
         rule_number = int(last_rule.rule.split('_')[-1]) + 1
         return f"rule_{rule_number:05d}"
 
-    def create_rule_directory(self):
-        base_dir = Path(settings.BASE_DIR) / 'normalizations' / self.rule
-        os.makedirs(base_dir, exist_ok=True)
-        return str(base_dir)
-
-    def create_initial_files(self):
-        rule_file = Path(self.file_path) / 'rule.py'
-        rule_file.write_text("# Python script for normalization\n\nclass Normalization:\n    def apply(self, df):\n        pass\n")  # noqa E501
+    def check_or_create_work_process_rule(self):
+        # check if there is already a WorkProcessRule for this rule
+        work_process_rule, created = WorkProcessRule.objects.get_or_create(rule=self)
+        if created:
+            work_process_rule.status = "pending"
+            work_process_rule.execution_logs = "new rule created"
+            work_process_rule.save()
+        return work_process_rule
 
 
 class RuleVariable(models.Model):
@@ -223,55 +224,6 @@ class RuleVariable(models.Model):
     def __str__(self):
         role = "Source" if self.is_source else "Target"
         return f"{self.rule.rule} - {role}: {self.variable.variable} in {self.dataset.dataset}"  # noqa E501
-
-
-# class Rule(models.Model):
-#     rule = models.CharField(max_length=255, unique=True)
-#     version = models.CharField(max_length=20)
-#     description = models.TextField(null=True, blank=True)
-#     is_active = models.BooleanField(default=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-#     file_path = models.CharField(max_length=500)
-#     file_script = models.CharField(max_length=255, null=True, blank=True)
-#     repo_url = models.URLField(blank=True, null=True)
-#     source = models.ManyToManyField(
-#         Variable,
-#         related_name="source_variables"
-#         )
-#     target = models.ManyToManyField(
-#         Variable,
-#         related_name="destination_variables"
-#         )
-
-#     class Meta:
-#         unique_together = ("rule", "version")
-#         verbose_name_plural = "Rules"
-
-#     def __str__(self):
-#         return f"{self.rule} - {self.version}"
-
-#     def save(self, *args, **kwargs):
-#         if not self.pk:  # creating a new rule
-#             self.name = self.generate_rule_name()
-#             self.path = self.create_rule_directory()
-#             self.create_initial_files()
-#         super().save(*args, **kwargs)
-
-#     def generate_rule_name(self):
-#         last_rule = Rule.objects.all().order_by('id').last()
-#         if not last_rule:
-#             return "rule_00001"
-#         rule_number = int(last_rule.rule.split('_')[-1]) + 1
-#         return f"rule_{rule_number:05d}"
-
-#     def create_rule_directory(self):
-#         base_dir = Path(settings.BASE_DIR) / 'normalizations' / self.rule
-#         os.makedirs(base_dir, exist_ok=True)
-#         return str(base_dir)
-
-#     def create_initial_files(self):
-#         rule_file = Path(self.path) / 'rule.py'
-#         rule_file.write_text("# Python script for normalization\n\nclass Normalization:\n    def apply(self, df):\n        pass\n")  # noqa E501
 
 
 # ----------------------------------------------------------------------------
@@ -465,6 +417,30 @@ class WorkProcessMasterData(models.Model):
         return (
             f"Update for {self.get_component_type_display()} on {self.last_synced_at}"
         )
+
+
+class WorkProcessRule(models.Model):
+    STATUS_CHOICES = (
+        ("pending", "Pending"),
+        ("complete", "Complete"),
+        ("error", "Error"),
+        ("delete", "Delete"),
+        ("standby", "Stand By"),
+    )
+    rule = models.OneToOneField(Rule, on_delete=models.CASCADE)
+    last_synced_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="pending")
+    execution_logs = models.TextField(null=True, blank=True)
+    execution_time = models.DurationField(null=True, blank=True)
+    attempt_count = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        verbose_name_plural = "Work Process Rule"
+
+    # def __str__(self):
+    #     return (
+    #         f"Update for {self.get_component_type_display()} on {self.last_synced_at}"
+    #     )
 
 
 class Logs(models.Model):

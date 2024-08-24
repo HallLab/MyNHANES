@@ -8,4 +8,5 @@ urlpatterns = [
         views.get_datasets_for_variable,
         name='get_datasets_for_variable'
         ),
+    # path('get_datasets/', views.get_datasets, name='get_datasets'),
     ]
