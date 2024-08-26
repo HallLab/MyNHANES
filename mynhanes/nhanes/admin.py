@@ -1,7 +1,4 @@
-import os
 import json
-from pathlib import Path
-from django.conf import settings
 from django.contrib import admin, messages
 from django.utils.html import format_html
 from .models import (
@@ -13,9 +10,9 @@ from .models import (
     VariableCycle,
     DatasetCycle,
     Data,
-    # QueryColumns,
-    # QueryStructure,
-    # QueryFilter,
+    QueryColumns,
+    QueryStructure,
+    QueryFilter,
     Tag,
     Rule,
     RuleVariable,
@@ -24,7 +21,7 @@ from .models import (
     WorkProcessMasterData,
     Logs,
 )
-# from nhanes.services import query
+from nhanes.services import query
 # from django.urls import path
 # from django.http import HttpResponseRedirect
 # from django.core.management import call_command
@@ -32,12 +29,17 @@ from .models import (
 
 from django import forms
 # from django.urls import reverse
-from django.utils.safestring import mark_safe
+# from django.utils.safestring import mark_safe
 from nhanes.services.rule_manager import setup_rule
 from nhanes.workprocess.transformation_manager import TransformationManager
-from nhanes.utils.start_jupyter import start_jupyter_notebook
-from django.shortcuts import redirect
-from django.urls import path
+# from nhanes.utils.start_jupyter import start_jupyter_notebook
+# from django.shortcuts import redirect
+# from django.urls import path
+
+
+# ----------------------------------
+# NHANES ADMIN
+# ----------------------------------
 
 
 class VersionAdmin(admin.ModelAdmin):
@@ -106,142 +108,60 @@ class VariableCycleAdmin(admin.ModelAdmin):
 
 
 class DatasetCycleAdmin(admin.ModelAdmin):
-    model = DatasetCycle
+    list_display = ('cycle', 'dataset', 'metadata_url', 'has_special_year_code', 'has_dataset')  # noqa E501
+    search_fields = ('dataset__dataset', 'cycle__cycle', 'metadata_url')
+    list_filter = ('cycle', 'dataset', 'has_special_year_code', 'has_dataset')
 
-
-# class SystemConfigAdmin(admin.ModelAdmin):
-#     model = SystemConfig
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        queryset = queryset.select_related('dataset', 'cycle')
+        return queryset
 
 
 class DataAdmin(admin.ModelAdmin):
-    model = Data
+    list_display = ('version', 'cycle', 'dataset', 'variable', 'sample', 'sequence', 'rule_id', 'value')  # noqa E501
+    search_fields = ('dataset__dataset', 'cycle__cycle', 'variable__variable', 'value')
+    list_filter = ('cycle', 'dataset', 'version', 'variable')
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        queryset = queryset.select_related('version', 'dataset', 'cycle', 'variable')
+        return queryset
 
 
 class TagAdmin(admin.ModelAdmin):
     model = Tag
 
 
-# # class NormalizedDataAdmin(admin.ModelAdmin):
-# #     model = NormalizedData
-# @admin.register(NormalizedData)
-# class NormalizedDataAdmin(admin.ModelAdmin):
-#     list_display = ('cycle', 'dataset', 'field', 'sample', 'sequence', 'value')
-
-#     def get_urls(self):
-#         urls = super().get_urls()
-#         custom_urls = [
-#             path('reset-normalizationdata/', self.reset_normalizationdata),
-#         ]
-#         return custom_urls + urls
-
-#     def reset_normalizationdata(self, request):
-#         try:
-#             call_command('reset_normalizationdata')
-#             self.message_user(request, 'All data and auto-increment ID for NormalizedData have been reset.', messages.SUCCESS)  # noqa E501
-#         except Exception as e:
-#             self.message_user(request, f'Error: {str(e)}', messages.ERROR)
-#         return HttpResponseRedirect("../")
+# ----------------------------------
+# QUERY ADMIN
+# ----------------------------------
 
 
-# class RuleAdmin(admin.ModelAdmin):
-#     model = Rule
+class QueryColumnAdmin(admin.ModelAdmin):
+    list_display = ("column_name", "internal_data_key", "column_description")
+    search_fields = ("column_name", "column_description")
 
 
-# class WorkProcessMasterDataAdmin(admin.ModelAdmin):
-#     model = WorkProcessMasterData
-# @admin.register(WorkProcessMasterData)
-class WorkProcessMasterDataAdmin(admin.ModelAdmin):
-    list_display = ('component_type', 'last_synced_at', 'source_file_version', 'status')
-    list_filter = ('component_type', 'status', 'last_synced_at')
-    search_fields = ('component_type', 'source_file_version')
-    ordering = ('-last_synced_at',)
-    fields = ('component_type', 'last_synced_at', 'source_file_version', 'status')
-    readonly_fields = ('last_synced_at',)
-
-    # Exibição detalhada dos registros
-    def get_component_type_display(self, obj):
-        return obj.get_component_type_display()
-
-    def get_status_display(self, obj):
-        return obj.get_status_display()
-
-    get_component_type_display.short_description = 'Component Type'
-    get_status_display.short_description = 'Status'
+class QueryFilterInline(admin.TabularInline):
+    model = QueryFilter
+    extra = 0  # define number of extra forms to display
 
 
-class WorkProcessNhanesAdmin(admin.ModelAdmin):
-    list_display = (
-        'cycle_name',
-        'group_name',
-        'dataset_name',
-        'status',
-        'is_download',
-        )
-    list_filter = ('cycle', 'status', 'is_download', 'dataset__group__group')
-    list_editable = ('status', 'is_download',)
-    search_fields = ('dataset__dataset', 'cycle__cycle')
-    raw_id_fields = ('dataset', 'cycle')
-    # actions = [download_nhanes_files]
-
-    def dataset_name(self, obj):
-        return obj.dataset.dataset
-
-    def cycle_name(self, obj):
-        return obj.cycle.cycle
-
-    def group_name(self, obj):
-        return obj.dataset.group.group
-
-    # Shorting by related fields
-    dataset_name.admin_order_field = 'dataset__dataset'
-    cycle_name.admin_order_field = 'cycle__cycle'
-    group_name.admin_order_field = 'dataset__group__group'
-
-    def get_queryset(self, request):
-        # Perform a prefetch_related to load the related group
-        queryset = super().get_queryset(request)
-        return queryset.select_related('dataset', 'cycle', 'dataset__group')
-
-    # def metadata_url_link(self, obj):
-    #     if obj.metadata_url:
-    #         return format_html("<a href='{url}' target='_blank'>{url}</a>", url=obj.metadata_url)  # noqa: E501
-    #     else:
-    #         return "Dataset does not exist"
-    # metadata_url_link.short_description = 'no file'  # noqa: E501
-
-
-class LogsAdmin(admin.ModelAdmin):
-    model = Logs
-
-
-# class QueryColumnAdmin(admin.ModelAdmin):
-#     list_display = ("column_name", "internal_data_key", "column_description")
-#     search_fields = ("column_name", "column_description")
-
-
-# class QueryFilterInline(admin.TabularInline):
-#     model = QueryFilter
-#     extra = 0  # Define number of extra forms to display
-
-
-# class QueryStructureAdmin(admin.ModelAdmin):
-#     list_display = ("structure_name", "no_conflict", "no_multi_index")
-#     list_editable = (
-#         "no_conflict",
-#         "no_multi_index",
-#     )
-#     search_fields = ("structure_name",)
-#     # Easy access to the filters
-#     filter_horizontal = ("columns",)
-#     # Add filters to the QueryStructure page
-#     inlines = [QueryFilterInline]
-#     # Add actions to the QueryStructure page
-#     # actions = [download_query_results]
-#     actions = [query.download_data_report]
+class QueryStructureAdmin(admin.ModelAdmin):
+    list_display = ("structure_name", "no_conflict", "no_multi_index")
+    list_editable = (
+        "no_conflict",
+        "no_multi_index",
+    )
+    search_fields = ("structure_name",)
+    filter_horizontal = ("columns",)
+    inlines = [QueryFilterInline]
+    actions = [query.download_data_report]
 
 
 # ----------------------------------
-# Transformations Rule Admin
+# TRANSFORMATION ADMIN
 # ----------------------------------
 
 @admin.action(description='Setup Rule Directories and Files')
@@ -267,34 +187,16 @@ def setup_rules(modeladmin, request, queryset):
                 )
 # setup_rules.short_description = "Generate rule files"
 
-# PAREI AQUI
-# TODO: tirar a opcap de selecionar a pasta, deixar fixa na normalizacao
-
 
 class RuleVariableForm(forms.ModelForm):
     class Meta:
         model = RuleVariable
         fields = '__all__'
 
-    # class Media:
-    #     js = ('nhanes/js/rulevariable_dynamic.js',)
-
 
 class RuleVariableAdmin(admin.ModelAdmin):
     form = RuleVariableForm
     list_display = ('rule', 'variable', 'dataset')
-
-    # class Media:
-    #     js = ('nhanes/js/rulevariable_dynamic.js',)
-
-    # def formfield_for_foreignkey(self, db_field, request, **kwargs):
-    #     if db_field.name == "dataset":
-    #         kwargs["queryset"] = Dataset.objects.none()
-    #     return super().formfield_for_foreignkey(db_field, request, **kwargs)
-
-    # def get_queryset(self, request):
-    #     qs = super().get_queryset(request)
-    #     return qs
 
 
 class RuleVariableInline(admin.TabularInline):
@@ -333,15 +235,81 @@ class RuleAdmin(admin.ModelAdmin):
     #         RuleAdmin.jupyter_started = True
 
     # def open_jupyter_link(self, obj):
-    #     link = f"http://127.0.0.1:8888/edit/nhanes/normalizations/{obj.rule}/{obj.file_script}"
+    #     link = f"http://127.0.0.1:8888/edit/nhanes/normalizations/{obj.rule}/{obj.file_script}" # noqa: E501
     #     return mark_safe(f'<a href="{link}" target="_blank">Edit in Jupyter</a>')
 
     # open_jupyter_link.short_description = "Edit in Jupyter"
 
 
 # ----------------------------------
-# Work Process Rule Admin
+# WORK PROCESS ADMIN
 # ----------------------------------
+
+
+# @admin.register(WorkProcessMasterData)
+class WorkProcessMasterDataAdmin(admin.ModelAdmin):
+    list_display = ('component_type', 'last_synced_at', 'source_file_version', 'status')
+    list_filter = ('component_type', 'status', 'last_synced_at')
+    search_fields = ('component_type', 'source_file_version')
+    ordering = ('-last_synced_at',)
+    fields = ('component_type', 'last_synced_at', 'source_file_version', 'status')
+    readonly_fields = ('last_synced_at',)
+
+    # show the display of the component type and status
+    def get_component_type_display(self, obj):
+        return obj.get_component_type_display()
+
+    def get_status_display(self, obj):
+        return obj.get_status_display()
+
+    get_component_type_display.short_description = 'Component Type'
+    get_status_display.short_description = 'Status'
+
+
+class LogsAdmin(admin.ModelAdmin):
+    model = Logs
+
+
+class WorkProcessNhanesAdmin(admin.ModelAdmin):
+    list_display = (
+        'cycle_name',
+        'group_name',
+        'dataset_name',
+        'status',
+        'is_download',
+        )
+    list_filter = ('cycle', 'status', 'is_download', 'dataset__group__group')
+    list_editable = ('status', 'is_download',)
+    search_fields = ('dataset__dataset', 'cycle__cycle')
+    raw_id_fields = ('dataset', 'cycle')
+    # actions = [download_nhanes_files]
+
+    def dataset_name(self, obj):
+        return obj.dataset.dataset
+
+    def cycle_name(self, obj):
+        return obj.cycle.cycle
+
+    def group_name(self, obj):
+        return obj.dataset.group.group
+
+    # shorting by related fields
+    dataset_name.admin_order_field = 'dataset__dataset'
+    cycle_name.admin_order_field = 'cycle__cycle'
+    group_name.admin_order_field = 'dataset__group__group'
+
+    def get_queryset(self, request):
+        # perform a prefetch_related to load the related group
+        queryset = super().get_queryset(request)
+        return queryset.select_related('dataset', 'cycle', 'dataset__group')
+
+    # def metadata_url_link(self, obj):
+    #     if obj.metadata_url:
+    #         return format_html("<a href='{url}' target='_blank'>{url}</a>", url=obj.metadata_url)  # noqa: E501
+    #     else:
+    #         return "Dataset does not exist"
+    # metadata_url_link.short_description = 'no file'  # noqa: E501
+
 
 class WorkProcessRuleAdmin(admin.ModelAdmin):
     list_display = (
@@ -420,85 +388,14 @@ admin.site.register(Dataset, DatasetAdmin)
 admin.site.register(Variable, VariableAdmin)
 admin.site.register(VariableCycle, VariableCycleAdmin)
 admin.site.register(DatasetCycle, DatasetCycleAdmin)
-# admin.site.register(SystemConfig, SystemConfigAdmin)
 admin.site.register(Data, DataAdmin)
-# admin.site.register(QueryColumns, QueryColumnAdmin)
-# admin.site.register(QueryStructure, QueryStructureAdmin)
+admin.site.register(QueryColumns, QueryColumnAdmin)
+admin.site.register(QueryStructure, QueryStructureAdmin)
 # admin.site.register(QueryFilter, QueryFilterAdmin)
 admin.site.register(Tag, TagAdmin)
-# admin.site.register(NormalizedData, NormalizedDataAdmin)
 admin.site.register(Rule, RuleAdmin)
 admin.site.register(RuleVariable, RuleVariableAdmin)
 admin.site.register(WorkProcessNhanes, WorkProcessNhanesAdmin)
 admin.site.register(WorkProcessMasterData, WorkProcessMasterDataAdmin)
 admin.site.register(Logs, LogsAdmin)
 admin.site.register(Version, VersionAdmin)
-
-
-# class DatasetControlAdmin(admin.ModelAdmin):
-#     list_display = (
-#         "cycle_name",
-#         "group_name",
-#         "dataset_name",
-#         "status",
-#         "is_download",
-#         "description",
-#         "metadata_url_link",
-#     )
-#     list_filter = ("cycle", "status", "is_download", "dataset__group__group")
-#     list_editable = (
-#         "status",
-#         "is_download",
-#     )
-#     search_fields = ("dataset__dataset", "cycle__cycle", "description")
-#     raw_id_fields = ("dataset", "cycle")
-#     # actions = [download_nhanes_files]
-
-#     def dataset_name(self, obj):
-#         return obj.dataset.dataset
-
-#     def cycle_name(self, obj):
-#         return obj.cycle.cycle
-
-#     def group_name(self, obj):
-#         return obj.dataset.group.group
-
-#     # Shorting by related fields
-#     dataset_name.admin_order_field = "dataset__dataset"
-#     cycle_name.admin_order_field = "cycle__cycle"
-#     group_name.admin_order_field = "dataset__group__group"
-
-#     def get_queryset(self, request):
-#         # Perform a prefetch_related to load the related group
-#         queryset = super().get_queryset(request)
-#         return queryset.select_related("dataset", "cycle", "dataset__group")
-
-#     def metadata_url_link(self, obj):
-#         if obj.metadata_url:
-#             return format_html(
-#                 "<a href='{url}' target='_blank'>{url}</a>", url=obj.metadata_url
-#             )  # noqa: E501
-#         else:
-#             return "Dataset does not exist"
-
-#     metadata_url_link.short_description = "no file"  # noqa: E501
-
-
-# class SystemConfigAdmin(admin.ModelAdmin):
-#     list_display = (
-#         "config_key",
-#         "config_value",
-#     )
-#     list_editable = ("config_value",)
-
-
-# class DataAdmin(admin.ModelAdmin):
-#     list_display = ("cycle", "group_name", "dataset", "field", "sample", "value")
-#     list_filter = ("cycle", "dataset", "dataset__group__group")
-
-#     def group_name(self, obj):
-#         return obj.dataset.group.group
-
-#     def get_queryset(self, request):
-#         queryset = super().get_queryset(request)
-#         return queryset.select_related("dataset", "cycle", "dataset__group")

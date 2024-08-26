@@ -116,14 +116,18 @@ def ingestion_nhanes(load_type=str('db')):
                     msm = f"The {name_file}.{extension} file was downloaded."
                     logger(log, "s", msm)
                 else:
-                    qry_workprocess.status = "error"
-                    qry_workprocess.save()
-                    msm = f"Error to download {name_file}.{extension} file: {error}"
-                    logger(log, "e", msm)
-                    continue
+                    break
             else:
+                status = True
                 msm = f"File {file_name}.{extension} already exists. Skipping download."
                 logger(log, "i", msm)
+
+        if not status:
+            qry_workprocess.status = error
+            qry_workprocess.save()
+            msm = f"No file to {name_file}.{extension}"
+            logger(log, "i", msm)
+            continue
 
         # get data from XPT file
         try:
@@ -132,8 +136,8 @@ def ingestion_nhanes(load_type=str('db')):
             try:
                 os.remove(data_file)
                 os.remove(doc_file)
-            except OSError as e:
-                msm = f"Error deleting file: {e}"
+            except OSError as f:
+                msm = f"Error deleting file: {f}"
                 logger(log, "e", msm)
             msm = f"Error reading XPT file: {e}"
             logger(log, "e", msm)
