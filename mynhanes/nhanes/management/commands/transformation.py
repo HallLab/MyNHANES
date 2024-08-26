@@ -1,12 +1,12 @@
 from django.core.management.base import BaseCommand
-from nhanes.workprocess.normalization_manager import NormalizationManager
+from nhanes.workprocess.transformation_manager import TransformationManager
 
 
 class Command(BaseCommand):
     help = 'Aplica todas as regras de normalização nos dados brutos'
 
     def handle(self, *args, **kwargs):
-        manager = NormalizationManager()
+        manager = TransformationManager()
         manager.apply_transformations()
         self.stdout.write(self.style.SUCCESS('Transformações aplicadas com sucesso'))
 

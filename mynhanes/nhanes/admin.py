@@ -12,7 +12,6 @@ from .models import (
     Variable,
     VariableCycle,
     DatasetCycle,
-    SystemConfig,
     Data,
     # QueryColumns,
     # QueryStructure,
@@ -20,7 +19,7 @@ from .models import (
     Tag,
     Rule,
     RuleVariable,
-    WorkProcess,
+    WorkProcessNhanes,
     WorkProcessRule,
     WorkProcessMasterData,
     Logs,
@@ -35,7 +34,7 @@ from django import forms
 # from django.urls import reverse
 from django.utils.safestring import mark_safe
 from nhanes.services.rule_manager import setup_rule
-from nhanes.workprocess.normalization_manager import NormalizationManager
+from nhanes.workprocess.transformation_manager import TransformationManager
 from nhanes.utils.start_jupyter import start_jupyter_notebook
 from django.shortcuts import redirect
 from django.urls import path
@@ -46,7 +45,7 @@ class VersionAdmin(admin.ModelAdmin):
 
 
 class CycleAdmin(admin.ModelAdmin):
-    list_display = ("cycle", "year_code", "base_dir", "dataset_url_pattern")
+    list_display = ("cycle", "year_code", "dataset_url_pattern")
 
 
 class GroupAdmin(admin.ModelAdmin):
@@ -110,8 +109,8 @@ class DatasetCycleAdmin(admin.ModelAdmin):
     model = DatasetCycle
 
 
-class SystemConfigAdmin(admin.ModelAdmin):
-    model = SystemConfig
+# class SystemConfigAdmin(admin.ModelAdmin):
+#     model = SystemConfig
 
 
 class DataAdmin(admin.ModelAdmin):
@@ -170,7 +169,7 @@ class WorkProcessMasterDataAdmin(admin.ModelAdmin):
     get_status_display.short_description = 'Status'
 
 
-class WorkProcessAdmin(admin.ModelAdmin):
+class WorkProcessNhanesAdmin(admin.ModelAdmin):
     list_display = (
         'cycle_name',
         'group_name',
@@ -268,34 +267,34 @@ def setup_rules(modeladmin, request, queryset):
                 )
 # setup_rules.short_description = "Generate rule files"
 
-
-# TODO: A funcionalizade de filtro dimaninco nao esta funcionando em admin
+# PAREI AQUI
 # TODO: tirar a opcap de selecionar a pasta, deixar fixa na normalizacao
+
 
 class RuleVariableForm(forms.ModelForm):
     class Meta:
         model = RuleVariable
         fields = '__all__'
 
-    class Media:
-        js = ('nhanes/js/rulevariable_dynamic.js',)
+    # class Media:
+    #     js = ('nhanes/js/rulevariable_dynamic.js',)
 
 
 class RuleVariableAdmin(admin.ModelAdmin):
     form = RuleVariableForm
-    list_display = ('rule', 'variable', 'dataset', 'is_source')
+    list_display = ('rule', 'variable', 'dataset')
 
-    class Media:
-        js = ('nhanes/js/rulevariable_dynamic.js',)
+    # class Media:
+    #     js = ('nhanes/js/rulevariable_dynamic.js',)
 
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == "dataset":
-            kwargs["queryset"] = Dataset.objects.none()
-        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+    # def formfield_for_foreignkey(self, db_field, request, **kwargs):
+    #     if db_field.name == "dataset":
+    #         kwargs["queryset"] = Dataset.objects.none()
+    #     return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
-    def get_queryset(self, request):
-        qs = super().get_queryset(request)
-        return qs
+    # def get_queryset(self, request):
+    #     qs = super().get_queryset(request)
+    #     return qs
 
 
 class RuleVariableInline(admin.TabularInline):
@@ -318,26 +317,26 @@ class RuleForm(forms.ModelForm):
 
 class RuleAdmin(admin.ModelAdmin):
     form = RuleForm
-    list_display = ('rule', 'version', 'is_active', 'open_jupyter_link')
+    list_display = ('rule', 'version', 'is_active',)  # 'open_jupyter_link')
     search_fields = ('rule', 'description')
     list_filter = ('is_active', 'updated_at')
     inlines = [RuleVariableInline]
     actions = [setup_rules]
 
-    # controler to ensure that Jupyter starts only once
-    jupyter_started = False
+    # # controler to ensure that Jupyter starts only once
+    # jupyter_started = False
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        if not RuleAdmin.jupyter_started:
-            start_jupyter_notebook()
-            RuleAdmin.jupyter_started = True
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     if not RuleAdmin.jupyter_started:
+    #         start_jupyter_notebook()
+    #         RuleAdmin.jupyter_started = True
 
-    def open_jupyter_link(self, obj):
-        link = f"http://127.0.0.1:8888/edit/nhanes/normalizations/{obj.rule}/{obj.file_script}"
-        return mark_safe(f'<a href="{link}" target="_blank">Edit in Jupyter</a>')
+    # def open_jupyter_link(self, obj):
+    #     link = f"http://127.0.0.1:8888/edit/nhanes/normalizations/{obj.rule}/{obj.file_script}"
+    #     return mark_safe(f'<a href="{link}" target="_blank">Edit in Jupyter</a>')
 
-    open_jupyter_link.short_description = "Edit in Jupyter"
+    # open_jupyter_link.short_description = "Edit in Jupyter"
 
 
 # ----------------------------------
@@ -391,7 +390,7 @@ class WorkProcessRuleAdmin(admin.ModelAdmin):
 
         selected_rules = queryset.values_list('rule', flat=True)
         rules_to_run = Rule.objects.filter(id__in=selected_rules)
-        normalization_manager = NormalizationManager(rules=rules_to_run)
+        normalization_manager = TransformationManager(rules=rules_to_run)
         normalization_manager.apply_transformations()
         msg = f"Normalization applied for {rules_to_run.count()} selected rules."
         self.message_user(request, msg)
@@ -421,7 +420,7 @@ admin.site.register(Dataset, DatasetAdmin)
 admin.site.register(Variable, VariableAdmin)
 admin.site.register(VariableCycle, VariableCycleAdmin)
 admin.site.register(DatasetCycle, DatasetCycleAdmin)
-admin.site.register(SystemConfig, SystemConfigAdmin)
+# admin.site.register(SystemConfig, SystemConfigAdmin)
 admin.site.register(Data, DataAdmin)
 # admin.site.register(QueryColumns, QueryColumnAdmin)
 # admin.site.register(QueryStructure, QueryStructureAdmin)
@@ -430,7 +429,7 @@ admin.site.register(Tag, TagAdmin)
 # admin.site.register(NormalizedData, NormalizedDataAdmin)
 admin.site.register(Rule, RuleAdmin)
 admin.site.register(RuleVariable, RuleVariableAdmin)
-admin.site.register(WorkProcess, WorkProcessAdmin)
+admin.site.register(WorkProcessNhanes, WorkProcessNhanesAdmin)
 admin.site.register(WorkProcessMasterData, WorkProcessMasterDataAdmin)
 admin.site.register(Logs, LogsAdmin)
 admin.site.register(Version, VersionAdmin)

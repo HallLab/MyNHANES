@@ -6,7 +6,6 @@ from pathlib import Path
 from io import StringIO
 from django.db import transaction
 from nhanes.models import (
-    SystemConfig,
     Version,
     Cycle,
     Dataset,
@@ -21,6 +20,7 @@ from nhanes.models import (
 from nhanes.utils.logs import logger, start_logger
 from django.utils import timezone
 from nhanes.workprocess.sync_workprocess import check_and_sync_workprocess
+from core.parameters import config
 
 
 def _get_data(BASE_URL, file_name, log):
@@ -130,27 +130,17 @@ def masterdata_import():
         None
     """
 
-    # Global Variables
+    # start Log monitor
     log_file = __name__
     v_time_start_process = time.time()
-
-    # Start Log monitor
     log = start_logger(log_file)
     logger(log, "s", "Started the Master Data Import")
 
     # check repository of masterdata
-    qs_sys_repo = SystemConfig.objects.filter(
-        key='masterdata_repository',
-        status=True
-        )
-    if qs_sys_repo.exists():
-        BASE_URL = qs_sys_repo.first().config_value
-    else:
-        BASE_URL = "https://raw.githubusercontent.com/Garon-Sys/MyNHANES_DataHub/main/masterdata/"  # noqa E501
+    BASE_URL = config['workprocess']['masterdata_repository']
 
     # define paramets to import
     MODELS_TO_FILES = {
-        'system_config.csv': (SystemConfig, 'key'),
         'versions.csv': (Version, 'version'),
         'cycles.csv': (Cycle, 'cycle'),
         'groups.csv': (Group, 'group'),
@@ -194,15 +184,7 @@ def masterdata_import():
                     else:
                         filter_kwargs = {unique_fields: row[unique_fields]}
 
-                    if file_name == "system_config.csv":
-                        if not model.objects.filter(**filter_kwargs).exists():
-                            model.objects.create(
-                                key=row['key'],
-                                status=row['status'],
-                                value=row['value']
-                            )
-
-                    elif file_name == "datasets.csv":
+                    if file_name == "datasets.csv":
                         if not model.objects.filter(**filter_kwargs).exists():
                             group = Group.objects.get(group=row['group'])
                             model.objects.create(
@@ -236,11 +218,13 @@ def masterdata_import():
 
                         ).exists():
                             cycle = Cycle.objects.get(cycle=row['cycle'])
+                            dataset = Dataset.objects.get(dataset=row['dataset'])
                             variable = Variable.objects.get(variable=row['variable'])
                             version = Version.objects.get(version='nhanes')
                             model.objects.create(
                                 version=version,
                                 cycle=cycle,
+                                dataset=dataset,
                                 variable=variable,
                                 variable_name=row['variable_name'],
                                 sas_label=row['sas_label'],

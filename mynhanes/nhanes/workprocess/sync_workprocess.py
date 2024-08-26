@@ -1,5 +1,5 @@
 import time
-from nhanes.models import DatasetCycle, WorkProcess, Dataset, Cycle
+from nhanes.models import DatasetCycle, WorkProcessNhanes, Dataset, Cycle
 from nhanes.utils.logs import logger, start_logger
 
 
@@ -13,8 +13,8 @@ def check_and_sync_workprocess():
     dataset_cycles = DatasetCycle.objects.all()
 
     for ds_cycle in dataset_cycles:
-        if not WorkProcess.objects.filter(datasetcycle=ds_cycle).exists():
-            WorkProcess.objects.create(
+        if not WorkProcessNhanes.objects.filter(datasetcycle=ds_cycle).exists():
+            WorkProcessNhanes.objects.create(
                 datasetcycle=ds_cycle,
                 cycle=ds_cycle.cycle,
                 dataset=ds_cycle.dataset,

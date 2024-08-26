@@ -3,10 +3,12 @@
 from django.db import models
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+from core.parameters import config
 
 # from django.conf import settings
 
-v_version = "0.0.3"
+v_version = config['global']['version']
+rule_seq = config['transformations']['rule_seq']
 
 
 # ----------------------------------------------------------------------------
@@ -14,14 +16,14 @@ v_version = "0.0.3"
 # ----------------------------------------------------------------------------
 
 
-# SystemConfig model represents the system configurations.
-class SystemConfig(models.Model):
-    key = models.CharField(max_length=100, unique=True)
-    status = models.BooleanField(default=False)
-    value = models.CharField(max_length=255, blank=True, null=True)
+# # SystemConfig model represents the system configurations.
+# class SystemConfig(models.Model):
+#     key = models.CharField(max_length=100, unique=True)
+#     status = models.BooleanField(default=False)
+#     value = models.CharField(max_length=255, blank=True, null=True)
 
-    def __str__(self):
-        return self.key
+#     def __str__(self):
+#         return self.key
 
 
 # ----------------------------------------------------------------------------
@@ -40,7 +42,6 @@ class Version(models.Model):
 # model represents a cycle of the NHANES.
 class Cycle(models.Model):
     cycle = models.CharField(max_length=100, unique=True)
-    base_dir = models.CharField(max_length=255, default="downloads")
     year_code = models.CharField(max_length=10, blank=True, null=True)
     base_url = models.URLField(default="https://wwwn.cdc.gov/Nchs/Nhanes")
     dataset_url_pattern = models.CharField(
@@ -128,6 +129,7 @@ class Variable(models.Model):
 class VariableCycle(models.Model):
     version = models.ForeignKey(Version, on_delete=models.CASCADE)
     variable = models.ForeignKey(Variable, on_delete=models.CASCADE)
+    dataset = models.ForeignKey(Dataset, on_delete=models.CASCADE)
     cycle = models.ForeignKey(Cycle, on_delete=models.CASCADE)
     variable_name = models.CharField(max_length=100)
     sas_label = models.CharField(max_length=100)
@@ -175,8 +177,6 @@ class Rule(models.Model):
     description = models.TextField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
     updated_at = models.DateTimeField(auto_now=True)
-    file_path = models.CharField(max_length=500)
-    file_script = models.CharField(max_length=255, null=True, blank=True)
     repo_url = models.URLField(blank=True, null=True)
 
     class Meta:
@@ -187,22 +187,47 @@ class Rule(models.Model):
         return f"{self.rule} - {self.version}"
 
     def save(self, *args, **kwargs):
-        if not self.pk:  # creating a new rule
+        if not self.pk:
             self.rule = self.generate_rule_name()
         super().save(*args, **kwargs)
 
-        # after saving the rule, check or create the corresponding WorkProcessRule
         self.check_or_create_work_process_rule()
 
     def generate_rule_name(self):
-        last_rule = Rule.objects.all().order_by('id').last()
+        # last_rule = Rule.objects.all().order_by('id').last()
+        # if not last_rule:
+        #     return "rule_00001"
+        # rule_number = int(last_rule.rule.split('_')[-1]) + 1
+        # return f"rule_{rule_number:05d}"
+        if rule_seq == 'global':
+            prefix = 'rule_'
+            start_range = 1
+            end_range = 499999
+        elif rule_seq == 'local':
+            prefix = 'rule_'
+            start_range = 500000
+            end_range = 999999
+        else:
+            raise ValueError("Invalid rule_seq value in config file")
+
+        last_rule = Rule.objects.filter(
+            rule__regex=f'^{prefix}[0-9]{{5}}$',
+            rule__gte=f'{prefix}{start_range:05d}',
+            rule__lte=f'{prefix}{end_range:05d}'
+        ).order_by('id').last()
+
         if not last_rule:
-            return "rule_00001"
-        rule_number = int(last_rule.rule.split('_')[-1]) + 1
-        return f"rule_{rule_number:05d}"
+            return f"{prefix}{start_range:05d}"
+
+        last_rule_number = int(last_rule.rule.split('_')[-1])
+        next_rule_number = last_rule_number + 1
+
+        if next_rule_number > end_range:
+            raise ValueError("No more available rule numbers in the current range")
+
+        return f"{prefix}{next_rule_number:05d}"
 
     def check_or_create_work_process_rule(self):
-        # check if there is already a WorkProcessRule for this rule
         work_process_rule, created = WorkProcessRule.objects.get_or_create(rule=self)
         if created:
             work_process_rule.status = "pending"
@@ -212,18 +237,21 @@ class Rule(models.Model):
 
 
 class RuleVariable(models.Model):
+    TYPES = (
+        ("i", "in"),
+        ("o", "out"),
+    )
     rule = models.ForeignKey(Rule, on_delete=models.CASCADE)
+    version = models.ForeignKey(Version, on_delete=models.CASCADE)
     variable = models.ForeignKey('Variable', on_delete=models.CASCADE)
     dataset = models.ForeignKey('Dataset', on_delete=models.CASCADE)
-    is_source = models.BooleanField(default=True)  # Distinguishes source from target
+    type = models.CharField(max_length=1, choices=TYPES, default="i")
 
     class Meta:
-        unique_together = ("rule", "variable", "dataset", "is_source")
         verbose_name_plural = "Rule Variables"
 
     def __str__(self):
-        role = "Source" if self.is_source else "Target"
-        return f"{self.rule.rule} - {role}: {self.variable.variable} in {self.dataset.dataset}"  # noqa E501
+        return f"{self.rule.rule} - {self.type}: {self.variable.variable} in {self.dataset.dataset}"  # noqa E501
 
 
 # ----------------------------------------------------------------------------
@@ -334,9 +362,8 @@ class QueryFilter(models.Model):
 # ----------------------------------------------------------------------------
 
 
-# TODO: Ajustar os nomes de Raw
 # DatasetControl model represents metadata for a dataset.
-class WorkProcess(models.Model):
+class WorkProcessNhanes(models.Model):
     STATUS_CHOICES = (
         ("pending", "Pending"),
         ("complete", "Complete"),
@@ -355,18 +382,10 @@ class WorkProcess(models.Model):
         max_length=500, null=True, blank=True, default=""
     )
     source_file_size = models.BigIntegerField(default=0)
-    chk_raw = models.BooleanField(
-        default=False, verbose_name="Raw Data Ingested"
-    )  # noqa E501
-    chk_normalization = models.BooleanField(
-        default=False, verbose_name="Normalization Data Ingested"
-    )  # noqa E501
     system_version = models.CharField(max_length=15, default=v_version)
     time_download = models.IntegerField(default=0)
-    time_raw = models.IntegerField(default=0)
-    time_normalization = models.IntegerField(default=0)
-    records_raw = models.IntegerField(default=0)
-    records_normalization = models.IntegerField(default=0)
+    time = models.IntegerField(default=0)
+    records = models.IntegerField(default=0)
     n_samples = models.IntegerField(default=0)
     n_variables = models.IntegerField(default=0)
 

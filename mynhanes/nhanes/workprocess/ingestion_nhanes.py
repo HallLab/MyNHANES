@@ -5,9 +5,10 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 from django.conf import settings
-from nhanes.models import SystemConfig, WorkProcess # noqa E501
+from nhanes.models import WorkProcessNhanes # noqa E501
 from nhanes.workprocess import ingestion_utils
 from nhanes.utils.logs import logger, start_logger
+from core.parameters import config
 
 
 def ingestion_nhanes(load_type=str('db')):
@@ -24,30 +25,31 @@ def ingestion_nhanes(load_type=str('db')):
         logger(log, "e", msm)
         return False
 
-    # get the SystemConfig object for the load_metadata key
-    qry_load_metadata = SystemConfig.objects.filter(
-        key='load_metadata'
-    ).first()
-    if qry_load_metadata is None:
-        msm = "load_metadata key not found in SystemConfig table."
+    # read parameters
+    try:
+        load_metadata = config['workprocess']['load_metadata']
+        if load_metadata is None:
+            load_metadata = False
+    except KeyError:
+        msm = "workprocess.load_metadata key not found on Parameters file."
         logger(log, "e", msm)
-        return False
+        load_metadata = False  # Can be changed to return False
 
-    # get the SystemConfig object for the download_path key
-    qry_download_path = SystemConfig.objects.filter(
-        key='download_path', status=True
-    ).first()
-    if qry_download_path is None:
-        download_path = Path(settings.BASE_DIR)
-        msm = f"Path to download files not found in SystemConfig table. Using {download_path}." # noqa E501
-        logger(log, "i", msm)
-    else:
-        download_path = Path(qry_download_path.value)
-        msm = f"Path to download files: {download_path}."
-        logger(log, "i", msm)
+    try:
+        download_path = config['workprocess']['download_path']
+        if download_path is None:
+            download_path = Path(settings.BASE_DIR)
+            msm = f"workprocess.download_path key not found on Parameters file. Using {download_path}." # noqa E501
+            logger(log, "i", msm)
+        else:
+            download_path = Path(download_path)
+    except KeyError:
+        msm = "workprocess.download_path key not found on Parameters file."
+        logger(log, "e", msm)
+        return False    # Can be changed to return False
 
     # filter workprocess in queue to ingestion
-    qs_workprocess = WorkProcess.objects.filter(
+    qs_workprocess = WorkProcessNhanes.objects.filter(
         status='pending',
         is_download=True
     )
@@ -80,7 +82,7 @@ def ingestion_nhanes(load_type=str('db')):
                 name_file = f"{dataset}"
 
         # setting folder to hosting download files
-        base_dir = download_path / str(qry_workprocess.cycle.base_dir)
+        base_dir = download_path / "downloads"  # str(qry_workprocess.cycle.base_dir)
         os.makedirs(base_dir, exist_ok=True)
 
         data_file = base_dir / f"{name_file}.XPT"
@@ -181,7 +183,7 @@ def ingestion_nhanes(load_type=str('db')):
                 df_metadata,
                 dataset_id=qry_workprocess.dataset.id,
                 cycle_id=qry_workprocess.cycle.id,
-                load_metadata=qry_load_metadata.status,
+                load_metadata=load_metadata,
                 dataset_cycle_url=url,
                 dataset_cycle_description=""  # TODO: Extract JSON from HTML (_parse_nhanes_html_docfile) # noqa E501
                 )
@@ -210,11 +212,9 @@ def ingestion_nhanes(load_type=str('db')):
             time_dataset = int(time.time() - v_time_start_dataset)
             qry_workprocess.source_file_version = "v.0"  # FIX: version
             qry_workprocess.source_file_size = os.path.getsize(data_file)
-            qry_workprocess.time_raw = time_dataset
-            qry_workprocess.chk_raw = True
-            qry_workprocess.chk_normalization = False
+            qry_workprocess.time = time_dataset
             qry_workprocess.status = 'complete'
-            qry_workprocess.records_raw = df.shape[0]
+            qry_workprocess.records = df.shape[0]
             qry_workprocess.n_samples = df.shape[0]
             qry_workprocess.save()
 

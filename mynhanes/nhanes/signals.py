@@ -1,10 +1,11 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from nhanes.models import WorkProcess, Data, SystemConfig, Dataset, Cycle
+from nhanes.models import WorkProcessNhanes, Data, Dataset, Cycle, DatasetCycle
 from nhanes.utils.logs import logger, start_logger
+from core.parameters import config
 
 
-@receiver(post_save, sender=WorkProcess)
+@receiver(post_save, sender=WorkProcessNhanes)
 def handle_deletion(sender, instance, **kwargs):
     if instance.status == 'delete':
 
@@ -26,15 +27,12 @@ def handle_deletion(sender, instance, **kwargs):
 
             # Update the WorkProcess instance
             instance.status = 'pending'
-            instance.chk_raw = False
-            instance.chk_normalization = False
-            instance.records_raw = 0
+            instance.records = 0
             instance.n_samples = 0
             instance.source_file_size = 0
-            instance.time_raw = 0
+            instance.time = 0
             instance.save(update_fields=[
-                'status', 'chk_raw', 'chk_normalization', 
-                'records_raw', 'n_samples', 'source_file_size', 'time_raw'
+                'status', 'records', 'n_samples', 'source_file_size', 'time'
             ])
 
         except Exception as e:
@@ -56,19 +54,22 @@ def create_workprocess_by_dataset(sender, instance, created, **kwargs):
         log = start_logger(log_file)
         logger(log, "i", "Start Signal create_workprocess_by_dataset.")
 
-        auto_create = SystemConfig.objects.filter(
-            config_key='auto_create_workprocess'
-            ).first()
-        if auto_create and str(auto_create.config_value).lower() == 'true':
-            cycles = Cycle.objects.all()
-            for cycle in cycles:
-                WorkProcess.objects.create(
+        auto_create = config['workprocess']['auto_create_workprocess']
+        if str(auto_create).lower() == 'true':
+            qs_cycles = Cycle.objects.all()
+            for cycle in qs_cycles:
+                dscycle, is_new = DatasetCycle.objects.get_or_create(
+                    dataset=instance,
+                    cycle=cycle
+                )
+                WorkProcessNhanes.objects.create(
+                    datasetcycle=dscycle,
                     dataset=instance,
                     cycle=cycle,
-                    status='standby'  # Status inicial
+                    status='standby'
                 )
             msm = "Work Process created for all cycles."
-            logger(log, "s", msm)  # TODO: add the model object to the log
+            logger(log, "s", msm)
 
 
 @receiver(post_save, sender=Cycle)
@@ -79,19 +80,22 @@ def create_workprocess_by_cycles(sender, instance, created, **kwargs):
         log = start_logger(log_file)
         logger(log, "i", "Start Signal create_workprocess_by_dataset.")
 
-        auto_create = SystemConfig.objects.filter(
-            config_key='auto_create_workprocess'
-            ).first()
-        if auto_create and str(auto_create.config_value).lower() == 'true':
-            datasets = Dataset.objects.all()
-            for dataset in datasets:
-                WorkProcess.objects.create(
+        auto_create = config['workprocess']['auto_create_workprocess']
+        if str(auto_create).lower() == 'true':
+            qs_datasets = Dataset.objects.all()
+            for dataset in qs_datasets:
+                dscycle, is_new = DatasetCycle.objects.get_or_create(
+                    dataset=dataset,
+                    cycle=instance
+                )
+                WorkProcessNhanes.objects.create(
+                    datasetcycle=dscycle,
                     dataset=dataset,
                     cycle=instance,
-                    status='standby'  # Status inicial
+                    status='standby'
                 )
             msm = "Work Process created for all dataset."
-            logger(log, "s", msm)  
+            logger(log, "s", msm)
             # TODO: add the model object to the log
             # logger(
             # log,

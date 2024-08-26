@@ -8,9 +8,9 @@ from nhanes.models import (
     Cycle,
     Dataset,
     Group,
-    SystemConfig,
-    WorkProcess,
+    WorkProcessNhanes,
     WorkProcessMasterData,
+    WorkProcessRule,
     Variable,
     VariableCycle,
     DatasetCycle,
@@ -18,6 +18,7 @@ from nhanes.models import (
     QueryColumns,
 )
 from nhanes.utils.logs import logger, start_logger
+from core.parameters import config
 
 
 def masterdata_export(folder='masterdata', models_to_export=None):
@@ -26,7 +27,7 @@ def masterdata_export(folder='masterdata', models_to_export=None):
 
     This function exports master data from the database to CSV files
     for deployment.
-    The exported data includes SystemConfig, Cycle, Group, and Dataset
+    The exported data includes Cycle, Group, and Dataset
     information.
 
     Returns:
@@ -48,6 +49,12 @@ def masterdata_export(folder='masterdata', models_to_export=None):
     log = start_logger(log_file)
     logger(log, "s", "Started the Master Data Import")
 
+    type = config['global']['type']
+    if str(type).lower() != 'server':
+        msm = "Master Data export is only available on server type."
+        logger(log, "e", msm)
+        return False
+
     try:
         # setting folder to hosting download files
         base_dir = Path(settings.BASE_DIR) / folder
@@ -56,7 +63,6 @@ def masterdata_export(folder='masterdata', models_to_export=None):
         # use default models if none are specified
         if models_to_export is None:
             models_to_export = {
-                'system_config.csv': SystemConfig,
                 'versions.csv': Version,
                 'cycles.csv': Cycle,
                 'groups.csv': Group,
@@ -65,8 +71,9 @@ def masterdata_export(folder='masterdata', models_to_export=None):
                 'variable_cycles.csv': VariableCycle,
                 'dataset_cycles.csv': DatasetCycle,
                 'rules.csv': Rule,
-                'work_processes.csv': WorkProcess,
+                'work_processes.csv': WorkProcessNhanes,
                 'work_process_master_data.csv': WorkProcessMasterData,
+                'work_process_rule.csv': WorkProcessRule,
                 'query_columns.csv': QueryColumns,
             }
 
@@ -101,6 +108,9 @@ def masterdata_export(folder='masterdata', models_to_export=None):
                     df['variable'] = df['variable_id'].apply(
                         lambda x: Variable.objects.get(id=x).variable if pd.notna(x) else None)  # noqa E501
                     df = df.drop(columns=['variable_id'])
+                if 'rule_id' in df.columns:
+                    df['rule'] = df['rule_id'].apply(
+                        lambda x: Rule.objects.get(id=x).rule if pd.notna(x) else None)
 
                 # export the DataFrame to CSV
                 df.to_csv(file_path, index=False)

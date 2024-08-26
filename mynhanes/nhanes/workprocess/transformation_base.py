@@ -5,7 +5,7 @@ from nhanes.models import Variable, Data, Cycle, Dataset, Version, Rule
 from nhanes.utils.logs import logger
 
 
-class BaseNormalization(ABC):
+class BaseTransformation(ABC):
 
     def __init__(self, df_in: pd.DataFrame, variable_out, rule, log):
         self.df_in = df_in
@@ -16,7 +16,7 @@ class BaseNormalization(ABC):
         # self.log = start_logger(f"{self.rule.rule}_normalization")
 
     @abstractmethod
-    def apply_normalization(self) -> pd.DataFrame:
+    def apply_transformation(self) -> pd.DataFrame:
         msg = "Subclasses should implement this method."
         logger(self.log, "e", msg)
 
@@ -160,7 +160,12 @@ class BaseNormalization(ABC):
             msm = "Output DataFrame is empty or not defined."
             logger(self.log, "i", msm)
 
-        qry_version = Version.objects.get(version="normalized")
+        # qry_version = Version.objects.get(version="normalized")
+        version_map = {
+            version.id: version for version in Version.objects.filter(
+                id__in=self.df_out['version'].unique()
+                )
+            }
 
         cycle_map = {
             cycle.id: cycle for cycle in Cycle.objects.filter(
@@ -178,11 +183,12 @@ class BaseNormalization(ABC):
         for _, row in self.df_out.iterrows():
             cycle_instance = cycle_map[row['cycle']]
             dataset_instance = dataset_map[row['dataset']]
+            version_instance = version_map[row['version']]
 
             for rule_variable in self.variable_out:
                 normalized_data_instances.append(
                     Data(
-                        version=qry_version,
+                        version=version_instance,
                         cycle=cycle_instance,
                         dataset=dataset_instance,
                         variable=rule_variable.variable,

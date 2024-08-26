@@ -10,7 +10,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         # Deletar todos os dados do modelo NormalizedData
-        Data.objects.filter(version=2).delete()
+        Data.objects.filter(version=4).delete()
         self.stdout.write(self.style.SUCCESS('All data deleted from NormalizedData.'))
 
         # Reiniciar o índice auto-increment para a tabela NormalizedData

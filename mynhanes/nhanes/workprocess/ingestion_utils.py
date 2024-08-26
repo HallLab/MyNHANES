@@ -234,7 +234,7 @@ def process_and_save_metadata(
                         'type': 'oth',
                     }
                 )
-                
+
                 if load_metadata:
                     DatasetCycle.objects.filter(
                         dataset=qry_dataset,
@@ -245,6 +245,7 @@ def process_and_save_metadata(
                     )
                     variable_m, create_m = VariableCycle.objects.update_or_create(
                         variable=variable,
+                        dataset=qry_dataset,
                         cycle=qry_cycle,
                         defaults={
                             'version': qry_version,
@@ -259,6 +260,7 @@ def process_and_save_metadata(
                 else:
                     variable_m, create_m = VariableCycle.objects.update_or_create(
                         variable=variable,
+                        dataset=qry_dataset,
                         cycle=qry_cycle,
                         defaults={
                             'version': qry_version,

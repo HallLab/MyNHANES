@@ -1,0 +1,30 @@
+global:
+  debug: True
+  log_level: INFO
+  log_file: /users/andrerico/works/logs/mynhanes.log
+  version: 0.0.4
+  type: server
+
+
+database:
+  name: mynhanes_db
+  user: mynhanes_user
+  password: mynhanes_password
+
+api:
+  base_url: https://api.example.com
+  timeout: 30
+
+normalization:
+  default_version: 1.0
+  max_attempts: 3
+
+workprocess:
+  load_metadata: True
+  download_path: /users/andrerico/works/temp/
+  auto_create_workprocess: True
+  # masterdata_repository: https://raw.githubusercontent.com/Garon-Sys/MyNHANES_DataHub/main/masterdata/
+  masterdata_repository: /Users/andrerico/Works/Projects/MyNHANES/mynhanes/masterdata/
+
+transformations:
+  rule_seq: global # global, local
