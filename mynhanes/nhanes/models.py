@@ -122,7 +122,7 @@ class VariableCycle(models.Model):
     variable_name = models.CharField(max_length=100)
     sas_label = models.CharField(max_length=100)
     english_text = models.TextField()
-    target = models.CharField(max_length=100)
+    target = models.TextField()
     type = models.CharField(max_length=100)
     value_table = models.JSONField()
 
@@ -232,14 +232,22 @@ class RuleVariable(models.Model):
     rule = models.ForeignKey(Rule, on_delete=models.CASCADE)
     version = models.ForeignKey(Version, on_delete=models.CASCADE)
     variable = models.ForeignKey('Variable', on_delete=models.CASCADE)
-    dataset = models.ForeignKey('Dataset', on_delete=models.CASCADE)
+    dataset = models.ForeignKey(
+        'Dataset',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+        )
     type = models.CharField(max_length=1, choices=TYPES, default="i")
 
     class Meta:
         verbose_name_plural = "Transformations: Rules Variables"
 
     def __str__(self):
-        return f"{self.rule.rule} - {self.type}: {self.variable.variable} in {self.dataset.dataset}"  # noqa E501
+        if self.dataset:
+            return f"{self.rule.rule} - {self.type}: {self.variable.variable} in {self.dataset.dataset}"  # noqa E501
+        else:
+            return f"{self.rule.rule} - {self.type}: {self.variable.variable} in All Datasets"  # noqa E501
 
 
 # ----------------------------------------------------------------------------
@@ -286,6 +294,9 @@ class QueryColumns(models.Model):
     def __str__(self):
         return self.column_name
 
+    class Meta:
+        verbose_name_plural = "Query: Columns"
+
 
 class QueryStructure(models.Model):
     structure_name = models.CharField(max_length=100)
@@ -331,6 +342,7 @@ class QueryFilter(models.Model):
         ("dataset__group__group", "Group"),
         ("dataset__dataset", "Dataset Code"),
         ("dataset__description", "Dataset Name"),
+        ("version__version", "Version"),
     )
     query_structure = models.ForeignKey(
         QueryStructure, related_name="filters", on_delete=models.CASCADE

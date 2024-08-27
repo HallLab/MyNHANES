@@ -35,6 +35,7 @@ from nhanes.workprocess.transformation_manager import TransformationManager
 # from nhanes.utils.start_jupyter import start_jupyter_notebook
 # from django.shortcuts import redirect
 # from django.urls import path
+from nhanes.workprocess.ingestion_nhanes import ingestion_nhanes
 
 
 # ----------------------------------
@@ -75,17 +76,19 @@ class VariableAdmin(admin.ModelAdmin):
         "is_active",
         "type",
     )
-    search_fields = ("variable", "description")
+    search_fields = ("variable", "description", "tags")
+    list_filter = ("tags", "type")
 
 
 class VariableCycleAdmin(admin.ModelAdmin):
     list_display = (
         "version",
         "cycle",
+        "dataset",
         "variable_name",
         "sas_label",
         "type",
-        "english_text",
+        # "english_text",
         "formatted_value_table",
     )
 
@@ -105,6 +108,8 @@ class VariableCycleAdmin(admin.ModelAdmin):
     formatted_value_table.short_description = "Value Table"
 
     search_fields = ("variable_name", "sas_label", "english_text", "value_table")
+
+    list_filter = ("version", "cycle", "dataset", "type", "dataset_id__group", "variable_id__tags")  # noqa: E501
 
 
 class DatasetCycleAdmin(admin.ModelAdmin):
@@ -283,6 +288,14 @@ class WorkProcessNhanesAdmin(admin.ModelAdmin):
     search_fields = ('dataset__dataset', 'cycle__cycle')
     raw_id_fields = ('dataset', 'cycle')
     # actions = [download_nhanes_files]
+    actions = [
+        'set_status_pending',
+        'set_status_standby',
+        'set_status_delete',
+        'set_download_true',
+        'set_download_false',
+        'run_ingestion_data',
+        ]
 
     def dataset_name(self, obj):
         return obj.dataset.dataset
@@ -310,13 +323,65 @@ class WorkProcessNhanesAdmin(admin.ModelAdmin):
     #         return "Dataset does not exist"
     # metadata_url_link.short_description = 'no file'  # noqa: E501
 
+    def set_status_pending(self, request, queryset):
+        rows_updated = queryset.update(status='standby')
+        if rows_updated == 1:
+            message_bit = "1 work process nhanes was"
+        else:
+            message_bit = f"{rows_updated} work process nhanes were"
+        self.message_user(request, f"{message_bit} successfully marked as standby.")
+
+    def set_status_standby(self, request, queryset):
+        rows_updated = queryset.update(status='pending')
+        if rows_updated == 1:
+            message_bit = "1 work process nhanes was"
+        else:
+            message_bit = f"{rows_updated} work process nhanes were"
+        self.message_user(request, f"{message_bit} successfully reset to pending.")
+
+    def set_status_delete(self, request, queryset):
+        rows_updated = queryset.delete()
+        if rows_updated == 1:
+            message_bit = "1 work process nhanes was"
+        else:
+            message_bit = f"{rows_updated} work process nhanes were"
+        self.message_user(request, f"{message_bit} successfully deleted.")
+
+    def set_download_true(self, request, queryset):
+        rows_updated = queryset.update(is_download=True)
+        if rows_updated == 1:
+            message_bit = "1 work process nhanes was"
+        else:
+            message_bit = f"{rows_updated} work process nhanes were"
+        self.message_user(request, f"{message_bit} successfully marked as download.")
+
+    def set_download_false(self, request, queryset):
+        rows_updated = queryset.update(is_download=False)
+        if rows_updated == 1:
+            message_bit = "1 work process nhanes was"
+        else:
+            message_bit = f"{rows_updated} work process nhanes were"
+        self.message_user(request, f"{message_bit} successfully marked as not download.")  # noqa: E501
+
+    def run_ingestion_data(self, request, queryset):
+        # for work_process_nhanes in queryset:
+        #     work_process_nhanes.run_ingestion_data()
+        ingestion_nhanes()
+        self.message_user(request, "Ingestion data process started.")
+
+    set_status_pending.short_description = "Set selected workprocess as standby"
+    set_status_standby.short_description = "Set selected workprocess to pending"
+    set_status_delete.short_description = "Set selected workprocess to delete"
+    set_download_true.short_description = "Set selected workprocess as download"
+    set_download_false.short_description = "Set selected workprocess as not download"
+    run_ingestion_data.short_description = "Run all ingestion data process"
+
 
 class WorkProcessRuleAdmin(admin.ModelAdmin):
     list_display = (
         'rule',
         'status',
         'last_synced_at',
-        'execution_time',
         'attempt_count'
         )
     list_filter = ('status', 'last_synced_at')
@@ -355,12 +420,12 @@ class WorkProcessRuleAdmin(admin.ModelAdmin):
         self.message_user(request, f"{message_bit} successfully reset to pending.")
 
     def run_rule_data(self, request, queryset):
-
         selected_rules = queryset.values_list('rule', flat=True)
-        rules_to_run = Rule.objects.filter(id__in=selected_rules)
-        normalization_manager = TransformationManager(rules=rules_to_run)
-        normalization_manager.apply_transformations()
-        msg = f"Normalization applied for {rules_to_run.count()} selected rules."
+        qs_rules = Rule.objects.filter(id__in=selected_rules)
+        list_rules = list(qs_rules.values_list('rule', flat=True))
+        manager = TransformationManager(rules=list_rules)
+        manager.apply_transformation()
+        msg = f"Normalization applied for {len(list_rules)} selected rules."
         self.message_user(request, msg)
 
     def drop_rule_data(modeladmin, request, queryset):

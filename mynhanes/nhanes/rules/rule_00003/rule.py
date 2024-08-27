@@ -4,14 +4,14 @@ from nhanes.utils.logs import logger
 
 class rule(BaseTransformation):
     """
-    Rule Name: rule_00001
+    Rule Name: rule_00003
     Version: 0.0.0
-    Description: teste
+    Description: test of md
 
     This class applies the following transformations:
     (version / dataset / variable)
-    - Input Variables: (nhanes / DEMO / RIDAGEYR), (nhanes / all datasets / RIAGENDR)
-    - Output Variables: (normalized / DEMO / RIDAGEYR), (normalized / all datasets / RIAGENDR)
+    - Input Variables: (nhanes / DEMO / RIDAGEYR)
+    - Output Variables: 
 
     The apply_normalization method should implement the logic for this rule.
     """
@@ -27,8 +27,7 @@ class rule(BaseTransformation):
         # ----------------------------------------
 
         # example transformation: Doubling the age
-        self.df_out['version'] = 'normalized'
-        self.df_out['RIDAGEYR'] = self.df_out['RIDAGEYR'] * 2
+        # self.df_out['RIDAGEYR^2'] = self.df_out['RIDAGEYR'] * 2
 
         # ----------------------------------------
         # END YOUR TRANSFORMATIONS HERE

@@ -1,3 +1,4 @@
+import re
 import pandas as pd
 from abc import ABC, abstractmethod
 from django.db.models.query import QuerySet
@@ -101,29 +102,63 @@ class BaseTransformation(ABC):
             return False
         return True
 
+    # def _infer_type(self, series):
+    #     # BUG: return errors
+    #     if series.nunique() == 1:
+    #         return 'category'
+    #     if series.str.contains(r'\d+-\d+').all():
+    #         return 'string'
+    #     if pd.to_numeric(series, errors='coerce').notnull().all():
+    #         return 'float'
+    #     elif pd.to_numeric(series, errors='coerce').dropna().apply(float.is_integer).all():  # noqa E501
+    #         return 'int'
+    #     elif series.nunique() < 0.1 * len(series):
+    #         return 'category'
+    #     elif series.apply(lambda x: isinstance(x, str)).all():
+    #         return 'string'
+    #     else:
+    #         return 'object'
+
+    # def _apply_conversion(self, series, inferred_type):
+    #     if inferred_type == 'float':
+    #         return pd.to_numeric(series, errors='coerce')
+    #     elif inferred_type == 'int':
+    #         return pd.to_numeric(series, errors='coerce').astype('Int64')
+    #     elif inferred_type == 'category':
+    #         return series.astype('category')
+    #     elif inferred_type == 'string':
+    #         return series.astype('str')
+    #     else:
+    #         return series
     def _infer_type(self, series):
-        if pd.to_numeric(series, errors='coerce').notnull().all():
-            return 'float'
-        elif pd.to_numeric(series, errors='coerce').dropna().apply(float.is_integer).all():  # noqa E501
+        """
+        Infere o tipo de dado mais adequado para uma série do pandas usando regex.
+        """
+        int_pattern = re.compile(r'^-?\d+$')
+        float_pattern = re.compile(r'^-?\d*\.\d+$')
+
+        # Verifica se todos os valores podem ser inteiros
+        if series.dropna().apply(lambda x: bool(int_pattern.match(str(x)))).all():
             return 'int'
-        elif series.nunique() < 0.1 * len(series):
-            return 'category'
-        elif series.apply(lambda x: isinstance(x, str)).all():
-            return 'string'
-        else:
-            return 'object'
+
+        # Verifica se todos os valores podem ser float
+        elif series.dropna().apply(lambda x: bool(float_pattern.match(str(x)))).all():
+            return 'float'
+
+        # Caso contrário, considera como objeto
+        return 'object'
 
     def _apply_conversion(self, series, inferred_type):
-        if inferred_type == 'float':
-            return pd.to_numeric(series, errors='coerce')
-        elif inferred_type == 'int':
+        """
+        Converte uma série do pandas para o tipo de dado inferido.
+        """
+        if inferred_type == 'int':
             return pd.to_numeric(series, errors='coerce').astype('Int64')
-        elif inferred_type == 'category':
-            return series.astype('category')
-        elif inferred_type == 'string':
-            return series.astype('str')
+        elif inferred_type == 'float':
+            return pd.to_numeric(series, errors='coerce')
         else:
-            return series
+            return series.astype('str')  # Converte para string como padrão
+
 
     def set_variable_type(self) -> bool:
         for qry in self.variable_out:
@@ -162,19 +197,18 @@ class BaseTransformation(ABC):
 
         # qry_version = Version.objects.get(version="normalized")
         version_map = {
-            version.id: version for version in Version.objects.filter(
-                id__in=self.df_out['version'].unique()
+            version.version: version for version in Version.objects.filter(
+                version__in=self.df_out['version'].unique()
                 )
             }
-
         cycle_map = {
-            cycle.id: cycle for cycle in Cycle.objects.filter(
-                id__in=self.df_out['cycle'].unique()
+            cycle.cycle: cycle for cycle in Cycle.objects.filter(
+                cycle__in=self.df_out['cycle'].unique()
                 )
             }
         dataset_map = {
-            dataset.id: dataset for dataset in Dataset.objects.filter(
-                id__in=self.df_out['dataset'].unique()
+            dataset.dataset: dataset for dataset in Dataset.objects.filter(
+                dataset__in=self.df_out['dataset'].unique()
                 )
             }
 

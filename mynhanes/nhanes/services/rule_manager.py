@@ -21,6 +21,7 @@ def create_initial_files(rule, log):
         # base_dir = Path(str(rule.file_path)) / rule.rule
         base_dir = Path(settings.BASE_DIR) / "nhanes" / "rules" / rule.rule
         rule_file = base_dir / "rule.py"
+        readme_file = base_dir / "rule.md"
         if rule_file.exists():
             msg = f"Rule file {rule_file} already exists."
             logger(log, "i", msg)
@@ -28,41 +29,42 @@ def create_initial_files(rule, log):
 
         # Criar as listas de tuplas para input_variables e output_variables
         input_variables = [
-            (str(rv.version.version), str(rv.dataset.dataset), str(rv.variable.variable))  # noqa E501
+            (str(rv.version.version), "all datasets" if rv.dataset is None else str(rv.dataset.dataset), str(rv.variable.variable))  # noqa E501
             for rv in RuleVariable.objects.filter(type='i', rule=rule)
         ]
         output_variables = [
-            (str(rv.version.version), str(rv.dataset.dataset), str(rv.variable.variable))  # noqa E501
+            (str(rv.version.version), "all datasets" if rv.dataset is None else str(rv.dataset.dataset), str(rv.variable.variable))  # noqa E501
             for rv in RuleVariable.objects.filter(type='o', rule=rule)
         ]
 
         # Converter as listas de tuplas para strings formatadas
         input_variables_str = ", ".join(
-            [f"({v}-{d}-{var})" for v, d, var in input_variables]
+            [f"({v} / {d} / {var})" for v, d, var in input_variables]
             )
-        output_variables_str = "- ".join(
-            [f"({v}-{d}-{var})" for v, d, var in output_variables]
+        output_variables_str = ", ".join(
+            [f"({v} / {d} / {var})" for v, d, var in output_variables]
             )
 
         rule_file_content = f"""
-from nhanes.workprocess.normalization_base import BaseNormalization
+from nhanes.workprocess.transformation_base import BaseTransformation
 from nhanes.utils.logs import logger
 
 
-class rule(BaseNormalization):
+class rule(BaseTransformation):
     \"""
     Rule Name: {rule.rule}
     Version: {rule.version}
     Description: {rule.description}
 
     This class applies the following transformations:
+    (version / dataset / variable)
     - Input Variables: {input_variables_str}
     - Output Variables: {output_variables_str}
 
     The apply_normalization method should implement the logic for this rule.
     \"""
 
-    def apply_normalization(self) -> bool:
+    def apply_transformation(self) -> bool:
         self.df_out = self.df_in.copy()
 
         msg = f"Starting normalization rule file to {{self.rule.rule}}"
@@ -82,8 +84,48 @@ class rule(BaseNormalization):
         return True
 
 """
+        readme_content = f"""
+# Rule Documentation: {rule.rule}
+
+## Rule Information
+- **Rule Name:** {rule.rule}
+- **Version:** {rule.version}
+- **Description:** {rule.description}
+- **Status:** {"Active" if rule.is_active else "Inactive"}
+- **Last Updated At:** {rule.updated_at.strftime('%Y-%m-%d %H:%M:%S')}
+- **Repository URL:** [{rule.repo_url}]({rule.repo_url})
+
+## Variables Involved
+### Input Variables:
+{input_variables}
+
+### Output Variables:
+{output_variables}
+
+## Rule Explanation
+Provide a detailed explanation of the rule here.
+
+## Methodology
+Explain the methodology used in this rule. Include any important details about the transformations applied, algorithms used, or special considerations.
+
+## Supporting Literature
+- [Link to Paper 1](https://example.com)
+- [Link to Paper 2](https://example.com)
+
+## Known Issues & Limitations
+- Describe any known issues or limitations of this rule.
+
+## Future Enhancements
+- Describe any potential future enhancements or modifications that could improve the rule.
+
+## Contact Information
+- **Author:** [Your Name](mailto:your.email@example.com)
+- **Project:** [Project Name](https://projecturl.com)
+"""
+
         # write the rule file
         rule_file.write_text(rule_file_content.strip())
+        readme_file.write_text(readme_content.strip())
     except Exception as e:
         msg = f"Error creating rule file: {e}"
         logger(log, "e", msg)

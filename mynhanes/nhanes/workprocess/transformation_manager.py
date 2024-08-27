@@ -2,46 +2,112 @@ import importlib
 import pandas as pd
 from nhanes.models import Rule, RuleVariable, Data, WorkProcessRule
 from nhanes.utils.logs import logger, start_logger
+# from django.db.models.query import QuerySet
 
 
 class TransformationManager:
 
     def __init__(self, rules=None):
-        # self.rules = Rule.objects.filter(is_active=True)
-        self.rules = rules if rules else Rule.objects.filter(is_active=True)
+        # if isinstance(rules, QuerySet) and rules.model == Rule:
+        #     self.rules = rules
+        if isinstance(rules, Rule):
+            # if unique rule, convert to list
+            self.rules = [rules]
+        elif isinstance(rules, str):
+            # if string, filter the rule
+            self.rules = Rule.objects.filter(rule=rules)
+        elif isinstance(rules, list):
+            if all(isinstance(rule, str) for rule in rules):
+                # if list of strings, filter the rules
+                self.rules = Rule.objects.filter(rule__in=rules)
+            elif all(isinstance(rule, Rule) for rule in rules):
+                # if list of Rule instances, use directly
+                self.rules = rules
+            else:
+                raise ValueError(
+                    "The list must contain only strings or instances of the Rule model."
+                    )
+        else:
+            # if None or other type, get all active rules
+            self.rules = Rule.objects.filter(is_active=True)
+
+        # start logger
         self.log = start_logger('transformation_manager')
 
-    # INTERNAL FUNCTION
     def _get_input_data(self, qs_variable_in):
-        # filter the Data model based on the (dataset, variable) pairs
-        # TODO: improve to get the compose key version-dataset-variable
-        qs_df = Data.objects.filter(
-            dataset_id__in=qs_variable_in.values_list('dataset_id', flat=True),
-            variable_id__in=qs_variable_in.values_list('variable_id', flat=True)
-        ).values(
-            'version',
-            'cycle',
-            'dataset',
-            'sample',
-            'sequence',
-            'variable',
-            'variable_id__variable',
-            'value',
-        )
-        # convert queryset to dataframe
-        data = list(qs_df)
-        df = pd.DataFrame(data)
+        df_list = []
 
-        # pivot the dataFrame
-        pivot_df = df.pivot_table(
-                index=['version', 'cycle', 'dataset', 'sample', 'sequence'],
-                columns='variable_id__variable',
+        # get data for each rule variable
+        for rule_var in qs_variable_in:
+            # filter the Data model based on the (dataset, variable) pairs
+            if rule_var.dataset:
+                qs_df = Data.objects.filter(
+                    version=rule_var.version,
+                    dataset=rule_var.dataset,
+                    variable=rule_var.variable
+                ).values(
+                    'version_id__version',
+                    'cycle_id__cycle',
+                    'dataset_id__dataset',
+                    'sample',
+                    'sequence',
+                    'variable_id__variable',
+                    'value',
+                )
+            else:
+                qs_df = Data.objects.filter(
+                    version=rule_var.version,
+                    variable=rule_var.variable
+                ).values(
+                    'version_id__version',
+                    'cycle_id__cycle',
+                    'dataset_id__dataset',
+                    'sample',
+                    'sequence',
+                    'variable_id__variable',
+                    'value',
+                )
+
+            # convert queryset to dataframe
+            data = list(qs_df)
+            if data:  # check if there is data
+                df = pd.DataFrame(data)
+                df_list.append(df)
+
+        # concatenate the dataframes
+        if df_list:
+            final_df = pd.concat(df_list, ignore_index=True)
+
+            # change columns manes
+            final_df.columns = [
+                'version',
+                'cycle',
+                'dataset',
+                'sample',
+                'sequence',
+                'variable',
+                'value'
+            ]
+            # Pivot DataFrame final
+            pivot_df = final_df.pivot_table(
+                index=[
+                    'version',
+                    'cycle',
+                    'dataset',
+                    'sample',
+                    'sequence'
+                    ],
+                columns='variable',
                 values='value',
                 aggfunc='first'
             )
-        pivot_df = pivot_df.reset_index()
-        pivot_df.columns.name = None
-        return pivot_df
+            pivot_df = pivot_df.reset_index()
+            pivot_df.columns.name = None
+
+            return pivot_df
+        else:
+            # return empty dataframe if there is no data
+            return pd.DataFrame()
 
     # INTERNAL FUNCTION
     def _update_work_process_rule(
@@ -60,7 +126,7 @@ class TransformationManager:
             work_process_rule.attempt_count += 1
         work_process_rule.save()
 
-    def apply_transformations(self):
+    def apply_transformation(self):
         for rule in self.rules:
 
             msn = f"Applying transformation for rule {rule.rule}"
