@@ -142,6 +142,7 @@ class DatasetCycle(models.Model):
     cycle = models.ForeignKey(Cycle, on_delete=models.CASCADE)
     metadata_url = models.URLField(blank=True, null=True)
     description = models.JSONField(blank=True, null=True)
+    observation = models.TextField(blank=True, null=True)
     has_special_year_code = models.BooleanField(default=False)
     special_year_code = models.CharField(max_length=10, blank=True, null=True)
     has_dataset = models.BooleanField(default=False)

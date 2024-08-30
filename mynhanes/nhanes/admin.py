@@ -36,6 +36,7 @@ from nhanes.workprocess.transformation_manager import TransformationManager
 # from django.shortcuts import redirect
 # from django.urls import path
 from nhanes.workprocess.ingestion_nhanes import ingestion_nhanes
+from django.contrib.admin import SimpleListFilter
 
 
 # ----------------------------------
@@ -76,7 +77,7 @@ class VariableAdmin(admin.ModelAdmin):
         "is_active",
         "type",
     )
-    search_fields = ("variable", "description", "tags")
+    search_fields = ("variable", "description")
     list_filter = ("tags", "type")
 
 
@@ -113,14 +114,22 @@ class VariableCycleAdmin(admin.ModelAdmin):
 
 
 class DatasetCycleAdmin(admin.ModelAdmin):
-    list_display = ('cycle', 'dataset', 'metadata_url', 'has_special_year_code', 'has_dataset')  # noqa E501
+    list_display = ('cycle', 'dataset', 'dataset_name', 'has_dataset', 'metadata_url',) #  'has_special_year_code', 'special_year_code')  # TODO: RETORN LINK WEB # noqa E501
     search_fields = ('dataset__dataset', 'cycle__cycle', 'metadata_url')
-    list_filter = ('cycle', 'dataset', 'has_special_year_code', 'has_dataset')
+    list_filter = ('cycle', 'dataset', 'has_special_year_code', 'has_dataset', 'dataset__group__group')  # noqa E501
+    # list_editable = ('has_dataset', 'has_special_year_code', 'special_year_code')
+    ordering = ('cycle__cycle', 'dataset__dataset',)
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
         queryset = queryset.select_related('dataset', 'cycle')
         return queryset
+
+    def group_name(self, obj):
+        return obj.dataset.group.group
+
+    def dataset_name(self, obj):
+        return obj.dataset.description
 
 
 class DataAdmin(admin.ModelAdmin):
@@ -275,15 +284,39 @@ class LogsAdmin(admin.ModelAdmin):
     model = Logs
 
 
+class HasDatasetFilter(SimpleListFilter):
+    title = 'Has Dataset'  # ou qualquer título que você desejar
+    parameter_name = 'has_dataset'
+
+    def lookups(self, request, model_admin):
+        return (
+            ('yes', 'Yes'),
+            ('no', 'No'),
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() == 'yes':
+            return queryset.filter(datasetcycle__has_dataset=True)
+        if self.value() == 'no':
+            return queryset.filter(datasetcycle__has_dataset=False)
+
+
 class WorkProcessNhanesAdmin(admin.ModelAdmin):
     list_display = (
         'cycle_name',
         'group_name',
         'dataset_name',
+        'has_dataset_status',
         'status',
         'is_download',
         )
-    list_filter = ('cycle', 'status', 'is_download', 'dataset__group__group')
+    list_filter = (
+        'cycle',
+        'status',
+        HasDatasetFilter,
+        'is_download',
+        'dataset__group__group'
+        )
     list_editable = ('status', 'is_download',)
     search_fields = ('dataset__dataset', 'cycle__cycle')
     raw_id_fields = ('dataset', 'cycle')
@@ -305,6 +338,10 @@ class WorkProcessNhanesAdmin(admin.ModelAdmin):
 
     def group_name(self, obj):
         return obj.dataset.group.group
+
+    @admin.display(boolean=True, description='Has Dataset')
+    def has_dataset_status(self, obj):
+        return obj.datasetcycle.has_dataset
 
     # shorting by related fields
     dataset_name.admin_order_field = 'dataset__dataset'
