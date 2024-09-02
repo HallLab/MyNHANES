@@ -1,0 +1,9 @@
+id,rule_id,type,version,dataset,variable,rule
+1,1,i,nhanes,RXQ_RX,RXDDRGID,rule_00001
+5,1,o,normalized,,PD_BY_DRUG,rule_00001
+12,2,i,nhanes,RXQ_RX,RXDDRGID,rule_00002
+13,2,i,nhanes,,LBDLDL,rule_00002
+14,2,i,nhanes,,LBXTC,rule_00002
+15,2,o,normalized,,LBDLDL_WO_DRUG,rule_00002
+16,2,o,normalized,,LBXTC_WO_DRUG,rule_00002
+17,2,o,normalized,,USE_CHOLESTEROL_DRUG,rule_00002

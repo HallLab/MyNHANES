@@ -405,7 +405,7 @@ class WorkProcessNhanes(models.Model):
 
 class WorkProcessMasterData(models.Model):
     COMPONENT_CHOICES = (
-        ("SystemConfig", "System Config"),
+        ("Version", "Version"),
         ("Cycle", "Cycle"),
         ("Group", "Group"),
         ("Dataset", "Dataset"),
@@ -413,6 +413,7 @@ class WorkProcessMasterData(models.Model):
         ("DatasetCycle", "Dataset Cycle"),
         ("VariableCycle", "Variable Cycle"),
         ("Rule", "Rule"),
+        ("RuleVariable", "Rule Variable"),
         ("QueryColumns", "Query Columns"),
     )
     STATUS_CHOICES = (

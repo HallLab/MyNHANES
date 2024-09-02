@@ -292,9 +292,14 @@ def _chunked_bulk_create(objects, chunk_size=1000):
         Data.objects.bulk_create(objects[i:i + chunk_size])
 
 
-def save_nhanes_data(log, df, cycle_id, dataset_id):
+def save_nhanes_data(log, df, cycle_id, dataset_id, save_data=True):
     """
     """
+    if not save_data:
+        # Use only for testing purposes and to avoid data insertion
+        # Use to ingest metadata only
+        return True
+
     try:
         cycle = Cycle.objects.get(id=cycle_id)
         dataset = Dataset.objects.get(id=dataset_id)

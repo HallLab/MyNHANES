@@ -1,10 +1,11 @@
 id,component_type,last_synced_at,source_file_version,status
-1,Version,2024-08-21 16:42:36.521975+00:00,v0.0.0,pending
-2,Cycle,2024-08-21 16:42:41.360992+00:00,v0.0.0,pending
-3,Group,2024-08-21 16:42:45.729332+00:00,v0.0.0,pending
-4,Dataset,2024-08-21 16:42:47.069013+00:00,v0.0.0,pending
-5,Variable,2024-08-21 16:42:48.564177+00:00,v0.0.0,pending
-6,DatasetCycle,2024-08-21 16:43:52.804855+00:00,v0.0.0,pending
-7,VariableCycle,2024-08-21 16:42:51.081687+00:00,v0.0.0,pending
-8,Rule,2024-08-21 15:58:27.759924+00:00,v0.0.0,pending
-9,QueryColumns,2024-08-21 15:58:27.759975+00:00,v0.0.0,pending
+2,Version,2024-08-26 15:21:00.225887+00:00,v0.0.0,complete
+2,Cycle,2024-08-26 15:21:00.225887+00:00,v0.0.0,complete
+3,Group,2024-08-26 15:21:00.237753+00:00,v0.0.0,complete
+4,Dataset,2024-08-26 15:21:00.462688+00:00,v0.0.0,complete
+5,Variable,2024-08-26 15:19:35.545271+00:00,v0.0.0,complete
+6,DatasetCycle,2024-08-26 15:21:05.620611+00:00,v0.0.0,complete
+7,VariableCycle,2024-08-26 15:19:35.554040+00:00,v0.0.0,error
+8,Rule,2024-08-26 15:13:13.843053+00:00,v0.0.0,pending
+8,RuleVariable,2024-08-26 15:13:13.843053+00:00,v0.0.0,pending
+9,QueryColumns,2024-08-26 15:13:13.843184+00:00,v0.0.0,pending

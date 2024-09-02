@@ -1,7 +1,0 @@
-id,column_name,internal_data_key,column_description
-1,Cycle,cycle__cycle,Ex.: 2017-2018
-2,Group,dataset__group__group,Ex.: Demographics
-3,Dataset Code,dataset__dataset,Ex.: DEMO
-4,Dataset Name,dataset__description,Ex.: Demographic Variables and Sample Weights
-5,Variable Code,variable__variable,Ex.: SDDSRVYR
-6,Variable Name,variable__description,Ex.: Data Release Number

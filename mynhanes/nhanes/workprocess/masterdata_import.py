@@ -15,6 +15,7 @@ from nhanes.models import (
     VariableCycle,
     DatasetCycle,
     Rule,
+    RuleVariable,
     QueryColumns,
 )
 from nhanes.utils.logs import logger, start_logger
@@ -88,7 +89,7 @@ def _initialize_workprocess_master_data(log, BASE_URL):
     qs_wp = WorkProcessMasterData.objects.all()
     # if new base, create the WorkProcessMasterData
     # if not qs_wp.exists():
-    df = _get_data(BASE_URL, 'work_process_master_data.csv', log)
+    df = _get_data(BASE_URL, 'work_process_master_data.csv', log)  # TODO: nao esta validando de qs_wp ja existe?
     if df is not None:
         model_instances = [
             WorkProcessMasterData(
@@ -146,9 +147,10 @@ def masterdata_import():
         'groups.csv': (Group, 'group'),
         'datasets.csv': (Dataset, 'dataset'),
         'variables.csv': (Variable, 'variable'),
-        'variable_cycles.csv': (VariableCycle, ['variable', 'cycle']),
+        'variable_cycles.csv': (VariableCycle, ['variable', 'cycle', 'dataset', 'version',]),
         'dataset_cycles.csv': (DatasetCycle, ['dataset', 'cycle']),
         'rules.csv': (Rule, ['rule', 'version']),
+        'rule_variables.csv': (RuleVariable, ['rule', 'version', 'variable', 'dataset', 'type']),
         'query_columns.csv': (QueryColumns, ['column_name']),
     }
 
@@ -193,34 +195,50 @@ def masterdata_import():
                                 group=group)
 
                     elif file_name == "dataset_cycles.csv":
-                        if not model.objects.filter(
-                            dataset_id__dataset=filter_kwargs['dataset'],
-                            cycle_id__cycle=filter_kwargs['cycle']
-                        ).exists():
-                            cycle = Cycle.objects.get(cycle=row['cycle'])
-                            dataset = Dataset.objects.get(dataset=row['dataset'])
-                            model.objects.create(
-                                cycle=cycle,
-                                dataset=dataset,
-                                metadata_url=row['metadata_url'],
-                                description=row['description'] if pd.notna(row['description']) else None,  # noqa E501 
-                                has_special_year_code=row['has_special_year_code'],
-                                special_year_code=row['special_year_code'],
-                                has_dataset=row['has_dataset']
-                                )
+                        # if not model.objects.filter(
+                        #     dataset_id__dataset=filter_kwargs['dataset'],
+                        #     cycle_id__cycle=filter_kwargs['cycle']
+                        # ).exists():
+                        #     cycle = Cycle.objects.get(cycle=row['cycle'])
+                        #     dataset = Dataset.objects.get(dataset=row['dataset'])
+                        #     model.objects.create(
+                        #         cycle=cycle,
+                        #         dataset=dataset,
+                        #         metadata_url=row['metadata_url'],
+                        #         description=row['description'] if pd.notna(row['description']) else None,  # noqa E501 
+                        #         has_special_year_code=row['has_special_year_code'],
+                        #         special_year_code=row['special_year_code'],
+                        #         has_dataset=row['has_dataset']
+                        #         )
+                        # keep signal create the datasetcycle but update by masterdata_import
+                        cycle = Cycle.objects.get(cycle=row['cycle'])
+                        dataset = Dataset.objects.get(dataset=row['dataset'])
+
+                        model.objects.update_or_create(
+                            cycle=cycle,
+                            dataset=dataset,
+                            defaults={
+                                'metadata_url': row['metadata_url'],
+                                'description': row['description'] if pd.notna(row['description']) else None,  # noqa E501
+                                'has_special_year_code': row['has_special_year_code'],
+                                'special_year_code': row['special_year_code'],
+                                'has_dataset': row['has_dataset']
+                            }
+                        )
 
                     elif file_name == "variable_cycles.csv":
                         if not model.objects.filter(
                             variable_id__variable=filter_kwargs['variable'],
+                            dataset_id__dataset=filter_kwargs['dataset'],
                             cycle_id__cycle=filter_kwargs['cycle'],
-                            # version_id__version=filter_kwargs['version']
-                            version_id__version='nhanes'
+                            version_id__version=filter_kwargs['version']
+                            # version_id__version='nhanes'
 
                         ).exists():
                             cycle = Cycle.objects.get(cycle=row['cycle'])
                             dataset = Dataset.objects.get(dataset=row['dataset'])
                             variable = Variable.objects.get(variable=row['variable'])
-                            version = Version.objects.get(version='nhanes')
+                            version = Version.objects.get(version=row['version'])
                             model.objects.create(
                                 version=version,
                                 cycle=cycle,
@@ -232,6 +250,30 @@ def masterdata_import():
                                 target=row['target'],
                                 type=row['type'],
                                 value_table=row['value_table']
+                                )
+
+                    elif file_name == "rule_variables.csv":
+
+                        if not model.objects.filter(
+                            rule_id__rule=filter_kwargs['rule'],
+                            version_id__version=filter_kwargs['version'],
+                            variable_id__variable=filter_kwargs['variable'],
+                            dataset_id__dataset=filter_kwargs['dataset'],
+                            type=row['type']
+                        ).exists():
+                            rule = Rule.objects.get(rule=row['rule'])
+                            version = Version.objects.get(version=row['version'])
+                            variable = Variable.objects.get(variable=row['variable'])
+                            if row['dataset'] == "":
+                                dataset = None
+                            else:
+                                dataset = Dataset.objects.get(dataset=row['dataset'])
+                            model.objects.create(
+                                rule=rule,
+                                version=version,
+                                variable=variable,
+                                dataset=dataset,
+                                type=row['type'],
                                 )
                     # Process others models with no FK
                     else:

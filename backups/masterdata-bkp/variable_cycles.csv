@@ -1,0 +1,434 @@
+id,variable_name,sas_label,english_text,target,type,value_table,cycle,variable
+1,RIDAGEYR,Age,Age at screening,Person,Numeric,"{'1': '18-29', '2': '30-39'}",2017-2018,RIDAGEYR
+2,SEQN,Respondent sequence number,Respondent sequence number.,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""NHANES 1999-2000 Public Release"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,SEQN
+3,SDDSRVYR,Data Release Number,Data Release Number.,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""NHANES 1999-2000 Public Release"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,SDDSRVYR
+4,RIDSTATR,Interview/Examination Status,Interview and Examination Status of the Sample Person.,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Interviewed Only"",""Count"":683,""Cumulative"":683,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""Both Interviewed and MEC examined"",""Count"":9282,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,RIDSTATR
+5,RIDEXMON,Six month time period,"Six month time period when the examination was performed - two categories: November 1 through April 30, May 1 through October 31.","Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""November 1 through April 30"",""Count"":3910,""Cumulative"":3910,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""May 1 through October 31"",""Count"":5372,""Cumulative"":9282,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":683,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,RIDEXMON
+6,RIAGENDR,Gender,Gender of the sample person,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Male"",""Count"":4883,""Cumulative"":4883,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""Female"",""Count"":5082,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,RIAGENDR
+7,RIDAGEYR,Age at Screening Adjudicated - Recode,Best age in years of the sample person at time of HH screening.  Individuals 85 and over are topcoded at 85 years of age.,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 84"",""Value Description"":""Range of Values"",""Count"":9792,""Cumulative"":9792,""Skip to Item"":null},{""Code or Value"":""85"",""Value Description"":"">= 85 years of age"",""Count"":173,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,RIDAGEYR
+8,RIDAGEMN,Age in Months - Recode,Best age in months at date of screening for individuals under 85 years of age.,"Both males and females 0 YEARS -
+
+			84 YEARS",double,"[{""Code or Value"":""0 to 1019"",""Value Description"":""Range of Values"",""Count"":9792,""Cumulative"":9792,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":173,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,RIDAGEMN
+9,RIDAGEEX,Exam Age in Months - Recode,Best age in months at date of examination for individuals under 85 years of age at screening.,"Both males and females 0 YEARS -
+
+			84 YEARS",double,"[{""Code or Value"":""0 to 1019"",""Value Description"":""Range of Values"",""Count"":9141,""Cumulative"":9141,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":824,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,RIDAGEEX
+10,RIDRETH1,Race/Ethnicity - Recode,Recode of reported race and ethnicity information.,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Mexican American"",""Count"":3393,""Cumulative"":3393,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""Other Hispanic"",""Count"":589,""Cumulative"":3982,""Skip to Item"":null},{""Code or Value"":""3"",""Value Description"":""Non-Hispanic White"",""Count"":3367,""Cumulative"":7349,""Skip to Item"":null},{""Code or Value"":""4"",""Value Description"":""Non-Hispanic Black"",""Count"":2228,""Cumulative"":9577,""Skip to Item"":null},{""Code or Value"":""5"",""Value Description"":""Other Race - Including Multi-Racial"",""Count"":388,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,RIDRETH1
+11,RIDRETH2,Linked NH3 Race/Ethnicity - Recode,Linked NH3 Race and Ethnicity Recode.,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Non-Hispanic White"",""Count"":3423,""Cumulative"":3423,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""Non-Hispanic Black"",""Count"":2273,""Cumulative"":5696,""Skip to Item"":null},{""Code or Value"":""3"",""Value Description"":""Mexican American"",""Count"":3393,""Cumulative"":9089,""Skip to Item"":null},{""Code or Value"":""4"",""Value Description"":""Other Race - Including Multi-Racial"",""Count"":287,""Cumulative"":9376,""Skip to Item"":null},{""Code or Value"":""5"",""Value Description"":""Other Hispanic"",""Count"":589,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,RIDRETH2
+12,DMQMILIT,Veteran/Military Status,Did {you/SP} ever serve in the Armed Forces of the United States?,"Both males and females 17 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Yes"",""Count"":717,""Cumulative"":717,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""No"",""Count"":5004,""Cumulative"":5721,""Skip to Item"":null},{""Code or Value"":""7"",""Value Description"":""Refused"",""Count"":5,""Cumulative"":5726,""Skip to Item"":null},{""Code or Value"":""9"",""Value Description"":""Don't know"",""Count"":5,""Cumulative"":5731,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":4234,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMQMILIT
+13,DMDBORN,Country of Birth - Recode,In what country {were you/was SP} born?,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Born in 50 US States or Washington, DC"",""Count"":8069,""Cumulative"":8069,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""Born in Mexico"",""Count"":1146,""Cumulative"":9215,""Skip to Item"":null},{""Code or Value"":""3"",""Value Description"":""Born Elsewhere"",""Count"":737,""Cumulative"":9952,""Skip to Item"":null},{""Code or Value"":""7"",""Value Description"":""Refused"",""Count"":1,""Cumulative"":9953,""Skip to Item"":null},{""Code or Value"":""9"",""Value Description"":""Don't Know"",""Count"":1,""Cumulative"":9954,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":11,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMDBORN
+14,DMDCITZN,Citizenship Status,{Are you/Is SP} a citizen of the United States? [Information about citizenship is being collected by the U.S. Public Health Service to perform health related research. Providing this information is voluntary and is collected under the authority of the Public Health Service Act. There will be no effect on pending immigration or citizenship petitions.],"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Citizen by birth or naturalization"",""Count"":8663,""Cumulative"":8663,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""Not a citizen of the US"",""Count"":1240,""Cumulative"":9903,""Skip to Item"":null},{""Code or Value"":""7"",""Value Description"":""Refused"",""Count"":30,""Cumulative"":9933,""Skip to Item"":null},{""Code or Value"":""9"",""Value Description"":""Don't know"",""Count"":29,""Cumulative"":9962,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":3,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMDCITZN
+15,DMDYRSUS,Length of time in US,Length of time SP has been in the US.,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Less than 1 year"",""Count"":116,""Cumulative"":116,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""1 yr., less than 5 yrs."",""Count"":341,""Cumulative"":457,""Skip to Item"":null},{""Code or Value"":""3"",""Value Description"":""5 yrs., less than 10 yrs."",""Count"":359,""Cumulative"":816,""Skip to Item"":null},{""Code or Value"":""4"",""Value Description"":""10 yrs., less than 15 yrs."",""Count"":256,""Cumulative"":1072,""Skip to Item"":null},{""Code or Value"":""5"",""Value Description"":""15 yrs., less than 20 yrs."",""Count"":156,""Cumulative"":1228,""Skip to Item"":null},{""Code or Value"":""6"",""Value Description"":""20 yrs., less than 30 yrs."",""Count"":252,""Cumulative"":1480,""Skip to Item"":null},{""Code or Value"":""7"",""Value Description"":""30 yrs., less than 40 yrs."",""Count"":174,""Cumulative"":1654,""Skip to Item"":null},{""Code or Value"":""8"",""Value Description"":""40 yrs., less than 50 yrs."",""Count"":120,""Cumulative"":1774,""Skip to Item"":null},{""Code or Value"":""9"",""Value Description"":""50 years or more"",""Count"":63,""Cumulative"":1837,""Skip to Item"":null},{""Code or Value"":""77"",""Value Description"":""Refused"",""Count"":34,""Cumulative"":1871,""Skip to Item"":null},{""Code or Value"":""88"",""Value Description"":""Could not determine"",""Count"":1,""Cumulative"":1872,""Skip to Item"":null},{""Code or Value"":""99"",""Value Description"":""Don't know"",""Count"":26,""Cumulative"":1898,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":8067,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMDYRSUS
+16,DMDEDUC3,Education Level - Children/Youth 6-19,(SP Interview Version) What is the highest grade or level of school {you have/SP has} completed or the highest degree {you have/s/he has} received?,"Both males and females 6 YEARS -
+
+			19 YEARS",double,"[{""Code or Value"":""0"",""Value Description"":""Never Attended \/ Kindergarten Only"",""Count"":210,""Cumulative"":210,""Skip to Item"":null},{""Code or Value"":""1"",""Value Description"":""1st Grade"",""Count"":202,""Cumulative"":412,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""2nd Grade"",""Count"":186,""Cumulative"":598,""Skip to Item"":null},{""Code or Value"":""3"",""Value Description"":""3rd Grade"",""Count"":186,""Cumulative"":784,""Skip to Item"":null},{""Code or Value"":""4"",""Value Description"":""4th Grade"",""Count"":204,""Cumulative"":988,""Skip to Item"":null},{""Code or Value"":""5"",""Value Description"":""5th Grade"",""Count"":244,""Cumulative"":1232,""Skip to Item"":null},{""Code or Value"":""6"",""Value Description"":""6th Grade"",""Count"":318,""Cumulative"":1550,""Skip to Item"":null},{""Code or Value"":""7"",""Value Description"":""7th Grade"",""Count"":323,""Cumulative"":1873,""Skip to Item"":null},{""Code or Value"":""8"",""Value Description"":""8th Grade"",""Count"":320,""Cumulative"":2193,""Skip to Item"":null},{""Code or Value"":""9"",""Value Description"":""9th Grade"",""Count"":309,""Cumulative"":2502,""Skip to Item"":null},{""Code or Value"":""10"",""Value Description"":""10th Grade"",""Count"":307,""Cumulative"":2809,""Skip to Item"":null},{""Code or Value"":""11"",""Value Description"":""11th Grade"",""Count"":281,""Cumulative"":3090,""Skip to Item"":null},{""Code or Value"":""12"",""Value Description"":""12th Grade, No Diploma"",""Count"":81,""Cumulative"":3171,""Skip to Item"":null},{""Code or Value"":""13"",""Value Description"":""High School Graduate"",""Count"":177,""Cumulative"":3348,""Skip to Item"":null},{""Code or Value"":""14"",""Value Description"":""GED or Equivalent"",""Count"":12,""Cumulative"":3360,""Skip to Item"":null},{""Code or Value"":""15"",""Value Description"":""More than high school"",""Count"":108,""Cumulative"":3468,""Skip to Item"":null},{""Code or Value"":""55"",""Value Description"":""Less Than 5th Grade"",""Count"":3,""Cumulative"":3471,""Skip to Item"":null},{""Code or Value"":""66"",""Value Description"":""Less Than 9th Grade"",""Count"":53,""Cumulative"":3524,""Skip to Item"":null},{""Code or Value"":""77"",""Value Description"":""Refused"",""Count"":2,""Cumulative"":3526,""Skip to Item"":null},{""Code or Value"":""99"",""Value Description"":""Don't know"",""Count"":1,""Cumulative"":3527,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":6438,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMDEDUC3
+17,DMDEDUC2,Education Level - Adults 20+,(SP Interview Version) What is the highest grade or level of school {you have/SP has} completed or the highest degree {you have/s/he has} received?,"Both males and females 20 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Less Than 9th Grade"",""Count"":932,""Cumulative"":932,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""9-11th Grade (Includes 12th grade with no diploma)"",""Count"":964,""Cumulative"":1896,""Skip to Item"":null},{""Code or Value"":""3"",""Value Description"":""High School Grad\/GED or Equivalent"",""Count"":1097,""Cumulative"":2993,""Skip to Item"":null},{""Code or Value"":""4"",""Value Description"":""Some College or AA degree"",""Count"":1070,""Cumulative"":4063,""Skip to Item"":null},{""Code or Value"":""5"",""Value Description"":""College Graduate or above"",""Count"":793,""Cumulative"":4856,""Skip to Item"":null},{""Code or Value"":""7"",""Value Description"":""Refused"",""Count"":8,""Cumulative"":4864,""Skip to Item"":null},{""Code or Value"":""9"",""Value Description"":""Don't Know"",""Count"":14,""Cumulative"":4878,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":5087,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMDEDUC2
+18,DMDEDUC,Education - Recode (old version),(SP Interview Version) What is the highest grade or level of school {you have/SP has} completed or the highest degree {you have/s/he has} received?,"Both males and females 6 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Less Than High School"",""Count"":5124,""Cumulative"":5124,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""High School Diploma (including GED)"",""Count"":1286,""Cumulative"":6410,""Skip to Item"":null},{""Code or Value"":""3"",""Value Description"":""More Than High School"",""Count"":1971,""Cumulative"":8381,""Skip to Item"":null},{""Code or Value"":""7"",""Value Description"":""Refused"",""Count"":10,""Cumulative"":8391,""Skip to Item"":null},{""Code or Value"":""9"",""Value Description"":""Don't know"",""Count"":15,""Cumulative"":8406,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":1559,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMDEDUC
+19,DMDSCHOL,Now attending school?,{Are you/Is SP} now . . .,"Both males and females 6 YEARS -
+
+			19 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""In school"",""Count"":2348,""Cumulative"":2348,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""On vacation from school (between grades)"",""Count"":618,""Cumulative"":2966,""Skip to Item"":null},{""Code or Value"":""3"",""Value Description"":""Neither in school or on vacation from school (between grades)"",""Count"":344,""Cumulative"":3310,""Skip to Item"":null},{""Code or Value"":""7"",""Value Description"":""Refused"",""Count"":0,""Cumulative"":3310,""Skip to Item"":null},{""Code or Value"":""9"",""Value Description"":""Don't know"",""Count"":1,""Cumulative"":3311,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":6654,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMDSCHOL
+20,DMDMARTL,Marital Status,Marital Status,"Both males and females 14 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Married"",""Count"":2485,""Cumulative"":2485,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""Widowed"",""Count"":475,""Cumulative"":2960,""Skip to Item"":null},{""Code or Value"":""3"",""Value Description"":""Divorced"",""Count"":378,""Cumulative"":3338,""Skip to Item"":null},{""Code or Value"":""4"",""Value Description"":""Separated"",""Count"":177,""Cumulative"":3515,""Skip to Item"":null},{""Code or Value"":""5"",""Value Description"":""Never married"",""Count"":2316,""Cumulative"":5831,""Skip to Item"":null},{""Code or Value"":""6"",""Value Description"":""Living with partner"",""Count"":232,""Cumulative"":6063,""Skip to Item"":null},{""Code or Value"":""77"",""Value Description"":""Refused"",""Count"":7,""Cumulative"":6070,""Skip to Item"":null},{""Code or Value"":""99"",""Value Description"":""Don't know"",""Count"":2,""Cumulative"":6072,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":3893,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMDMARTL
+21,DMDHHSIZ,Total number of people in the Household,Total number of people in the Household,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1 to 6"",""Value Description"":""Range of Values"",""Count"":8818,""Cumulative"":8818,""Skip to Item"":null},{""Code or Value"":""7"",""Value Description"":""7 or more people in the Household"",""Count"":1147,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMDHHSIZ
+22,INDHHINC,Annual Household Income,Total household income (reported as a range value in dollars),"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""$ 0 to $ 4,999"",""Count"":298,""Cumulative"":298,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""$ 5,000 to $ 9,999"",""Count"":654,""Cumulative"":952,""Skip to Item"":null},{""Code or Value"":""3"",""Value Description"":""$10,000 to $14,999"",""Count"":843,""Cumulative"":1795,""Skip to Item"":null},{""Code or Value"":""4"",""Value Description"":""$15,000 to $19,999"",""Count"":762,""Cumulative"":2557,""Skip to Item"":null},{""Code or Value"":""5"",""Value Description"":""$20,000 to $24,999"",""Count"":777,""Cumulative"":3334,""Skip to Item"":null},{""Code or Value"":""6"",""Value Description"":""$25,000 to $34,999"",""Count"":1118,""Cumulative"":4452,""Skip to Item"":null},{""Code or Value"":""7"",""Value Description"":""$35,000 to $44,999"",""Count"":804,""Cumulative"":5256,""Skip to Item"":null},{""Code or Value"":""8"",""Value Description"":""$45,000 to $54,999"",""Count"":607,""Cumulative"":5863,""Skip to Item"":null},{""Code or Value"":""9"",""Value Description"":""$55,000 to $64,999"",""Count"":509,""Cumulative"":6372,""Skip to Item"":null},{""Code or Value"":""10"",""Value Description"":""$65,000 to $74,999"",""Count"":371,""Cumulative"":6743,""Skip to Item"":null},{""Code or Value"":""11"",""Value Description"":""$75,000 and Over"",""Count"":1255,""Cumulative"":7998,""Skip to Item"":null},{""Code or Value"":""12"",""Value Description"":""Over $20,000"",""Count"":314,""Cumulative"":8312,""Skip to Item"":null},{""Code or Value"":""13"",""Value Description"":""Under $20,000"",""Count"":53,""Cumulative"":8365,""Skip to Item"":null},{""Code or Value"":""77"",""Value Description"":""Refused"",""Count"":41,""Cumulative"":8406,""Skip to Item"":null},{""Code or Value"":""99"",""Value Description"":""Don't know"",""Count"":41,""Cumulative"":8447,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":1518,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,INDHHINC
+23,INDFMINC,Annual Family Income,Total family income (reported as a range value in dollars),"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""$ 0 to $ 4,999"",""Count"":569,""Cumulative"":569,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""$ 5,000 to $ 9,999"",""Count"":877,""Cumulative"":1446,""Skip to Item"":null},{""Code or Value"":""3"",""Value Description"":""$10,000 to $14,999"",""Count"":1062,""Cumulative"":2508,""Skip to Item"":null},{""Code or Value"":""4"",""Value Description"":""$15,000 to $19,999"",""Count"":829,""Cumulative"":3337,""Skip to Item"":null},{""Code or Value"":""5"",""Value Description"":""$20,000 to $24,999"",""Count"":844,""Cumulative"":4181,""Skip to Item"":null},{""Code or Value"":""6"",""Value Description"":""$25,000 to $34,999"",""Count"":1077,""Cumulative"":5258,""Skip to Item"":null},{""Code or Value"":""7"",""Value Description"":""$35,000 to $44,999"",""Count"":740,""Cumulative"":5998,""Skip to Item"":null},{""Code or Value"":""8"",""Value Description"":""$45,000 to $54,999"",""Count"":611,""Cumulative"":6609,""Skip to Item"":null},{""Code or Value"":""9"",""Value Description"":""$55,000 to $64,999"",""Count"":451,""Cumulative"":7060,""Skip to Item"":null},{""Code or Value"":""10"",""Value Description"":""$65,000 to $74,999"",""Count"":348,""Cumulative"":7408,""Skip to Item"":null},{""Code or Value"":""11"",""Value Description"":""$75,000 and Over"",""Count"":1074,""Cumulative"":8482,""Skip to Item"":null},{""Code or Value"":""12"",""Value Description"":""Over $20,000"",""Count"":404,""Cumulative"":8886,""Skip to Item"":null},{""Code or Value"":""13"",""Value Description"":""Under $20,000"",""Count"":366,""Cumulative"":9252,""Skip to Item"":null},{""Code or Value"":""77"",""Value Description"":""Refused"",""Count"":301,""Cumulative"":9553,""Skip to Item"":null},{""Code or Value"":""99"",""Value Description"":""Don't know"",""Count"":230,""Cumulative"":9783,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":182,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,INDFMINC
+24,INDFMPIR,Family PIR,Poverty income ratio (PIR) - a ratio of family income to poverty threshold,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 4.99"",""Value Description"":""Range of Values"",""Count"":7466,""Cumulative"":7466,""Skip to Item"":null},{""Code or Value"":""5"",""Value Description"":""PIR value greater than or equal to 5.00"",""Count"":1016,""Cumulative"":8482,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":1483,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,INDFMPIR
+25,RIDEXPRG,Pregnancy Status at Exam - Recode,Pregnancy status at the time of MEC exam.,"Females only 8 YEARS -
+
+			59 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Yes, positive lab pregnancy test or self-reported pregnant at exam"",""Count"":311,""Cumulative"":311,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""SP not pregnant at exam"",""Count"":1443,""Cumulative"":1754,""Skip to Item"":null},{""Code or Value"":""3"",""Value Description"":""Cannot ascertain if SP is pregnant at exam"",""Count"":208,""Cumulative"":1962,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":8003,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,RIDEXPRG
+26,RIDPREG,Pregnancy Status - Recode (old version),Pregnancy status variable based on all source data. NOTE: This is the previous pregnancy status recode variable. RIDPREG is a more conservative pregnancy status variable. Please review the file documentation.,"Females only 8 YEARS -
+
+			59 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Yes, based on positive lab pregnancy test, self-reported pregnancy status, screener interview data or menstrual period history"",""Count"":285,""Cumulative"":285,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""SP not pregnant"",""Count"":1544,""Cumulative"":1829,""Skip to Item"":null},{""Code or Value"":""9"",""Value Description"":""Cannot ascertain if SP is pregnant"",""Count"":0,""Cumulative"":1829,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":8136,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,RIDPREG
+27,DMDHRGND,HH Ref Person Gender,Gender of the household reference person,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Male"",""Count"":5597,""Cumulative"":5597,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""Female"",""Count"":4356,""Cumulative"":9953,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":12,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMDHRGND
+28,DMDHRAGE,HH Ref Person Age,Age in years of the household reference person at the time of HH screening.  Individuals 85 and over are topcoded at 85 years of age.,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""17 to 84"",""Value Description"":""Range of Values"",""Count"":9782,""Cumulative"":9782,""Skip to Item"":null},{""Code or Value"":""85"",""Value Description"":"">= 85 years of age"",""Count"":171,""Cumulative"":9953,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":12,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMDHRAGE
+29,DMDHRBRN,HH Ref Person Country of Birth,In what country {were you/was NON-SP Head} born?,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Born in 50 US States or Washington, DC"",""Count"":6545,""Cumulative"":6545,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""Born in Mexico"",""Count"":1974,""Cumulative"":8519,""Skip to Item"":null},{""Code or Value"":""3"",""Value Description"":""Born Elsewhere"",""Count"":1046,""Cumulative"":9565,""Skip to Item"":null},{""Code or Value"":""7"",""Value Description"":""Refused"",""Count"":12,""Cumulative"":9577,""Skip to Item"":null},{""Code or Value"":""9"",""Value Description"":""Don't know"",""Count"":0,""Cumulative"":9577,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":388,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMDHRBRN
+30,DMDHREDU,HH Ref Person Education Level,What is the highest grade or level of school {you have/NON_SP HEAD has} received?,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Less Than 9th Grade"",""Count"":1747,""Cumulative"":1747,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""9-11th Grade (Includes 12th grade with no diploma)"",""Count"":2100,""Cumulative"":3847,""Skip to Item"":null},{""Code or Value"":""3"",""Value Description"":""High School Grad\/GED or equivalent"",""Count"":2188,""Cumulative"":6035,""Skip to Item"":null},{""Code or Value"":""4"",""Value Description"":""Some College or AA degree"",""Count"":2026,""Cumulative"":8061,""Skip to Item"":null},{""Code or Value"":""5"",""Value Description"":""College Graduate or above"",""Count"":1431,""Cumulative"":9492,""Skip to Item"":null},{""Code or Value"":""7"",""Value Description"":""Refused"",""Count"":13,""Cumulative"":9505,""Skip to Item"":null},{""Code or Value"":""9"",""Value Description"":""Don't know"",""Count"":66,""Cumulative"":9571,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":394,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMDHREDU
+31,DMDHRMAR,HH Ref Person Marital Status,Marital Status of household reference person,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Married"",""Count"":4673,""Cumulative"":4673,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""Widowed"",""Count"":577,""Cumulative"":5250,""Skip to Item"":null},{""Code or Value"":""3"",""Value Description"":""Divorced"",""Count"":861,""Cumulative"":6111,""Skip to Item"":null},{""Code or Value"":""4"",""Value Description"":""Separated"",""Count"":538,""Cumulative"":6649,""Skip to Item"":null},{""Code or Value"":""5"",""Value Description"":""Never married"",""Count"":1115,""Cumulative"":7764,""Skip to Item"":null},{""Code or Value"":""6"",""Value Description"":""Living with partner"",""Count"":267,""Cumulative"":8031,""Skip to Item"":null},{""Code or Value"":""77"",""Value Description"":""Refused"",""Count"":18,""Cumulative"":8049,""Skip to Item"":null},{""Code or Value"":""99"",""Value Description"":""Don't know"",""Count"":13,""Cumulative"":8062,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":1903,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMDHRMAR
+32,DMDHSEDU,HH Ref Person's Spouse Education Level,What is the highest grade or level of school {you have/NON-SP SPOUSE has completed or the highest degree {you have/he/she has} received,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Less Than 9th Grade"",""Count"":607,""Cumulative"":607,""Skip to Item"":null},{""Code or Value"":""2"",""Value Description"":""9-11th Grade (Includes 12th grade with no diploma)"",""Count"":729,""Cumulative"":1336,""Skip to Item"":null},{""Code or Value"":""3"",""Value Description"":""High School Grad\/GED or equivalent"",""Count"":728,""Cumulative"":2064,""Skip to Item"":null},{""Code or Value"":""4"",""Value Description"":""Some College or AA degree"",""Count"":661,""Cumulative"":2725,""Skip to Item"":null},{""Code or Value"":""5"",""Value Description"":""College Graduate or above"",""Count"":483,""Cumulative"":3208,""Skip to Item"":null},{""Code or Value"":""7"",""Value Description"":""Refused"",""Count"":3,""Cumulative"":3211,""Skip to Item"":null},{""Code or Value"":""9"",""Value Description"":""Don't know"",""Count"":21,""Cumulative"":3232,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":6733,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMDHSEDU
+33,WTINT2YR,Full Sample 2 Year Interview Weight,Interviewed Sample Persons.,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""974.66525161 to 236864.13597"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTINT2YR
+34,WTINT4YR,Full Sample 4 Year Interview Weight,Interviewed Sample Persons. Used for 1999-2002 data collection years only.,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""620.682382 to 100652.32964"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTINT4YR
+35,WTMEC2YR,Full Sample 2 Year MEC Exam Weight,Both Interviewed and MEC Examined Sample Persons.,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261361.33834"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMEC2YR
+36,WTMEC4YR,Full Sample 4 Year MEC Exam Weight,Both Interviewed and MEC Examined Sample Persons. Used for 1999-2002 data collection years only.,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 103831.17105"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMEC4YR
+37,SDMVPSU,Masked Variance Pseudo-PSU,Masked Variance Unit Pseudo-PSU variable for variance estimation,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1 to 3"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,SDMVPSU
+38,SDMVSTRA,Masked Variance Pseudo-Stratum,Masked Variance Unit Pseudo-Stratum variable for variance estimation,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1 to 13"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,SDMVSTRA
+39,SDJ1REPN,Jack Knife Replicate Number,Jack Knife Replicate Number,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1 to 52"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,SDJ1REPN
+40,DMAETHN,Logical Imputation Flag for Ethnicity,Logical Imputation Flag for Ethnicity,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Value Imputed"",""Count"":2,""Cumulative"":2,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":9963,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMAETHN
+41,DMARACE,Logical Imputation Flag for Race Recode,Logical Imputation Flag for Race Recode,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""1"",""Value Description"":""Value Imputed"",""Count"":2,""Cumulative"":2,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":9963,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,DMARACE
+42,WTMREP01,MEC Exam Weight Jack Knife Replicate 01,MEC Exam Weight Jack Knife Replicate 01,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 258536.54745"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP01
+43,WTMREP02,MEC Exam Weight Jack Knife Replicate 02,MEC Exam Weight Jack Knife Replicate 02,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 260734.52777"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP02
+44,WTMREP03,MEC Exam Weight Jack Knife Replicate 03,MEC Exam Weight Jack Knife Replicate 03,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261389.69805"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP03
+45,WTMREP04,MEC Exam Weight Jack Knife Replicate 04,MEC Exam Weight Jack Knife Replicate 04,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261672.08293"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP04
+46,WTMREP05,MEC Exam Weight Jack Knife Replicate 05,MEC Exam Weight Jack Knife Replicate 05,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261039.26428"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP05
+47,WTMREP06,MEC Exam Weight Jack Knife Replicate 06,MEC Exam Weight Jack Knife Replicate 06,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 262491.489"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP06
+48,WTMREP07,MEC Exam Weight Jack Knife Replicate 07,MEC Exam Weight Jack Knife Replicate 07,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 258631.58327"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP07
+49,WTMREP08,MEC Exam Weight Jack Knife Replicate 08,MEC Exam Weight Jack Knife Replicate 08,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261427.86999"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP08
+50,WTMREP09,MEC Exam Weight Jack Knife Replicate 09,MEC Exam Weight Jack Knife Replicate 09,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 263135.14291"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP09
+51,WTMREP10,MEC Exam Weight Jack Knife Replicate 10,MEC Exam Weight Jack Knife Replicate 10,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 264325.82084"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP10
+52,WTMREP11,MEC Exam Weight Jack Knife Replicate 11,MEC Exam Weight Jack Knife Replicate 11,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 265082.90502"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP11
+53,WTMREP12,MEC Exam Weight Jack Knife Replicate 12,MEC Exam Weight Jack Knife Replicate 12,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261045.28869"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP12
+54,WTMREP13,MEC Exam Weight Jack Knife Replicate 13,MEC Exam Weight Jack Knife Replicate 13,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 259966.30733"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP13
+55,WTMREP14,MEC Exam Weight Jack Knife Replicate 14,MEC Exam Weight Jack Knife Replicate 14,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 267824.09333"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP14
+56,WTMREP15,MEC Exam Weight Jack Knife Replicate 15,MEC Exam Weight Jack Knife Replicate 15,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 264048.81824"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP15
+57,WTMREP16,MEC Exam Weight Jack Knife Replicate 16,MEC Exam Weight Jack Knife Replicate 16,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 265140.60417"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP16
+58,WTMREP17,MEC Exam Weight Jack Knife Replicate 17,MEC Exam Weight Jack Knife Replicate 17,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 260425.83848"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP17
+59,WTMREP18,MEC Exam Weight Jack Knife Replicate 18,MEC Exam Weight Jack Knife Replicate 18,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261367.45269"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP18
+60,WTMREP19,MEC Exam Weight Jack Knife Replicate 19,MEC Exam Weight Jack Knife Replicate 19,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 265394.01408"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP19
+61,WTMREP20,MEC Exam Weight Jack Knife Replicate 20,MEC Exam Weight Jack Knife Replicate 20,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261809.66639"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP20
+62,WTMREP21,MEC Exam Weight Jack Knife Replicate 21,MEC Exam Weight Jack Knife Replicate 21,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261040.57842"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP21
+63,WTMREP22,MEC Exam Weight Jack Knife Replicate 22,MEC Exam Weight Jack Knife Replicate 22,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261410.98954"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP22
+64,WTMREP23,MEC Exam Weight Jack Knife Replicate 23,MEC Exam Weight Jack Knife Replicate 23,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261818.79012"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP23
+65,WTMREP24,MEC Exam Weight Jack Knife Replicate 24,MEC Exam Weight Jack Knife Replicate 24,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 262433.25419"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP24
+66,WTMREP25,MEC Exam Weight Jack Knife Replicate 25,MEC Exam Weight Jack Knife Replicate 25,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261361.7708"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP25
+67,WTMREP26,MEC Exam Weight Jack Knife Replicate 26,MEC Exam Weight Jack Knife Replicate 26,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 259973.96856"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP26
+68,WTMREP27,MEC Exam Weight Jack Knife Replicate 27,MEC Exam Weight Jack Knife Replicate 27,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 260115.6662"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP27
+69,WTMREP28,MEC Exam Weight Jack Knife Replicate 28,MEC Exam Weight Jack Knife Replicate 28,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 265884.08648"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP28
+70,WTMREP29,MEC Exam Weight Jack Knife Replicate 29,MEC Exam Weight Jack Knife Replicate 29,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 263108.33395"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP29
+71,WTMREP30,MEC Exam Weight Jack Knife Replicate 30,MEC Exam Weight Jack Knife Replicate 30,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261761.84402"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP30
+72,WTMREP31,MEC Exam Weight Jack Knife Replicate 31,MEC Exam Weight Jack Knife Replicate 31,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 262963.60939"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP31
+73,WTMREP32,MEC Exam Weight Jack Knife Replicate 32,MEC Exam Weight Jack Knife Replicate 32,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 254090.86669"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP32
+74,WTMREP33,MEC Exam Weight Jack Knife Replicate 33,MEC Exam Weight Jack Knife Replicate 33,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 259603.33498"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP33
+75,WTMREP34,MEC Exam Weight Jack Knife Replicate 34,MEC Exam Weight Jack Knife Replicate 34,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261548.40488"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP34
+76,WTMREP35,MEC Exam Weight Jack Knife Replicate 35,MEC Exam Weight Jack Knife Replicate 35,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 253436.57188"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP35
+77,WTMREP36,MEC Exam Weight Jack Knife Replicate 36,MEC Exam Weight Jack Knife Replicate 36,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261427.09527"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP36
+78,WTMREP37,MEC Exam Weight Jack Knife Replicate 37,MEC Exam Weight Jack Knife Replicate 37,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 262556.46962"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP37
+79,WTMREP38,MEC Exam Weight Jack Knife Replicate 38,MEC Exam Weight Jack Knife Replicate 38,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 265965.07558"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP38
+80,WTMREP39,MEC Exam Weight Jack Knife Replicate 39,MEC Exam Weight Jack Knife Replicate 39,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 263382.4133"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP39
+81,WTMREP40,MEC Exam Weight Jack Knife Replicate 40,MEC Exam Weight Jack Knife Replicate 40,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 262655.33471"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP40
+82,WTMREP41,MEC Exam Weight Jack Knife Replicate 41,MEC Exam Weight Jack Knife Replicate 41,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 263442.38982"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP41
+83,WTMREP42,MEC Exam Weight Jack Knife Replicate 42,MEC Exam Weight Jack Knife Replicate 42,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 263487.73528"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP42
+84,WTMREP43,MEC Exam Weight Jack Knife Replicate 43,MEC Exam Weight Jack Knife Replicate 43,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 263992.07035"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP43
+85,WTMREP44,MEC Exam Weight Jack Knife Replicate 44,MEC Exam Weight Jack Knife Replicate 44,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 262043.77211"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP44
+86,WTMREP45,MEC Exam Weight Jack Knife Replicate 45,MEC Exam Weight Jack Knife Replicate 45,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 257748.99083"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP45
+87,WTMREP46,MEC Exam Weight Jack Knife Replicate 46,MEC Exam Weight Jack Knife Replicate 46,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 266060.30544"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP46
+88,WTMREP47,MEC Exam Weight Jack Knife Replicate 47,MEC Exam Weight Jack Knife Replicate 47,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 252840.3993"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP47
+89,WTMREP48,MEC Exam Weight Jack Knife Replicate 48,MEC Exam Weight Jack Knife Replicate 48,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261674.57726"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP48
+90,WTMREP49,MEC Exam Weight Jack Knife Replicate 49,MEC Exam Weight Jack Knife Replicate 49,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261134.18335"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP49
+91,WTMREP50,MEC Exam Weight Jack Knife Replicate 50,MEC Exam Weight Jack Knife Replicate 50,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 261980.54185"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP50
+92,WTMREP51,MEC Exam Weight Jack Knife Replicate 51,MEC Exam Weight Jack Knife Replicate 51,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 259613.17584"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP51
+93,WTMREP52,MEC Exam Weight Jack Knife Replicate 52,MEC Exam Weight Jack Knife Replicate 52,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 260463.01834"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTMREP52
+94,WTIREP01,Interview Weight Jack Knife Replicate 01,Interview Weight Jack Knife Replicate 01,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 238420.85936"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP01
+95,WTIREP02,Interview Weight Jack Knife Replicate 02,Interview Weight Jack Knife Replicate 02,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237013.9879"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP02
+96,WTIREP03,Interview Weight Jack Knife Replicate 03,Interview Weight Jack Knife Replicate 03,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 236865.01184"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP03
+97,WTIREP04,Interview Weight Jack Knife Replicate 04,Interview Weight Jack Knife Replicate 04,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237416.49771"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP04
+98,WTIREP05,Interview Weight Jack Knife Replicate 05,Interview Weight Jack Knife Replicate 05,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237747.75605"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP05
+99,WTIREP06,Interview Weight Jack Knife Replicate 06,Interview Weight Jack Knife Replicate 06,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 238188.48458"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP06
+100,WTIREP07,Interview Weight Jack Knife Replicate 07,Interview Weight Jack Knife Replicate 07,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 235374.89521"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP07
+101,WTIREP08,Interview Weight Jack Knife Replicate 08,Interview Weight Jack Knife Replicate 08,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237535.86045"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP08
+102,WTIREP09,Interview Weight Jack Knife Replicate 09,Interview Weight Jack Knife Replicate 09,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 238836.16707"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP09
+103,WTIREP10,Interview Weight Jack Knife Replicate 10,Interview Weight Jack Knife Replicate 10,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 240731.79741"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP10
+104,WTIREP11,Interview Weight Jack Knife Replicate 11,Interview Weight Jack Knife Replicate 11,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 240439.93322"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP11
+105,WTIREP12,Interview Weight Jack Knife Replicate 12,Interview Weight Jack Knife Replicate 12,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237833.53131"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP12
+106,WTIREP13,Interview Weight Jack Knife Replicate 13,Interview Weight Jack Knife Replicate 13,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 236237.26884"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP13
+107,WTIREP14,Interview Weight Jack Knife Replicate 14,Interview Weight Jack Knife Replicate 14,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 242715.02986"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP14
+108,WTIREP15,Interview Weight Jack Knife Replicate 15,Interview Weight Jack Knife Replicate 15,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 241151.11465"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP15
+109,WTIREP16,Interview Weight Jack Knife Replicate 16,Interview Weight Jack Knife Replicate 16,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 241051.95876"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP16
+110,WTIREP17,Interview Weight Jack Knife Replicate 17,Interview Weight Jack Knife Replicate 17,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237292.10154"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP17
+111,WTIREP18,Interview Weight Jack Knife Replicate 18,Interview Weight Jack Knife Replicate 18,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237121.73258"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP18
+112,WTIREP19,Interview Weight Jack Knife Replicate 19,Interview Weight Jack Knife Replicate 19,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 240662.67747"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP19
+113,WTIREP20,Interview Weight Jack Knife Replicate 20,Interview Weight Jack Knife Replicate 20,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237367.40897"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP20
+114,WTIREP21,Interview Weight Jack Knife Replicate 21,Interview Weight Jack Knife Replicate 21,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 238551.11865"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP21
+115,WTIREP22,Interview Weight Jack Knife Replicate 22,Interview Weight Jack Knife Replicate 22,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 236978.52835"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP22
+116,WTIREP23,Interview Weight Jack Knife Replicate 23,Interview Weight Jack Knife Replicate 23,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237791.3281"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP23
+117,WTIREP24,Interview Weight Jack Knife Replicate 24,Interview Weight Jack Knife Replicate 24,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 238519.14532"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP24
+118,WTIREP25,Interview Weight Jack Knife Replicate 25,Interview Weight Jack Knife Replicate 25,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 236876.34057"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP25
+119,WTIREP26,Interview Weight Jack Knife Replicate 26,Interview Weight Jack Knife Replicate 26,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237924.50944"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP26
+120,WTIREP27,Interview Weight Jack Knife Replicate 27,Interview Weight Jack Knife Replicate 27,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 238878.16902"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP27
+121,WTIREP28,Interview Weight Jack Knife Replicate 28,Interview Weight Jack Knife Replicate 28,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 241459.37563"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP28
+122,WTIREP29,Interview Weight Jack Knife Replicate 29,Interview Weight Jack Knife Replicate 29,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237716.20458"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP29
+123,WTIREP30,Interview Weight Jack Knife Replicate 30,Interview Weight Jack Knife Replicate 30,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 238268.46066"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP30
+124,WTIREP31,Interview Weight Jack Knife Replicate 31,Interview Weight Jack Knife Replicate 31,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 238064.69158"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP31
+125,WTIREP32,Interview Weight Jack Knife Replicate 32,Interview Weight Jack Knife Replicate 32,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 232851.32047"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP32
+126,WTIREP33,Interview Weight Jack Knife Replicate 33,Interview Weight Jack Knife Replicate 33,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237122.57994"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP33
+127,WTIREP34,Interview Weight Jack Knife Replicate 34,Interview Weight Jack Knife Replicate 34,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237636.68862"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP34
+128,WTIREP35,Interview Weight Jack Knife Replicate 35,Interview Weight Jack Knife Replicate 35,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 232641.61455"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP35
+129,WTIREP36,Interview Weight Jack Knife Replicate 36,Interview Weight Jack Knife Replicate 36,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 238207.79281"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP36
+130,WTIREP37,Interview Weight Jack Knife Replicate 37,Interview Weight Jack Knife Replicate 37,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237794.97698"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP37
+131,WTIREP38,Interview Weight Jack Knife Replicate 38,Interview Weight Jack Knife Replicate 38,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 241173.68942"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP38
+132,WTIREP39,Interview Weight Jack Knife Replicate 39,Interview Weight Jack Knife Replicate 39,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 239060.10369"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP39
+133,WTIREP40,Interview Weight Jack Knife Replicate 40,Interview Weight Jack Knife Replicate 40,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237986.39808"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP40
+134,WTIREP41,Interview Weight Jack Knife Replicate 41,Interview Weight Jack Knife Replicate 41,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 239760.23487"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP41
+135,WTIREP42,Interview Weight Jack Knife Replicate 42,Interview Weight Jack Knife Replicate 42,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 239610.85071"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP42
+136,WTIREP43,Interview Weight Jack Knife Replicate 43,Interview Weight Jack Knife Replicate 43,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 239320.707"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP43
+137,WTIREP44,Interview Weight Jack Knife Replicate 44,Interview Weight Jack Knife Replicate 44,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237571.75151"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP44
+138,WTIREP45,Interview Weight Jack Knife Replicate 45,Interview Weight Jack Knife Replicate 45,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 235750.38147"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP45
+139,WTIREP46,Interview Weight Jack Knife Replicate 46,Interview Weight Jack Knife Replicate 46,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 241834.3272"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP46
+140,WTIREP47,Interview Weight Jack Knife Replicate 47,Interview Weight Jack Knife Replicate 47,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 232738.99202"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP47
+141,WTIREP48,Interview Weight Jack Knife Replicate 48,Interview Weight Jack Knife Replicate 48,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237147.54679"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP48
+142,WTIREP49,Interview Weight Jack Knife Replicate 49,Interview Weight Jack Knife Replicate 49,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 237076.10369"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP49
+143,WTIREP50,Interview Weight Jack Knife Replicate 50,Interview Weight Jack Knife Replicate 50,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 238360.24085"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP50
+144,WTIREP51,Interview Weight Jack Knife Replicate 51,Interview Weight Jack Knife Replicate 51,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 236648.97986"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP51
+145,WTIREP52,Interview Weight Jack Knife Replicate 52,Interview Weight Jack Knife Replicate 52,"Both males and females 0 YEARS -
+
+			150 YEARS",double,"[{""Code or Value"":""0 to 236964.16066"",""Value Description"":""Range of Values"",""Count"":9965,""Cumulative"":9965,""Skip to Item"":null},{""Code or Value"":""."",""Value Description"":""Missing"",""Count"":0,""Cumulative"":9965,""Skip to Item"":null}]",1999-2000,WTIREP52

@@ -5,7 +5,6 @@ global:
   version: 0.0.4
   type: server
 
-
 database:
   name: mynhanes_db
   user: mynhanes_user
@@ -25,6 +24,7 @@ workprocess:
   auto_create_workprocess: True
   # masterdata_repository: https://raw.githubusercontent.com/Garon-Sys/MyNHANES_DataHub/main/masterdata/
   masterdata_repository: /Users/andrerico/Works/Projects/MyNHANES/mynhanes/masterdata/
+  save_data: True
 
 transformations:
   rule_seq: global # global, local

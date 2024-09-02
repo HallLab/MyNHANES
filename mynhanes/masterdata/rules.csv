@@ -1,0 +1,16 @@
+id,rule,version,description,is_active,updated_at,repo_url
+1,rule_00001,1.0,"This rule identifies participants who are using medications associated with the treatment of Parkinson's disease. It generates a variable called 'PD_BY_DRUG' within the Normalized version, marking these participants for further analysis.
+
+Distribution of Samples with use one of these drugs:",True,2024-08-30 13:23:44.381430+00:00,https://github.com/Garon-Sys/MyNHANES/tree/main/rules/rule_00001
+2,rule_00002,1.0,"This rule identifies participants who use medications associated with cholesterol management and adjusts their LDL and total cholesterol levels to values that would be expected without medication use. The rule generates a new variable identifying these participants and provides the adjusted LDL and total cholesterol variables in the Normalized dataset.
+
+Distribution of Samples with use one of these drugs:
+
+- ATORVASTATIN_CALCIUM
+- SIMVASTATIN
+- PRAVASTATIN_SODIUM
+- FLUVASTATIN_SODIUM
+
+# LDL and TC values are reduced by 30% and 20% respectively
+df_nhanes['LBDLDL_N'] = df_nhanes.apply(lambda row: row['LBDLDL'] / 0.7 if row.name in df_medications.index else row['LBDLDL'], axis=1)
+df_nhanes['LBXTC_N'] = df_nhanes.apply(lambda row: row['LBXTC'] / 0.8 if row.name in df_medications.index else row['LBXTC'], axis=1)",True,2024-08-30 19:06:27.007524+00:00,https://github.com/Garon-Sys/MyNHANES/tree/main/rules/rule_00002

@@ -198,12 +198,17 @@ def ingestion_nhanes(load_type=str('db')):
                 qry_workprocess.save()
                 continue
 
+            save_data = config['workprocess']['save_data']
+            if save_data is None:
+                save_data = True
+
             # Salve the NHANES data in the database
             check_return = ingestion_utils.save_nhanes_data(
                 log,
                 df,
                 cycle_id=qry_workprocess.cycle.id,
                 dataset_id=qry_workprocess.dataset.id,
+                save_data=save_data
                 )
             if not check_return:
                 msm = f"Error on save data in database to {qry_workprocess.cycle.cycle} - {qry_workprocess.dataset.dataset}." # noqa E501

@@ -12,27 +12,68 @@ def check_and_sync_workprocess():
 
     dataset_cycles = DatasetCycle.objects.all()
 
+    # for ds_cycle in dataset_cycles:
+    #     if not WorkProcessNhanes.objects.filter(datasetcycle=ds_cycle).exists():
+    #         WorkProcessNhanes.objects.create(
+    #             datasetcycle=ds_cycle,
+    #             cycle=ds_cycle.cycle,
+    #             dataset=ds_cycle.dataset,
+    #             status="standby"
+    #         )
+    #         logger(
+    #             log,
+    #             "i",
+    #             f"WorkProcess created for {ds_cycle.dataset} - {ds_cycle.cycle}"
+    #         )
     for ds_cycle in dataset_cycles:
-        if not WorkProcessNhanes.objects.filter(datasetcycle=ds_cycle).exists():
-            WorkProcessNhanes.objects.create(
+        try:
+            workprocess, created = WorkProcessNhanes.objects.get_or_create(
                 datasetcycle=ds_cycle,
                 cycle=ds_cycle.cycle,
                 dataset=ds_cycle.dataset,
-                status="standby"
             )
-            logger(
-                log,
-                "i",
-                f"WorkProcess created for {ds_cycle.dataset} - {ds_cycle.cycle}"
-            )
+
+            # Case 1: WorkProcess does not exist (created == True)
+            if created:
+                if ds_cycle.has_dataset:
+                    workprocess.status = "pending"
+                else:
+                    workprocess.status = "standby"
+                workprocess.is_download = False
+                workprocess.save()
+                logger(
+                    log,
+                    "i",
+                    f"WorkProcess created for {ds_cycle.dataset} - {ds_cycle.cycle}"
+                )
+
+            # Case 2: WorkProcess exists
+            else:
+                if ds_cycle.has_dataset:
+                    if workprocess.status in ["standby", "no_file"]:
+                        workprocess.status = "pending"
+                        workprocess.is_download = False
+                        workprocess.save()
+                        logger(
+                            log,
+                            "i",
+                            f"WorkProcess updated to pending for {ds_cycle.dataset} - {ds_cycle.cycle}"
+                        )
+                else:
+                    workprocess.status = "standby"
+                    workprocess.is_download = False
+                    workprocess.save()
+                    logger(
+                        log,
+                        "i",
+                        f"WorkProcess updated to standby for {ds_cycle.dataset} - {ds_cycle.cycle}"
+                    )
+
+        except Exception as e:
+            logger(log, "e", f"Error processing {ds_cycle.dataset} - {ds_cycle.cycle}: {str(e)}")
 
     total_time = time.time() - v_time_start_process
-
-    logger(
-        log,
-        "s",
-        f"Check and Sync WorkProcess completed in {total_time} seconds"
-    )
+    logger(log, "s", f"Check and Sync WorkProcess completed in {total_time} seconds")
 
     return True
 

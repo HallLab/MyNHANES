@@ -3,10 +3,10 @@ from pathlib import Path
 from django.conf import settings
 from django.core.management import call_command
 from nhanes.workprocess.masterdata_import import masterdata_import
-from nhanes.workprocess.sync_workprocess import (
-    check_and_sync_datasetcycle,
-    check_and_sync_workprocess
-    )
+# from nhanes.workprocess.sync_workprocess import (
+#     check_and_sync_datasetcycle,
+#     check_and_sync_workprocess
+#     )
 
 
 def deploy(deploy_option, deploy_path=''):
@@ -22,8 +22,8 @@ def deploy(deploy_option, deploy_path=''):
 
         print("Importing Master Data...")
         check_return = masterdata_import()
-        check_return = check_and_sync_datasetcycle()
-        check_return = check_and_sync_workprocess()
+        # check_return = check_and_sync_datasetcycle()
+        # check_return = check_and_sync_workprocess()
 
         if check_return:
             return True

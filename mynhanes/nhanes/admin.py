@@ -117,7 +117,7 @@ class DatasetCycleAdmin(admin.ModelAdmin):
     list_display = ('cycle', 'dataset', 'dataset_name', 'has_dataset', 'metadata_url',) #  'has_special_year_code', 'special_year_code')  # TODO: RETORN LINK WEB # noqa E501
     search_fields = ('dataset__dataset', 'cycle__cycle', 'metadata_url')
     list_filter = ('cycle', 'dataset', 'has_special_year_code', 'has_dataset', 'dataset__group__group')  # noqa E501
-    # list_editable = ('has_dataset', 'has_special_year_code', 'special_year_code')
+    list_editable = ('has_dataset', )
     ordering = ('cycle__cycle', 'dataset__dataset',)
 
     def get_queryset(self, request):
@@ -216,6 +216,7 @@ class RuleVariableAdmin(admin.ModelAdmin):
 class RuleVariableInline(admin.TabularInline):
     model = RuleVariable
     extra = 1
+    autocomplete_fields = ['variable', 'dataset']
     verbose_name = "Variable Mapping"
     verbose_name_plural = "Variable Mappings"
 
@@ -233,11 +234,20 @@ class RuleForm(forms.ModelForm):
 
 class RuleAdmin(admin.ModelAdmin):
     form = RuleForm
-    list_display = ('rule', 'version', 'is_active',)  # 'open_jupyter_link')
+    list_display = ('rule', 'version', 'is_active', 'repo_url_link')  # 'open_jupyter_link')  # noqa: E501
     search_fields = ('rule', 'description')
     list_filter = ('is_active', 'updated_at')
     inlines = [RuleVariableInline]
     actions = [setup_rules]
+
+    def repo_url_link(self, obj):
+        if obj.repo_url:
+            return format_html(
+                '<a href="{}" target="_blank">Documentation</a>', obj.repo_url
+                )
+        return "No Documentation"
+
+    repo_url_link.short_description = "Documentation"
 
     # # controler to ensure that Jupyter starts only once
     # jupyter_started = False

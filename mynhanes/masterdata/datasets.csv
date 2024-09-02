@@ -185,7 +185,6 @@ id,dataset,description,group
 184,LAB10,Glycohemoglobin,Laboratory
 185,LAB10AM,"Plasma Fasting Glucose, Serum C-peptide & Insulin",Laboratory
 186,LAB11,C-Reactive Protein (CRP),Laboratory
-187,Lab13,Cholesterol - Total & HDL,Laboratory
 188,LAB17,Cryptosporidum & Toxoplasma,Laboratory
 189,LAB18T4,Thyroid - Stimulating Hormone & Thyroxine (TSH & T4),Laboratory
 190,LAB19,"Measles, Rubella, & Varicella",Laboratory
@@ -196,19 +195,18 @@ id,dataset,description,group
 195,LAB28POC,"Dioxins, Furans, & Coplanar PCBs",Laboratory
 196,L11_2_R,"C-Reactive Protein & Others, Second Exam",Laboratory
 197,SSFOL,Folic Acid - Unmetabolized (Surplus),Laboratory
-198,l09rdc,Herpes Simplex Virus Type-2 - Youth,Laboratory
+198,L09RDC,Herpes Simplex Virus Type-2 - Youth,Laboratory
 199,LAB09,Herpes Simplex Virus Type-1 & Type-2,Laboratory
 200,L05RDC,Chlamydia & Gonorrhea - Urine - Youth,Laboratory
 201,L06_2_00,"Cadmium, Lead, Ferritin, Serum Folate, RBC Folate, Vitamin B12, Homocysteine, Methylmalonic acid, Cotinine & Other Selected Nutritional Biochemistries - Blood, Second Exam",Laboratory
 202,VID_2_00,"Vitamin D, Second Exam",Laboratory
-203,l10_2_00,"Glycohemoglobin, Plasma Glucose, Serum C-peptide, & Insulin, Second Exam",Laboratory
-204,l18_2_00,"Standard Biochemistry Profile & Hormones, Second Exam",Laboratory
-205,l13_2_r,"Cholesterol - Total, HDL, LDL & Triglycerides, Second Exam",Laboratory
+203,L10_2_00,"Glycohemoglobin, Plasma Glucose, Serum C-peptide, & Insulin, Second Exam",Laboratory
+204,L18_2_00,"Standard Biochemistry Profile & Hormones, Second Exam",Laboratory
+205,L13_2_R,"Cholesterol - Total, HDL, LDL & Triglycerides, Second Exam",Laboratory
 206,L19_2_R,"Measles, Rubella, & Varicella, Second Exam",Laboratory
 207,L16_2_R,"Creatinine & Albumin - Urine, Second Exam",Laboratory
-208,l25_2_r,"Complete Blood Count with 5-part Differential - Whole Blood, Second Exam",Laboratory
+208,L25_2_r,"Complete Blood Count with 5-part Differential - Whole Blood, Second Exam",Laboratory
 209,VIT_2_R,"Vitamin A & Vitamin E, Second Exam",Laboratory
-210,Lab02,Hepatitis B: Core Antibody & Surface Antigen; Hepatitis C: Confirmed Antibody & RNA (HCV-RNA); Hepatitis D Antibody,Laboratory
 211,SSCYST,Cystatin C - Serum (Surplus),Laboratory
 212,SSHSV1,Herpes Simplex Virus Type-1 (Surplus),Laboratory
 213,SSMUMP,Mumps Antibody - Serum (Surplus),Laboratory
@@ -239,7 +237,7 @@ id,dataset,description,group
 238,VIQ,Vision,Questionnaire
 239,YCQ,Mental Health - Conduct Disorder - Youth,Questionnaire
 240,SXQYTH,Sexual Behavior - Youth,Questionnaire
-241,l09rdc_a,Herpes Simplex Virus Type-2 - Youth,Limited Access
+241,L09RDC_A,Herpes Simplex Virus Type-2 - Youth,Limited Access
 242,DXX_2_00,"Dual-Energy X-ray Absorptiometry - Whole Body, Second Exam",Limited Access
 243,L05RDC_A,Chlamydia & Gonorrhea - Urine - Youth,Limited Access
 244,DSQ1,"Dietary Supplement Use 30-Day - File 1, Supplement Counts",Dietary
@@ -488,3 +486,9 @@ id,dataset,description,group
 487,KIQ_P,Prostate Conditions,Questionnaire
 488,PSQ,Prostate Specific Antigen Follow-up,Questionnaire
 489,RXQANA,Analgesic Pain Relievers,Questionnaire
+490,SXQ,Sexual Behavior,Questionnaire
+491,VIT_2,,Laboratory
+492,HSV,Herpes Simplex Virus Type-1 & Type-2,Laboratory
+493,ALQY,Alcohol Use (Ages 18-19),Questionnaire
+494,TB,,Laboratory
+495,DXXAAC,Dual-Energy X-ray Absorptiometry - Abdominal Aortic Calcification,Examination

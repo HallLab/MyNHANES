@@ -15,6 +15,7 @@ from nhanes.models import (
     VariableCycle,
     DatasetCycle,
     Rule,
+    RuleVariable,
     QueryColumns,
 )
 from nhanes.utils.logs import logger, start_logger
@@ -71,6 +72,7 @@ def masterdata_export(folder='masterdata', models_to_export=None):
                 'variable_cycles.csv': VariableCycle,
                 'dataset_cycles.csv': DatasetCycle,
                 'rules.csv': Rule,
+                'rule_variables.csv': RuleVariable,
                 'work_processes.csv': WorkProcessNhanes,
                 'work_process_master_data.csv': WorkProcessMasterData,
                 'work_process_rule.csv': WorkProcessRule,
@@ -111,6 +113,35 @@ def masterdata_export(folder='masterdata', models_to_export=None):
                 if 'rule_id' in df.columns:
                     df['rule'] = df['rule_id'].apply(
                         lambda x: Rule.objects.get(id=x).rule if pd.notna(x) else None)
+
+                if file_name == 'dataset_cycles.csv':
+                    column_order = [
+                        'id',
+                        'cycle',
+                        'dataset',
+                        'metadata_url',
+                        'description',
+                        'observation',
+                        'has_special_year_code',
+                        'special_year_code',
+                        'has_dataset'
+                    ]
+                    df = df[column_order]
+                elif file_name == 'variable_cycles.csv':
+                    column_order = [
+                        'id',
+                        'version',
+                        'variable',
+                        'dataset',
+                        'cycle',
+                        'variable_name',
+                        'type',
+                        'sas_label',
+                        'english_text',
+                        'target',
+                        'value_table',
+                    ]
+                    df = df[column_order]
 
                 # export the DataFrame to CSV
                 df.to_csv(file_path, index=False)
