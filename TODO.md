@@ -19,7 +19,7 @@
 
 
 
-
+kill -9 $(lsof -t -i:8000)
 
 
 use option+return para criar o todo

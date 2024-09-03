@@ -5,6 +5,8 @@ import sys
 
 
 def main():
+    # print("Current working directory:", os.getcwd())
+    # print("Current file path:", __file__)
     """Run administrative tasks."""
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
     try:

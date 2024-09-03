@@ -17,12 +17,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from django.shortcuts import redirect
 
 admin.site.site_header = "MyNHANES admin"
 admin.site.site_title = "Custom MyNHANES admin site"
 admin.site.index_title = "Custom MyNHANES Admin"
 
 urlpatterns = [
-    path("admin/", admin.site.urls)
-    # path("nhanes/", include("nhanes.urls")),  # Inclui as URLs do app nhanes
+    path("admin/", admin.site.urls),
+    path('', lambda request: redirect('admin/', permanent=True)),
 ]
+# path("nhanes/", include("nhanes.urls")),  # Inclui as URLs do app nhanes
