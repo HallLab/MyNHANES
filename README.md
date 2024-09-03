@@ -1,52 +1,69 @@
-# MyNHANES
+## User Guide: MyNHANES
 
-## Overview
-MyNHANES is a Django-based application designed to manage and analyze the NHANES (National Health and Nutrition Examination Survey) dataset. It provides a suite of tools for importing, exporting, querying, and managing NHANES data, enabling users to perform complex data analyses and generate reports efficiently.
+### Introduction
+Welcome to MyNHANES, a powerful tool designed to facilitate the management and analysis of NHANES data. MyNHANES provides an integrated environment to manage master data, work processes, and apply transformations on NHANES datasets. This guide will help you get started with installing MyNHANES, setting up your environment, and using its key features.
 
-## Features
-- **Data Management**: Import and export NHANES cycles, datasets, and configurations seamlessly between development and production environments.
-- **Custom Queries**: Users can configure custom queries with dynamic fields and filters to extract specific data from the NHANES dataset.
-- **Automated Deployment**: Supports automated setup and deployment processes, making it easy to get the application running in any environment.
-- **User-Friendly Interface**: Comes with an intuitive admin interface for managing NHANES data and configurations without needing direct database access.
+### Installation
+To install MyNHANES, we recommend using Python 3.12 or above. Follow these steps:
 
-## Installation
-To install MyNHANES, follow these steps:
+1. **Create a virtual environment** (optional but recommended):
+   ```bash
+   python -m venv mynhanes_env
+   source mynhanes_env/bin/activate  # On Windows use `mynhanes_env\Scripts\activate`
+   ```
 
-1. Ensure you have Python 3.10 or newer installed.
-2. Install the package using pip:
+2. **Install MyNHANES via pip**:
+   ```bash
+   pip install mynhanes
+   ```
 
-    ```bash
-    pip install mynhanes
-    ```
+### Initial Setup
+After installation, navigate to the package directory and run the following command to set up the database, create a user, and load the master data and global transformation rules:
 
-3. After installation, you can start setting up your application with the available management commands.
+```bash
+cd path_to_mynhanes_package  # Replace with the actual path
+python manage.py deploy --type local
+```
 
-## Usage
-Once installed, you can use the management commands provided by Django to manage your NHANES data:
+This command will initialize the SQLite database and populate it with the necessary data.
 
-- **Deploying the Application**:
-    ```bash
-    python manage.py deploy --option [local|remote]
-    ```
-    Use `local` for a fresh setup and `remote` to connect to an existing database.
+### Running the Web Server
+Once the setup is complete, you can start the web server to access the MyNHANES system via a web browser:
 
-- **Start Web Interface**:
-    ```bash
-    python manage.py runserver
-    ```
-    This command will start a local web server.
+```bash
+python manage.py runserver
+```
 
-- **Importing Data**:
-    ```bash
-    python manage.py loader
-    ```
-    Use this command will load data from NHANES.
+Visit `http://127.0.0.1:8000/admin` in your web browser to log in and begin using MyNHANES.
 
-## Configuration
-Edit the `settings.py` file to adjust database configurations and other settings according to your environment needs.
+### Core Modules
 
-## Contributing
-Contributions to MyNHANES are welcome! Please feel free to fork the repository, make changes, and submit pull requests.
+#### Master Data Management
+MyNHANES uses master data such as cycles, datasets, variables, and tags to organize NHANES data. These elements are crucial for managing and navigating the data efficiently. 
 
-## License
-MyNHANES is open-source software licensed under the MIT license.
+- **Cycles:** Represent different NHANES survey periods.
+- **Datasets:** Collections of data for each cycle.
+- **Variables:** Individual variables within the datasets.
+- **Tags:** Used to categorize and filter datasets and variables.
+
+#### WorkProcess
+The WorkProcess module manages the lifecycle of datasets, from downloading to processing. 
+
+- **Activating a Dataset:** In the admin interface, you can activate datasets for download by setting their status and managing their lifecycle.
+- **Ingestion:** Once a dataset is activated, you can ingest the data into the system for further analysis.
+
+#### Transformations
+Transformations allow you to apply predefined rules to the NHANES data, modifying or normalizing it for analysis.
+
+- **Running Transformations:** Transformations can be triggered through the admin interface, where you select the relevant rules to apply to the data.
+- **Custom Rules:** You can create and manage custom transformation rules based on your analytical needs.
+
+### Queries and Data Export
+MyNHANES provides tools for creating dynamic queries and exporting the results.
+
+- **Query Builder:** Use the query builder to define custom queries across cycles, datasets, and variables.
+- **Data Export:** Export query results to CSV or other formats directly from the admin interface.
+
+### Storage
+MyNHANES uses SQLite as the default database for storing all data, which makes it easy to manage and share data files.
+

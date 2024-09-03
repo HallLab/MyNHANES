@@ -2,30 +2,25 @@
 
 ## High Priority
 
-- [ ] criar interface para drop na NormalizationData e resert de ID.
-- [ ] ---
+- [ ] Present the system to the team
+- [ ] Determine who is interested in participating in the project and paper
+- [ ] Decide whether to apply for the Grant and establish a timeline
+- [ ] Develop the paper
 
 ## Medium Priority
 
-- [ ] Create interface to manage de Normalizations Rules
-- [ ] ---
+- [ ] Create backend tests
+- [ ] Develop new transformation rules
+- [ ] Improve the query mechanism
+- [ ] Enhance documentation
 
 ## Low Priority
 
-- [ ] 
-- [ ] Query interface
+- [ ] Design new HTML interfaces
+- [ ] Implement QueryTable and visualizations
+- [ ] Improve the transformations interface and develop a testing process
 
 
-
-
-
+## Other
 kill -9 $(lsof -t -i:8000)
 
-
-use option+return para criar o todo
-use option+d para selecionar ou limpar o todo
-
-Onde eu Parei:
-- talvez nessa interfae permitir testar com uma carga dunny!!!
-
-- Pensar em como armazenar os dados.

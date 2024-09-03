@@ -2,7 +2,7 @@ global:
   debug: True
   log_level: INFO
   log_file: /users/andrerico/works/logs/mynhanes.log
-  version: 0.0.4
+  version: 0.2.0
   type: server
 
 database:
