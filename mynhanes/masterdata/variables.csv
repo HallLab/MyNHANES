@@ -12040,8 +12040,4 @@ id,variable,description,is_active,type
 12039,SSCAMIGM,Campylobacter IgM,True,oth
 12040,LBDLDL_WO_DRUG,LDL Cholesterol without Cholesterol drugs effects. Ajust 0.7% of the source value.,True,num
 12041,LBXTC_WO_DRUG,Total Cholesterol without control drugs effect. Ajust 0.8% of the source value.,True,num
-12042,USE_CHOLESTEROL_DRUG,"Participant use one of cholesterol control drugs
-- ATORVASTATIN_CALCIUM
-- SIMVASTATIN
-- PRAVASTATIN_SODIUM
-- FLUVASTATIN_SODIUM",True,bin
+12042,USE_CHOLESTEROL_DRUG,Participant use one of cholesterol control drugs.,True,bin

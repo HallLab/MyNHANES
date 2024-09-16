@@ -185,310 +185,306 @@ id,dataset,description,group
 184,LAB10,Glycohemoglobin,Laboratory
 185,LAB10AM,"Plasma Fasting Glucose, Serum C-peptide & Insulin",Laboratory
 186,LAB11,C-Reactive Protein (CRP),Laboratory
-188,LAB17,Cryptosporidum & Toxoplasma,Laboratory
-189,LAB18T4,Thyroid - Stimulating Hormone & Thyroxine (TSH & T4),Laboratory
-190,LAB19,"Measles, Rubella, & Varicella",Laboratory
-191,LAB20,Lead - Dust,Laboratory
-192,LAB21,Volatile Organic Compounds (VOC) - Personal Exposure Badge,Laboratory
-193,LAB25,Complete Blood Count with 5-part Differential - Whole Blood,Laboratory
-194,LAB22,Mercury - Hair,Laboratory
-195,LAB28POC,"Dioxins, Furans, & Coplanar PCBs",Laboratory
-196,L11_2_R,"C-Reactive Protein & Others, Second Exam",Laboratory
-197,SSFOL,Folic Acid - Unmetabolized (Surplus),Laboratory
-198,L09RDC,Herpes Simplex Virus Type-2 - Youth,Laboratory
-199,LAB09,Herpes Simplex Virus Type-1 & Type-2,Laboratory
-200,L05RDC,Chlamydia & Gonorrhea - Urine - Youth,Laboratory
-201,L06_2_00,"Cadmium, Lead, Ferritin, Serum Folate, RBC Folate, Vitamin B12, Homocysteine, Methylmalonic acid, Cotinine & Other Selected Nutritional Biochemistries - Blood, Second Exam",Laboratory
-202,VID_2_00,"Vitamin D, Second Exam",Laboratory
-203,L10_2_00,"Glycohemoglobin, Plasma Glucose, Serum C-peptide, & Insulin, Second Exam",Laboratory
-204,L18_2_00,"Standard Biochemistry Profile & Hormones, Second Exam",Laboratory
-205,L13_2_R,"Cholesterol - Total, HDL, LDL & Triglycerides, Second Exam",Laboratory
-206,L19_2_R,"Measles, Rubella, & Varicella, Second Exam",Laboratory
-207,L16_2_R,"Creatinine & Albumin - Urine, Second Exam",Laboratory
-208,L25_2_r,"Complete Blood Count with 5-part Differential - Whole Blood, Second Exam",Laboratory
-209,VIT_2_R,"Vitamin A & Vitamin E, Second Exam",Laboratory
-211,SSCYST,Cystatin C - Serum (Surplus),Laboratory
-212,SSHSV1,Herpes Simplex Virus Type-1 (Surplus),Laboratory
-213,SSMUMP,Mumps Antibody - Serum (Surplus),Laboratory
-214,SSPFC,Perfluoroalkyl Chemicals - Serum (Surplus),Laboratory
-215,SSTFR,Transferrin Receptor - Pregnant Women (Surplus),Laboratory
-216,SSVARI,Varicella-Zoster Virus Antibody (Surplus),Laboratory
-217,LAB26PP,"Pesticides - Current Use - Urine (Formerly Priority Pesticides, Non-persistent Pesticide Metabolites)",Laboratory
-218,SSOL,Monoclonal gammopathy of undetermined significance (MGUS) (Surplus),Laboratory
-219,TELO,Telomere Mean and Standard Deviation (Surplus),Laboratory
-220,TFA,Trans Fatty Acids,Laboratory
-221,SSNORO,Norovirus antibody - Serum,Laboratory
-222,SSCMV,Cytomegalovirus Antibodies - Serum (Surplus),Laboratory
-223,ALQYTH,Alcohol Use - Youth,Questionnaire
-224,CIQGAD,Mental Health - Generalized Anxiety Disorder,Questionnaire
-225,CIQMDEP,Mental Health - Depression,Questionnaire
-226,CIQPANIC,Mental Health - Panic Disorder,Questionnaire
-227,BAQ,Balance,Questionnaire
-228,CFQ,Cognitive Functioning,Questionnaire
-229,KIQ,Kidney Conditions,Questionnaire
-230,MPQ,Miscellaneous Pain,Questionnaire
-231,RXQ_ANA,Analgesic Pain Relievers,Questionnaire
-232,PUQ,Pesticide Use,Questionnaire
-233,PAQIAF,Physical Activity - Individual Activities,Questionnaire
-234,RDQ,Respiratory Health,Questionnaire
-235,SMQMEC,Smoking - Adult Recent Tobacco Use & Youth Cigarette/Tobacco Use,Questionnaire
-236,SSQ,Social Support,Questionnaire
-237,TBQ,Tuberculosis,Questionnaire
-238,VIQ,Vision,Questionnaire
-239,YCQ,Mental Health - Conduct Disorder - Youth,Questionnaire
-240,SXQYTH,Sexual Behavior - Youth,Questionnaire
-241,L09RDC_A,Herpes Simplex Virus Type-2 - Youth,Limited Access
-242,DXX_2_00,"Dual-Energy X-ray Absorptiometry - Whole Body, Second Exam",Limited Access
-243,L05RDC_A,Chlamydia & Gonorrhea - Urine - Youth,Limited Access
-244,DSQ1,"Dietary Supplement Use 30-Day - File 1, Supplement Counts",Dietary
-245,DSQ2,"Dietary Supplement Use 30-Day - File 2, Participant's Use of Supplements",Dietary
-246,DXX_2,"Dual-Energy X-ray Absorptiometry - Whole Body, Second Exam",Examination
-247,LEXAB,Lower Extremity Disease - Ankle Brachial Blood Pressure Index,Examination
-248,OHXPRL,Oral Health - Periodontal/Lower,Examination
-249,OHXPRU,Oral Health - Periodontal/Upper,Examination
-250,L16,Albumin & Creatinine - Urine,Laboratory
-251,DRXMCD,Dietary Interview Technical Support File - Modification Codes,Dietary
-252,DTQ,Dietary Screener Questionnaire,Dietary
-253,FFQDC,Food Frequency Questionnaire - Output from DietCalc Software,Dietary
-254,FFQRAW,Food Frequency Questionnaire - Raw Questionnaire Responses,Dietary
-255,FOODLK,Food Frequency Questionnaire - Look-Up Table FOODLOOK,Dietary
-256,VARLK,Food Frequency Questionnaire - Look-Up Table VARLOOK,Dietary
-257,ARX,Arthritis Body Measures,Examination
-258,CSX,Taste & Smell,Examination
-259,DEX,Dermatology,Examination
-260,DXX_2DXXAAC,Dual-Energy X-ray Absorptiometry - Abdominal Aortic Calcification,Examination
-261,DXXFRX,Dual-Energy X-ray Absorptiometry - FRAX Score,Examination
-262,DXXL1,Dual-Energy X-ray Absorptiometry - L1 Vertebrae Morphology,Examination
-263,DXXL2,Dual-Energy X-ray Absorptiometry - L2 Vertebrae Morphology,Examination
-264,DXXL3,Dual-Energy X-ray Absorptiometry - L3 Vertebrae Morphology,Examination
-265,DXXL4,Dual-Energy X-ray Absorptiometry - L4 Vertebrae Morphology,Examination
-266,DXXT10,Dual-Energy X-ray Absorptiometry - T10 Vertebrae Morphology,Examination
-267,DXXT11,Dual-Energy X-ray Absorptiometry - T11 Vertebrae Morphology,Examination
-268,DXXT12,Dual-Energy X-ray Absorptiometry - T12 Vertebrae Morphology,Examination
-269,DXXT4,Dual-Energy X-ray Absorptiometry - T4 Vertebrae Morphology,Examination
-270,DXXT5,Dual-Energy X-ray Absorptiometry - T5 Vertebrae Morphology,Examination
-271,DXXT6,Dual-Energy X-ray Absorptiometry - T6 Vertebrae Morphology,Examination
-272,DXXT7,Dual-Energy X-ray Absorptiometry - T7 Vertebrae Morphology,Examination
-273,DXXT8,Dual-Energy X-ray Absorptiometry - T8 Vertebrae Morphology,Examination
-274,DXXT9,Dual-Energy X-ray Absorptiometry - T9 Vertebrae Morphology,Examination
-275,DXXVFA,Dual-Energy X-ray Absorptiometry - Vertebral Fracture Assessment,Examination
-276,ENX,Exhaled Nitric Oxide,Examination
-277,FLXCLN,Fluorosis - Clinical,Examination
-278,MGX,Muscle Strength - Grip Test,Examination
-279,OHX,Oral Health,Examination
-280,OHXADD,Oral Health - Addendum,Examination
-281,OHXPER,Oral Health - Periodontal,Examination
-282,OPXFDT,Ophthalmology - Frequency Doubling Technology,Examination
-283,OPXRET,Ophthalmology - Retinal Imaging,Examination
-284,PAX80,Physical Activity Monitor - Raw Data 80hz,Examination
-285,PAXDAY,Physical Activity Monitor - Day,Examination
-286,PAXHD,Physical Activity Monitor - Header,Examination
-287,PAXHR,Physical Activity Monitor - Hour,Examination
-288,PAXLUX,Physical Activity Monitor - Ambient Light Raw Data,Examination
-289,PAXMIN,Physical Activity Monitor - Minute,Examination
-290,PAXRAW,Physical Activity Monitor,Examination
-291,SPX,Spirometry - Pre and Post-Bronchodilator,Examination
-292,SPXRAW,Spirometry - Raw Curve Data,Examination
-293,TBX,Tuberculosis,Examination
-294,AA,Aromatic Amines - Urine,Laboratory
-295,AAS,Aromatic Amines - Urine - Special Sample,Laboratory
-296,AL_IGE,Allergen Specific IgE(s) & Total IgE - Serum,Laboratory
-297,ALD,Aldehydes - Serum,Laboratory
-298,ALDS,Aldehydes - Serum - Special Sample,Laboratory
-299,ALDUST,Allergens - Household Dust,Laboratory
-300,AMDGDS,Acrylamide & Glycidamide - Special Sample,Laboratory
-301,AMDGYD,Acrylamide & Glycidamide,Laboratory
-302,APOB,Apolipoprotein B,Laboratory
-303,B12,Vitamin B12,Laboratory
-304,BFRPOL,Brominated Flame Retardants (BFRs) - Pooled Samples,Laboratory
-305,CAFE,Caffeine & Caffeine Metabolites - Urine,Laboratory
-306,CARB,Pesticides - Carbamates & Organophosphorus Metabolites - Urine,Laboratory
-307,CHLMDA,Chlamydia & Gonorrhea - Urine,Laboratory
-308,COTNAL,Cotinine - Serum & Total NNAL - Urine,Laboratory
-309,CRP,C-Reactive Protein (CRP),Laboratory
-310,CUSEZN,"Copper, Selenium & Zinc - Serum",Laboratory
-311,DEET,DEET and Metabolites,Laboratory
-312,DOXPOL,"Polychlorinated dibenzo-p-dioxins (PCDDs), Dibenzofurans (PCDFs) & Coplanar Polychlorinated Biphenyls (cPCBs) - Pooled Samples",Laboratory
-313,EPH,Environmental Phenols & Parabens,Laboratory
-314,EPHPP,Personal Care and Consumer Product Chemicals and Metabolites,Laboratory
-315,EPP,Erythrocyte Protoporphyrin,Laboratory
-316,ETHOXS,Ethylene Oxide - Special Sample,Laboratory
-317,FAS,Fatty Acids - Serum,Laboratory
-318,FLDEP,Fluoride - Plasma,Laboratory
-319,FLDEW,Fluoride - Water,Laboratory
-320,FORMAL,Formaldehyde,Laboratory
-321,FORMAS,Formaldehyde - Special Sample,Laboratory
-322,HCAA,Heterocyclic Aromatic Amines - Urine,Laboratory
-323,HCAAS,Heterocyclic Aromatic Amines (HCAA) - Urine - Special Sample,Laboratory
-324,HCY,Homocysteine,Laboratory
-325,HPVP,Human Papillomavirus (HPV) DNA Results from Penile Swab Samples: Roche Linear Array,Laboratory
-326,HPVSER,"Human Papillomavirus (HPV) - 6, 11, 16 & 18 Antibody – Serum: 4-plex CLIA",Laboratory
-327,HPVSRM,"Human Papillomavirus (HPV) - Multiplexed 6, 11, 16, 18, 31, 33, 45, 52 & 58 Antibody – Serum: 9-plex CLIA",Laboratory
-328,HPVSWC,Human Papillomavirus (HPV) DNA - Vaginal Swab: Roche Cobas High-Risk,Laboratory
-329,HPVSWR,Human Papillomavirus (HPV) DNA - Vaginal Swab: Digene Hybrid Capture & Roche Linear Array,Laboratory
-330,IHG,Mercury: Inorganic - Blood,Laboratory
-331,L02,Hepatitis B: Core Antibody & Surface Antigen; Hepatitis C: Confirmed Antibody & RNA (HCV-RNA); Hepatitis D Antibody,Laboratory
-332,L03,"HIV Antibody Test, CD4+ T Lymphocytes & CD8+ T Cells",Laboratory
-333,L04PER,Perchlorate - Urine,Laboratory
-334,L04VOC,Volatile Organic Compounds - Blood & Water,Laboratory
-335,L05,Chlamydia & Gonorrhea - Urine,Laboratory
-336,L06,"Cadmium, Lead, Mercury, Cotinine & Nutritional Biochemistries",Laboratory
-337,L06_2,"Cadmium, Lead, Total Mercury, Ferritin, Serum Folate, RBC Folate, Vitamin B12, Homocysteine, Methylmalonic acid, Cotinine - Blood, Second Exam",Laboratory
-338,L06AGE,Acrylamide & Glycidamide,Laboratory
-339,L06BMT,"Cadmium, Lead, & Total Mercury - Blood",Laboratory
-340,L06COT,Cotinine - Serum,Laboratory
-341,L06HM,Metals - Urine,Laboratory
-342,L06MH,Methylmalonic acid & Homocysteine,Laboratory
-343,L06NB,"Folate - RBC & Serum, and Vitamin B12",Laboratory
-344,L06PHY,Phytoestrogens - Urine,Laboratory
-345,L06TFR,Ferritin & Transferrin Receptor,Laboratory
-346,L06UAS,Arsenics - Total & Speciated - Urine,Laboratory
-347,L06UHG,Mercury: Inorganic - Urine,Laboratory
-348,L06UIO,Iodine - Urine,Laboratory
-349,L06VIT,"Vitamin A, Vitamin E & Carotenoids",Laboratory
-350,L09,Herpes Simplex Virus Type-1 & Type-2,Laboratory
-351,L10,Glycohemoglobin,Laboratory
-352,L10_2,"Glycohemoglobin, Plasma Glucose, Serum C-peptide, & Insulin, Second Exam",Laboratory
-353,L10AM,"Plasma Fasting Glucose, Serum C-peptide & Insulin",Laboratory
-354,L11,"C-Reactive protein (CRP), Fibrinogen, Bone Alkaline Phosphatase & Urinary N-telopeptides",Laboratory
-355,L11_2,"C-Reactive Protein & Others, Second Exam",Laboratory
-356,L11P_2,"Prostate-specific Antigen (PSA), Second Exam",Laboratory
-357,L11PSA,Prostate specific antigen (PSA),Laboratory
-358,L13_2,"Cholesterol - Total, HDL, LDL & Triglycerides, Second Exam",Laboratory
-359,L16_2,"Creatinine & Albumin - Urine, Second Exam",Laboratory
-360,L17,"Toxoplasma (IgG), Toxoplasma (IgM),Toxoplasma (Dye),Toxoplasma Differential Agglutination, & Toxoplasma (Avidity)",Laboratory
-361,L19,"Measles, Rubella, & Varicella",Laboratory
-362,L19_2,"Measles, Rubella, & Varicella, Second Exam",Laboratory
-363,L20,Lead - Dust,Laboratory
-364,L24EPH,Environmental Phenols,Laboratory
-365,L24PFC,Polyfluoroalkyl Chemicals,Laboratory
-366,L24PH,Phthalates - Urine,Laboratory
-367,L24PP,Pesticides - Environmental - Urine,Laboratory
-368,L25,Complete Blood Count with 5-part Differential - Whole Blood,Laboratory
-369,L25_2,"Complete Blood Count with 5-part Differential - Whole Blood, Second Exam",Laboratory
-370,L26OPD,Organophosphate Insecticides - Diakyl Phosphate Metabolites - Urine,Laboratory
-371,L26PP,"Pesticides - Current Use - Urine (Formerly Priority Pesticides, Non-persistent Pesticide Metabolites)",Laboratory
-372,L26UPP,"Pesticides - Current Use - Urine (Formerly Priority Pesticides, Non-persistent Pesticide Metabolites)",Laboratory
-373,L28DFP,"Dioxins, Furans, & Coplanar PCBs",Laboratory
-374,L28NPB,Non-dioxin-like Polychlorinated Biphenyls,Laboratory
-375,L28OCP,Pesticides - Organochlorine Metabolites - Serum (Surplus),Laboratory
-376,L28PBE,Brominated Flame Retardants (BFRs),Laboratory
-377,L28POC,"Dioxins, Furans, & Coplanar PCBs",Laboratory
-378,L31PAH,Polyaromatic Hydrocarbons (PAHs) - Urine,Laboratory
-379,L34,Bacterial vaginosis (BV) & Trichomonas vaginalis,Laboratory
-380,L35,Methicillin - Resistant Staphylococcus aureus (MRSA),Laboratory
-381,L36,"Syphilis-IgG, Syphilis Rapid Plasma Reagin (RPR) & Treponema pallidum Particle Agglutination (TP-PA)",Laboratory
-382,L37SWA,Human Papillomavirus (HPV) DNA - Vaginal Swab: Digene Hybrid Capture & Prototype Line Blot Assay,Laboratory
-383,L37SWR,Human Papillomavirus (HPV) DNA - Vaginal Swab: Roche Linear Array,Laboratory
-384,L39,Erythrocyte Protoporphyrin,Laboratory
-385,L39_2,Erythrocyte Protoporphyrin,Laboratory
-386,L39EPP,Erythrocyte Protoporphyrin & Selenium,Laboratory
-387,L40_2,"Standard Biochemistry Profile, Follicle Stimulating Hormone & Luteinizing Hormone, Second Exam",Laboratory
-388,L40FE,"Iron, Total Iron Binding Capacity (TIBC), & Transferrin Saturation",Laboratory
-389,L40T4,Thyroid - Stimulating Hormone & Thyroxine (TSH & T4),Laboratory
-390,L43,Vitamin B6,Laboratory
-391,L45VIT,"Vitamin A, Vitamin E & Carotenoids",Laboratory
-392,L52SER,"Human Papillomavirus (HPV) - 6, 11, 16 & 18 Antibody - Serum: 4-plex CLIA",Laboratory
-393,LAB02,Hepatitis B: Core Antibody & Surface Antigen; Hepatitis C: Confirmed Antibody & RNA (HCV-RNA); Hepatitis D Antibody,Laboratory
-394,MMA,Methylmalonic Acid,Laboratory
-395,MMRV,"Measles, Mumps, Rubella & Varicella",Laboratory
-396,OGTT,Oral Glucose Tolerance Test,Laboratory
-397,ORHPV,Human Papillomavirus (HPV) - Oral Rinse,Laboratory
-398,PAH,Polyaromatic Hydrocarbons (PAHs) - Urine,Laboratory
-399,PAHS,Polyaromatic Hydrocarbons (PAHs)- Urine - Special Sample,Laboratory
-400,PCBPOL,Non-dioxin-like Polychlorinated Biphenyls & Mono-ortho-substituted Polychlorinated Biphenyls - Pooled Samples,Laboratory
-401,PERNTS,"Perchlorate, Nitrate & Thiocyanate - Urine - Special Sample",Laboratory
-402,PFC,Polyfluoroalkyl Chemicals,Laboratory
-403,PFC_POOL,Polyfluoroalkyl Chemicals - Pooled Samples (Surplus),Laboratory
-404,PHYTO,Phytoestrogens - Urine,Laboratory
-405,POOLTF,Pooled-Sample Technical Support File,Laboratory
-406,PP,Pesticides - Environmental - Urine,Laboratory
-407,PSA,Prostate Specific Antigen (PSA),Laboratory
-408,PSTPOL,Pesticides - Organochlorine Pesticides - Pooled Samples,Laboratory
-409,PTH,Parathyroid Hormone,Laboratory
-410,SSANA,Autoantibodies - Immunofluorescence & Immunoprecipitation Analyses (Surplus),Laboratory
-411,SSANA2,Autoantibodies - Immunofluorescence Analyses (Surplus),Laboratory
-412,SSBFR,Brominated Flame Retardants (BFRs) - Pooled Samples (Surplus),Laboratory
-413,SSBNP,N-terminal Pro-BNP (Surplus),Laboratory
-414,SSCA,Cancer antigen CA125 and CA15.3 - Serum (Surplus),Laboratory
-415,SSCARD,"Glycated albumin, Beta-2 Microglobulin, Cystatin C (Surplus)",Laboratory
-416,SSCGA,"Cancer antigen CA125, CA15.3 and HE4 IgG antibodies - Serum (Surplus)",Laboratory
-417,SSCLTY,Chlorinated Tyrosine – Serum (Surplus),Laboratory
-418,SSCMVG,Cytomegalovirus Genotypes - Urine (Surplus),Laboratory
-419,SSCT,Chlamydia Pgp3 (plasmid gene product 3) ELISA (enzyme linked immunosorbent assay) and multiplex bead array (MBA) results,Laboratory
-420,SSDEET,DEET Metabolites - Urine - Surplus,Laboratory
-421,SSDFS,Autoantibodies - Anti-DFS70 Autoantibody Analyses (Surplus),Laboratory
-422,SSEBV,Epstein-Barr Virus (VCA IgG) - Serum (Surplus),Laboratory
-423,SSFA,Fatty Acids - Plasma (Surplus),Laboratory
-424,SSFLRT,Flame Retardant Metabolites - Urine (Surplus),Laboratory
-425,SSHCV,Hepatitis C Antibody Reflex Testing - Serum (Surplus),Laboratory
-426,SSHCVR,Hepatitis C RNA (HCV-RNA) & HCV Genotype (Surplus),Laboratory
-427,SSHE4,Human epididymal secretory protein E4 (HE4) - Serum (Surplus),Laboratory
-428,SSHEPC,Hepatitis C: Confirmed Antibody (INNO-LIA),Laboratory
-429,SSHPV,Human Papillomavirus (HPV) Viral Load - Oral Rinse - Oral High-Risk HPV Infections (Surplus),Laboratory
-430,SSKL,Klotho - Serum (Surplus),Laboratory
-431,SSMEL,Melamine - Urine (Surplus),Laboratory
-432,SSMHHT,"Mono-2-ethyl-5-hydroxyhexyl terephthalate, mono-2-ethyl-5-carboxypentyl terephthalate, and monooxoisononyl phthalate - Urine (Surplus)",Laboratory
-433,SSNEON,Neonicotinoids - Urine - Surplus,Laboratory
-434,SSNH4THY,Thyroid Profile (Surplus),Laboratory
-435,SSNO3P,"Perchlorate, Nitrate & Thiocyanate - Urine (Surplus)",Laboratory
-436,SSPCB,Non-dioxin-like Polychlorinated Biphenyls - Pooled Samples (Surplus Sera),Laboratory
-437,SSPFAC,Perfluoroalkyl and Polyfluoroalkyl Substances in US children 3-11 Years of Age,Laboratory
-438,SSPFSU,Perfluoroalkyl and Polyfluoroalkyl Substances,Laboratory
-439,SSPHTE,Phthalates and Plasticizers Metabolites - Urine (Surplus),Laboratory
-440,SSPOLI,"Poliovirus Serotypes 1, 2, & 3 Antibodies - Serum (Surplus)",Laboratory
-441,SSPST,Pesticides - Organochlorine Metabolites - Serum - Pooled Samples (Surplus),Laboratory
-442,SSPT,Pertussis and tetanus – Serum (Surplus),Laboratory
-443,SSQFEV,Coxiella Burnetii (Q Fever) Antibodies - Serum (Surplus),Laboratory
-444,SSSAL,Salmonella & Campylobacter Antibodies (Surplus),Laboratory
-445,SSSNFL,Serum Neurofilament Light Chain - Serum,Laboratory
-446,SSTERP,Terpenes – Serum (Surplus),Laboratory
-447,SSTOCA,Antibody to Toxocara spp. (Surplus),Laboratory
-448,SSTOXO,Toxoplasma Gondii Antibody - Serum (Surplus),Laboratory
-449,SSTROP,High-sensitivity cardiac troponins (Surplus),Laboratory
-450,SSUCSH,Cytomegalovirus shedding - Urine (Surplus),Laboratory
-451,SSUSG,Urine Specific Gravity Measurement (Surplus),Laboratory
-452,TGEMA,Tissue Transglutaminase Assay (IgA-TTG) & IgA Endomyseal Antibody Assay (IgA EMA),Laboratory
-453,THYROD,Thyroid Profile,Laboratory
-454,TRICH,Trichomonas - Urine,Laboratory
-455,TSNA,Tobacco-specific Nitrosamines (TSNAs) - Urine,Laboratory
-456,TST,Total Testosterone,Laboratory
-457,UADM,Aromatic Diamines - Urine,Laboratory
-458,UAM,Atrazine and Metabolites,Laboratory
-459,UASS,Arsenics - Total & Speciated - Urine - Special Sample,Laboratory
-460,UCOSMO,Osmolality - Urine,Laboratory
-461,UCOTS,"Cotinine, Hydroxycotinine, & Other Nicotine Metabolites and Analogs - Urine - Special Sample",Laboratory
-462,UFLDE,Fluoride - Urine,Laboratory
-463,UHM,Metals - Urine,Laboratory
-464,UHMS,Metals - Urine - Special Sample,Laboratory
-465,UMS,Metals - Urine - Special Sample,Laboratory
-466,UPHOPM,"Pyrethroids, Herbicides, & OP Metabolites - Urine",Laboratory
-467,UPP,"Pesticides - Current Use - Urine (Formerly Priority Pesticides, Non-persistent Pesticide Metabolites)",Laboratory
-468,UTASS,Arsenic - Total - Urine - Special Sample,Laboratory
-469,UVOCS,Volatile Organic Compound (VOC) Metabolites - Urine - Special Sample,Laboratory
-470,VIT_B6,Vitamin B6,Laboratory
-471,VITB12,Vitamin B12,Laboratory
-472,VNA,Volatile N-Nitrosamine Compounds (VNAs) - Urine,Laboratory
-473,VNAS,Volatile N-Nitrosamine Compounds (VNAs) - Urine - Special Sample,Laboratory
-474,VOC,Volatile Organic Compounds - Water & Related Questionnaire Items,Laboratory
-475,VOCMWB,Volatile Organic Compounds - Trihalomethanes/MTBE/Nitromethane - Blood,Laboratory
-476,VOCWBS,Volatile Organic Compounds (VOCs) and Trihalomethanes/MTBE - Blood - Special Sample,Laboratory
-477,WPIN,"Perchlorate, Nitrate & Iodide - Tap Water",Laboratory
-478,AGQ,Allergy,Questionnaire
-479,AQQ,Air Quality,Questionnaire
-480,ARQ,Arthritis,Questionnaire
-481,BHQ,Bowel Health,Questionnaire
-482,CIQDEP,Mental Health - Depression,Questionnaire
-483,CIQPAN,Mental Health - Panic Disorder,Questionnaire
-484,CKQ,Creatine Kinase,Questionnaire
-485,CSQ,Taste & Smell,Questionnaire
-486,HCQ,Hepatitis C Follow Up,Questionnaire
-487,KIQ_P,Prostate Conditions,Questionnaire
-488,PSQ,Prostate Specific Antigen Follow-up,Questionnaire
-489,RXQANA,Analgesic Pain Relievers,Questionnaire
-490,SXQ,Sexual Behavior,Questionnaire
-491,VIT_2,,Laboratory
-492,HSV,Herpes Simplex Virus Type-1 & Type-2,Laboratory
-493,ALQY,Alcohol Use (Ages 18-19),Questionnaire
-494,TB,,Laboratory
-495,DXXAAC,Dual-Energy X-ray Absorptiometry - Abdominal Aortic Calcification,Examination
+187,LAB17,Cryptosporidum & Toxoplasma,Laboratory
+188,LAB18T4,Thyroid - Stimulating Hormone & Thyroxine (TSH & T4),Laboratory
+189,LAB19,"Measles, Rubella, & Varicella",Laboratory
+190,LAB20,Lead - Dust,Laboratory
+191,LAB21,Volatile Organic Compounds (VOC) - Personal Exposure Badge,Laboratory
+192,LAB25,Complete Blood Count with 5-part Differential - Whole Blood,Laboratory
+193,LAB22,Mercury - Hair,Laboratory
+194,LAB28POC,"Dioxins, Furans, & Coplanar PCBs",Laboratory
+195,L11_2_R,"C-Reactive Protein & Others, Second Exam",Laboratory
+196,SSFOL,Folic Acid - Unmetabolized (Surplus),Laboratory
+197,L09RDC,Herpes Simplex Virus Type-2 - Youth,Laboratory
+198,LAB09,Herpes Simplex Virus Type-1 & Type-2,Laboratory
+199,L05RDC,Chlamydia & Gonorrhea - Urine - Youth,Laboratory
+200,L06_2_00,"Cadmium, Lead, Ferritin, Serum Folate, RBC Folate, Vitamin B12, Homocysteine, Methylmalonic acid, Cotinine & Other Selected Nutritional Biochemistries - Blood, Second Exam",Laboratory
+201,VID_2_00,"Vitamin D, Second Exam",Laboratory
+202,L10_2_00,"Glycohemoglobin, Plasma Glucose, Serum C-peptide, & Insulin, Second Exam",Laboratory
+203,L18_2_00,"Standard Biochemistry Profile & Hormones, Second Exam",Laboratory
+204,L13_2_R,"Cholesterol - Total, HDL, LDL & Triglycerides, Second Exam",Laboratory
+205,L19_2_R,"Measles, Rubella, & Varicella, Second Exam",Laboratory
+206,L16_2_R,"Creatinine & Albumin - Urine, Second Exam",Laboratory
+207,L25_2_r,"Complete Blood Count with 5-part Differential - Whole Blood, Second Exam",Laboratory
+208,VIT_2_R,"Vitamin A & Vitamin E, Second Exam",Laboratory
+209,SSCYST,Cystatin C - Serum (Surplus),Laboratory
+210,SSHSV1,Herpes Simplex Virus Type-1 (Surplus),Laboratory
+211,SSMUMP,Mumps Antibody - Serum (Surplus),Laboratory
+212,SSPFC,Perfluoroalkyl Chemicals - Serum (Surplus),Laboratory
+213,SSTFR,Transferrin Receptor - Pregnant Women (Surplus),Laboratory
+214,SSVARI,Varicella-Zoster Virus Antibody (Surplus),Laboratory
+215,LAB26PP,"Pesticides - Current Use - Urine (Formerly Priority Pesticides, Non-persistent Pesticide Metabolites)",Laboratory
+216,SSOL,Monoclonal gammopathy of undetermined significance (MGUS) (Surplus),Laboratory
+217,TELO,Telomere Mean and Standard Deviation (Surplus),Laboratory
+218,TFA,Trans Fatty Acids,Laboratory
+219,SSNORO,Norovirus antibody - Serum,Laboratory
+220,SSCMV,Cytomegalovirus Antibodies - Serum (Surplus),Laboratory
+221,ALQYTH,Alcohol Use - Youth,Questionnaire
+222,CIQGAD,Mental Health - Generalized Anxiety Disorder,Questionnaire
+223,CIQMDEP,Mental Health - Depression,Questionnaire
+224,CIQPANIC,Mental Health - Panic Disorder,Questionnaire
+225,BAQ,Balance,Questionnaire
+226,CFQ,Cognitive Functioning,Questionnaire
+227,KIQ,Kidney Conditions,Questionnaire
+228,MPQ,Miscellaneous Pain,Questionnaire
+229,RXQ_ANA,Analgesic Pain Relievers,Questionnaire
+230,PUQ,Pesticide Use,Questionnaire
+231,PAQIAF,Physical Activity - Individual Activities,Questionnaire
+232,RDQ,Respiratory Health,Questionnaire
+233,SMQMEC,Smoking - Adult Recent Tobacco Use & Youth Cigarette/Tobacco Use,Questionnaire
+234,SSQ,Social Support,Questionnaire
+235,TBQ,Tuberculosis,Questionnaire
+236,VIQ,Vision,Questionnaire
+237,YCQ,Mental Health - Conduct Disorder - Youth,Questionnaire
+238,SXQYTH,Sexual Behavior - Youth,Questionnaire
+239,L09RDC_A,Herpes Simplex Virus Type-2 - Youth,Limited Access
+240,DXX_2_00,"Dual-Energy X-ray Absorptiometry - Whole Body, Second Exam",Limited Access
+241,L05RDC_A,Chlamydia & Gonorrhea - Urine - Youth,Limited Access
+242,DSQ1,"Dietary Supplement Use 30-Day - File 1, Supplement Counts",Dietary
+243,DSQ2,"Dietary Supplement Use 30-Day - File 2, Participant's Use of Supplements",Dietary
+244,DXX_2,"Dual-Energy X-ray Absorptiometry - Whole Body, Second Exam",Examination
+245,LEXAB,Lower Extremity Disease - Ankle Brachial Blood Pressure Index,Examination
+246,OHXPRL,Oral Health - Periodontal/Lower,Examination
+247,OHXPRU,Oral Health - Periodontal/Upper,Examination
+248,L16,Albumin & Creatinine - Urine,Laboratory
+249,DRXMCD,Dietary Interview Technical Support File - Modification Codes,Dietary
+250,DTQ,Dietary Screener Questionnaire,Dietary
+251,FFQDC,Food Frequency Questionnaire - Output from DietCalc Software,Dietary
+252,FFQRAW,Food Frequency Questionnaire - Raw Questionnaire Responses,Dietary
+253,FOODLK,Food Frequency Questionnaire - Look-Up Table FOODLOOK,Dietary
+254,VARLK,Food Frequency Questionnaire - Look-Up Table VARLOOK,Dietary
+255,ARX,Arthritis Body Measures,Examination
+256,CSX,Taste & Smell,Examination
+257,DEX,Dermatology,Examination
+258,DXX_2DXXAAC,Dual-Energy X-ray Absorptiometry - Abdominal Aortic Calcification,Examination
+259,DXXFRX,Dual-Energy X-ray Absorptiometry - FRAX Score,Examination
+260,DXXL1,Dual-Energy X-ray Absorptiometry - L1 Vertebrae Morphology,Examination
+261,DXXL2,Dual-Energy X-ray Absorptiometry - L2 Vertebrae Morphology,Examination
+262,DXXL3,Dual-Energy X-ray Absorptiometry - L3 Vertebrae Morphology,Examination
+263,DXXL4,Dual-Energy X-ray Absorptiometry - L4 Vertebrae Morphology,Examination
+264,DXXT10,Dual-Energy X-ray Absorptiometry - T10 Vertebrae Morphology,Examination
+265,DXXT11,Dual-Energy X-ray Absorptiometry - T11 Vertebrae Morphology,Examination
+266,DXXT12,Dual-Energy X-ray Absorptiometry - T12 Vertebrae Morphology,Examination
+267,DXXT4,Dual-Energy X-ray Absorptiometry - T4 Vertebrae Morphology,Examination
+268,DXXT5,Dual-Energy X-ray Absorptiometry - T5 Vertebrae Morphology,Examination
+269,DXXT6,Dual-Energy X-ray Absorptiometry - T6 Vertebrae Morphology,Examination
+270,DXXT7,Dual-Energy X-ray Absorptiometry - T7 Vertebrae Morphology,Examination
+271,DXXT8,Dual-Energy X-ray Absorptiometry - T8 Vertebrae Morphology,Examination
+272,DXXT9,Dual-Energy X-ray Absorptiometry - T9 Vertebrae Morphology,Examination
+273,DXXVFA,Dual-Energy X-ray Absorptiometry - Vertebral Fracture Assessment,Examination
+274,ENX,Exhaled Nitric Oxide,Examination
+275,FLXCLN,Fluorosis - Clinical,Examination
+276,MGX,Muscle Strength - Grip Test,Examination
+277,OHX,Oral Health,Examination
+278,OHXADD,Oral Health - Addendum,Examination
+279,OHXPER,Oral Health - Periodontal,Examination
+280,OPXFDT,Ophthalmology - Frequency Doubling Technology,Examination
+281,OPXRET,Ophthalmology - Retinal Imaging,Examination
+282,PAX80,Physical Activity Monitor - Raw Data 80hz,Examination
+283,PAXDAY,Physical Activity Monitor - Day,Examination
+284,PAXHD,Physical Activity Monitor - Header,Examination
+285,PAXHR,Physical Activity Monitor - Hour,Examination
+286,PAXLUX,Physical Activity Monitor - Ambient Light Raw Data,Examination
+287,PAXMIN,Physical Activity Monitor - Minute,Examination
+288,PAXRAW,Physical Activity Monitor,Examination
+289,SPX,Spirometry - Pre and Post-Bronchodilator,Examination
+290,SPXRAW,Spirometry - Raw Curve Data,Examination
+291,TBX,Tuberculosis,Examination
+292,AA,Aromatic Amines - Urine,Laboratory
+293,AAS,Aromatic Amines - Urine - Special Sample,Laboratory
+294,AL_IGE,Allergen Specific IgE(s) & Total IgE - Serum,Laboratory
+295,ALD,Aldehydes - Serum,Laboratory
+296,ALDS,Aldehydes - Serum - Special Sample,Laboratory
+297,ALDUST,Allergens - Household Dust,Laboratory
+298,AMDGDS,Acrylamide & Glycidamide - Special Sample,Laboratory
+299,AMDGYD,Acrylamide & Glycidamide,Laboratory
+300,APOB,Apolipoprotein B,Laboratory
+301,B12,Vitamin B12,Laboratory
+302,BFRPOL,Brominated Flame Retardants (BFRs) - Pooled Samples,Laboratory
+303,CAFE,Caffeine & Caffeine Metabolites - Urine,Laboratory
+304,CARB,Pesticides - Carbamates & Organophosphorus Metabolites - Urine,Laboratory
+305,CHLMDA,Chlamydia & Gonorrhea - Urine,Laboratory
+306,COTNAL,Cotinine - Serum & Total NNAL - Urine,Laboratory
+307,CRP,C-Reactive Protein (CRP),Laboratory
+308,CUSEZN,"Copper, Selenium & Zinc - Serum",Laboratory
+309,DEET,DEET and Metabolites,Laboratory
+310,DOXPOL,"Polychlorinated dibenzo-p-dioxins (PCDDs), Dibenzofurans (PCDFs) & Coplanar Polychlorinated Biphenyls (cPCBs) - Pooled Samples",Laboratory
+311,EPH,Environmental Phenols & Parabens,Laboratory
+312,EPHPP,Personal Care and Consumer Product Chemicals and Metabolites,Laboratory
+313,EPP,Erythrocyte Protoporphyrin,Laboratory
+314,ETHOXS,Ethylene Oxide - Special Sample,Laboratory
+315,FAS,Fatty Acids - Serum,Laboratory
+316,FLDEP,Fluoride - Plasma,Laboratory
+317,FLDEW,Fluoride - Water,Laboratory
+318,FORMAL,Formaldehyde,Laboratory
+319,FORMAS,Formaldehyde - Special Sample,Laboratory
+320,HCAA,Heterocyclic Aromatic Amines - Urine,Laboratory
+321,HCAAS,Heterocyclic Aromatic Amines (HCAA) - Urine - Special Sample,Laboratory
+322,HCY,Homocysteine,Laboratory
+323,HPVP,Human Papillomavirus (HPV) DNA Results from Penile Swab Samples: Roche Linear Array,Laboratory
+324,HPVSER,"Human Papillomavirus (HPV) - 6, 11, 16 & 18 Antibody – Serum: 4-plex CLIA",Laboratory
+325,HPVSRM,"Human Papillomavirus (HPV) - Multiplexed 6, 11, 16, 18, 31, 33, 45, 52 & 58 Antibody – Serum: 9-plex CLIA",Laboratory
+326,HPVSWC,Human Papillomavirus (HPV) DNA - Vaginal Swab: Roche Cobas High-Risk,Laboratory
+327,HPVSWR,Human Papillomavirus (HPV) DNA - Vaginal Swab: Digene Hybrid Capture & Roche Linear Array,Laboratory
+328,IHG,Mercury: Inorganic - Blood,Laboratory
+329,L02,Hepatitis B: Core Antibody & Surface Antigen; Hepatitis C: Confirmed Antibody & RNA (HCV-RNA); Hepatitis D Antibody,Laboratory
+330,L03,"HIV Antibody Test, CD4+ T Lymphocytes & CD8+ T Cells",Laboratory
+331,L04PER,Perchlorate - Urine,Laboratory
+332,L04VOC,Volatile Organic Compounds - Blood & Water,Laboratory
+333,L05,Chlamydia & Gonorrhea - Urine,Laboratory
+334,L06,"Cadmium, Lead, Mercury, Cotinine & Nutritional Biochemistries",Laboratory
+335,L06_2,"Cadmium, Lead, Total Mercury, Ferritin, Serum Folate, RBC Folate, Vitamin B12, Homocysteine, Methylmalonic acid, Cotinine - Blood, Second Exam",Laboratory
+336,L06AGE,Acrylamide & Glycidamide,Laboratory
+337,L06BMT,"Cadmium, Lead, & Total Mercury - Blood",Laboratory
+338,L06COT,Cotinine - Serum,Laboratory
+339,L06HM,Metals - Urine,Laboratory
+340,L06MH,Methylmalonic acid & Homocysteine,Laboratory
+341,L06NB,"Folate - RBC & Serum, and Vitamin B12",Laboratory
+342,L06PHY,Phytoestrogens - Urine,Laboratory
+343,L06TFR,Ferritin & Transferrin Receptor,Laboratory
+344,L06UAS,Arsenics - Total & Speciated - Urine,Laboratory
+345,L06UHG,Mercury: Inorganic - Urine,Laboratory
+346,L06UIO,Iodine - Urine,Laboratory
+347,L06VIT,"Vitamin A, Vitamin E & Carotenoids",Laboratory
+348,L09,Herpes Simplex Virus Type-1 & Type-2,Laboratory
+349,L10,Glycohemoglobin,Laboratory
+350,L10_2,"Glycohemoglobin, Plasma Glucose, Serum C-peptide, & Insulin, Second Exam",Laboratory
+351,L10AM,"Plasma Fasting Glucose, Serum C-peptide & Insulin",Laboratory
+352,L11,"C-Reactive protein (CRP), Fibrinogen, Bone Alkaline Phosphatase & Urinary N-telopeptides",Laboratory
+353,L11_2,"C-Reactive Protein & Others, Second Exam",Laboratory
+354,L11P_2,"Prostate-specific Antigen (PSA), Second Exam",Laboratory
+355,L11PSA,Prostate specific antigen (PSA),Laboratory
+356,L13_2,"Cholesterol - Total, HDL, LDL & Triglycerides, Second Exam",Laboratory
+357,L16_2,"Creatinine & Albumin - Urine, Second Exam",Laboratory
+358,L17,"Toxoplasma (IgG), Toxoplasma (IgM),Toxoplasma (Dye),Toxoplasma Differential Agglutination, & Toxoplasma (Avidity)",Laboratory
+359,L19,"Measles, Rubella, & Varicella",Laboratory
+360,L19_2,"Measles, Rubella, & Varicella, Second Exam",Laboratory
+361,L20,Lead - Dust,Laboratory
+362,L24EPH,Environmental Phenols,Laboratory
+363,L24PFC,Polyfluoroalkyl Chemicals,Laboratory
+364,L24PH,Phthalates - Urine,Laboratory
+365,L24PP,Pesticides - Environmental - Urine,Laboratory
+366,L25,Complete Blood Count with 5-part Differential - Whole Blood,Laboratory
+367,L25_2,"Complete Blood Count with 5-part Differential - Whole Blood, Second Exam",Laboratory
+368,L26OPD,Organophosphate Insecticides - Diakyl Phosphate Metabolites - Urine,Laboratory
+369,L26PP,"Pesticides - Current Use - Urine (Formerly Priority Pesticides, Non-persistent Pesticide Metabolites)",Laboratory
+370,L26UPP,"Pesticides - Current Use - Urine (Formerly Priority Pesticides, Non-persistent Pesticide Metabolites)",Laboratory
+371,L28DFP,"Dioxins, Furans, & Coplanar PCBs",Laboratory
+372,L28NPB,Non-dioxin-like Polychlorinated Biphenyls,Laboratory
+373,L28OCP,Pesticides - Organochlorine Metabolites - Serum (Surplus),Laboratory
+374,L28PBE,Brominated Flame Retardants (BFRs),Laboratory
+375,L28POC,"Dioxins, Furans, & Coplanar PCBs",Laboratory
+376,L31PAH,Polyaromatic Hydrocarbons (PAHs) - Urine,Laboratory
+377,L34,Bacterial vaginosis (BV) & Trichomonas vaginalis,Laboratory
+378,L35,Methicillin - Resistant Staphylococcus aureus (MRSA),Laboratory
+379,L36,"Syphilis-IgG, Syphilis Rapid Plasma Reagin (RPR) & Treponema pallidum Particle Agglutination (TP-PA)",Laboratory
+380,L37SWA,Human Papillomavirus (HPV) DNA - Vaginal Swab: Digene Hybrid Capture & Prototype Line Blot Assay,Laboratory
+381,L37SWR,Human Papillomavirus (HPV) DNA - Vaginal Swab: Roche Linear Array,Laboratory
+382,L39,Erythrocyte Protoporphyrin,Laboratory
+383,L39_2,Erythrocyte Protoporphyrin,Laboratory
+384,L39EPP,Erythrocyte Protoporphyrin & Selenium,Laboratory
+385,L40_2,"Standard Biochemistry Profile, Follicle Stimulating Hormone & Luteinizing Hormone, Second Exam",Laboratory
+386,L40FE,"Iron, Total Iron Binding Capacity (TIBC), & Transferrin Saturation",Laboratory
+387,L40T4,Thyroid - Stimulating Hormone & Thyroxine (TSH & T4),Laboratory
+388,L43,Vitamin B6,Laboratory
+389,L45VIT,"Vitamin A, Vitamin E & Carotenoids",Laboratory
+390,L52SER,"Human Papillomavirus (HPV) - 6, 11, 16 & 18 Antibody - Serum: 4-plex CLIA",Laboratory
+391,LAB02,Hepatitis B: Core Antibody & Surface Antigen; Hepatitis C: Confirmed Antibody & RNA (HCV-RNA); Hepatitis D Antibody,Laboratory
+392,MMA,Methylmalonic Acid,Laboratory
+393,MMRV,"Measles, Mumps, Rubella & Varicella",Laboratory
+394,OGTT,Oral Glucose Tolerance Test,Laboratory
+395,ORHPV,Human Papillomavirus (HPV) - Oral Rinse,Laboratory
+396,PAH,Polyaromatic Hydrocarbons (PAHs) - Urine,Laboratory
+397,PAHS,Polyaromatic Hydrocarbons (PAHs)- Urine - Special Sample,Laboratory
+398,PCBPOL,Non-dioxin-like Polychlorinated Biphenyls & Mono-ortho-substituted Polychlorinated Biphenyls - Pooled Samples,Laboratory
+399,PERNTS,"Perchlorate, Nitrate & Thiocyanate - Urine - Special Sample",Laboratory
+400,PFC,Polyfluoroalkyl Chemicals,Laboratory
+401,PFC_POOL,Polyfluoroalkyl Chemicals - Pooled Samples (Surplus),Laboratory
+402,PHYTO,Phytoestrogens - Urine,Laboratory
+403,POOLTF,Pooled-Sample Technical Support File,Laboratory
+404,PP,Pesticides - Environmental - Urine,Laboratory
+405,PSA,Prostate Specific Antigen (PSA),Laboratory
+406,PSTPOL,Pesticides - Organochlorine Pesticides - Pooled Samples,Laboratory
+407,PTH,Parathyroid Hormone,Laboratory
+408,SSANA,Autoantibodies - Immunofluorescence & Immunoprecipitation Analyses (Surplus),Laboratory
+409,SSANA2,Autoantibodies - Immunofluorescence Analyses (Surplus),Laboratory
+410,SSBFR,Brominated Flame Retardants (BFRs) - Pooled Samples (Surplus),Laboratory
+411,SSBNP,N-terminal Pro-BNP (Surplus),Laboratory
+412,SSCA,Cancer antigen CA125 and CA15.3 - Serum (Surplus),Laboratory
+413,SSCARD,"Glycated albumin, Beta-2 Microglobulin, Cystatin C (Surplus)",Laboratory
+414,SSCGA,"Cancer antigen CA125, CA15.3 and HE4 IgG antibodies - Serum (Surplus)",Laboratory
+415,SSCLTY,Chlorinated Tyrosine – Serum (Surplus),Laboratory
+416,SSCMVG,Cytomegalovirus Genotypes - Urine (Surplus),Laboratory
+417,SSCT,Chlamydia Pgp3 (plasmid gene product 3) ELISA (enzyme linked immunosorbent assay) and multiplex bead array (MBA) results,Laboratory
+418,SSDEET,DEET Metabolites - Urine - Surplus,Laboratory
+419,SSDFS,Autoantibodies - Anti-DFS70 Autoantibody Analyses (Surplus),Laboratory
+420,SSEBV,Epstein-Barr Virus (VCA IgG) - Serum (Surplus),Laboratory
+421,SSFA,Fatty Acids - Plasma (Surplus),Laboratory
+422,SSFLRT,Flame Retardant Metabolites - Urine (Surplus),Laboratory
+423,SSHCV,Hepatitis C Antibody Reflex Testing - Serum (Surplus),Laboratory
+424,SSHCVR,Hepatitis C RNA (HCV-RNA) & HCV Genotype (Surplus),Laboratory
+425,SSHE4,Human epididymal secretory protein E4 (HE4) - Serum (Surplus),Laboratory
+426,SSHEPC,Hepatitis C: Confirmed Antibody (INNO-LIA),Laboratory
+427,SSHPV,Human Papillomavirus (HPV) Viral Load - Oral Rinse - Oral High-Risk HPV Infections (Surplus),Laboratory
+428,SSKL,Klotho - Serum (Surplus),Laboratory
+429,SSMEL,Melamine - Urine (Surplus),Laboratory
+430,SSMHHT,"Mono-2-ethyl-5-hydroxyhexyl terephthalate, mono-2-ethyl-5-carboxypentyl terephthalate, and monooxoisononyl phthalate - Urine (Surplus)",Laboratory
+431,SSNEON,Neonicotinoids - Urine - Surplus,Laboratory
+432,SSNH4THY,Thyroid Profile (Surplus),Laboratory
+433,SSNO3P,"Perchlorate, Nitrate & Thiocyanate - Urine (Surplus)",Laboratory
+434,SSPCB,Non-dioxin-like Polychlorinated Biphenyls - Pooled Samples (Surplus Sera),Laboratory
+435,SSPFAC,Perfluoroalkyl and Polyfluoroalkyl Substances in US children 3-11 Years of Age,Laboratory
+436,SSPFSU,Perfluoroalkyl and Polyfluoroalkyl Substances,Laboratory
+437,SSPHTE,Phthalates and Plasticizers Metabolites - Urine (Surplus),Laboratory
+438,SSPOLI,"Poliovirus Serotypes 1, 2, & 3 Antibodies - Serum (Surplus)",Laboratory
+439,SSPST,Pesticides - Organochlorine Metabolites - Serum - Pooled Samples (Surplus),Laboratory
+440,SSPT,Pertussis and tetanus – Serum (Surplus),Laboratory
+441,SSQFEV,Coxiella Burnetii (Q Fever) Antibodies - Serum (Surplus),Laboratory
+442,SSSAL,Salmonella & Campylobacter Antibodies (Surplus),Laboratory
+443,SSSNFL,Serum Neurofilament Light Chain - Serum,Laboratory
+444,SSTERP,Terpenes – Serum (Surplus),Laboratory
+445,SSTOCA,Antibody to Toxocara spp. (Surplus),Laboratory
+446,SSTOXO,Toxoplasma Gondii Antibody - Serum (Surplus),Laboratory
+447,SSTROP,High-sensitivity cardiac troponins (Surplus),Laboratory
+448,SSUCSH,Cytomegalovirus shedding - Urine (Surplus),Laboratory
+449,SSUSG,Urine Specific Gravity Measurement (Surplus),Laboratory
+450,TGEMA,Tissue Transglutaminase Assay (IgA-TTG) & IgA Endomyseal Antibody Assay (IgA EMA),Laboratory
+451,THYROD,Thyroid Profile,Laboratory
+452,TRICH,Trichomonas - Urine,Laboratory
+453,TSNA,Tobacco-specific Nitrosamines (TSNAs) - Urine,Laboratory
+454,TST,Total Testosterone,Laboratory
+455,UADM,Aromatic Diamines - Urine,Laboratory
+456,UAM,Atrazine and Metabolites,Laboratory
+457,UASS,Arsenics - Total & Speciated - Urine - Special Sample,Laboratory
+458,UCOSMO,Osmolality - Urine,Laboratory
+459,UCOTS,"Cotinine, Hydroxycotinine, & Other Nicotine Metabolites and Analogs - Urine - Special Sample",Laboratory
+460,UFLDE,Fluoride - Urine,Laboratory
+461,UHM,Metals - Urine,Laboratory
+462,UHMS,Metals - Urine - Special Sample,Laboratory
+463,UMS,Metals - Urine - Special Sample,Laboratory
+464,UPHOPM,"Pyrethroids, Herbicides, & OP Metabolites - Urine",Laboratory
+465,UPP,"Pesticides - Current Use - Urine (Formerly Priority Pesticides, Non-persistent Pesticide Metabolites)",Laboratory
+466,UTASS,Arsenic - Total - Urine - Special Sample,Laboratory
+467,UVOCS,Volatile Organic Compound (VOC) Metabolites - Urine - Special Sample,Laboratory
+468,VIT_B6,Vitamin B6,Laboratory
+469,VITB12,Vitamin B12,Laboratory
+470,VNA,Volatile N-Nitrosamine Compounds (VNAs) - Urine,Laboratory
+471,VNAS,Volatile N-Nitrosamine Compounds (VNAs) - Urine - Special Sample,Laboratory
+472,VOC,Volatile Organic Compounds - Water & Related Questionnaire Items,Laboratory
+473,VOCMWB,Volatile Organic Compounds - Trihalomethanes/MTBE/Nitromethane - Blood,Laboratory
+474,VOCWBS,Volatile Organic Compounds (VOCs) and Trihalomethanes/MTBE - Blood - Special Sample,Laboratory
+475,WPIN,"Perchlorate, Nitrate & Iodide - Tap Water",Laboratory
+476,AGQ,Allergy,Questionnaire
+477,AQQ,Air Quality,Questionnaire
+478,ARQ,Arthritis,Questionnaire
+479,BHQ,Bowel Health,Questionnaire
+480,CIQDEP,Mental Health - Depression,Questionnaire
+481,CIQPAN,Mental Health - Panic Disorder,Questionnaire
+482,CKQ,Creatine Kinase,Questionnaire
+483,CSQ,Taste & Smell,Questionnaire
+484,HCQ,Hepatitis C Follow Up,Questionnaire
+485,KIQ_P,Prostate Conditions,Questionnaire
+486,PSQ,Prostate Specific Antigen Follow-up,Questionnaire
+487,RXQANA,Analgesic Pain Relievers,Questionnaire
+488,VIT_2,,Laboratory
+489,DXXAAC,Dual-Energy X-ray Absorptiometry - Abdominal Aortic Calcification,Examination

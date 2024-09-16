@@ -8,6 +8,7 @@ from nhanes.models import (
     Cycle,
     Dataset,
     Group,
+    Tag,
     WorkProcessNhanes,
     WorkProcessMasterData,
     WorkProcessRule,
@@ -68,6 +69,7 @@ def masterdata_export(folder='masterdata', models_to_export=None):
                 'cycles.csv': Cycle,
                 'groups.csv': Group,
                 'datasets.csv': Dataset,
+                'tags.csv': Tag,
                 'variables.csv': Variable,
                 'variable_cycles.csv': VariableCycle,
                 'dataset_cycles.csv': DatasetCycle,
@@ -149,6 +151,9 @@ def masterdata_export(folder='masterdata', models_to_export=None):
             else:
                 print(f"No data found for {model.__name__}, skipping export.")
 
+        # Export the relationship between Variables and Tags
+        export_variable_tags(base_dir)
+
         total_time = time.time() - v_time_start_process
         msm = f"Master Data export completed successfully in {total_time}."
         logger(log, "s", msm)
@@ -158,3 +163,29 @@ def masterdata_export(folder='masterdata', models_to_export=None):
         msm = f"An error occurred during the master data export: {str(e)}"
         logger(log, "e", msm)
         return False
+
+
+def export_variable_tags(base_dir):
+    try:
+        # Define the path to save the file
+        file_path = base_dir / 'variables_tags.csv'
+
+        # Query all variables and their tags
+        data = []
+        variables = Variable.objects.prefetch_related('tags')
+        for variable in variables:
+            for tag in variable.tags.all():
+                data.append({
+                    "Variable": variable.variable,
+                    "Tag": tag.tag
+                })
+
+        # Convert the data into a DataFrame
+        df = pd.DataFrame(data)
+
+        # Export the DataFrame to CSV
+        df.to_csv(file_path, index=False)
+        print(f"Exported Variable-Tag relationships to {file_path}")
+
+    except Exception as e:
+        print(f"Failed to export Variable-Tag relationships: {str(e)}")

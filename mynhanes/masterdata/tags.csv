@@ -1,0 +1,21 @@
+id,tag,description
+1,Demographics,"Variables like age, gender, race, and ethnicity."
+2,Lifestyle,"Variables related to diet, exercise, alcohol consumption, smoking, and other lifestyle behaviors."
+3,Clinical,Variables for health outcomes such as diagnosed diseases or conditions.
+4,Medications,Variables tracking drug use or prescription medications.
+5,Biomarkers,Variables representing biological measurements used to assess health or exposure status.
+6,Symptoms,Variables for tracking reported health symptoms.
+7,Environmental,Variables related to environmental exposures like pollutants or chemicals.
+8,Chemicals,Variables directly dealing with chemical substances such as pesticides or pollutants.
+9,Support,"Variables that complement other data points, such as dilution factors or comment codes, without being a primary measurement or key data."
+10,Metals,Variables measuring or related to metal levels in the body.
+11,Virus,Variables related to the presence or measurement of viruses in the body.
+12,Bacteria,Variables related to the presence or measurement of bacteria in the body or environment.
+13,Metabolites,Variables related to products of metabolism in the body.
+14,Cancer,"Variables related to cancer diagnosis, risk, or monitoring."
+15,Dietary,"Variables specifically related to food consumption, such as protein, carbohydrate, fat, vitamins, and minerals intake."
+16,Laboratory,"Variables related to laboratory tests, including test results, measurements, and clinical lab data."
+17,Occupational,"Variables related to workplace exposures, such as exposure to chemicals or hazardous environments."
+18,Genetics,Variables related to genetic information or predispositions.
+19,Mental,"Variables measuring or related to mental health conditions, such as depression or anxiety."
+20,Physical,"Variables related to exercise, physical activity, and sedentary behavior."

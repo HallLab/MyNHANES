@@ -26,6 +26,7 @@ from nhanes.services import query
 # from django.http import HttpResponseRedirect
 # from django.core.management import call_command
 # from django.contrib import messages
+from nhanes.reports import report_variables, report_datasetcycle, report_variablecycle
 
 from django import forms
 # from django.urls import reverse
@@ -37,7 +38,6 @@ from nhanes.workprocess.transformation_manager import TransformationManager
 # from django.urls import path
 from nhanes.workprocess.ingestion_nhanes import ingestion_nhanes
 from django.contrib.admin import SimpleListFilter
-
 
 # ----------------------------------
 # NHANES ADMIN
@@ -76,9 +76,30 @@ class VariableAdmin(admin.ModelAdmin):
         "description",
         "is_active",
         "type",
+        "show_tags",
     )
+    list_display_links = ("variable", "description")
     search_fields = ("variable", "description")
     list_filter = ("tags", "type")
+    filter_horizontal = ("tags",)
+    actions = [
+        'report_selected',
+        'report_all',
+        ]
+
+    def show_tags(self, obj):
+        return ", ".join([tag.tag for tag in obj.tags.all()])
+
+    show_tags.short_description = 'Tags'
+
+    def report_selected(self, request, queryset):
+        return report_variables.report_selected_variables(self, request, queryset)
+
+    def report_all(self, request, queryset):
+        return report_variables.report_all_variables(self, request, queryset)
+
+    report_selected.short_description = "Generate report for selected variables"
+    report_all.short_description = "Generate report for all variables"
 
 
 class VariableCycleAdmin(admin.ModelAdmin):
@@ -92,6 +113,12 @@ class VariableCycleAdmin(admin.ModelAdmin):
         # "english_text",
         "formatted_value_table",
     )
+    search_fields = ("variable_name", "sas_label", "english_text", "value_table")
+    list_filter = ("version", "cycle", "dataset", "type", "dataset_id__group", "variable_id__tags")  # noqa: E501
+    actions = [
+        'report_selected',
+        'report_all',
+    ]
 
     def formatted_value_table(self, obj):
         # Assume that obj.value_table is the JSON field
@@ -108,9 +135,14 @@ class VariableCycleAdmin(admin.ModelAdmin):
 
     formatted_value_table.short_description = "Value Table"
 
-    search_fields = ("variable_name", "sas_label", "english_text", "value_table")
+    def report_selected(self, request, queryset):
+        return report_variablecycle.report_selected_variable_cycles(self, request, queryset)  # noqa E501
 
-    list_filter = ("version", "cycle", "dataset", "type", "dataset_id__group", "variable_id__tags")  # noqa: E501
+    def report_all(self, request, queryset):
+        return report_variablecycle.report_all_variable_cycles(self, request, queryset)
+
+    report_selected.short_description = "Generate report for selected Variables Cycles"
+    report_all.short_description = "Generate report for all Variables Cycles"
 
 
 class DatasetCycleAdmin(admin.ModelAdmin):
@@ -119,6 +151,10 @@ class DatasetCycleAdmin(admin.ModelAdmin):
     list_filter = ('cycle', 'dataset', 'has_special_year_code', 'has_dataset', 'dataset__group__group')  # noqa E501
     list_editable = ('has_dataset', )
     ordering = ('cycle__cycle', 'dataset__dataset',)
+    actions = [
+        'report_selected',
+        'report_all',
+        ]
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
@@ -130,6 +166,15 @@ class DatasetCycleAdmin(admin.ModelAdmin):
 
     def dataset_name(self, obj):
         return obj.dataset.description
+
+    def report_selected(self, request, queryset):
+        return report_datasetcycle.report_selected_dataset_cycles(self, request, queryset)  # noqa E501
+
+    def report_all(self, request, queryset):
+        return report_datasetcycle.report_all_dataset_cycles(self, request, queryset)
+
+    report_selected.short_description = "Generate report for selected Dataset Cycles"
+    report_all.short_description = "Generate report for all Dataset Cycles"
 
 
 class DataAdmin(admin.ModelAdmin):
@@ -144,7 +189,7 @@ class DataAdmin(admin.ModelAdmin):
 
 
 class TagAdmin(admin.ModelAdmin):
-    model = Tag
+    list_display = ("tag", "description")
 
 
 # ----------------------------------
