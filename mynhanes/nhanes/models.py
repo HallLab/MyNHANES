@@ -344,6 +344,7 @@ class QueryFilter(models.Model):
         ("dataset__dataset", "Dataset Code"),
         ("dataset__description", "Dataset Name"),
         ("version__version", "Version"),
+        ("variable__tags__tag", "Tag"),
     )
     query_structure = models.ForeignKey(
         QueryStructure, related_name="filters", on_delete=models.CASCADE
@@ -409,7 +410,9 @@ class WorkProcessMasterData(models.Model):
         ("Cycle", "Cycle"),
         ("Group", "Group"),
         ("Dataset", "Dataset"),
+        ("Tag", "Tag"),
         ("Variable", "Variable"),
+        ("VariableTag", "Variable Tag"),
         ("DatasetCycle", "Dataset Cycle"),
         ("VariableCycle", "Variable Cycle"),
         ("Rule", "Rule"),

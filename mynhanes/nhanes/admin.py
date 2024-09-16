@@ -180,7 +180,7 @@ class DatasetCycleAdmin(admin.ModelAdmin):
 class DataAdmin(admin.ModelAdmin):
     list_display = ('version', 'cycle', 'dataset', 'variable', 'sample', 'sequence', 'rule_id', 'value')  # noqa E501
     search_fields = ('dataset__dataset', 'cycle__cycle', 'variable__variable', 'value')
-    list_filter = ('cycle', 'dataset', 'version', 'variable')
+    list_filter = ('cycle', 'dataset', 'version', 'variable', 'variable__tags')  # noqa E501
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)

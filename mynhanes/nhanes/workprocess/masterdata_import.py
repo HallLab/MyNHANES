@@ -11,6 +11,7 @@ from nhanes.models import (
     Dataset,
     Group,
     WorkProcessMasterData,
+    Tag,
     Variable,
     VariableCycle,
     DatasetCycle,
@@ -60,7 +61,8 @@ def _get_data(BASE_URL, file_name, log):
             logger(log, "e", msm)
             return None
 
-        df = df.dropna(subset=['id'])
+        if 'id' in df.columns:
+            df = df.dropna(subset=['id'])
         return df
 
     except (requests.exceptions.RequestException, FileNotFoundError, ValueError) as e:
@@ -89,7 +91,8 @@ def _initialize_workprocess_master_data(log, BASE_URL):
     qs_wp = WorkProcessMasterData.objects.all()
     # if new base, create the WorkProcessMasterData
     # if not qs_wp.exists():
-    df = _get_data(BASE_URL, 'work_process_master_data.csv', log)  # TODO: nao esta validando de qs_wp ja existe?
+    # TODO: nao esta validando de qs_wp ja existe?
+    df = _get_data(BASE_URL, 'work_process_master_data.csv', log)
     if df is not None:
         model_instances = [
             WorkProcessMasterData(
@@ -146,11 +149,13 @@ def masterdata_import():
         'cycles.csv': (Cycle, 'cycle'),
         'groups.csv': (Group, 'group'),
         'datasets.csv': (Dataset, 'dataset'),
+        'tags.csv': (Tag, 'tag'),
         'variables.csv': (Variable, 'variable'),
-        'variable_cycles.csv': (VariableCycle, ['variable', 'cycle', 'dataset', 'version',]),
+        'variables_tags.csv': (None, ['variable', 'tag']),
+        'variable_cycles.csv': (VariableCycle, ['variable', 'cycle', 'dataset', 'version',]), # noqa E501
         'dataset_cycles.csv': (DatasetCycle, ['dataset', 'cycle']),
         'rules.csv': (Rule, ['rule', 'version']),
-        'rule_variables.csv': (RuleVariable, ['rule', 'version', 'variable', 'dataset', 'type']),
+        'rule_variables.csv': (RuleVariable, ['rule', 'version', 'variable', 'dataset', 'type']), # noqa E501
         'query_columns.csv': (QueryColumns, ['column_name']),
     }
 
@@ -165,8 +170,14 @@ def masterdata_import():
             if df is None:
                 continue
 
-            df = df.drop(columns=['id'])
+            if 'id' in df.columns:
+                df = df.drop(columns=['id'])
             df = df.fillna("")
+
+            # Special case for Variable-Tag relationships
+            if file_name == "variables_tags.csv":
+                _import_variable_tags(df, log)
+                continue
 
             try:
                 qry_wp = qs_wp.get(component_type=model.__name__)
@@ -210,7 +221,7 @@ def masterdata_import():
                         #         special_year_code=row['special_year_code'],
                         #         has_dataset=row['has_dataset']
                         #         )
-                        # keep signal create the datasetcycle but update by masterdata_import
+                        # keep signal create the datasetcycle but update by masterdata_import # noqa E501
                         cycle = Cycle.objects.get(cycle=row['cycle'])
                         dataset = Dataset.objects.get(dataset=row['dataset'])
 
@@ -306,3 +317,45 @@ def masterdata_import():
         f"The Master Data was imported in {total_time}"
     )
     return True
+
+
+def _import_variable_tags(df, log):
+    """
+    Imports the relationships between Variables and Tags from a DataFrame.
+
+    Parameters:
+    df: The DataFrame containing the Variable-Tag relationships.
+    log: Logger object to log messages.
+    """
+
+    logger(log, "s", "Started importing Variable-Tag relationships")
+
+    try:
+        with transaction.atomic():
+            for _, row in df.iterrows():
+                # Fetch the Variable and Tag objects
+                try:
+                    variable = Variable.objects.get(variable=row['Variable'])
+                    tag = Tag.objects.get(tag=row['Tag'])
+                except Variable.DoesNotExist:
+                    logger(log, "e", f"Variable {row['Variable']} not found.")
+                    continue
+                except Tag.DoesNotExist:
+                    logger(log, "e", f"Tag {row['Tag']} not found.")
+                    continue
+
+                # Add the tag to the variable if it's not already linked
+                if not variable.tags.filter(id=tag.id).exists():
+                    variable.tags.add(tag)
+                    logger(
+                        log,
+                        "s",
+                        f"Added Tag {tag.tag} to Variable {variable.variable}."
+                        )
+
+    except Exception as e:
+        logger(
+            log,
+            "e",
+            f"An error occurred while importing Variable-Tag relationships: {str(e)}"
+            )
