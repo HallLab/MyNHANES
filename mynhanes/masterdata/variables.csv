@@ -12041,3 +12041,141 @@ id,variable,description,is_active,type
 12040,LBDLDL_WO_DRUG,LDL Cholesterol without Cholesterol drugs effects. Ajust 0.7% of the source value.,True,num
 12041,LBXTC_WO_DRUG,Total Cholesterol without control drugs effect. Ajust 0.8% of the source value.,True,num
 12042,USE_CHOLESTEROL_DRUG,Participant use one of cholesterol control drugs.,True,bin
+12043,LBXZBZ,Benzene (ug/cubic meter),True,oth
+12044,LBDZBZLC,Benzene comment,True,oth
+12045,LBXZCF,Chloroform (ug/cubic meter),True,oth
+12046,LBDZCFLC,Chloroform comment,True,oth
+12047,LBXZEB,Ethylbenzene (ug/cubic meter),True,oth
+12048,LBDZEBLC,Ethylbenzene comment,True,oth
+12049,LBXZTE,Tetrachloroethene (ug/cubic meter),True,oth
+12050,LBDZTELC,Tetrachloroethene comment,True,oth
+12051,LBXZTO,Toluene (ug/cubic meter),True,oth
+12052,LBDZTOLC,Toluene comment,True,oth
+12053,LBXZTI,Trichloroethene (ug/cubic meter),True,oth
+12054,LBDZTILC,Trichloroethene comment,True,oth
+12055,LBXZOX,o-Xylene (ug/cubic meter),True,oth
+12056,LBDZOXLC,o-Xylene comment,True,oth
+12057,LBXZXY,"m,p-Xylene (ug/cubic meter)",True,oth
+12058,LBDZXYLC,"m,p-Xylene comment",True,oth
+12059,LBXZDB,"1,4-dichlorobenzene (ug/cubic meter)",True,oth
+12060,LBDZDBLC,"1,4-dichlorobenzene comment",True,oth
+12061,LBXZMB,MTBE (ug/cubic meter),True,oth
+12062,LBDZMBLC,MTBE comment,True,oth
+12063,LBAVOCSD,VOC badge sample duration-minutes,True,oth
+12064,VTQ015,Wear the exposure badge at all times?,True,oth
+12065,VTQ020,Hours badge not worn,True,oth
+12066,VTQ030,Home has an attached garage?,True,oth
+12067,VTQ040,Home built less than 5 years ago?,True,oth
+12068,VTQ050,Description of street where you live,True,oth
+12069,VTQ060,"Natural gas, or electric kitchen stove",True,oth
+12070,VTQ070,"In the past 6 months, have new carpet",True,oth
+12071,VTQ080,Store paints or fuels inside your home?,True,oth
+12072,VTQ090,Hours spent indoors at home?,True,oth
+12073,VTQ100,Were any windows open in your home?,True,oth
+12074,VTQ110,Hours spent indoors at  work/school,True,oth
+12075,VTQ120,Hours spent outdoors,True,oth
+12076,VTQ130,Pump gas into a car or motor vehicle?,True,oth
+12077,VTQ140,Time spent at a swimming pool,True,oth
+12078,VTQ150,"In drycleaning shop, drycleaned clothes",True,oth
+12079,VTQ160,Near a wood-burning fire >= 10 min,True,oth
+12080,VTQ170,Near a smoking person >= 10 min,True,oth
+12081,VTQ180,Hot shower for five minutes or longer,True,oth
+12082,VTQ200B,"Mothballs, moth crystals, or mothflakes",True,oth
+12083,VTQ200C,Disinfectant or degreasing cleaners,True,oth
+12084,VTQ200D,Furniture polish,True,oth
+12085,VTQ200E,Hairspray,True,oth
+12086,VTQ200F,Fingernail polish or polish remover,True,oth
+12087,VTQ200G,Diesel fuel or kerosene,True,oth
+12088,VTQ200H,Gasoline,True,oth
+12089,VTQ200I,"Paint thinner, brush cleaner, stripper",True,oth
+12090,VTQ200J,Air fresheners or room deodorizers,True,oth
+12091,VTQ200K,Drycleaning fluid or spot remover,True,oth
+12092,VTQ200L,"Glues or adhesives, hobbies or crafts",True,oth
+12093,PAXDAYM,Day of PAM measurements for this minute,True,oth
+12094,PAXDAYWM,Day of the week for this minute,True,oth
+12095,PAXSSNMP,Starting sample number for minute,True,oth
+12096,PAXTSM,Total seconds with data for this minute,True,oth
+12097,PAXAISMM,Minute count: 80hz data idle sleep mode,True,oth
+12098,PAXMTSM,MIMS triaxial value for the minute,True,oth
+12099,PAXMXM,MIMS X-axis value for the minute,True,oth
+12100,PAXMYM,MIMS Y-axis value for the minute,True,oth
+12101,PAXMZM,MIMS Z-axis value for the minute,True,oth
+12102,PAXPREDM,Minute wake/sleep/non-wear prediction,True,oth
+12103,PAXTRANM,Transition flag for wake/sleep/non-wear,True,oth
+12104,PAXLXMM,Mean lux value for the minute,True,oth
+12105,PAXLXSDM,Std deviation: lux values in this minute,True,oth
+12106,PAXQFM,Minute sum: data quality flag count,True,oth
+12107,PAXFLGSM,Quality flags triggered,True,oth
+12108,HIQ259,Check item,True,oth
+12109,HIQ269,Check item,True,oth
+12110,OCQ150,Type of work done last week,True,oth
+12111,OCQ160,Worked at all last week?,True,oth
+12112,OCQ170,Check Item,True,oth
+12113,OCQ190,Check Item,True,oth
+12114,OCD230,Industry group code: current job,True,oth
+12115,OCD240,Occupation group code: current job,True,oth
+12116,OCQ280,Health insurance offered at main job,True,oth
+12117,OCQ300,Ever wear protective equipment at work,True,oth
+12118,OCQ310A,Ever wear respirator at work,True,oth
+12119,OCQ310B,"Hearing protection used, current job?",True,oth
+12120,OCQ310C,Ever wear protective gloves at work,True,oth
+12121,OCQ320,Check Item,True,oth
+12122,OCQ330A,Protective gloves of latex rubber,True,oth
+12123,OCQ330B,Protective gloves of leather,True,oth
+12124,OCQ330C,Protective gloves of vinyl,True,oth
+12125,OCQ330D,Protective gloves of cloth,True,oth
+12126,OCQ330E,Protective gloves of something else,True,oth
+12127,OCQ340,"Loud job noise, ever exposed, 3 months?",True,oth
+12128,OCQ350,Currently exposed to loud noise at work,True,oth
+12129,OCQ360,Avg # hours loud noise exposure now,True,oth
+12130,OCQ370,Check Item,True,oth
+12131,OCQ390G,Kind of work you have done the longest,True,oth
+12132,OCD390,Occupation group code: longest job,True,oth
+12133,OCQ400,Check Item,True,oth
+12134,OCQ410,Check Item,True,oth
+12135,OCQ420,"Loud job noise, ever exposed, 3 months?",True,oth
+12136,OCQ430,Loud job noise: 3 months on longest job?,True,oth
+12137,OCQ440,# hours/day constant loud noise on job,True,oth
+12138,OCQ450,Wear ear protection during work,True,oth
+12139,OCQ460,Check Item,True,oth
+12140,OCQ470G,Kind of job held when had asthma,True,oth
+12141,OCD470,Occupation group code: job asthma began,True,oth
+12142,OCD480,Industry group code: job asthma began,True,oth
+12143,OCD310B,"Hearing protection used, current job?",True,oth
+12144,OCQ295,"Wear hearing protection, current job?",True,oth
+12145,OCD470G,Kind of job held when had asthma,True,oth
+12146,KID182,Enlargement due to cancer,True,oth
+12147,SPXNSTAT,Spirometry First Test Status,True,oth
+12148,SPXNCMT,Spirometry First Test Comment,True,oth
+12149,SPXNFVC,Baseline FVC (mL),True,oth
+12150,SPXNEV,Baseline Extrapolated Volume (mL),True,oth
+12151,SPXNFEV5,Baseline FEV 0.5 (mL),True,oth
+12152,SPXNFEV7,Baseline FEV 0.75 (mL),True,oth
+12153,SPXNFEV1,Baseline FEV 1 (mL),True,oth
+12154,SPXNFEV3,Baseline FEV 3 (mL),True,oth
+12155,SPXNFEV6,Baseline FEV 6 (mL),True,oth
+12156,SPXNPEF,Baseline PEF (mL/s),True,oth
+12157,SPXNF257,Baseline FEF 25-75% (mL/s),True,oth
+12158,SPXNFET,Baseline Forced Expiratory Time (s),True,oth
+12159,SPXNQFVC,Baseline FVC Quality Attribute,True,oth
+12160,SPXNQFV1,Baseline FEV1 Quality Attribute,True,oth
+12161,SPDNACC,Baseline Number of Acceptable Curves,True,oth
+12162,SPXNQEFF,Baseline Effort Quality Attribute,True,oth
+12163,SPDBRONC,Selected for Bronchodilator,True,oth
+12164,SPXBSTAT,Spirometry Second Test Status,True,oth
+12165,SPXBCMT,Spirometry Second Test Comment,True,oth
+12166,SPXBFVC,2nd Test FVC (mL),True,oth
+12167,SPXBEV,2nd Test Extrapolated Volume (mL),True,oth
+12168,SPXBFEV5,2nd Test FEV 0.5 (mL),True,oth
+12169,SPXBFEV7,2nd Test FEV 0.75 (mL),True,oth
+12170,SPXBFEV1,2nd Test FEV 1 (mL),True,oth
+12171,SPXBFEV3,2nd Test FEV 3 (mL),True,oth
+12172,SPXBFEV6,2nd Test FEV 6 (mL),True,oth
+12173,SPXBPEF,2nd Test PEF (mL/s),True,oth
+12174,SPXBF257,2nd Test FEF 25-75% (mL/s),True,oth
+12175,SPXBFET,2nd Test Forced Expiratory Time (s),True,oth
+12176,SPXBQFVC,2nd Test FVC Quality Attribute,True,oth
+12177,SPXBQFV1,2nd Test FEV1 Quality Attribute,True,oth
+12178,SPDBACC,2nd Test Number of Acceptable Curves,True,oth
+12179,SPXBQEFF,2nd Test Effort Quality Attribute,True,oth
+12180,WTSC2YRA,Adjusted subsample C weights,True,oth

@@ -177,7 +177,7 @@ def _parse_nhanes_html_docfile(source_code, docfile):
         return variable_df, code_table
 
 
-def get_data_from_htm(doc_code, docfile):
+def get_data_from_htm(doc_code, docfile, meta_df):
     """
     """
     variable_dfs = {}
@@ -190,15 +190,52 @@ def get_data_from_htm(doc_code, docfile):
     )
 
     if not code_tables:
-        return variable_df, code_table
+        # return variable_dfs[doc_code], code_table
+        code_tables = {}
 
+    # code_table.update(code_tables)
+    # for code in variable_dfs:
+    #     if variable_df is None:
+    #         variable_df = variable_dfs[code]
+    #     else:
+    #         variable_df = pd.concat((variable_df, variable_dfs[code]))
+    # return variable_df, code_table
+
+    # Se o variable_dfs[doc_code] estiver vazio, usar meta_df para preencher os dados
+    if variable_dfs[doc_code].empty:
+        # Construir um dataframe manualmente com base no meta_df
+        variable_dfs[doc_code] = pd.DataFrame({
+            'VariableName': meta_df['Variable'],         # Nome da variável
+            'SASLabel': meta_df['Labels'],               # Rótulo da variável
+            'EnglishText': meta_df['Labels'],            # Reutilizando Labels como EnglishText
+            'Target': [''] * len(meta_df),               # Preenchendo Target com vazio
+            'VariableNameLong': meta_df['Variable'],     # Reutilizando o nome da variável como nome longo
+            'Source': [doc_code] * len(meta_df)          # Fonte do documento
+        })
+
+    # Garantir que todas as variáveis em variable_df tenham correspondentes no code_table
+    variable_names = variable_dfs[doc_code]['VariableName'].unique()
+    for var_name in variable_names:
+        if var_name not in code_tables:
+            # Adicionar uma entrada vazia ao code_table se a variável não estiver presente
+            code_tables[var_name] = pd.DataFrame({
+                'Code or Value': ['no data'],
+                'Value Description': ['no data'],
+                'Count': [0],
+                'Cumulative': [0],
+                'Skip to Item': [None]
+            })
+
+    # Atualiza o code_table com o resultado
     code_table.update(code_tables)
 
+    # Concatena os dataframes das variáveis
     for code in variable_dfs:
         if variable_df is None:
             variable_df = variable_dfs[code]
         else:
             variable_df = pd.concat((variable_df, variable_dfs[code]))
+
     return variable_df, code_table
 
 
@@ -222,6 +259,9 @@ def process_and_save_metadata(
         msm = f"Dataset or Cycle not found on process_and_save_metadata function: {e}"
         logger(log, "e", msm)
         return False
+
+    # drop columns that are not present in the database
+    df['CodeTables'] = df['CodeTables'].apply(lambda x: None if pd.isna(x) else x)
 
     # Uptade all or nothing and return False if any error occurs
     with transaction.atomic():
@@ -255,6 +295,7 @@ def process_and_save_metadata(
                             'target': row['Target'],
                             'type': row['Type'],
                             'value_table': row['CodeTables']
+                            # 'value_table': row['CodeTables'] if row['CodeTables'] is not None else "{}",  # avoid NaN
                         }
                     )
                 else:
@@ -272,8 +313,9 @@ def process_and_save_metadata(
                             'value_table': ''
                         }
                     )
-                msm = f"Processed {variable.variable} with status {'created' if created else 'updated'}." # noqa E501
-                logger(log, "i", msm)
+                # NOTE: Uncomment the following line to log the processed variables
+                # msm = f"Processed {variable.variable} with status {'created' if created else 'updated'}." # noqa E501
+                # logger(log, "i", msm)
             except IntegrityError as e:
                 msm = f"Database error while processing {row['VariableName']}: {e}"
                 logger(log, "e", msm)

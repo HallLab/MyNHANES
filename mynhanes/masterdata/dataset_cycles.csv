@@ -26,7 +26,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 25,2007-2008,TRIGLY,https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/TRIGLY_E.htm,,,False,,True
 26,2009-2010,TRIGLY,https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/TRIGLY_F.htm,,,False,,True
 27,2011-2012,TRIGLY,https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/TRIGLY_G.htm,,,False,,True
-28,2013-2014,TRIGLY,,,,False,,True
+28,2013-2014,TRIGLY,https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/TRIGLY_H.htm,,,False,,True
 29,2015-2016,TRIGLY,https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/TRIGLY_I.htm,,,False,,True
 30,2017-2018,TRIGLY,https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/TRIGLY_J.htm,,,False,,True
 31,1999-2000,TCHOL,,,,False,,False
@@ -215,7 +215,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 214,2005-2006,AUXTYM,https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/AUXTYM_D.htm,,,False,,True
 215,2007-2008,AUXTYM,https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/AUXTYM_E.htm,,,False,,True
 216,2009-2010,AUXTYM,https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/AUXTYM_F.htm,,,False,,True
-217,2011-2012,AUXTYM,,,,False,,True
+217,2011-2012,AUXTYM,https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/AUXTYM_G.htm,,,False,,True
 218,2013-2014,AUXTYM,,,,False,,False
 219,2015-2016,AUXTYM,https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/AUXTYM_I.htm,,,False,,True
 220,2017-2018,AUXTYM,https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/AUXTYM_J.htm,,,False,,True
@@ -235,7 +235,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 234,2005-2006,BPX,https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/BPX_D.htm,,,False,,True
 235,2007-2008,BPX,https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/BPX_E.htm,,,False,,True
 236,2009-2010,BPX,https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/BPX_F.htm,,,False,,True
-237,2011-2012,BPX,,,,False,,True
+237,2011-2012,BPX,https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/BPX_G.htm,,,False,,True
 238,2013-2014,BPX,https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/BPX_H.htm,,,False,,True
 239,2015-2016,BPX,https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/BPX_I.htm,,,False,,True
 240,2017-2018,BPX,https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/BPX_J.htm,,,False,,True
@@ -335,7 +335,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 334,2005-2006,ALB_CR,https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/ALB_CR_D.htm,,,False,,True
 335,2007-2008,ALB_CR,https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/ALB_CR_E.htm,,,False,,True
 336,2009-2010,ALB_CR,https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/ALB_CR_F.htm,,,False,,True
-337,2011-2012,ALB_CR,,,,False,,True
+337,2011-2012,ALB_CR,https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/ALB_CR_G.htm,,,False,,True
 338,2013-2014,ALB_CR,https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/ALB_CR_H.htm,,,False,,True
 339,2015-2016,ALB_CR,https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/ALB_CR_I.htm,,,False,,True
 340,2017-2018,ALB_CR,https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/ALB_CR_J.htm,,,False,,True
@@ -496,7 +496,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 495,2007-2008,FOLFMS,https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/FOLFMS_E.htm,,,False,,True
 496,2009-2010,FOLFMS,,,,False,,False
 497,2011-2012,FOLFMS,https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/FOLFMS_G.htm,,,False,,True
-498,2013-2014,FOLFMS,,,,False,,True
+498,2013-2014,FOLFMS,https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/FOLFMS_H.htm,,,False,,True
 499,2015-2016,FOLFMS,https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/FOLFMS_I.htm,,,False,,True
 500,2017-2018,FOLFMS,https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/FOLFMS_J.htm,,,False,,True
 501,1999-2000,GHB,,,,False,,False
@@ -947,7 +947,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 946,2009-2010,DBQ,https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/DBQ_F.htm,,,False,,True
 947,2011-2012,DBQ,https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/DBQ_G.htm,,,False,,True
 948,2013-2014,DBQ,https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/DBQ_H.htm,,,False,,True
-949,2015-2016,DBQ,,,,False,,True
+949,2015-2016,DBQ,https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/DBQ_I.htm,,,False,,True
 950,2017-2018,DBQ,https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DBQ_J.htm,,,False,,True
 951,1999-2000,DLQ,,,,False,,False
 952,2001-2002,DLQ,,,,False,,False
@@ -1073,7 +1073,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 1072,2001-2002,DPQ,,,,False,,False
 1073,2003-2004,DPQ,,,,False,,False
 1074,2005-2006,DPQ,https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DPQ_D.htm,,,False,,True
-1075,2007-2008,DPQ,,,,False,,True
+1075,2007-2008,DPQ,https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/DPQ_E.htm,,,False,,True
 1076,2009-2010,DPQ,https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/DPQ_F.htm,,,False,,True
 1077,2011-2012,DPQ,https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/DPQ_G.htm,,,False,,True
 1078,2013-2014,DPQ,https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/DPQ_H.htm,,,False,,True
@@ -1159,7 +1159,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 1158,2013-2014,RXQ_RX,https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/RXQ_RX_H.htm,,,False,,True
 1159,2015-2016,RXQ_RX,https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/RXQ_RX_I.htm,,,False,,True
 1160,2017-2018,RXQ_RX,https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/RXQ_RX_J.htm,,,False,,True
-1161,1999-2000,RXQ_DRUG,,,,False,,True
+1161,1999-2000,RXQ_DRUG,,,This dataset does not contain participant data. It only contains drug information. There is no MyNHANES treatment for this type of data yet.,False,,False
 1162,2001-2002,RXQ_DRUG,,,,False,,False
 1163,2003-2004,RXQ_DRUG,,,,False,,False
 1164,2005-2006,RXQ_DRUG,,,,False,,False
@@ -1168,7 +1168,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 1167,2011-2012,RXQ_DRUG,,,,False,,False
 1168,2013-2014,RXQ_DRUG,,,,False,,False
 1169,2015-2016,RXQ_DRUG,,,,False,,False
-1170,2017-2018,RXQ_DRUG,,,,False,,True
+1170,2017-2018,RXQ_DRUG,,,This dataset does not contain participant data. It only contains drug information. There is no MyNHANES treatment for this type of data yet.,False,,False
 1171,1999-2000,RXQASA,,,,False,,False
 1172,2001-2002,RXQASA,,,,False,,False
 1173,2003-2004,RXQASA,,,,False,,False
@@ -1899,7 +1899,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 1898,2013-2014,LAB20,,,,False,,False
 1899,2015-2016,LAB20,,,,False,,False
 1900,2017-2018,LAB20,,,,False,,False
-1901,1999-2000,LAB21,,,,False,,True
+1901,1999-2000,LAB21,https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/LAB21.htm,,,False,,True
 1902,2001-2002,LAB21,,,,False,,False
 1903,2003-2004,LAB21,,,,False,,False
 1904,2005-2006,LAB21,,,,False,,False
@@ -2440,7 +2440,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 2439,2015-2016,DXX_2,,,,False,,False
 2440,2017-2018,DXX_2,,,,False,,False
 2441,1999-2000,LEXAB,,,,False,,False
-2442,2001-2002,LEXAB,,,,False,,True
+2442,2001-2002,LEXAB,https://wwwn.cdc.gov/Nchs/Nhanes/2001-2002/LEXAB_B.htm,,,False,,True
 2443,2003-2004,LEXAB,https://wwwn.cdc.gov/Nchs/Nhanes/2003-2004/LEXAB_C.htm,,,False,,True
 2444,2005-2006,LEXAB,,,,False,,False
 2445,2007-2008,LEXAB,,,,False,,False
@@ -2676,7 +2676,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 2675,2007-2008,DXXT5,,,,False,,False
 2676,2009-2010,DXXT5,,,,False,,False
 2677,2011-2012,DXXT5,,,,False,,False
-2678,2013-2014,DXXT5,,,,False,,True
+2678,2013-2014,DXXT5,https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/DXXT5_H.htm,,,False,,True
 2679,2015-2016,DXXT5,,,,False,,False
 2680,2017-2018,DXXT5,,,,False,,False
 2681,1999-2000,DXXT6,,,,False,,False
@@ -2865,7 +2865,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 2864,2005-2006,PAXMIN,,,,False,,False
 2865,2007-2008,PAXMIN,,,,False,,False
 2866,2009-2010,PAXMIN,,,,False,,False
-2867,2011-2012,PAXMIN,,,,False,,True
+2867,2011-2012,PAXMIN,https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/PAXMIN_G.htm,,,False,,True
 2868,2013-2014,PAXMIN,,,,False,,True
 2869,2015-2016,PAXMIN,,,,False,,False
 2870,2017-2018,PAXMIN,,,,False,,False
@@ -3012,12 +3012,12 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 3011,1999-2000,BFRPOL,,,,False,,False
 3012,2001-2002,BFRPOL,,,,False,,False
 3013,2003-2004,BFRPOL,,,,False,,False
-3014,2005-2006,BFRPOL,,,,False,,True
-3015,2007-2008,BFRPOL,,,,False,,True
-3016,2009-2010,BFRPOL,,,,False,,True
-3017,2011-2012,BFRPOL,,,,False,,True
-3018,2013-2014,BFRPOL,,,,False,,True
-3019,2015-2016,BFRPOL,,,,False,,True
+3014,2005-2006,BFRPOL,,,No SEQN Field,False,,True
+3015,2007-2008,BFRPOL,,,No SEQN Field,False,,True
+3016,2009-2010,BFRPOL,,,No SEQN Field,False,,True
+3017,2011-2012,BFRPOL,,,No SEQN Field,False,,True
+3018,2013-2014,BFRPOL,,,No SEQN Field,False,,True
+3019,2015-2016,BFRPOL,,,No SEQN Field,False,,True
 3020,2017-2018,BFRPOL,,,,False,,False
 3021,1999-2000,CAFE,,,,False,,False
 3022,2001-2002,CAFE,,,,False,,False
@@ -3092,12 +3092,12 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 3091,1999-2000,DOXPOL,,,,False,,False
 3092,2001-2002,DOXPOL,,,,False,,False
 3093,2003-2004,DOXPOL,,,,False,,False
-3094,2005-2006,DOXPOL,,,,False,,True
-3095,2007-2008,DOXPOL,,,,False,,True
-3096,2009-2010,DOXPOL,,,,False,,True
-3097,2011-2012,DOXPOL,,,,False,,True
+3094,2005-2006,DOXPOL,,,No SEQN Field,False,,True
+3095,2007-2008,DOXPOL,,,No SEQN Field,False,,True
+3096,2009-2010,DOXPOL,,,No SEQN Field,False,,True
+3097,2011-2012,DOXPOL,,,No SEQN Field,False,,True
 3098,2013-2014,DOXPOL,,,,False,,False
-3099,2015-2016,DOXPOL,,,,False,,True
+3099,2015-2016,DOXPOL,,,No SEQN Field,False,,True
 3100,2017-2018,DOXPOL,,,,False,,False
 3101,1999-2000,EPH,,,,False,,False
 3102,2001-2002,EPH,,,,False,,False
@@ -3972,12 +3972,12 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 3971,1999-2000,PCBPOL,,,,False,,False
 3972,2001-2002,PCBPOL,,,,False,,False
 3973,2003-2004,PCBPOL,,,,False,,False
-3974,2005-2006,PCBPOL,,,,False,,True
-3975,2007-2008,PCBPOL,,,,False,,True
-3976,2009-2010,PCBPOL,,,,False,,True
-3977,2011-2012,PCBPOL,,,,False,,True
-3978,2013-2014,PCBPOL,,,,False,,True
-3979,2015-2016,PCBPOL,,,,False,,True
+3974,2005-2006,PCBPOL,,,No SEQN Field,False,,True
+3975,2007-2008,PCBPOL,,,No SEQN Field,False,,True
+3976,2009-2010,PCBPOL,,,No SEQN Field,False,,True
+3977,2011-2012,PCBPOL,,,No SEQN Field,False,,True
+3978,2013-2014,PCBPOL,,,No SEQN Field,False,,True
+3979,2015-2016,PCBPOL,,,No SEQN Field,False,,True
 3980,2017-2018,PCBPOL,,,,False,,False
 3981,1999-2000,PERNTS,,,,False,,False
 3982,2001-2002,PERNTS,,,,False,,False
@@ -4000,7 +4000,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 3999,2015-2016,PFC,,,,False,,False
 4000,2017-2018,PFC,,,,False,,False
 4001,1999-2000,PFC_POOL,,,,False,,False
-4002,2001-2002,PFC_POOL,,,,True,,True
+4002,2001-2002,PFC_POOL,,,This dataset does not have SEQN. We need to analyze the content to understand if we can obtain the SEQN as zero.,True,,False
 4003,2003-2004,PFC_POOL,,,,False,,False
 4004,2005-2006,PFC_POOL,,,,False,,False
 4005,2007-2008,PFC_POOL,,,,False,,False
@@ -4012,7 +4012,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 4011,1999-2000,PHYTO,,,,False,,False
 4012,2001-2002,PHYTO,,,,False,,False
 4013,2003-2004,PHYTO,,,,False,,False
-4014,2005-2006,PHYTO,,,,False,,True
+4014,2005-2006,PHYTO,https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/PHYTO_D.htm,,,False,,True
 4015,2007-2008,PHYTO,https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/PHYTO_E.htm,,,False,,True
 4016,2009-2010,PHYTO,https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/PHYTO_F.htm,,,False,,True
 4017,2011-2012,PHYTO,,,,False,,False
@@ -4022,8 +4022,8 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 4021,1999-2000,POOLTF,,,,False,,False
 4022,2001-2002,POOLTF,,,,False,,False
 4023,2003-2004,POOLTF,,,,False,,False
-4024,2005-2006,POOLTF,,,,False,,True
-4025,2007-2008,POOLTF,,,,False,,True
+4024,2005-2006,POOLTF,https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/POOLTF_D.htm,,,False,,True
+4025,2007-2008,POOLTF,https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/POOLTF_E.htm,,,False,,True
 4026,2009-2010,POOLTF,https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/POOLTF_F.htm,,,False,,True
 4027,2011-2012,POOLTF,https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/POOLTF_G.htm,,,False,,True
 4028,2013-2014,POOLTF,https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/POOLTF_H.htm,,,False,,True
@@ -4052,12 +4052,12 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 4051,1999-2000,PSTPOL,,,,False,,False
 4052,2001-2002,PSTPOL,,,,False,,False
 4053,2003-2004,PSTPOL,,,,False,,False
-4054,2005-2006,PSTPOL,,,,False,,True
-4055,2007-2008,PSTPOL,,,,False,,True
-4056,2009-2010,PSTPOL,,,,False,,True
-4057,2011-2012,PSTPOL,,,,False,,True
-4058,2013-2014,PSTPOL,,,,False,,True
-4059,2015-2016,PSTPOL,,,,False,,True
+4054,2005-2006,PSTPOL,,,No SEQN Field,False,,True
+4055,2007-2008,PSTPOL,,,No SEQN Field,False,,True
+4056,2009-2010,PSTPOL,,,No SEQN Field,False,,True
+4057,2011-2012,PSTPOL,,,No SEQN Field,False,,True
+4058,2013-2014,PSTPOL,,,No SEQN Field,False,,True
+4059,2015-2016,PSTPOL,,,No SEQN Field,False,,True
 4060,2017-2018,PSTPOL,,,,False,,False
 4061,1999-2000,PTH,,,,False,,False
 4062,2001-2002,PTH,,,,False,,False
@@ -4090,7 +4090,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 4089,2015-2016,SSANA2,,,,False,,False
 4090,2017-2018,SSANA2,,,,False,,False
 4091,1999-2000,SSBFR,,,,False,,False
-4092,2001-2002,SSBFR,,,,False,,True
+4092,2001-2002,SSBFR,,,No SEQN Field,False,,True
 4093,2003-2004,SSBFR,,,,False,,False
 4094,2005-2006,SSBFR,,,,False,,False
 4095,2007-2008,SSBFR,,,,False,,False
@@ -4330,7 +4330,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 4329,2015-2016,SSNO3P,,,,False,,False
 4330,2017-2018,SSNO3P,,,,False,,False
 4331,1999-2000,SSPCB,,,,False,,False
-4332,2001-2002,SSPCB,,,,False,,True
+4332,2001-2002,SSPCB,,,NO SEQN field,False,,True
 4333,2003-2004,SSPCB,,,,False,,False
 4334,2005-2006,SSPCB,,,,False,,False
 4335,2007-2008,SSPCB,,,,False,,False
@@ -4380,7 +4380,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 4379,2015-2016,SSPOLI,,,,False,,False
 4380,2017-2018,SSPOLI,,,,False,,False
 4381,1999-2000,SSPST,,,,False,,False
-4382,2001-2002,SSPST,,,,False,,True
+4382,2001-2002,SSPST,,,No SEQN field,False,,True
 4383,2003-2004,SSPST,,,,False,,False
 4384,2005-2006,SSPST,,,,False,,False
 4385,2007-2008,SSPST,,,,False,,False

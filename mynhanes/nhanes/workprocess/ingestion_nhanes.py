@@ -146,7 +146,7 @@ def ingestion_nhanes(load_type=str('db')):
             continue
 
         # get data from HTM file
-        variable_df, code_table = ingestion_utils.get_data_from_htm(dataset, doc_file)
+        variable_df, code_table = ingestion_utils.get_data_from_htm(dataset, doc_file, meta_df)
         if variable_df is None or code_table is None:
             msm = f"Error reading htm file: {doc_file}"
             logger(log, "e", msm)

@@ -124,7 +124,7 @@ class VariableCycle(models.Model):
     english_text = models.TextField()
     target = models.TextField()
     type = models.CharField(max_length=100)
-    value_table = models.JSONField()
+    value_table = models.JSONField(null=True, blank=True)  # TODO: Nao pode ter null
 
     class Meta:
         unique_together = ("version", "variable", "cycle", "dataset")
@@ -135,6 +135,12 @@ class VariableCycle(models.Model):
 
     def __str__(self):
         return f"{self.variable_name} ({self.cycle.cycle})"
+
+    # def save(self, *args, **kwargs):
+    #     # Substituir NaN por None para evitar erro
+    #     if self.value_table is None or pd.isna(self.value_table):
+    #         self.value_table = None
+    #     super().save(*args, **kwargs)
 
 
 class DatasetCycle(models.Model):

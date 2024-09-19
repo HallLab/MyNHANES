@@ -335,8 +335,38 @@ class WorkProcessMasterDataAdmin(admin.ModelAdmin):
     get_status_display.short_description = 'Status'
 
 
+# class LogsAdmin(admin.ModelAdmin):
+#     model = Logs
 class LogsAdmin(admin.ModelAdmin):
-    model = Logs
+    # Exibição dos campos no painel principal
+    list_display = (
+        'status',
+        'content_object',
+        'system_version',
+        'created_at',
+        'description_summary',
+    )
+    list_display_links = ('status', 'content_object')  # Links para detalhamento
+    list_filter = ('status', 'system_version', 'created_at')  # Filtros laterais
+    search_fields = ('description', 'system_version', 'object_id')  # Campos para busca
+    readonly_fields = ('created_at',)  # Campos somente leitura
+    ordering = ('-created_at',)  # Ordenar por data de criação decrescente
+
+    # Exibe uma versão curta da descrição no painel principal
+    def description_summary(self, obj):
+        return obj.description[:50] if obj.description else 'No description'
+    description_summary.short_description = 'Description'
+
+    # Ação personalizada para filtrar logs de erro
+    def clean_all_logs(self, request, queryset):
+        Logs.objects.all().delete()
+        self.message_user(request, "Cleaned logs.")
+
+    # Ações disponíveis no painel
+    actions = ['clean_all_logs']
+
+    # Configuração dos nomes das ações no painel de administração
+    clean_all_logs.short_description = "Clean all logs"
 
 
 class HasDatasetFilter(SimpleListFilter):
