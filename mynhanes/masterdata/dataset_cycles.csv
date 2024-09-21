@@ -1159,7 +1159,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 1158,2013-2014,RXQ_RX,https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/RXQ_RX_H.htm,,,False,,True
 1159,2015-2016,RXQ_RX,https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/RXQ_RX_I.htm,,,False,,True
 1160,2017-2018,RXQ_RX,https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/RXQ_RX_J.htm,,,False,,True
-1161,1999-2000,RXQ_DRUG,,,This dataset does not contain participant data. It only contains drug information. There is no MyNHANES treatment for this type of data yet.,False,,False
+1161,1999-2000,RXQ_DRUG,,,,False,,False
 1162,2001-2002,RXQ_DRUG,,,,False,,False
 1163,2003-2004,RXQ_DRUG,,,,False,,False
 1164,2005-2006,RXQ_DRUG,,,,False,,False
@@ -1168,7 +1168,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 1167,2011-2012,RXQ_DRUG,,,,False,,False
 1168,2013-2014,RXQ_DRUG,,,,False,,False
 1169,2015-2016,RXQ_DRUG,,,,False,,False
-1170,2017-2018,RXQ_DRUG,,,This dataset does not contain participant data. It only contains drug information. There is no MyNHANES treatment for this type of data yet.,False,,False
+1170,2017-2018,RXQ_DRUG,,,,False,,False
 1171,1999-2000,RXQASA,,,,False,,False
 1172,2001-2002,RXQASA,,,,False,,False
 1173,2003-2004,RXQASA,,,,False,,False
@@ -2865,8 +2865,8 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 2864,2005-2006,PAXMIN,,,,False,,False
 2865,2007-2008,PAXMIN,,,,False,,False
 2866,2009-2010,PAXMIN,,,,False,,False
-2867,2011-2012,PAXMIN,https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/PAXMIN_G.htm,,,False,,True
-2868,2013-2014,PAXMIN,,,,False,,True
+2867,2011-2012,PAXMIN,https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/PAXMIN_G.htm,,File with > 7Gb.,False,,True
+2868,2013-2014,PAXMIN,,,File > 7GB,False,,True
 2869,2015-2016,PAXMIN,,,,False,,False
 2870,2017-2018,PAXMIN,,,,False,,False
 2871,1999-2000,PAXRAW,,,,False,,False
@@ -3012,12 +3012,12 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 3011,1999-2000,BFRPOL,,,,False,,False
 3012,2001-2002,BFRPOL,,,,False,,False
 3013,2003-2004,BFRPOL,,,,False,,False
-3014,2005-2006,BFRPOL,,,No SEQN Field,False,,True
-3015,2007-2008,BFRPOL,,,No SEQN Field,False,,True
-3016,2009-2010,BFRPOL,,,No SEQN Field,False,,True
-3017,2011-2012,BFRPOL,,,No SEQN Field,False,,True
-3018,2013-2014,BFRPOL,,,No SEQN Field,False,,True
-3019,2015-2016,BFRPOL,,,No SEQN Field,False,,True
+3014,2005-2006,BFRPOL,,,No has SEQN Field,False,,False
+3015,2007-2008,BFRPOL,,,No has SEQN Field,False,,False
+3016,2009-2010,BFRPOL,,,No has SEQN Field,False,,False
+3017,2011-2012,BFRPOL,,,No has SEQN Field,False,,False
+3018,2013-2014,BFRPOL,,,No has SEQN Field,False,,False
+3019,2015-2016,BFRPOL,,,No has SEQN Field,False,,False
 3020,2017-2018,BFRPOL,,,,False,,False
 3021,1999-2000,CAFE,,,,False,,False
 3022,2001-2002,CAFE,,,,False,,False
@@ -3092,12 +3092,12 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 3091,1999-2000,DOXPOL,,,,False,,False
 3092,2001-2002,DOXPOL,,,,False,,False
 3093,2003-2004,DOXPOL,,,,False,,False
-3094,2005-2006,DOXPOL,,,No SEQN Field,False,,True
-3095,2007-2008,DOXPOL,,,No SEQN Field,False,,True
-3096,2009-2010,DOXPOL,,,No SEQN Field,False,,True
-3097,2011-2012,DOXPOL,,,No SEQN Field,False,,True
+3094,2005-2006,DOXPOL,,,No has SEQN Field,False,,False
+3095,2007-2008,DOXPOL,,,No has SEQN Field,False,,False
+3096,2009-2010,DOXPOL,,,No has SEQN Field,False,,False
+3097,2011-2012,DOXPOL,,,No has SEQN Field,False,,False
 3098,2013-2014,DOXPOL,,,,False,,False
-3099,2015-2016,DOXPOL,,,No SEQN Field,False,,True
+3099,2015-2016,DOXPOL,,,No has SEQN Field,False,,False
 3100,2017-2018,DOXPOL,,,,False,,False
 3101,1999-2000,EPH,,,,False,,False
 3102,2001-2002,EPH,,,,False,,False
@@ -3972,12 +3972,12 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 3971,1999-2000,PCBPOL,,,,False,,False
 3972,2001-2002,PCBPOL,,,,False,,False
 3973,2003-2004,PCBPOL,,,,False,,False
-3974,2005-2006,PCBPOL,,,No SEQN Field,False,,True
-3975,2007-2008,PCBPOL,,,No SEQN Field,False,,True
-3976,2009-2010,PCBPOL,,,No SEQN Field,False,,True
-3977,2011-2012,PCBPOL,,,No SEQN Field,False,,True
-3978,2013-2014,PCBPOL,,,No SEQN Field,False,,True
-3979,2015-2016,PCBPOL,,,No SEQN Field,False,,True
+3974,2005-2006,PCBPOL,,,No has SEQN Field,False,,False
+3975,2007-2008,PCBPOL,,,No has SEQN Field,False,,False
+3976,2009-2010,PCBPOL,,,No has SEQN Field,False,,False
+3977,2011-2012,PCBPOL,,,No has SEQN Field,False,,False
+3978,2013-2014,PCBPOL,,,No has SEQN Field,False,,False
+3979,2015-2016,PCBPOL,,,No has SEQN Field,False,,False
 3980,2017-2018,PCBPOL,,,,False,,False
 3981,1999-2000,PERNTS,,,,False,,False
 3982,2001-2002,PERNTS,,,,False,,False
@@ -4000,7 +4000,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 3999,2015-2016,PFC,,,,False,,False
 4000,2017-2018,PFC,,,,False,,False
 4001,1999-2000,PFC_POOL,,,,False,,False
-4002,2001-2002,PFC_POOL,,,This dataset does not have SEQN. We need to analyze the content to understand if we can obtain the SEQN as zero.,True,,False
+4002,2001-2002,PFC_POOL,,,,True,,False
 4003,2003-2004,PFC_POOL,,,,False,,False
 4004,2005-2006,PFC_POOL,,,,False,,False
 4005,2007-2008,PFC_POOL,,,,False,,False
@@ -4052,12 +4052,12 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 4051,1999-2000,PSTPOL,,,,False,,False
 4052,2001-2002,PSTPOL,,,,False,,False
 4053,2003-2004,PSTPOL,,,,False,,False
-4054,2005-2006,PSTPOL,,,No SEQN Field,False,,True
-4055,2007-2008,PSTPOL,,,No SEQN Field,False,,True
-4056,2009-2010,PSTPOL,,,No SEQN Field,False,,True
-4057,2011-2012,PSTPOL,,,No SEQN Field,False,,True
-4058,2013-2014,PSTPOL,,,No SEQN Field,False,,True
-4059,2015-2016,PSTPOL,,,No SEQN Field,False,,True
+4054,2005-2006,PSTPOL,,,No has SEQN Field,False,,False
+4055,2007-2008,PSTPOL,,,No has SEQN Field,False,,False
+4056,2009-2010,PSTPOL,,,No has SEQN Field,False,,False
+4057,2011-2012,PSTPOL,,,No has SEQN Field,False,,False
+4058,2013-2014,PSTPOL,,,No has SEQN Field,False,,False
+4059,2015-2016,PSTPOL,,,No has SEQN Field,False,,False
 4060,2017-2018,PSTPOL,,,,False,,False
 4061,1999-2000,PTH,,,,False,,False
 4062,2001-2002,PTH,,,,False,,False
@@ -4090,7 +4090,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 4089,2015-2016,SSANA2,,,,False,,False
 4090,2017-2018,SSANA2,,,,False,,False
 4091,1999-2000,SSBFR,,,,False,,False
-4092,2001-2002,SSBFR,,,No SEQN Field,False,,True
+4092,2001-2002,SSBFR,,,No has SEQN Field,False,,False
 4093,2003-2004,SSBFR,,,,False,,False
 4094,2005-2006,SSBFR,,,,False,,False
 4095,2007-2008,SSBFR,,,,False,,False
@@ -4330,7 +4330,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 4329,2015-2016,SSNO3P,,,,False,,False
 4330,2017-2018,SSNO3P,,,,False,,False
 4331,1999-2000,SSPCB,,,,False,,False
-4332,2001-2002,SSPCB,,,NO SEQN field,False,,True
+4332,2001-2002,SSPCB,,,No has SEQN Field,False,,False
 4333,2003-2004,SSPCB,,,,False,,False
 4334,2005-2006,SSPCB,,,,False,,False
 4335,2007-2008,SSPCB,,,,False,,False
@@ -4380,7 +4380,7 @@ id,cycle,dataset,metadata_url,description,observation,has_special_year_code,spec
 4379,2015-2016,SSPOLI,,,,False,,False
 4380,2017-2018,SSPOLI,,,,False,,False
 4381,1999-2000,SSPST,,,,False,,False
-4382,2001-2002,SSPST,,,No SEQN field,False,,True
+4382,2001-2002,SSPST,,,No has SEQN Field,False,,False
 4383,2003-2004,SSPST,,,,False,,False
 4384,2005-2006,SSPST,,,,False,,False
 4385,2007-2008,SSPST,,,,False,,False

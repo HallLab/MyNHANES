@@ -71,6 +71,7 @@ class BaseTransformation(ABC):
             rule_variable.variable.variable for rule_variable in self.variable_out
             ]
         # check if all key columns are present in the DataFrame
+        # TODO: add a check to delete duplicates in target_columns or error message!
         missing_keys = [col for col in key_columns if col not in self.df_out.columns]
         if missing_keys:
             msm = f"The following key columns are missing: {', '.join(missing_keys)}"

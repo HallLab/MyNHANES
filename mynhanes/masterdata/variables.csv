@@ -250,7 +250,7 @@ id,variable,description,is_active,type
 249,RXDRSD1,ICD-10-CM code 1 description,True,oth
 250,RXDRSD2,ICD-10-CM code 2 description,True,oth
 251,RXDRSD3,ICD-10-CM code 3 description,True,oth
-252,PD_BY_DRUG,Participant with Parkinson's Disease selected by Drug/Medications. Run by RULE_00002,True,bin
+252,PD_BY_DRUG,Participant with Parkinson's Disease selected by Drug/Medications. Run by RULE_00001,True,bin
 253,SSAMH,Anti-Mullerian Hormone (ng/ml),True,oth
 254,SSINHBIN,Inhibin B (pg/ml),True,oth
 255,TBQ070,Ever had a reaction to TB test?,True,oth

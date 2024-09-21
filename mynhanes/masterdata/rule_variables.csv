@@ -7,7 +7,6 @@ id,rule_id,type,version,dataset,variable,rule
 6,2,o,normalized,,LBDLDL_WO_DRUG,rule_00002
 7,2,o,normalized,,LBXTC_WO_DRUG,rule_00002
 8,2,o,normalized,,USE_CHOLESTEROL_DRUG,rule_00002
-9,1,o,normalized,,PD_BY_DRUG,rule_00001
 10,2,i,nhanes,,LBDLDL,rule_00002
 11,2,i,nhanes,,LBXTC,rule_00002
 12,2,o,normalized,,LBDLDL_WO_DRUG,rule_00002
