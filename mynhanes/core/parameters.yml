@@ -24,7 +24,7 @@ workprocess:
   auto_create_workprocess: True
   masterdata_repository: https://raw.githubusercontent.com/Garon-Sys/MyNHANES/main/mynhanes/masterdata/
   # masterdata_repository: https://raw.githubusercontent.com/Garon-Sys/MyNHANES/main/masterdata/
-  # masterdata_repository: /Users/andrerico/Works/Projects/MyNHANES/mynhanes/masterdata/
+  # masterdata_repository: /Users/.../Works/Projects/MyNHANES/mynhanes/masterdata/
   save_data: True
 
 transformations:
