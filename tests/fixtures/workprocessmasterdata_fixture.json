@@ -1,0 +1,122 @@
+[
+{
+    "model": "nhanes.workprocessmasterdata",
+    "pk": 1,
+    "fields": {
+        "component_type": "Version",
+        "last_synced_at": "2024-09-19T12:36:26.714Z",
+        "source_file_version": "v0.0.0",
+        "status": "complete"
+    }
+},
+{
+    "model": "nhanes.workprocessmasterdata",
+    "pk": 2,
+    "fields": {
+        "component_type": "Cycle",
+        "last_synced_at": "2024-09-19T12:36:26.976Z",
+        "source_file_version": "v0.0.0",
+        "status": "complete"
+    }
+},
+{
+    "model": "nhanes.workprocessmasterdata",
+    "pk": 3,
+    "fields": {
+        "component_type": "Group",
+        "last_synced_at": "2024-09-19T12:36:27.173Z",
+        "source_file_version": "v0.0.0",
+        "status": "complete"
+    }
+},
+{
+    "model": "nhanes.workprocessmasterdata",
+    "pk": 4,
+    "fields": {
+        "component_type": "Dataset",
+        "last_synced_at": "2024-09-19T12:36:31.111Z",
+        "source_file_version": "v0.0.0",
+        "status": "complete"
+    }
+},
+{
+    "model": "nhanes.workprocessmasterdata",
+    "pk": 5,
+    "fields": {
+        "component_type": "Variable",
+        "last_synced_at": "2024-09-19T12:36:33.656Z",
+        "source_file_version": "v0.0.0",
+        "status": "complete"
+    }
+},
+{
+    "model": "nhanes.workprocessmasterdata",
+    "pk": 6,
+    "fields": {
+        "component_type": "DatasetCycle",
+        "last_synced_at": "2024-09-19T12:37:37.107Z",
+        "source_file_version": "v0.0.0",
+        "status": "complete"
+    }
+},
+{
+    "model": "nhanes.workprocessmasterdata",
+    "pk": 7,
+    "fields": {
+        "component_type": "VariableCycle",
+        "last_synced_at": "2024-09-19T12:37:11.428Z",
+        "source_file_version": "v0.0.0",
+        "status": "complete"
+    }
+},
+{
+    "model": "nhanes.workprocessmasterdata",
+    "pk": 8,
+    "fields": {
+        "component_type": "Rule",
+        "last_synced_at": "2024-09-19T12:37:37.329Z",
+        "source_file_version": "v0.0.0",
+        "status": "complete"
+    }
+},
+{
+    "model": "nhanes.workprocessmasterdata",
+    "pk": 9,
+    "fields": {
+        "component_type": "RuleVariable",
+        "last_synced_at": "2024-09-19T12:37:37.547Z",
+        "source_file_version": "v0.0.0",
+        "status": "complete"
+    }
+},
+{
+    "model": "nhanes.workprocessmasterdata",
+    "pk": 10,
+    "fields": {
+        "component_type": "QueryColumns",
+        "last_synced_at": "2024-09-19T12:37:37.760Z",
+        "source_file_version": "v0.0.0",
+        "status": "complete"
+    }
+},
+{
+    "model": "nhanes.workprocessmasterdata",
+    "pk": 11,
+    "fields": {
+        "component_type": "Tag",
+        "last_synced_at": "2024-09-19T12:36:31.313Z",
+        "source_file_version": "nan",
+        "status": "complete"
+    }
+},
+{
+    "model": "nhanes.workprocessmasterdata",
+    "pk": 12,
+    "fields": {
+        "component_type": "VariableTag",
+        "last_synced_at": "2024-09-19T12:36:26.481Z",
+        "source_file_version": "nan",
+        "status": "pending"
+    }
+}
+]

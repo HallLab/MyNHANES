@@ -1,0 +1,102 @@
+[
+{
+    "model": "nhanes.cycle",
+    "pk": 1,
+    "fields": {
+        "cycle": "1999-2000",
+        "year_code": "",
+        "base_url": "https://wwwn.cdc.gov/Nchs/Nhanes",
+        "dataset_url_pattern": "%s/%s/%s"
+    }
+},
+{
+    "model": "nhanes.cycle",
+    "pk": 2,
+    "fields": {
+        "cycle": "2001-2002",
+        "year_code": "B",
+        "base_url": "https://wwwn.cdc.gov/Nchs/Nhanes",
+        "dataset_url_pattern": "%s/%s/%s"
+    }
+},
+{
+    "model": "nhanes.cycle",
+    "pk": 3,
+    "fields": {
+        "cycle": "2003-2004",
+        "year_code": "C",
+        "base_url": "https://wwwn.cdc.gov/Nchs/Nhanes",
+        "dataset_url_pattern": "%s/%s/%s"
+    }
+},
+{
+    "model": "nhanes.cycle",
+    "pk": 4,
+    "fields": {
+        "cycle": "2005-2006",
+        "year_code": "D",
+        "base_url": "https://wwwn.cdc.gov/Nchs/Nhanes",
+        "dataset_url_pattern": "%s/%s/%s"
+    }
+},
+{
+    "model": "nhanes.cycle",
+    "pk": 5,
+    "fields": {
+        "cycle": "2007-2008",
+        "year_code": "E",
+        "base_url": "https://wwwn.cdc.gov/Nchs/Nhanes",
+        "dataset_url_pattern": "%s/%s/%s"
+    }
+},
+{
+    "model": "nhanes.cycle",
+    "pk": 6,
+    "fields": {
+        "cycle": "2009-2010",
+        "year_code": "F",
+        "base_url": "https://wwwn.cdc.gov/Nchs/Nhanes",
+        "dataset_url_pattern": "%s/%s/%s"
+    }
+},
+{
+    "model": "nhanes.cycle",
+    "pk": 7,
+    "fields": {
+        "cycle": "2011-2012",
+        "year_code": "G",
+        "base_url": "https://wwwn.cdc.gov/Nchs/Nhanes",
+        "dataset_url_pattern": "%s/%s/%s"
+    }
+},
+{
+    "model": "nhanes.cycle",
+    "pk": 8,
+    "fields": {
+        "cycle": "2013-2014",
+        "year_code": "H",
+        "base_url": "https://wwwn.cdc.gov/Nchs/Nhanes",
+        "dataset_url_pattern": "%s/%s/%s"
+    }
+},
+{
+    "model": "nhanes.cycle",
+    "pk": 9,
+    "fields": {
+        "cycle": "2015-2016",
+        "year_code": "I",
+        "base_url": "https://wwwn.cdc.gov/Nchs/Nhanes",
+        "dataset_url_pattern": "%s/%s/%s"
+    }
+},
+{
+    "model": "nhanes.cycle",
+    "pk": 10,
+    "fields": {
+        "cycle": "2017-2018",
+        "year_code": "J",
+        "base_url": "https://wwwn.cdc.gov/Nchs/Nhanes",
+        "dataset_url_pattern": "%s/%s/%s"
+    }
+}
+]

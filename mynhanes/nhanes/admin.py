@@ -21,7 +21,7 @@ from .models import (
     WorkProcessMasterData,
     Logs,
 )
-from nhanes.services import query
+from nhanes.reports import query
 # from django.urls import path
 # from django.http import HttpResponseRedirect
 # from django.core.management import call_command
@@ -149,7 +149,7 @@ class DatasetCycleAdmin(admin.ModelAdmin):
     list_display = ('cycle', 'dataset', 'dataset_name', 'has_dataset', 'metadata_url',) #  'has_special_year_code', 'special_year_code')  # TODO: RETORN LINK WEB # noqa E501
     search_fields = ('dataset__dataset', 'cycle__cycle', 'metadata_url')
     list_filter = ('cycle', 'dataset', 'has_special_year_code', 'has_dataset', 'dataset__group__group')  # noqa E501
-    list_editable = ('has_dataset', )
+    list_editable = ('has_dataset',)
     ordering = ('cycle__cycle', 'dataset__dataset',)
     actions = [
         'report_selected',

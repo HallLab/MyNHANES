@@ -1,0 +1,4403 @@
+[
+{
+    "model": "nhanes.dataset",
+    "pk": 1,
+    "fields": {
+        "dataset": "DEMO",
+        "description": "Demographic Variables and Sample Weights",
+        "group": 1
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 2,
+    "fields": {
+        "dataset": "HDL",
+        "description": "Cholesterol - HDL",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 3,
+    "fields": {
+        "dataset": "TRIGLY",
+        "description": "Cholesterol - LDL, Triglyceride & Apoliprotein (ApoB)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 4,
+    "fields": {
+        "dataset": "TCHOL",
+        "description": "Cholesterol - Total",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 5,
+    "fields": {
+        "dataset": "LAB13AM",
+        "description": "Cholesterol - LDL & Triglycerides",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 6,
+    "fields": {
+        "dataset": "DR1IFF",
+        "description": "Dietary Interview - Individual Foods, First Day",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 7,
+    "fields": {
+        "dataset": "DR2IFF",
+        "description": "Dietary Interview - Individual Foods, Second Day",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 8,
+    "fields": {
+        "dataset": "DR1TOT",
+        "description": "Dietary Interview - Total Nutrient Intakes, First Day",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 9,
+    "fields": {
+        "dataset": "DR2TOT",
+        "description": "Dietary Interview - Total Nutrient Intakes, Second Day",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 10,
+    "fields": {
+        "dataset": "DRXFCD",
+        "description": "Dietary Interview Technical Support File - Food Codes",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 11,
+    "fields": {
+        "dataset": "DSBI",
+        "description": "Dietary Supplement Database - Blend Information",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 12,
+    "fields": {
+        "dataset": "DSII",
+        "description": "Dietary Supplement Database - Ingredient Information",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 13,
+    "fields": {
+        "dataset": "DSPI",
+        "description": "Dietary Supplement Database - Product Information",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 14,
+    "fields": {
+        "dataset": "DS1IDS",
+        "description": "Dietary Supplement Use 24-Hour - Individual Dietary Supplements, First Day",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 15,
+    "fields": {
+        "dataset": "DS2IDS",
+        "description": "Dietary Supplement Use 24-Hour - Individual Dietary Supplements, Second Day",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 16,
+    "fields": {
+        "dataset": "DS1TOT",
+        "description": "Dietary Supplement Use 24-Hour - Total Dietary Supplements, First Day",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 17,
+    "fields": {
+        "dataset": "DS2TOT",
+        "description": "Dietary Supplement Use 24-Hour - Total Dietary Supplements, Second Day",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 18,
+    "fields": {
+        "dataset": "DSQIDS",
+        "description": "Dietary Supplement Use 30-Day - Individual Dietary Supplements",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 19,
+    "fields": {
+        "dataset": "DSQTOT",
+        "description": "Dietary Supplement Use 30-Day - Total Dietary Supplements",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 20,
+    "fields": {
+        "dataset": "AUX",
+        "description": "Audiometry",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 21,
+    "fields": {
+        "dataset": "AUXAR",
+        "description": "Audiometry - Acoustic Reflex",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 22,
+    "fields": {
+        "dataset": "AUXTYM",
+        "description": "Audiometry - Tympanometry",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 23,
+    "fields": {
+        "dataset": "AUXWBR",
+        "description": "Audiometry - Wideband Reflectance",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 24,
+    "fields": {
+        "dataset": "BPX",
+        "description": "Blood Pressure",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 25,
+    "fields": {
+        "dataset": "BPXO",
+        "description": "Blood Pressure - Oscillometric Measurements",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 26,
+    "fields": {
+        "dataset": "BMX",
+        "description": "Body Measures",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 27,
+    "fields": {
+        "dataset": "DXXAG",
+        "description": "Dual-Energy X-ray Absorptiometry - Android/Gynoid Measurements",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 28,
+    "fields": {
+        "dataset": "DXXFEM",
+        "description": "Dual-Energy X-ray Absorptiometry - Femur",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 29,
+    "fields": {
+        "dataset": "DXXSPN",
+        "description": "Dual-Energy X-ray Absorptiometry - Spine",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 30,
+    "fields": {
+        "dataset": "DXX",
+        "description": "Dual-Energy X-ray Absorptiometry - Whole Body",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 31,
+    "fields": {
+        "dataset": "LUX",
+        "description": "Liver Ultrasound Transient Elastography",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 32,
+    "fields": {
+        "dataset": "OHXDEN",
+        "description": "Oral Health - Dentition",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 33,
+    "fields": {
+        "dataset": "OHXREF",
+        "description": "Oral Health - Recommendation of Care",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 34,
+    "fields": {
+        "dataset": "ALB_CR",
+        "description": "Albumin & Creatinine - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 35,
+    "fields": {
+        "dataset": "SSAGP",
+        "description": "Alpha-1-Acid Glycoprotein - Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 36,
+    "fields": {
+        "dataset": "UTAS",
+        "description": "Arsenic - Total - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 37,
+    "fields": {
+        "dataset": "UAS",
+        "description": "Arsenics - Speciated - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 38,
+    "fields": {
+        "dataset": "UCM",
+        "description": "Chromium - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 39,
+    "fields": {
+        "dataset": "CRCO",
+        "description": "Chromium & Cobalt",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 40,
+    "fields": {
+        "dataset": "CBC",
+        "description": "Complete Blood Count with 5-Part Differential",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 41,
+    "fields": {
+        "dataset": "COT",
+        "description": "Cotinine and Hydroxycotinine - Serum",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 42,
+    "fields": {
+        "dataset": "UCOT",
+        "description": "Cotinine, Hydroxycotinine, & Other Nicotine Metabolites and Analogs - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 43,
+    "fields": {
+        "dataset": "CMV",
+        "description": "Cytomegalovirus IgG & IgM Antibodies - Serum",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 44,
+    "fields": {
+        "dataset": "ETHOX",
+        "description": "Ethylene Oxide",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 45,
+    "fields": {
+        "dataset": "FASTQX",
+        "description": "Fasting Questionnaire",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 46,
+    "fields": {
+        "dataset": "FERTIN",
+        "description": "Ferritin",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 47,
+    "fields": {
+        "dataset": "FR",
+        "description": "Flame Retardants - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 48,
+    "fields": {
+        "dataset": "SSFR",
+        "description": "Flame Retardants - Urine (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 49,
+    "fields": {
+        "dataset": "FOLATE",
+        "description": "Folate - RBC",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 50,
+    "fields": {
+        "dataset": "FOLFMS",
+        "description": "Folate Forms - Total & Individual - Serum",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 51,
+    "fields": {
+        "dataset": "GHB",
+        "description": "Glycohemoglobin",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 52,
+    "fields": {
+        "dataset": "SSGLYP",
+        "description": "Glyphosate (GLYP) - Urine (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 53,
+    "fields": {
+        "dataset": "HEPA",
+        "description": "Hepatitis A",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 54,
+    "fields": {
+        "dataset": "HEPBD",
+        "description": "Hepatitis B: Core antibody, Surface antigen, and Hepatitis D antibody",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 55,
+    "fields": {
+        "dataset": "HEPB_S",
+        "description": "Hepatitis B: Surface Antibody",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 56,
+    "fields": {
+        "dataset": "HEPC",
+        "description": "Hepatitis C: RNA (HCV-RNA), Confirmed Antibody (INNO-LIA), & Genotype",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 57,
+    "fields": {
+        "dataset": "HEPE",
+        "description": "Hepatitis E: IgG & IgM Antibodies",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 58,
+    "fields": {
+        "dataset": "HSCRP",
+        "description": "High-Sensitivity C-Reactive Protein",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 59,
+    "fields": {
+        "dataset": "HIV",
+        "description": "HIV Antibody Test",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 60,
+    "fields": {
+        "dataset": "INS",
+        "description": "Insulin",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 61,
+    "fields": {
+        "dataset": "UIO",
+        "description": "Iodine - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 62,
+    "fields": {
+        "dataset": "FETIB",
+        "description": "Iron Status - Serum",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 63,
+    "fields": {
+        "dataset": "PBCD",
+        "description": "Lead, Cadmium, Total Mercury, Selenium, & Manganese - Blood",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 64,
+    "fields": {
+        "dataset": "UHG",
+        "description": "Mercury: Inorganic - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 65,
+    "fields": {
+        "dataset": "IHGEM",
+        "description": "Mercury: Inorganic, Ethyl and Methyl - Blood",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 66,
+    "fields": {
+        "dataset": "UM",
+        "description": "Metals - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 67,
+    "fields": {
+        "dataset": "UNI",
+        "description": "Nickel - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 68,
+    "fields": {
+        "dataset": "OPD",
+        "description": "Organophosphate Insecticides - Dialkyl Phosphate Metabolites - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 69,
+    "fields": {
+        "dataset": "PERNT",
+        "description": "Perchlorate, Nitrate & Thiocyanate - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 70,
+    "fields": {
+        "dataset": "PFAS",
+        "description": "Perfluoroalkyl and Polyfluoroalkyl Substances",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 71,
+    "fields": {
+        "dataset": "SSPFAS",
+        "description": "Perfluoroalkyl and Polyfluoroalkyl Substances (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 72,
+    "fields": {
+        "dataset": "PHTHTE",
+        "description": "Phthalates and Plasticizers Metabolites - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 73,
+    "fields": {
+        "dataset": "GLU",
+        "description": "Plasma Fasting Glucose",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 74,
+    "fields": {
+        "dataset": "BIOPRO",
+        "description": "Standard Biochemistry Profile",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 75,
+    "fields": {
+        "dataset": "TFR",
+        "description": "Transferrin Receptor",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 76,
+    "fields": {
+        "dataset": "UCFLOW",
+        "description": "Urine Flow Rate",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 77,
+    "fields": {
+        "dataset": "UCPREG",
+        "description": "Urine Pregnancy Test",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 78,
+    "fields": {
+        "dataset": "VITAEC",
+        "description": "Vitamin A, Vitamin E & Carotenoids",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 79,
+    "fields": {
+        "dataset": "VIC",
+        "description": "Vitamin C",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 80,
+    "fields": {
+        "dataset": "VID",
+        "description": "Vitamin D",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 81,
+    "fields": {
+        "dataset": "UVOC",
+        "description": "Volatile Organic Compound (VOC) Metabolites - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 82,
+    "fields": {
+        "dataset": "SSUVOC",
+        "description": "Volatile Organic Compound (VOC) Metabolites II - Urine (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 83,
+    "fields": {
+        "dataset": "VOCWB",
+        "description": "Volatile Organic Compounds and Trihalomethanes/MTBE - Blood",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 84,
+    "fields": {
+        "dataset": "ACQ",
+        "description": "Acculturation",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 85,
+    "fields": {
+        "dataset": "ALQ",
+        "description": "Alcohol Use",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 86,
+    "fields": {
+        "dataset": "AUQ",
+        "description": "Audiometry",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 87,
+    "fields": {
+        "dataset": "BPQ",
+        "description": "Blood Pressure & Cholesterol",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 88,
+    "fields": {
+        "dataset": "CDQ",
+        "description": "Cardiovascular Health",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 89,
+    "fields": {
+        "dataset": "CBQ",
+        "description": "Consumer Behavior",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 90,
+    "fields": {
+        "dataset": "CBQPFA",
+        "description": "Consumer Behavior Phone Follow-up Module - Adult",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 91,
+    "fields": {
+        "dataset": "CBQPFC",
+        "description": "Consumer Behavior Phone Follow-up Module - Child",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 92,
+    "fields": {
+        "dataset": "HSQ",
+        "description": "Current Health Status",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 93,
+    "fields": {
+        "dataset": "DEQ",
+        "description": "Dermatology",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 94,
+    "fields": {
+        "dataset": "DIQ",
+        "description": "Diabetes",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 95,
+    "fields": {
+        "dataset": "DBQ",
+        "description": "Diet Behavior & Nutrition",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 96,
+    "fields": {
+        "dataset": "DLQ",
+        "description": "Disability",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 97,
+    "fields": {
+        "dataset": "DUQ",
+        "description": "Drug Use",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 98,
+    "fields": {
+        "dataset": "ECQ",
+        "description": "Early Childhood",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 99,
+    "fields": {
+        "dataset": "FSQ",
+        "description": "Food Security",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 100,
+    "fields": {
+        "dataset": "HIQ",
+        "description": "Health Insurance",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 101,
+    "fields": {
+        "dataset": "HEQ",
+        "description": "Hepatitis",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 102,
+    "fields": {
+        "dataset": "HUQ",
+        "description": "Hospital Utilization & Access to Care",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 103,
+    "fields": {
+        "dataset": "HOQ",
+        "description": "Housing Characteristics",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 104,
+    "fields": {
+        "dataset": "IMQ",
+        "description": "Immunization",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 105,
+    "fields": {
+        "dataset": "INQ",
+        "description": "Income",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 106,
+    "fields": {
+        "dataset": "KIQ_U",
+        "description": "Kidney Conditions - Urology",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 107,
+    "fields": {
+        "dataset": "MCQ",
+        "description": "Medical Conditions",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 108,
+    "fields": {
+        "dataset": "DPQ",
+        "description": "Mental Health - Depression Screener",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 109,
+    "fields": {
+        "dataset": "OCQ",
+        "description": "Occupation",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 110,
+    "fields": {
+        "dataset": "OHQ",
+        "description": "Oral Health",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 111,
+    "fields": {
+        "dataset": "OSQ",
+        "description": "Osteoporosis",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 112,
+    "fields": {
+        "dataset": "PUQMEC",
+        "description": "Pesticide Use",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 113,
+    "fields": {
+        "dataset": "PAQ",
+        "description": "Physical Activity",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 114,
+    "fields": {
+        "dataset": "PAQY",
+        "description": "Physical Activity - Youth",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 115,
+    "fields": {
+        "dataset": "PFQ",
+        "description": "Physical Functioning",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 116,
+    "fields": {
+        "dataset": "RXQ_RX",
+        "description": "Prescription Medications",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 117,
+    "fields": {
+        "dataset": "RXQ_DRUG",
+        "description": "Prescription Medications - Drug Information",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 118,
+    "fields": {
+        "dataset": "RXQASA",
+        "description": "Preventive Aspirin Use",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 119,
+    "fields": {
+        "dataset": "RHQ",
+        "description": "Reproductive Health",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 120,
+    "fields": {
+        "dataset": "SLQ",
+        "description": "Sleep Disorders",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 121,
+    "fields": {
+        "dataset": "SMQ",
+        "description": "Smoking - Cigarette Use",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 122,
+    "fields": {
+        "dataset": "SMQFAM",
+        "description": "Smoking - Household Smokers",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 123,
+    "fields": {
+        "dataset": "SMQRTU",
+        "description": "Smoking - Recent Tobacco Use",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 124,
+    "fields": {
+        "dataset": "SMQSHS",
+        "description": "Smoking - Secondhand Smoke Exposure",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 125,
+    "fields": {
+        "dataset": "VTQ",
+        "description": "Volatile Toxicant",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 126,
+    "fields": {
+        "dataset": "WHQ",
+        "description": "Weight History",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 127,
+    "fields": {
+        "dataset": "WHQMEC",
+        "description": "Weight History - Youth",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 128,
+    "fields": {
+        "dataset": "ALQY",
+        "description": "Alcohol Use - Youth",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 129,
+    "fields": {
+        "dataset": "CHLA",
+        "description": "Chlamydia - Urine - Adult",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 130,
+    "fields": {
+        "dataset": "CHLM",
+        "description": "Chlamydia - Urine - Youth",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 131,
+    "fields": {
+        "dataset": "DUQY",
+        "description": "Drug Use - Youth",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 132,
+    "fields": {
+        "dataset": "GEO_2010",
+        "description": "Geocoded Data, NHANES 1999-2018, Census 2010",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 133,
+    "fields": {
+        "dataset": "HSVA",
+        "description": "Herpes Simplex Virus Type-1 and Type-2",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 134,
+    "fields": {
+        "dataset": "HSV",
+        "description": "Herpes Simplex Virus Type-2 - Youth",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 135,
+    "fields": {
+        "dataset": "HPWC",
+        "description": "Human Papillomavirus (HPV) DNA - Vaginal Swab: Roche Cobas High-Risk - Adults",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 136,
+    "fields": {
+        "dataset": "HPVC",
+        "description": "Human Papillomavirus (HPV) DNA - Vaginal Swab: Roche Cobas High-Risk - Youth",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 137,
+    "fields": {
+        "dataset": "HPVW",
+        "description": "Human Papillomavirus (HPV) DNA - Vaginal Swab: Roche Linear Array - Adults",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 138,
+    "fields": {
+        "dataset": "HPVS",
+        "description": "Human Papillomavirus (HPV) DNA - Vaginal Swab: Roche Linear Array - Youth",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 139,
+    "fields": {
+        "dataset": "PBY",
+        "description": "Lead - Blood - Youth",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 140,
+    "fields": {
+        "dataset": "DPQY",
+        "description": "Mental Health - Depression Screener - Youth",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 141,
+    "fields": {
+        "dataset": "MGEA",
+        "description": "Mycoplasma genitalium - Urine - Adult",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 142,
+    "fields": {
+        "dataset": "MGEN",
+        "description": "Mycoplasma genitalium - Urine - Youth",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 143,
+    "fields": {
+        "dataset": "SXQ",
+        "description": "Sexual Behavior - Adult",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 144,
+    "fields": {
+        "dataset": "SXQY",
+        "description": "Sexual Behavior - Youth",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 145,
+    "fields": {
+        "dataset": "TRIA",
+        "description": "Trichomonas - Urine - Adult",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 146,
+    "fields": {
+        "dataset": "TRIC",
+        "description": "Trichomonas - Urine - Youth",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 147,
+    "fields": {
+        "dataset": "LAB13",
+        "description": "Cholesterol - Total & HDL",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 148,
+    "fields": {
+        "dataset": "L13",
+        "description": "Cholesterol - Total & HDL",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 149,
+    "fields": {
+        "dataset": "L13AM",
+        "description": "Cholesterol - LDL & Triglycerides",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 150,
+    "fields": {
+        "dataset": "LAB18",
+        "description": "Standard Biochemistry Profile & Hormones",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 151,
+    "fields": {
+        "dataset": "L40",
+        "description": "Standard Biochemistry Profile",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 152,
+    "fields": {
+        "dataset": "DRXIFF",
+        "description": "Dietary Interview - Individual Foods",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 153,
+    "fields": {
+        "dataset": "DRXTOT",
+        "description": "Dietary Interview - Total Nutrient Intakes",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 154,
+    "fields": {
+        "dataset": "DRXFMT",
+        "description": "Dietary Interview Technical Support File - Food Code Format File",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 155,
+    "fields": {
+        "dataset": "DSQFILE1",
+        "description": "Dietary Supplement Use 30-Day - File 1, Supplement Counts",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 156,
+    "fields": {
+        "dataset": "DSQFILE2",
+        "description": "Dietary Supplement Use 30-Day - File 2, Participant's Use of Supplements",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 157,
+    "fields": {
+        "dataset": "AUX1",
+        "description": "Audiometry",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 158,
+    "fields": {
+        "dataset": "BAX",
+        "description": "Balance",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 159,
+    "fields": {
+        "dataset": "BIX",
+        "description": "Bioelectrical Impedance Analysis",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 160,
+    "fields": {
+        "dataset": "CVX",
+        "description": "Cardiovascular Fitness",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 161,
+    "fields": {
+        "dataset": "LEXABPI",
+        "description": "Lower Extremity Disease - Ankle Brachial Blood Pressure Index",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 162,
+    "fields": {
+        "dataset": "LEXPN",
+        "description": "Lower Extremity Disease - Peripheral Neuropathy",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 163,
+    "fields": {
+        "dataset": "MSX",
+        "description": "Muscle Strength",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 164,
+    "fields": {
+        "dataset": "OHXDENT",
+        "description": "Oral Health - Dentition",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 165,
+    "fields": {
+        "dataset": "OHXPERIO",
+        "description": "Oral Health - Periodontal",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 166,
+    "fields": {
+        "dataset": "SEQ",
+        "description": "Shared Exclusion Questions",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 167,
+    "fields": {
+        "dataset": "TB",
+        "description": "Tuberculosis",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 168,
+    "fields": {
+        "dataset": "VIX",
+        "description": "Vision",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 169,
+    "fields": {
+        "dataset": "SSAFB",
+        "description": "Aflatoxin B1-lysine - Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 170,
+    "fields": {
+        "dataset": "LAB16",
+        "description": "Albumin & Creatinine - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 171,
+    "fields": {
+        "dataset": "SSAMH",
+        "description": "Anti-Mullerian Hormone (AMH) & Inhibin-B (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 172,
+    "fields": {
+        "dataset": "SSCHL",
+        "description": "Sex Steroid Hormone - Men (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 173,
+    "fields": {
+        "dataset": "L02HBS",
+        "description": "Hepatitis B Surface Antibod",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 174,
+    "fields": {
+        "dataset": "L02HPA",
+        "description": "Hepatitis A Antibody",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 175,
+    "fields": {
+        "dataset": "PH",
+        "description": "Fasting Questionnaire",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 176,
+    "fields": {
+        "dataset": "PHPYPA",
+        "description": "Phthalates, Phytoestrogens & PAHs - Urine PHPYPA Urinary Phthalates",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 177,
+    "fields": {
+        "dataset": "UC",
+        "description": "Pregnancy Test - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 178,
+    "fields": {
+        "dataset": "LAB03",
+        "description": "HIV Antibody Test, CD4+ T Lymphocytes & CD8+ T Cells",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 179,
+    "fields": {
+        "dataset": "LAB04",
+        "description": "Volatile Organic Compounds - Blood & Water",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 180,
+    "fields": {
+        "dataset": "LAB05",
+        "description": "Chlamydia & Gonorrhea - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 181,
+    "fields": {
+        "dataset": "LAB06",
+        "description": "Cadmium, Lead, Mercury, Cotinine & Nutritional Biochemistries",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 182,
+    "fields": {
+        "dataset": "LAB06HM",
+        "description": "Metals - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 183,
+    "fields": {
+        "dataset": "LAB07",
+        "description": "Latex",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 184,
+    "fields": {
+        "dataset": "LAB10",
+        "description": "Glycohemoglobin",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 185,
+    "fields": {
+        "dataset": "LAB10AM",
+        "description": "Plasma Fasting Glucose, Serum C-peptide & Insulin",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 186,
+    "fields": {
+        "dataset": "LAB11",
+        "description": "C-Reactive Protein (CRP)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 187,
+    "fields": {
+        "dataset": "LAB17",
+        "description": "Cryptosporidum & Toxoplasma",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 188,
+    "fields": {
+        "dataset": "LAB18T4",
+        "description": "Thyroid - Stimulating Hormone & Thyroxine (TSH & T4)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 189,
+    "fields": {
+        "dataset": "LAB19",
+        "description": "Measles, Rubella, & Varicella",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 190,
+    "fields": {
+        "dataset": "LAB20",
+        "description": "Lead - Dust",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 191,
+    "fields": {
+        "dataset": "LAB21",
+        "description": "Volatile Organic Compounds (VOC) - Personal Exposure Badge",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 192,
+    "fields": {
+        "dataset": "LAB25",
+        "description": "Complete Blood Count with 5-part Differential - Whole Blood",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 193,
+    "fields": {
+        "dataset": "LAB22",
+        "description": "Mercury - Hair",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 194,
+    "fields": {
+        "dataset": "LAB28POC",
+        "description": "Dioxins, Furans, & Coplanar PCBs",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 195,
+    "fields": {
+        "dataset": "L11_2_R",
+        "description": "C-Reactive Protein & Others, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 196,
+    "fields": {
+        "dataset": "SSFOL",
+        "description": "Folic Acid - Unmetabolized (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 197,
+    "fields": {
+        "dataset": "L09RDC",
+        "description": "Herpes Simplex Virus Type-2 - Youth",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 198,
+    "fields": {
+        "dataset": "LAB09",
+        "description": "Herpes Simplex Virus Type-1 & Type-2",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 199,
+    "fields": {
+        "dataset": "L05RDC",
+        "description": "Chlamydia & Gonorrhea - Urine - Youth",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 200,
+    "fields": {
+        "dataset": "L06_2_00",
+        "description": "Cadmium, Lead, Ferritin, Serum Folate, RBC Folate, Vitamin B12, Homocysteine, Methylmalonic acid, Cotinine & Other Selected Nutritional Biochemistries - Blood, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 201,
+    "fields": {
+        "dataset": "VID_2_00",
+        "description": "Vitamin D, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 202,
+    "fields": {
+        "dataset": "L10_2_00",
+        "description": "Glycohemoglobin, Plasma Glucose, Serum C-peptide, & Insulin, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 203,
+    "fields": {
+        "dataset": "L18_2_00",
+        "description": "Standard Biochemistry Profile & Hormones, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 204,
+    "fields": {
+        "dataset": "L13_2_R",
+        "description": "Cholesterol - Total, HDL, LDL & Triglycerides, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 205,
+    "fields": {
+        "dataset": "L19_2_R",
+        "description": "Measles, Rubella, & Varicella, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 206,
+    "fields": {
+        "dataset": "L16_2_R",
+        "description": "Creatinine & Albumin - Urine, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 207,
+    "fields": {
+        "dataset": "L25_2_r",
+        "description": "Complete Blood Count with 5-part Differential - Whole Blood, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 208,
+    "fields": {
+        "dataset": "VIT_2_R",
+        "description": "Vitamin A & Vitamin E, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 209,
+    "fields": {
+        "dataset": "SSCYST",
+        "description": "Cystatin C - Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 210,
+    "fields": {
+        "dataset": "SSHSV1",
+        "description": "Herpes Simplex Virus Type-1 (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 211,
+    "fields": {
+        "dataset": "SSMUMP",
+        "description": "Mumps Antibody - Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 212,
+    "fields": {
+        "dataset": "SSPFC",
+        "description": "Perfluoroalkyl Chemicals - Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 213,
+    "fields": {
+        "dataset": "SSTFR",
+        "description": "Transferrin Receptor - Pregnant Women (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 214,
+    "fields": {
+        "dataset": "SSVARI",
+        "description": "Varicella-Zoster Virus Antibody (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 215,
+    "fields": {
+        "dataset": "LAB26PP",
+        "description": "Pesticides - Current Use - Urine (Formerly Priority Pesticides, Non-persistent Pesticide Metabolites)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 216,
+    "fields": {
+        "dataset": "SSOL",
+        "description": "Monoclonal gammopathy of undetermined significance (MGUS) (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 217,
+    "fields": {
+        "dataset": "TELO",
+        "description": "Telomere Mean and Standard Deviation (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 218,
+    "fields": {
+        "dataset": "TFA",
+        "description": "Trans Fatty Acids",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 219,
+    "fields": {
+        "dataset": "SSNORO",
+        "description": "Norovirus antibody - Serum",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 220,
+    "fields": {
+        "dataset": "SSCMV",
+        "description": "Cytomegalovirus Antibodies - Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 221,
+    "fields": {
+        "dataset": "ALQYTH",
+        "description": "Alcohol Use - Youth",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 222,
+    "fields": {
+        "dataset": "CIQGAD",
+        "description": "Mental Health - Generalized Anxiety Disorder",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 223,
+    "fields": {
+        "dataset": "CIQMDEP",
+        "description": "Mental Health - Depression",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 224,
+    "fields": {
+        "dataset": "CIQPANIC",
+        "description": "Mental Health - Panic Disorder",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 225,
+    "fields": {
+        "dataset": "BAQ",
+        "description": "Balance",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 226,
+    "fields": {
+        "dataset": "CFQ",
+        "description": "Cognitive Functioning",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 227,
+    "fields": {
+        "dataset": "KIQ",
+        "description": "Kidney Conditions",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 228,
+    "fields": {
+        "dataset": "MPQ",
+        "description": "Miscellaneous Pain",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 229,
+    "fields": {
+        "dataset": "RXQ_ANA",
+        "description": "Analgesic Pain Relievers",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 230,
+    "fields": {
+        "dataset": "PUQ",
+        "description": "Pesticide Use",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 231,
+    "fields": {
+        "dataset": "PAQIAF",
+        "description": "Physical Activity - Individual Activities",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 232,
+    "fields": {
+        "dataset": "RDQ",
+        "description": "Respiratory Health",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 233,
+    "fields": {
+        "dataset": "SMQMEC",
+        "description": "Smoking - Adult Recent Tobacco Use & Youth Cigarette/Tobacco Use",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 234,
+    "fields": {
+        "dataset": "SSQ",
+        "description": "Social Support",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 235,
+    "fields": {
+        "dataset": "TBQ",
+        "description": "Tuberculosis",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 236,
+    "fields": {
+        "dataset": "VIQ",
+        "description": "Vision",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 237,
+    "fields": {
+        "dataset": "YCQ",
+        "description": "Mental Health - Conduct Disorder - Youth",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 238,
+    "fields": {
+        "dataset": "SXQYTH",
+        "description": "Sexual Behavior - Youth",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 239,
+    "fields": {
+        "dataset": "L09RDC_A",
+        "description": "Herpes Simplex Virus Type-2 - Youth",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 240,
+    "fields": {
+        "dataset": "DXX_2_00",
+        "description": "Dual-Energy X-ray Absorptiometry - Whole Body, Second Exam",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 241,
+    "fields": {
+        "dataset": "L05RDC_A",
+        "description": "Chlamydia & Gonorrhea - Urine - Youth",
+        "group": 6
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 242,
+    "fields": {
+        "dataset": "DSQ1",
+        "description": "Dietary Supplement Use 30-Day - File 1, Supplement Counts",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 243,
+    "fields": {
+        "dataset": "DSQ2",
+        "description": "Dietary Supplement Use 30-Day - File 2, Participant's Use of Supplements",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 244,
+    "fields": {
+        "dataset": "DXX_2",
+        "description": "Dual-Energy X-ray Absorptiometry - Whole Body, Second Exam",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 245,
+    "fields": {
+        "dataset": "LEXAB",
+        "description": "Lower Extremity Disease - Ankle Brachial Blood Pressure Index",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 246,
+    "fields": {
+        "dataset": "OHXPRL",
+        "description": "Oral Health - Periodontal/Lower",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 247,
+    "fields": {
+        "dataset": "OHXPRU",
+        "description": "Oral Health - Periodontal/Upper",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 248,
+    "fields": {
+        "dataset": "L16",
+        "description": "Albumin & Creatinine - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 249,
+    "fields": {
+        "dataset": "DRXMCD",
+        "description": "Dietary Interview Technical Support File - Modification Codes",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 250,
+    "fields": {
+        "dataset": "DTQ",
+        "description": "Dietary Screener Questionnaire",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 251,
+    "fields": {
+        "dataset": "FFQDC",
+        "description": "Food Frequency Questionnaire - Output from DietCalc Software",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 252,
+    "fields": {
+        "dataset": "FFQRAW",
+        "description": "Food Frequency Questionnaire - Raw Questionnaire Responses",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 253,
+    "fields": {
+        "dataset": "FOODLK",
+        "description": "Food Frequency Questionnaire - Look-Up Table FOODLOOK",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 254,
+    "fields": {
+        "dataset": "VARLK",
+        "description": "Food Frequency Questionnaire - Look-Up Table VARLOOK",
+        "group": 3
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 255,
+    "fields": {
+        "dataset": "ARX",
+        "description": "Arthritis Body Measures",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 256,
+    "fields": {
+        "dataset": "CSX",
+        "description": "Taste & Smell",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 257,
+    "fields": {
+        "dataset": "DEX",
+        "description": "Dermatology",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 258,
+    "fields": {
+        "dataset": "DXX_2DXXAAC",
+        "description": "Dual-Energy X-ray Absorptiometry - Abdominal Aortic Calcification",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 259,
+    "fields": {
+        "dataset": "DXXFRX",
+        "description": "Dual-Energy X-ray Absorptiometry - FRAX Score",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 260,
+    "fields": {
+        "dataset": "DXXL1",
+        "description": "Dual-Energy X-ray Absorptiometry - L1 Vertebrae Morphology",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 261,
+    "fields": {
+        "dataset": "DXXL2",
+        "description": "Dual-Energy X-ray Absorptiometry - L2 Vertebrae Morphology",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 262,
+    "fields": {
+        "dataset": "DXXL3",
+        "description": "Dual-Energy X-ray Absorptiometry - L3 Vertebrae Morphology",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 263,
+    "fields": {
+        "dataset": "DXXL4",
+        "description": "Dual-Energy X-ray Absorptiometry - L4 Vertebrae Morphology",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 264,
+    "fields": {
+        "dataset": "DXXT10",
+        "description": "Dual-Energy X-ray Absorptiometry - T10 Vertebrae Morphology",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 265,
+    "fields": {
+        "dataset": "DXXT11",
+        "description": "Dual-Energy X-ray Absorptiometry - T11 Vertebrae Morphology",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 266,
+    "fields": {
+        "dataset": "DXXT12",
+        "description": "Dual-Energy X-ray Absorptiometry - T12 Vertebrae Morphology",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 267,
+    "fields": {
+        "dataset": "DXXT4",
+        "description": "Dual-Energy X-ray Absorptiometry - T4 Vertebrae Morphology",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 268,
+    "fields": {
+        "dataset": "DXXT5",
+        "description": "Dual-Energy X-ray Absorptiometry - T5 Vertebrae Morphology",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 269,
+    "fields": {
+        "dataset": "DXXT6",
+        "description": "Dual-Energy X-ray Absorptiometry - T6 Vertebrae Morphology",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 270,
+    "fields": {
+        "dataset": "DXXT7",
+        "description": "Dual-Energy X-ray Absorptiometry - T7 Vertebrae Morphology",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 271,
+    "fields": {
+        "dataset": "DXXT8",
+        "description": "Dual-Energy X-ray Absorptiometry - T8 Vertebrae Morphology",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 272,
+    "fields": {
+        "dataset": "DXXT9",
+        "description": "Dual-Energy X-ray Absorptiometry - T9 Vertebrae Morphology",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 273,
+    "fields": {
+        "dataset": "DXXVFA",
+        "description": "Dual-Energy X-ray Absorptiometry - Vertebral Fracture Assessment",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 274,
+    "fields": {
+        "dataset": "ENX",
+        "description": "Exhaled Nitric Oxide",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 275,
+    "fields": {
+        "dataset": "FLXCLN",
+        "description": "Fluorosis - Clinical",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 276,
+    "fields": {
+        "dataset": "MGX",
+        "description": "Muscle Strength - Grip Test",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 277,
+    "fields": {
+        "dataset": "OHX",
+        "description": "Oral Health",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 278,
+    "fields": {
+        "dataset": "OHXADD",
+        "description": "Oral Health - Addendum",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 279,
+    "fields": {
+        "dataset": "OHXPER",
+        "description": "Oral Health - Periodontal",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 280,
+    "fields": {
+        "dataset": "OPXFDT",
+        "description": "Ophthalmology - Frequency Doubling Technology",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 281,
+    "fields": {
+        "dataset": "OPXRET",
+        "description": "Ophthalmology - Retinal Imaging",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 282,
+    "fields": {
+        "dataset": "PAX80",
+        "description": "Physical Activity Monitor - Raw Data 80hz",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 283,
+    "fields": {
+        "dataset": "PAXDAY",
+        "description": "Physical Activity Monitor - Day",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 284,
+    "fields": {
+        "dataset": "PAXHD",
+        "description": "Physical Activity Monitor - Header",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 285,
+    "fields": {
+        "dataset": "PAXHR",
+        "description": "Physical Activity Monitor - Hour",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 286,
+    "fields": {
+        "dataset": "PAXLUX",
+        "description": "Physical Activity Monitor - Ambient Light Raw Data",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 287,
+    "fields": {
+        "dataset": "PAXMIN",
+        "description": "Physical Activity Monitor - Minute",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 288,
+    "fields": {
+        "dataset": "PAXRAW",
+        "description": "Physical Activity Monitor",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 289,
+    "fields": {
+        "dataset": "SPX",
+        "description": "Spirometry - Pre and Post-Bronchodilator",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 290,
+    "fields": {
+        "dataset": "SPXRAW",
+        "description": "Spirometry - Raw Curve Data",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 291,
+    "fields": {
+        "dataset": "TBX",
+        "description": "Tuberculosis",
+        "group": 4
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 292,
+    "fields": {
+        "dataset": "AA",
+        "description": "Aromatic Amines - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 293,
+    "fields": {
+        "dataset": "AAS",
+        "description": "Aromatic Amines - Urine - Special Sample",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 294,
+    "fields": {
+        "dataset": "AL_IGE",
+        "description": "Allergen Specific IgE(s) & Total IgE - Serum",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 295,
+    "fields": {
+        "dataset": "ALD",
+        "description": "Aldehydes - Serum",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 296,
+    "fields": {
+        "dataset": "ALDS",
+        "description": "Aldehydes - Serum - Special Sample",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 297,
+    "fields": {
+        "dataset": "ALDUST",
+        "description": "Allergens - Household Dust",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 298,
+    "fields": {
+        "dataset": "AMDGDS",
+        "description": "Acrylamide & Glycidamide - Special Sample",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 299,
+    "fields": {
+        "dataset": "AMDGYD",
+        "description": "Acrylamide & Glycidamide",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 300,
+    "fields": {
+        "dataset": "APOB",
+        "description": "Apolipoprotein B",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 301,
+    "fields": {
+        "dataset": "B12",
+        "description": "Vitamin B12",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 302,
+    "fields": {
+        "dataset": "BFRPOL",
+        "description": "Brominated Flame Retardants (BFRs) - Pooled Samples",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 303,
+    "fields": {
+        "dataset": "CAFE",
+        "description": "Caffeine & Caffeine Metabolites - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 304,
+    "fields": {
+        "dataset": "CARB",
+        "description": "Pesticides - Carbamates & Organophosphorus Metabolites - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 305,
+    "fields": {
+        "dataset": "CHLMDA",
+        "description": "Chlamydia & Gonorrhea - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 306,
+    "fields": {
+        "dataset": "COTNAL",
+        "description": "Cotinine - Serum & Total NNAL - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 307,
+    "fields": {
+        "dataset": "CRP",
+        "description": "C-Reactive Protein (CRP)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 308,
+    "fields": {
+        "dataset": "CUSEZN",
+        "description": "Copper, Selenium & Zinc - Serum",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 309,
+    "fields": {
+        "dataset": "DEET",
+        "description": "DEET and Metabolites",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 310,
+    "fields": {
+        "dataset": "DOXPOL",
+        "description": "Polychlorinated dibenzo-p-dioxins (PCDDs), Dibenzofurans (PCDFs) & Coplanar Polychlorinated Biphenyls (cPCBs) - Pooled Samples",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 311,
+    "fields": {
+        "dataset": "EPH",
+        "description": "Environmental Phenols & Parabens",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 312,
+    "fields": {
+        "dataset": "EPHPP",
+        "description": "Personal Care and Consumer Product Chemicals and Metabolites",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 313,
+    "fields": {
+        "dataset": "EPP",
+        "description": "Erythrocyte Protoporphyrin",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 314,
+    "fields": {
+        "dataset": "ETHOXS",
+        "description": "Ethylene Oxide - Special Sample",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 315,
+    "fields": {
+        "dataset": "FAS",
+        "description": "Fatty Acids - Serum",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 316,
+    "fields": {
+        "dataset": "FLDEP",
+        "description": "Fluoride - Plasma",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 317,
+    "fields": {
+        "dataset": "FLDEW",
+        "description": "Fluoride - Water",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 318,
+    "fields": {
+        "dataset": "FORMAL",
+        "description": "Formaldehyde",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 319,
+    "fields": {
+        "dataset": "FORMAS",
+        "description": "Formaldehyde - Special Sample",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 320,
+    "fields": {
+        "dataset": "HCAA",
+        "description": "Heterocyclic Aromatic Amines - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 321,
+    "fields": {
+        "dataset": "HCAAS",
+        "description": "Heterocyclic Aromatic Amines (HCAA) - Urine - Special Sample",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 322,
+    "fields": {
+        "dataset": "HCY",
+        "description": "Homocysteine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 323,
+    "fields": {
+        "dataset": "HPVP",
+        "description": "Human Papillomavirus (HPV) DNA Results from Penile Swab Samples: Roche Linear Array",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 324,
+    "fields": {
+        "dataset": "HPVSER",
+        "description": "Human Papillomavirus (HPV) - 6, 11, 16 & 18 Antibody – Serum: 4-plex CLIA",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 325,
+    "fields": {
+        "dataset": "HPVSRM",
+        "description": "Human Papillomavirus (HPV) - Multiplexed 6, 11, 16, 18, 31, 33, 45, 52 & 58 Antibody – Serum: 9-plex CLIA",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 326,
+    "fields": {
+        "dataset": "HPVSWC",
+        "description": "Human Papillomavirus (HPV) DNA - Vaginal Swab: Roche Cobas High-Risk",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 327,
+    "fields": {
+        "dataset": "HPVSWR",
+        "description": "Human Papillomavirus (HPV) DNA - Vaginal Swab: Digene Hybrid Capture & Roche Linear Array",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 328,
+    "fields": {
+        "dataset": "IHG",
+        "description": "Mercury: Inorganic - Blood",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 329,
+    "fields": {
+        "dataset": "L02",
+        "description": "Hepatitis B: Core Antibody & Surface Antigen; Hepatitis C: Confirmed Antibody & RNA (HCV-RNA); Hepatitis D Antibody",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 330,
+    "fields": {
+        "dataset": "L03",
+        "description": "HIV Antibody Test, CD4+ T Lymphocytes & CD8+ T Cells",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 331,
+    "fields": {
+        "dataset": "L04PER",
+        "description": "Perchlorate - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 332,
+    "fields": {
+        "dataset": "L04VOC",
+        "description": "Volatile Organic Compounds - Blood & Water",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 333,
+    "fields": {
+        "dataset": "L05",
+        "description": "Chlamydia & Gonorrhea - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 334,
+    "fields": {
+        "dataset": "L06",
+        "description": "Cadmium, Lead, Mercury, Cotinine & Nutritional Biochemistries",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 335,
+    "fields": {
+        "dataset": "L06_2",
+        "description": "Cadmium, Lead, Total Mercury, Ferritin, Serum Folate, RBC Folate, Vitamin B12, Homocysteine, Methylmalonic acid, Cotinine - Blood, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 336,
+    "fields": {
+        "dataset": "L06AGE",
+        "description": "Acrylamide & Glycidamide",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 337,
+    "fields": {
+        "dataset": "L06BMT",
+        "description": "Cadmium, Lead, & Total Mercury - Blood",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 338,
+    "fields": {
+        "dataset": "L06COT",
+        "description": "Cotinine - Serum",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 339,
+    "fields": {
+        "dataset": "L06HM",
+        "description": "Metals - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 340,
+    "fields": {
+        "dataset": "L06MH",
+        "description": "Methylmalonic acid & Homocysteine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 341,
+    "fields": {
+        "dataset": "L06NB",
+        "description": "Folate - RBC & Serum, and Vitamin B12",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 342,
+    "fields": {
+        "dataset": "L06PHY",
+        "description": "Phytoestrogens - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 343,
+    "fields": {
+        "dataset": "L06TFR",
+        "description": "Ferritin & Transferrin Receptor",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 344,
+    "fields": {
+        "dataset": "L06UAS",
+        "description": "Arsenics - Total & Speciated - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 345,
+    "fields": {
+        "dataset": "L06UHG",
+        "description": "Mercury: Inorganic - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 346,
+    "fields": {
+        "dataset": "L06UIO",
+        "description": "Iodine - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 347,
+    "fields": {
+        "dataset": "L06VIT",
+        "description": "Vitamin A, Vitamin E & Carotenoids",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 348,
+    "fields": {
+        "dataset": "L09",
+        "description": "Herpes Simplex Virus Type-1 & Type-2",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 349,
+    "fields": {
+        "dataset": "L10",
+        "description": "Glycohemoglobin",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 350,
+    "fields": {
+        "dataset": "L10_2",
+        "description": "Glycohemoglobin, Plasma Glucose, Serum C-peptide, & Insulin, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 351,
+    "fields": {
+        "dataset": "L10AM",
+        "description": "Plasma Fasting Glucose, Serum C-peptide & Insulin",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 352,
+    "fields": {
+        "dataset": "L11",
+        "description": "C-Reactive protein (CRP), Fibrinogen, Bone Alkaline Phosphatase & Urinary N-telopeptides",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 353,
+    "fields": {
+        "dataset": "L11_2",
+        "description": "C-Reactive Protein & Others, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 354,
+    "fields": {
+        "dataset": "L11P_2",
+        "description": "Prostate-specific Antigen (PSA), Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 355,
+    "fields": {
+        "dataset": "L11PSA",
+        "description": "Prostate specific antigen (PSA)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 356,
+    "fields": {
+        "dataset": "L13_2",
+        "description": "Cholesterol - Total, HDL, LDL & Triglycerides, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 357,
+    "fields": {
+        "dataset": "L16_2",
+        "description": "Creatinine & Albumin - Urine, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 358,
+    "fields": {
+        "dataset": "L17",
+        "description": "Toxoplasma (IgG), Toxoplasma (IgM),Toxoplasma (Dye),Toxoplasma Differential Agglutination, & Toxoplasma (Avidity)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 359,
+    "fields": {
+        "dataset": "L19",
+        "description": "Measles, Rubella, & Varicella",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 360,
+    "fields": {
+        "dataset": "L19_2",
+        "description": "Measles, Rubella, & Varicella, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 361,
+    "fields": {
+        "dataset": "L20",
+        "description": "Lead - Dust",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 362,
+    "fields": {
+        "dataset": "L24EPH",
+        "description": "Environmental Phenols",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 363,
+    "fields": {
+        "dataset": "L24PFC",
+        "description": "Polyfluoroalkyl Chemicals",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 364,
+    "fields": {
+        "dataset": "L24PH",
+        "description": "Phthalates - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 365,
+    "fields": {
+        "dataset": "L24PP",
+        "description": "Pesticides - Environmental - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 366,
+    "fields": {
+        "dataset": "L25",
+        "description": "Complete Blood Count with 5-part Differential - Whole Blood",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 367,
+    "fields": {
+        "dataset": "L25_2",
+        "description": "Complete Blood Count with 5-part Differential - Whole Blood, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 368,
+    "fields": {
+        "dataset": "L26OPD",
+        "description": "Organophosphate Insecticides - Diakyl Phosphate Metabolites - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 369,
+    "fields": {
+        "dataset": "L26PP",
+        "description": "Pesticides - Current Use - Urine (Formerly Priority Pesticides, Non-persistent Pesticide Metabolites)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 370,
+    "fields": {
+        "dataset": "L26UPP",
+        "description": "Pesticides - Current Use - Urine (Formerly Priority Pesticides, Non-persistent Pesticide Metabolites)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 371,
+    "fields": {
+        "dataset": "L28DFP",
+        "description": "Dioxins, Furans, & Coplanar PCBs",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 372,
+    "fields": {
+        "dataset": "L28NPB",
+        "description": "Non-dioxin-like Polychlorinated Biphenyls",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 373,
+    "fields": {
+        "dataset": "L28OCP",
+        "description": "Pesticides - Organochlorine Metabolites - Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 374,
+    "fields": {
+        "dataset": "L28PBE",
+        "description": "Brominated Flame Retardants (BFRs)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 375,
+    "fields": {
+        "dataset": "L28POC",
+        "description": "Dioxins, Furans, & Coplanar PCBs",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 376,
+    "fields": {
+        "dataset": "L31PAH",
+        "description": "Polyaromatic Hydrocarbons (PAHs) - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 377,
+    "fields": {
+        "dataset": "L34",
+        "description": "Bacterial vaginosis (BV) & Trichomonas vaginalis",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 378,
+    "fields": {
+        "dataset": "L35",
+        "description": "Methicillin - Resistant Staphylococcus aureus (MRSA)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 379,
+    "fields": {
+        "dataset": "L36",
+        "description": "Syphilis-IgG, Syphilis Rapid Plasma Reagin (RPR) & Treponema pallidum Particle Agglutination (TP-PA)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 380,
+    "fields": {
+        "dataset": "L37SWA",
+        "description": "Human Papillomavirus (HPV) DNA - Vaginal Swab: Digene Hybrid Capture & Prototype Line Blot Assay",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 381,
+    "fields": {
+        "dataset": "L37SWR",
+        "description": "Human Papillomavirus (HPV) DNA - Vaginal Swab: Roche Linear Array",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 382,
+    "fields": {
+        "dataset": "L39",
+        "description": "Erythrocyte Protoporphyrin",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 383,
+    "fields": {
+        "dataset": "L39_2",
+        "description": "Erythrocyte Protoporphyrin",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 384,
+    "fields": {
+        "dataset": "L39EPP",
+        "description": "Erythrocyte Protoporphyrin & Selenium",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 385,
+    "fields": {
+        "dataset": "L40_2",
+        "description": "Standard Biochemistry Profile, Follicle Stimulating Hormone & Luteinizing Hormone, Second Exam",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 386,
+    "fields": {
+        "dataset": "L40FE",
+        "description": "Iron, Total Iron Binding Capacity (TIBC), & Transferrin Saturation",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 387,
+    "fields": {
+        "dataset": "L40T4",
+        "description": "Thyroid - Stimulating Hormone & Thyroxine (TSH & T4)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 388,
+    "fields": {
+        "dataset": "L43",
+        "description": "Vitamin B6",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 389,
+    "fields": {
+        "dataset": "L45VIT",
+        "description": "Vitamin A, Vitamin E & Carotenoids",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 390,
+    "fields": {
+        "dataset": "L52SER",
+        "description": "Human Papillomavirus (HPV) - 6, 11, 16 & 18 Antibody - Serum: 4-plex CLIA",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 391,
+    "fields": {
+        "dataset": "LAB02",
+        "description": "Hepatitis B: Core Antibody & Surface Antigen; Hepatitis C: Confirmed Antibody & RNA (HCV-RNA); Hepatitis D Antibody",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 392,
+    "fields": {
+        "dataset": "MMA",
+        "description": "Methylmalonic Acid",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 393,
+    "fields": {
+        "dataset": "MMRV",
+        "description": "Measles, Mumps, Rubella & Varicella",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 394,
+    "fields": {
+        "dataset": "OGTT",
+        "description": "Oral Glucose Tolerance Test",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 395,
+    "fields": {
+        "dataset": "ORHPV",
+        "description": "Human Papillomavirus (HPV) - Oral Rinse",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 396,
+    "fields": {
+        "dataset": "PAH",
+        "description": "Polyaromatic Hydrocarbons (PAHs) - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 397,
+    "fields": {
+        "dataset": "PAHS",
+        "description": "Polyaromatic Hydrocarbons (PAHs)- Urine - Special Sample",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 398,
+    "fields": {
+        "dataset": "PCBPOL",
+        "description": "Non-dioxin-like Polychlorinated Biphenyls & Mono-ortho-substituted Polychlorinated Biphenyls - Pooled Samples",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 399,
+    "fields": {
+        "dataset": "PERNTS",
+        "description": "Perchlorate, Nitrate & Thiocyanate - Urine - Special Sample",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 400,
+    "fields": {
+        "dataset": "PFC",
+        "description": "Polyfluoroalkyl Chemicals",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 401,
+    "fields": {
+        "dataset": "PFC_POOL",
+        "description": "Polyfluoroalkyl Chemicals - Pooled Samples (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 402,
+    "fields": {
+        "dataset": "PHYTO",
+        "description": "Phytoestrogens - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 403,
+    "fields": {
+        "dataset": "POOLTF",
+        "description": "Pooled-Sample Technical Support File",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 404,
+    "fields": {
+        "dataset": "PP",
+        "description": "Pesticides - Environmental - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 405,
+    "fields": {
+        "dataset": "PSA",
+        "description": "Prostate Specific Antigen (PSA)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 406,
+    "fields": {
+        "dataset": "PSTPOL",
+        "description": "Pesticides - Organochlorine Pesticides - Pooled Samples",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 407,
+    "fields": {
+        "dataset": "PTH",
+        "description": "Parathyroid Hormone",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 408,
+    "fields": {
+        "dataset": "SSANA",
+        "description": "Autoantibodies - Immunofluorescence & Immunoprecipitation Analyses (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 409,
+    "fields": {
+        "dataset": "SSANA2",
+        "description": "Autoantibodies - Immunofluorescence Analyses (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 410,
+    "fields": {
+        "dataset": "SSBFR",
+        "description": "Brominated Flame Retardants (BFRs) - Pooled Samples (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 411,
+    "fields": {
+        "dataset": "SSBNP",
+        "description": "N-terminal Pro-BNP (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 412,
+    "fields": {
+        "dataset": "SSCA",
+        "description": "Cancer antigen CA125 and CA15.3 - Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 413,
+    "fields": {
+        "dataset": "SSCARD",
+        "description": "Glycated albumin, Beta-2 Microglobulin, Cystatin C (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 414,
+    "fields": {
+        "dataset": "SSCGA",
+        "description": "Cancer antigen CA125, CA15.3 and HE4 IgG antibodies - Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 415,
+    "fields": {
+        "dataset": "SSCLTY",
+        "description": "Chlorinated Tyrosine – Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 416,
+    "fields": {
+        "dataset": "SSCMVG",
+        "description": "Cytomegalovirus Genotypes - Urine (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 417,
+    "fields": {
+        "dataset": "SSCT",
+        "description": "Chlamydia Pgp3 (plasmid gene product 3) ELISA (enzyme linked immunosorbent assay) and multiplex bead array (MBA) results",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 418,
+    "fields": {
+        "dataset": "SSDEET",
+        "description": "DEET Metabolites - Urine - Surplus",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 419,
+    "fields": {
+        "dataset": "SSDFS",
+        "description": "Autoantibodies - Anti-DFS70 Autoantibody Analyses (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 420,
+    "fields": {
+        "dataset": "SSEBV",
+        "description": "Epstein-Barr Virus (VCA IgG) - Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 421,
+    "fields": {
+        "dataset": "SSFA",
+        "description": "Fatty Acids - Plasma (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 422,
+    "fields": {
+        "dataset": "SSFLRT",
+        "description": "Flame Retardant Metabolites - Urine (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 423,
+    "fields": {
+        "dataset": "SSHCV",
+        "description": "Hepatitis C Antibody Reflex Testing - Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 424,
+    "fields": {
+        "dataset": "SSHCVR",
+        "description": "Hepatitis C RNA (HCV-RNA) & HCV Genotype (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 425,
+    "fields": {
+        "dataset": "SSHE4",
+        "description": "Human epididymal secretory protein E4 (HE4) - Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 426,
+    "fields": {
+        "dataset": "SSHEPC",
+        "description": "Hepatitis C: Confirmed Antibody (INNO-LIA)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 427,
+    "fields": {
+        "dataset": "SSHPV",
+        "description": "Human Papillomavirus (HPV) Viral Load - Oral Rinse - Oral High-Risk HPV Infections (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 428,
+    "fields": {
+        "dataset": "SSKL",
+        "description": "Klotho - Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 429,
+    "fields": {
+        "dataset": "SSMEL",
+        "description": "Melamine - Urine (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 430,
+    "fields": {
+        "dataset": "SSMHHT",
+        "description": "Mono-2-ethyl-5-hydroxyhexyl terephthalate, mono-2-ethyl-5-carboxypentyl terephthalate, and monooxoisononyl phthalate - Urine (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 431,
+    "fields": {
+        "dataset": "SSNEON",
+        "description": "Neonicotinoids - Urine - Surplus",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 432,
+    "fields": {
+        "dataset": "SSNH4THY",
+        "description": "Thyroid Profile (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 433,
+    "fields": {
+        "dataset": "SSNO3P",
+        "description": "Perchlorate, Nitrate & Thiocyanate - Urine (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 434,
+    "fields": {
+        "dataset": "SSPCB",
+        "description": "Non-dioxin-like Polychlorinated Biphenyls - Pooled Samples (Surplus Sera)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 435,
+    "fields": {
+        "dataset": "SSPFAC",
+        "description": "Perfluoroalkyl and Polyfluoroalkyl Substances in US children 3-11 Years of Age",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 436,
+    "fields": {
+        "dataset": "SSPFSU",
+        "description": "Perfluoroalkyl and Polyfluoroalkyl Substances",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 437,
+    "fields": {
+        "dataset": "SSPHTE",
+        "description": "Phthalates and Plasticizers Metabolites - Urine (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 438,
+    "fields": {
+        "dataset": "SSPOLI",
+        "description": "Poliovirus Serotypes 1, 2, & 3 Antibodies - Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 439,
+    "fields": {
+        "dataset": "SSPST",
+        "description": "Pesticides - Organochlorine Metabolites - Serum - Pooled Samples (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 440,
+    "fields": {
+        "dataset": "SSPT",
+        "description": "Pertussis and tetanus – Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 441,
+    "fields": {
+        "dataset": "SSQFEV",
+        "description": "Coxiella Burnetii (Q Fever) Antibodies - Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 442,
+    "fields": {
+        "dataset": "SSSAL",
+        "description": "Salmonella & Campylobacter Antibodies (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 443,
+    "fields": {
+        "dataset": "SSSNFL",
+        "description": "Serum Neurofilament Light Chain - Serum",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 444,
+    "fields": {
+        "dataset": "SSTERP",
+        "description": "Terpenes – Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 445,
+    "fields": {
+        "dataset": "SSTOCA",
+        "description": "Antibody to Toxocara spp. (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 446,
+    "fields": {
+        "dataset": "SSTOXO",
+        "description": "Toxoplasma Gondii Antibody - Serum (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 447,
+    "fields": {
+        "dataset": "SSTROP",
+        "description": "High-sensitivity cardiac troponins (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 448,
+    "fields": {
+        "dataset": "SSUCSH",
+        "description": "Cytomegalovirus shedding - Urine (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 449,
+    "fields": {
+        "dataset": "SSUSG",
+        "description": "Urine Specific Gravity Measurement (Surplus)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 450,
+    "fields": {
+        "dataset": "TGEMA",
+        "description": "Tissue Transglutaminase Assay (IgA-TTG) & IgA Endomyseal Antibody Assay (IgA EMA)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 451,
+    "fields": {
+        "dataset": "THYROD",
+        "description": "Thyroid Profile",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 452,
+    "fields": {
+        "dataset": "TRICH",
+        "description": "Trichomonas - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 453,
+    "fields": {
+        "dataset": "TSNA",
+        "description": "Tobacco-specific Nitrosamines (TSNAs) - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 454,
+    "fields": {
+        "dataset": "TST",
+        "description": "Total Testosterone",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 455,
+    "fields": {
+        "dataset": "UADM",
+        "description": "Aromatic Diamines - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 456,
+    "fields": {
+        "dataset": "UAM",
+        "description": "Atrazine and Metabolites",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 457,
+    "fields": {
+        "dataset": "UASS",
+        "description": "Arsenics - Total & Speciated - Urine - Special Sample",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 458,
+    "fields": {
+        "dataset": "UCOSMO",
+        "description": "Osmolality - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 459,
+    "fields": {
+        "dataset": "UCOTS",
+        "description": "Cotinine, Hydroxycotinine, & Other Nicotine Metabolites and Analogs - Urine - Special Sample",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 460,
+    "fields": {
+        "dataset": "UFLDE",
+        "description": "Fluoride - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 461,
+    "fields": {
+        "dataset": "UHM",
+        "description": "Metals - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 462,
+    "fields": {
+        "dataset": "UHMS",
+        "description": "Metals - Urine - Special Sample",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 463,
+    "fields": {
+        "dataset": "UMS",
+        "description": "Metals - Urine - Special Sample",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 464,
+    "fields": {
+        "dataset": "UPHOPM",
+        "description": "Pyrethroids, Herbicides, & OP Metabolites - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 465,
+    "fields": {
+        "dataset": "UPP",
+        "description": "Pesticides - Current Use - Urine (Formerly Priority Pesticides, Non-persistent Pesticide Metabolites)",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 466,
+    "fields": {
+        "dataset": "UTASS",
+        "description": "Arsenic - Total - Urine - Special Sample",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 467,
+    "fields": {
+        "dataset": "UVOCS",
+        "description": "Volatile Organic Compound (VOC) Metabolites - Urine - Special Sample",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 468,
+    "fields": {
+        "dataset": "VIT_B6",
+        "description": "Vitamin B6",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 469,
+    "fields": {
+        "dataset": "VITB12",
+        "description": "Vitamin B12",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 470,
+    "fields": {
+        "dataset": "VNA",
+        "description": "Volatile N-Nitrosamine Compounds (VNAs) - Urine",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 471,
+    "fields": {
+        "dataset": "VNAS",
+        "description": "Volatile N-Nitrosamine Compounds (VNAs) - Urine - Special Sample",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 472,
+    "fields": {
+        "dataset": "VOC",
+        "description": "Volatile Organic Compounds - Water & Related Questionnaire Items",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 473,
+    "fields": {
+        "dataset": "VOCMWB",
+        "description": "Volatile Organic Compounds - Trihalomethanes/MTBE/Nitromethane - Blood",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 474,
+    "fields": {
+        "dataset": "VOCWBS",
+        "description": "Volatile Organic Compounds (VOCs) and Trihalomethanes/MTBE - Blood - Special Sample",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 475,
+    "fields": {
+        "dataset": "WPIN",
+        "description": "Perchlorate, Nitrate & Iodide - Tap Water",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 476,
+    "fields": {
+        "dataset": "AGQ",
+        "description": "Allergy",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 477,
+    "fields": {
+        "dataset": "AQQ",
+        "description": "Air Quality",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 478,
+    "fields": {
+        "dataset": "ARQ",
+        "description": "Arthritis",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 479,
+    "fields": {
+        "dataset": "BHQ",
+        "description": "Bowel Health",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 480,
+    "fields": {
+        "dataset": "CIQDEP",
+        "description": "Mental Health - Depression",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 481,
+    "fields": {
+        "dataset": "CIQPAN",
+        "description": "Mental Health - Panic Disorder",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 482,
+    "fields": {
+        "dataset": "CKQ",
+        "description": "Creatine Kinase",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 483,
+    "fields": {
+        "dataset": "CSQ",
+        "description": "Taste & Smell",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 484,
+    "fields": {
+        "dataset": "HCQ",
+        "description": "Hepatitis C Follow Up",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 485,
+    "fields": {
+        "dataset": "KIQ_P",
+        "description": "Prostate Conditions",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 486,
+    "fields": {
+        "dataset": "PSQ",
+        "description": "Prostate Specific Antigen Follow-up",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 487,
+    "fields": {
+        "dataset": "RXQANA",
+        "description": "Analgesic Pain Relievers",
+        "group": 5
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 488,
+    "fields": {
+        "dataset": "VIT_2",
+        "description": "",
+        "group": 2
+    }
+},
+{
+    "model": "nhanes.dataset",
+    "pk": 489,
+    "fields": {
+        "dataset": "DXXAAC",
+        "description": "Dual-Energy X-ray Absorptiometry - Abdominal Aortic Calcification",
+        "group": 4
+    }
+}
+]

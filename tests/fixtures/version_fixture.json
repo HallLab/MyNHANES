@@ -1,0 +1,18 @@
+[
+{
+    "model": "nhanes.version",
+    "pk": 1,
+    "fields": {
+        "version": "nhanes",
+        "description": "NHANES data version"
+    }
+},
+{
+    "model": "nhanes.version",
+    "pk": 2,
+    "fields": {
+        "version": "normalized",
+        "description": "NHANES Normalized Data"
+    }
+}
+]

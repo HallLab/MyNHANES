@@ -1,0 +1,26 @@
+[
+{
+    "model": "nhanes.rule",
+    "pk": 1,
+    "fields": {
+        "rule": "rule_00001",
+        "version": "1.0",
+        "description": "This rule identifies participants who are using medications associated with the treatment of Parkinson's disease. It generates a variable called 'PD_BY_DRUG' within the Normalized version, marking these participants for further analysis.\r\n\r\nDistribution of Samples with use one of these drugs:",
+        "is_active": true,
+        "updated_at": "2024-09-21T13:06:50.865Z",
+        "repo_url": "https://github.com/Garon-Sys/MyNHANES/tree/main/rules/rule_00001"
+    }
+},
+{
+    "model": "nhanes.rule",
+    "pk": 2,
+    "fields": {
+        "rule": "rule_00002",
+        "version": "1.0",
+        "description": "This rule identifies participants who use medications associated with cholesterol management and adjusts their LDL and total cholesterol levels to values that would be expected without medication use. The rule generates a new variable identifying these participants and provides the adjusted LDL and total cholesterol variables in the Normalized dataset.\r\n\r\nDistribution of Samples with use one of these drugs:\r\n\r\n- ATORVASTATIN_CALCIUM\r\n- SIMVASTATIN\r\n- PRAVASTATIN_SODIUM\r\n- FLUVASTATIN_SODIUM\r\n\r\n# LDL and TC values are reduced by 30% and 20% respectively\r\ndf_nhanes['LBDLDL_N'] = df_nhanes.apply(lambda row: row['LBDLDL'] / 0.7 if row.name in df_medications.index else row['LBDLDL'], axis=1)\r\ndf_nhanes['LBXTC_N'] = df_nhanes.apply(lambda row: row['LBXTC'] / 0.8 if row.name in df_medications.index else row['LBXTC'], axis=1)",
+        "is_active": true,
+        "updated_at": "2024-09-19T12:37:37.324Z",
+        "repo_url": "https://github.com/Garon-Sys/MyNHANES/tree/main/rules/rule_00002"
+    }
+}
+]

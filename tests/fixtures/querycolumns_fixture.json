@@ -1,0 +1,65 @@
+[
+{
+    "model": "nhanes.querycolumns",
+    "pk": 1,
+    "fields": {
+        "column_name": "Cycle",
+        "internal_data_key": "cycle__cycle",
+        "column_description": "Ex.: 2017-2018"
+    }
+},
+{
+    "model": "nhanes.querycolumns",
+    "pk": 2,
+    "fields": {
+        "column_name": "Group",
+        "internal_data_key": "dataset__group__group",
+        "column_description": "Ex.: Demographics"
+    }
+},
+{
+    "model": "nhanes.querycolumns",
+    "pk": 3,
+    "fields": {
+        "column_name": "Dataset Code",
+        "internal_data_key": "dataset__dataset",
+        "column_description": "Ex.: DEMO"
+    }
+},
+{
+    "model": "nhanes.querycolumns",
+    "pk": 4,
+    "fields": {
+        "column_name": "Dataset Name",
+        "internal_data_key": "dataset__description",
+        "column_description": "Ex.: Demographic Variables and Sample Weights"
+    }
+},
+{
+    "model": "nhanes.querycolumns",
+    "pk": 5,
+    "fields": {
+        "column_name": "Variable Code",
+        "internal_data_key": "variable__variable",
+        "column_description": "Ex.: SDDSRVYR"
+    }
+},
+{
+    "model": "nhanes.querycolumns",
+    "pk": 6,
+    "fields": {
+        "column_name": "Variable Name",
+        "internal_data_key": "variable__description",
+        "column_description": "Ex.: Data Release Number"
+    }
+},
+{
+    "model": "nhanes.querycolumns",
+    "pk": 7,
+    "fields": {
+        "column_name": "version",
+        "internal_data_key": "version__version",
+        "column_description": "Ex.: nhanes"
+    }
+}
+]

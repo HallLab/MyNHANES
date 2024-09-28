@@ -1,0 +1,162 @@
+[
+{
+    "model": "nhanes.tag",
+    "pk": 1,
+    "fields": {
+        "tag": "Demographics",
+        "description": "Variables like age, gender, race, and ethnicity."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 2,
+    "fields": {
+        "tag": "Lifestyle",
+        "description": "Variables related to diet, exercise, alcohol consumption, smoking, and other lifestyle behaviors."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 3,
+    "fields": {
+        "tag": "Clinical",
+        "description": "Variables for health outcomes such as diagnosed diseases or conditions."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 4,
+    "fields": {
+        "tag": "Medications",
+        "description": "Variables tracking drug use or prescription medications."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 5,
+    "fields": {
+        "tag": "Biomarkers",
+        "description": "Variables representing biological measurements used to assess health or exposure status."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 6,
+    "fields": {
+        "tag": "Symptoms",
+        "description": "Variables for tracking reported health symptoms."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 7,
+    "fields": {
+        "tag": "Environmental",
+        "description": "Variables related to environmental exposures like pollutants or chemicals."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 8,
+    "fields": {
+        "tag": "Chemicals",
+        "description": "Variables directly dealing with chemical substances such as pesticides or pollutants."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 9,
+    "fields": {
+        "tag": "Support",
+        "description": "Variables that complement other data points, such as dilution factors or comment codes, without being a primary measurement or key data."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 10,
+    "fields": {
+        "tag": "Metals",
+        "description": "Variables measuring or related to metal levels in the body."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 11,
+    "fields": {
+        "tag": "Virus",
+        "description": "Variables related to the presence or measurement of viruses in the body."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 12,
+    "fields": {
+        "tag": "Bacteria",
+        "description": "Variables related to the presence or measurement of bacteria in the body or environment."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 13,
+    "fields": {
+        "tag": "Metabolites",
+        "description": "Variables related to products of metabolism in the body."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 14,
+    "fields": {
+        "tag": "Cancer",
+        "description": "Variables related to cancer diagnosis, risk, or monitoring."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 15,
+    "fields": {
+        "tag": "Dietary",
+        "description": "Variables specifically related to food consumption, such as protein, carbohydrate, fat, vitamins, and minerals intake."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 16,
+    "fields": {
+        "tag": "Laboratory",
+        "description": "Variables related to laboratory tests, including test results, measurements, and clinical lab data."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 17,
+    "fields": {
+        "tag": "Occupational",
+        "description": "Variables related to workplace exposures, such as exposure to chemicals or hazardous environments."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 18,
+    "fields": {
+        "tag": "Genetics",
+        "description": "Variables related to genetic information or predispositions."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 19,
+    "fields": {
+        "tag": "Mental",
+        "description": "Variables measuring or related to mental health conditions, such as depression or anxiety."
+    }
+},
+{
+    "model": "nhanes.tag",
+    "pk": 20,
+    "fields": {
+        "tag": "Physical",
+        "description": "Variables related to exercise, physical activity, and sedentary behavior."
+    }
+}
+]

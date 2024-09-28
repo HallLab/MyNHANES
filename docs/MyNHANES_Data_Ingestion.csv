@@ -1,0 +1,8 @@
+Dataset Group,Total Datasets,Ingestion Time (minutes),DB Size Increase (GB),DB Size After Ingestion (GB),
+Master Data,,2.00,0.04,0.04,
+Demographic,10,3.27,0.54,0.58,
+Questionnaire,422,63.53,8.24,8.82,
+Examination,166,100.20,16.78,25.60,
+Laboratory,650,52.97,3.99,29.59,
+Dietary,85,410.00,27.39,56.98,
+Total,1333,631.97,56.98,56.98,

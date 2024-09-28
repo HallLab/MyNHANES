@@ -1,0 +1,50 @@
+[
+{
+    "model": "nhanes.group",
+    "pk": 1,
+    "fields": {
+        "group": "Demographics",
+        "description": "Demographic Data"
+    }
+},
+{
+    "model": "nhanes.group",
+    "pk": 2,
+    "fields": {
+        "group": "Laboratory",
+        "description": "Laboratory Data"
+    }
+},
+{
+    "model": "nhanes.group",
+    "pk": 3,
+    "fields": {
+        "group": "Dietary",
+        "description": "Dietary Data"
+    }
+},
+{
+    "model": "nhanes.group",
+    "pk": 4,
+    "fields": {
+        "group": "Examination",
+        "description": "Examination Data"
+    }
+},
+{
+    "model": "nhanes.group",
+    "pk": 5,
+    "fields": {
+        "group": "Questionnaire",
+        "description": "Questionnaire Data"
+    }
+},
+{
+    "model": "nhanes.group",
+    "pk": 6,
+    "fields": {
+        "group": "Limited Access",
+        "description": "Limited Access Data"
+    }
+}
+]

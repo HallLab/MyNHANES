@@ -1,0 +1,26 @@
+[
+{
+    "model": "nhanes.workprocessrule",
+    "pk": 1,
+    "fields": {
+        "rule": 1,
+        "last_synced_at": "2024-09-19T12:37:37.323Z",
+        "status": "complete",
+        "execution_logs": "transformation completed successfully",
+        "execution_time": null,
+        "attempt_count": 0
+    }
+},
+{
+    "model": "nhanes.workprocessrule",
+    "pk": 2,
+    "fields": {
+        "rule": 2,
+        "last_synced_at": "2024-09-19T12:37:37.325Z",
+        "status": "pending",
+        "execution_logs": "new rule created",
+        "execution_time": null,
+        "attempt_count": 0
+    }
+}
+]

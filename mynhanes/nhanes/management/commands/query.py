@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from mynhanes.nhanes.services import query  # noqa E501
+from nhanes.reports import query  # noqa E501
 
 
 class Command(BaseCommand):

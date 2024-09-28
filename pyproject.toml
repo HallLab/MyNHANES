@@ -25,6 +25,8 @@ pylint = "^3.2.6"
 flake8 = "^7.1.1"
 pytest = "^8.3.2"
 pre-commit = "^3.8.0"
+coverage = "^7.6.1"
+pytest-django = "^4.9.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -32,3 +34,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 mynhanes = "mynhanes.manage:main"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "core.settings"
+python_files = ["tests.py", "test_*.py", "*_tests.py"]

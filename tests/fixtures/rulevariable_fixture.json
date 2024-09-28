@@ -1,0 +1,145 @@
+[
+{
+    "model": "nhanes.rulevariable",
+    "pk": 1,
+    "fields": {
+        "rule": 1,
+        "version": 1,
+        "variable": 240,
+        "dataset": 116,
+        "type": "i"
+    }
+},
+{
+    "model": "nhanes.rulevariable",
+    "pk": 2,
+    "fields": {
+        "rule": 1,
+        "version": 2,
+        "variable": 252,
+        "dataset": null,
+        "type": "o"
+    }
+},
+{
+    "model": "nhanes.rulevariable",
+    "pk": 3,
+    "fields": {
+        "rule": 2,
+        "version": 1,
+        "variable": 240,
+        "dataset": 116,
+        "type": "i"
+    }
+},
+{
+    "model": "nhanes.rulevariable",
+    "pk": 4,
+    "fields": {
+        "rule": 2,
+        "version": 1,
+        "variable": 7178,
+        "dataset": null,
+        "type": "i"
+    }
+},
+{
+    "model": "nhanes.rulevariable",
+    "pk": 5,
+    "fields": {
+        "rule": 2,
+        "version": 1,
+        "variable": 7184,
+        "dataset": null,
+        "type": "i"
+    }
+},
+{
+    "model": "nhanes.rulevariable",
+    "pk": 6,
+    "fields": {
+        "rule": 2,
+        "version": 2,
+        "variable": 12040,
+        "dataset": null,
+        "type": "o"
+    }
+},
+{
+    "model": "nhanes.rulevariable",
+    "pk": 7,
+    "fields": {
+        "rule": 2,
+        "version": 2,
+        "variable": 12041,
+        "dataset": null,
+        "type": "o"
+    }
+},
+{
+    "model": "nhanes.rulevariable",
+    "pk": 8,
+    "fields": {
+        "rule": 2,
+        "version": 2,
+        "variable": 12042,
+        "dataset": null,
+        "type": "o"
+    }
+},
+{
+    "model": "nhanes.rulevariable",
+    "pk": 10,
+    "fields": {
+        "rule": 2,
+        "version": 1,
+        "variable": 7178,
+        "dataset": null,
+        "type": "i"
+    }
+},
+{
+    "model": "nhanes.rulevariable",
+    "pk": 11,
+    "fields": {
+        "rule": 2,
+        "version": 1,
+        "variable": 7184,
+        "dataset": null,
+        "type": "i"
+    }
+},
+{
+    "model": "nhanes.rulevariable",
+    "pk": 12,
+    "fields": {
+        "rule": 2,
+        "version": 2,
+        "variable": 12040,
+        "dataset": null,
+        "type": "o"
+    }
+},
+{
+    "model": "nhanes.rulevariable",
+    "pk": 13,
+    "fields": {
+        "rule": 2,
+        "version": 2,
+        "variable": 12041,
+        "dataset": null,
+        "type": "o"
+    }
+},
+{
+    "model": "nhanes.rulevariable",
+    "pk": 14,
+    "fields": {
+        "rule": 2,
+        "version": 2,
+        "variable": 12042,
+        "dataset": null,
+        "type": "o"
+    }
+}
+]
