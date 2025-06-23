@@ -35,14 +35,15 @@ class Cycle(models.Model):
     dataset_url_pattern = models.CharField(
         max_length=255,
         # default='%s/%s/%s_%s'
-        default="%s/%s/%s",
+        default="%s/%s",
     )
 
     def __str__(self):
         return self.cycle
 
     def get_dataset_url(self, file):
-        return self.dataset_url_pattern % (self.base_url, self.cycle, file)
+        # return self.dataset_url_pattern % (self.base_url, self.cycle, file)
+        return self.dataset_url_pattern % (self.base_url, file)
 
     class Meta:
         ordering = ["cycle"]
