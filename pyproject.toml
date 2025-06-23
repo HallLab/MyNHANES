@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mynhanes"
-version = "0.2.1"
+version = "0.2.2"
 description = ""
 authors = ["Andre <ricoandre@hotmail.com>"]
 readme = "README.md"
@@ -33,7 +33,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-mynhanes = "mynhanes.manage:main"
+mynhanes = "mynhanes.cli_entry:main"
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "core.settings"
