@@ -1,69 +1,140 @@
-## User Guide: MyNHANES
+# MyNHANES
 
-### Introduction
-Welcome to MyNHANES, a powerful tool designed to facilitate the management and analysis of NHANES data. MyNHANES provides an integrated environment to manage master data, work processes, and apply transformations on NHANES datasets. This guide will help you get started with installing MyNHANES, setting up your environment, and using its key features.
+**MyNHANES** is an open-source data platform designed to simplify access, integration, and transformation of public health data from the [National Health and Nutrition Examination Survey (NHANES)](https://www.cdc.gov/nchs/nhanes/index.htm).
 
-### Installation
-To install MyNHANES, we recommend using Python 3.12 or above. Follow these steps:
+Unlike the official NHANES portal — where datasets are fragmented across cycles and require manual download and parsing — MyNHANES offers a structured environment to **ingest**, **transform**, **standardize**, and **query** NHANES data as a unified relational database.
 
-1. **Create a virtual environment** (optional but recommended):
-   ```bash
-   python -m venv mynhanes_env
-   source mynhanes_env/bin/activate  # On Windows use `mynhanes_env\Scripts\activate`
-   ```
+---
 
-2. **Install MyNHANES via pip**:
-   ```bash
-   pip install mynhanes
-   ```
+## ✨ Highlights
 
-### Initial Setup
-After installation, navigate to the package directory and run the following command to set up the database, create a user, and load the master data and global transformation rules:
+- ✅ Unified access to raw data across NHANES cycles
+- 🔍 Full metadata integration and search via variables, tags, and cycles
+- 🧪 Rule-based transformation engine for derived variables
+- 🧭 Web-based interface for non-programmers (Django Admin)
+- 📦 Export-ready data for analysis (CSV)
+- 📖 Transparent logs and versioning of all steps
+- 🔄 Syncs with public GitHub repository for master data and rule definitions
 
-```bash
-cd path_to_mynhanes_package  # Replace with the actual path
-python manage.py deploy --type local
-```
+---
 
-This command will initialize the SQLite database and populate it with the necessary data.
-
-### Running the Web Server
-Once the setup is complete, you can start the web server to access the MyNHANES system via a web browser:
+## 📦 Installation
 
 ```bash
-python manage.py runserver
+pip install mynhanes
 ```
 
-Visit `http://127.0.0.1:8000/admin` in your web browser to log in and begin using MyNHANES.
+After installation, use the CLI with enviroment activated:
 
-### Core Modules
+```bash
+mynhanes deploy --type local
+mynhanes runserver
+```
 
-#### Master Data Management
-MyNHANES uses master data such as cycles, datasets, variables, and tags to organize NHANES data. These elements are crucial for managing and navigating the data efficiently. 
+Then access the admin interface at:
+[http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)
 
-- **Cycles:** Represent different NHANES survey periods.
-- **Datasets:** Collections of data for each cycle.
-- **Variables:** Individual variables within the datasets.
-- **Tags:** Used to categorize and filter datasets and variables.
+---
 
-#### WorkProcess
-The WorkProcess module manages the lifecycle of datasets, from downloading to processing. 
+## 🚀 (optional) Example of other commands
 
-- **Activating a Dataset:** In the admin interface, you can activate datasets for download by setting their status and managing their lifecycle.
-- **Ingestion:** Once a dataset is activated, you can ingest the data into the system for further analysis.
+```bash
+# Deploy local DB and import master data
+mynhanes deploy --type local
 
-#### Transformations
-Transformations allow you to apply predefined rules to the NHANES data, modifying or normalizing it for analysis.
+# Run ingestion for marked datasets
+mynhanes ingestion_nhanes --type db
 
-- **Running Transformations:** Transformations can be triggered through the admin interface, where you select the relevant rules to apply to the data.
-- **Custom Rules:** You can create and manage custom transformation rules based on your analytical needs.
+# Apply active transformation rules
+mynhanes transformation
 
-### Queries and Data Export
-MyNHANES provides tools for creating dynamic queries and exporting the results.
+# Export query reports
+mynhanes query --fields_report
+```
 
-- **Query Builder:** Use the query builder to define custom queries across cycles, datasets, and variables.
-- **Data Export:** Export query results to CSV or other formats directly from the admin interface.
+---
 
-### Storage
-MyNHANES uses SQLite as the default database for storing all data, which makes it easy to manage and share data files.
+## 🧭 How It Works
 
+### 1. Master Data
+
+- Imported from [`MyNHANES_DataHub`](https://github.com/YOUR_ORG/MyNHANES_DataHub)
+- Includes: Cycles, Datasets, Variables, Tags, Rules
+
+### 2. Ingestion
+
+- Downloads `.XPT` and `.HTM` files
+- Parses metadata and values
+- Stores data in the local relational model (`Data`)
+
+### 3. Transformation
+
+- Each rule is a Python script mapped to input/output variables
+- Rules run automatically or manually via admin/CLI
+- Results are versioned and saved alongside raw data
+
+### 4. Query & Export
+
+- Use QueryStructures and QueryColumns to define reusable queries
+- Export structured CSVs across cycles with selected variables
+
+---
+
+## 🧪 Example Use Case
+
+You want to identify NHANES participants likely to have Parkinson’s Disease based on their medication.
+
+With MyNHANES, you can:
+
+- Enable relevant datasets (`RXQ_RX`, `DEMO`)
+- Apply a transformation rule (`rule_parkinson`)
+- Export the final dataset for modeling
+
+> All steps are documented, logged, and reproducible: https://github.com/HallLab/MyNHANES/tree/main/rules/rule_00001
+
+---
+
+## 🧠 Scientific Vision
+
+MyNHANES is built to support research that demands:
+
+- Harmonized datasets across cycles
+- Rapid exploration and export of clean variables
+- Transparent data derivation pipelines
+- Integration with tools like R, Python, or Jupyter Notebooks
+
+It empowers data scientists, epidemiologists, and clinical researchers to focus on **analysis**, not manual preprocessing.
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions from the community!
+
+- 📥 Submit issues or feature requests
+- 🧪 Contribute transformation rules to the `rules/` folder
+- 🗂 Help improve tagging and variable descriptions
+- 📊 Share notebooks or case studies using MyNHANES data
+
+---
+
+## 🔗 Repositories
+
+- Core App: [https://github.com/HallLab/MyNHANES](https://github.com/HallLab/MyNHANES)
+- DataHub: [https://github.com/HallLab/MyNHANES_DataHub](https://github.com/HallLab/MyNHANES_DataHub)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 📬 Contact
+
+For questions or collaboration inquiries, please contact:
+**Andre Rico** – ricoa@pennmedicine.upenn.edu
+or open an issue in the [GitHub repository](https://github.com/HallLab/MyNHANES/issues).
+
+---
