@@ -78,6 +78,8 @@ mynhanes query --fields_report
 - Use QueryStructures and QueryColumns to define reusable queries
 - Export structured CSVs across cycles with selected variables
 
+![Overview](docs/overview.png)
+
 ---
 
 ## 🧪 Example Use Case
